@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" class="js">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="author" content="https://github.com/FZl47"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content="dj backup"/>
+    <!-- Fav Icon  -->
+    <link rel="shortcut icon" href="{% static 'dj_backup/assets/images/favicon.png' %}"/>
+    <!-- Page Title  -->
+    <title>{% block Title %}{% endblock %}| dj-backup</title>
+    <!-- StyleSheets  -->
+    <link rel="stylesheet" href="{% static 'dj_backup/assets/css/dashlite.rtl.css' %}"/>
+    <link id="skin-default" rel="stylesheet" href="{% static 'dj_backup/assets/css/theme.css' %}"/>
+    {% block Style %}{% endblock %}
+</head>
+<body class="{% block BodyClass %}{% endblock %}" dir="rtl">
+{% block Content %}{% endblock %}
+<script src="{% static 'dj_backup/assets/js/bundle.js' %}"></script>
+<script src="{% static 'dj_backup/assets/js/scripts.js' %}"></script>
+<script src="{% static 'dj_backup/assets/js/apps/file-manager.js' %}"></script>
+<script src="{% static 'dj_backup/assets/js/base.js' %}"></script>
+{% block Script %}{% endblock %}
+<script></script>
+</body>
+</html>
