@@ -2554,7 +2554,7 @@
         <div class="modal-dialog modal-md" role="document">
             <div class="modal-content">
                 <a href="#" class="close" data-bs-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
-                <form action="" class="form-validate is-alter" method="post">
+                <form action="{% url 'dj_backup:file_backup__add' %}" class="form-validate is-alter" method="post">
                     {% csrf_token %}
                     <div class="modal-body modal-body-md">
                         <div class="nk-upload-form">
@@ -2565,13 +2565,18 @@
                                     <label class="form-label" for="backup-time">زمان</label>
                                     <div class="form-control-wrap">
                                         <div class="form-text-hint">
-                                            <span class="overline-title">ساعت یکبار</span>
+                                            <select name="unit" required class="js-select2 overline-title">
+                                                <option value="minutes">دقیقه</option>
+                                                <option value="hours">ساعت</option>
+                                                <option value="days">روز</option>
+                                                <option value="weeks">هفته</option>
+                                            </select>
+                                            <p class="overline-title" style="margin-right: 12px">یکبار</p>
                                         </div>
                                         <input type="number" class="form-control" id="backup-time"
                                                placeholder="زمان بک اپ گیری" required>
                                     </div>
                                     <div class="form-note">هر چه مدت یکبار بک اپ گرفته شود</div>
-                                    <div class="form-note">واحد <code>ساعت(hour)</code></div>
                                 </div>
                                 <div class="form-group">
                                     <label class="form-label">ذخیره در </label>

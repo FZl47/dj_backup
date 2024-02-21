@@ -3,6 +3,8 @@ import abc
 import threading
 import schedule
 import queue
+from typing import List, Literal
+from .storage import FileBackup
 
 
 class BaseTask(abc.ABC):
@@ -13,11 +15,20 @@ class BaseTask(abc.ABC):
         self.args = args
         self.kwargs = kwargs
 
+
+    @classmethod
+    def _run_queue_main_worker(cls):
+        queue_obj = cls.get_queue()
+        while True:
+            job_func = queue_obj.get()
+            job_func()
+            queue_obj.task_done()
+
     @classmethod
     def run_on_thread(cls):
         def queue_main_worker():
             queue_obj = cls.get_queue()
-            while 1:
+            while True:
                 job_func = queue_obj.get()
                 job_func()
                 queue_obj.task_done()
@@ -32,7 +43,7 @@ class BaseTask(abc.ABC):
         return cls.QUEUE
 
     def add_to_queue(self, task_obj):
-        self.get_queue().put(task_obj)
+        self.get_queue().put_nowait(task_obj)
 
     @abc.abstractmethod
     def __call__(self, *args, **kwargs):
@@ -44,14 +55,21 @@ class Task(BaseTask):
 
 
 class BaseScheduleTask(BaseTask):
+    SCHEDULER = None
+
+    @classmethod
+    def get_scheduler(cls):
+        if not cls.SCHEDULER:
+            cls.SCHEDULER = schedule.Scheduler()
+        return cls.SCHEDULER
 
     @classmethod
     def run_on_thread(cls):
         super(BaseScheduleTask, cls).run_on_thread()
 
         def schedule_main_worker():
-            while 1:
-                schedule.run_pending()
+            while True:
+                cls.get_scheduler().run_pending()
                 time.sleep(1)
 
         schedule_thread = threading.Thread(target=schedule_main_worker)
@@ -63,18 +81,22 @@ class ScheduleTask(BaseScheduleTask):
 
 
 class ScheduleFileBackupTask(BaseScheduleTask):
-    def __init__(self, interval, *args, unit='hour', **kwargs):
+    def __init__(self, files: List[FileBackup], interval: int,
+                 unit: Literal['seconds', 'minutes', 'hours', 'days', 'weeks'] = 'hours', *args, **kwargs):
         super(ScheduleFileBackupTask, self).__init__(*args, **kwargs)
+        self.files = files
         self.interval = interval
         self.unit = unit
-        j = schedule.every(interval)
+        j = self.get_scheduler().every(interval)
         j.unit = unit
         j.do(self.add_to_queue, self)
 
     def __call__(self):
-        
-        print('Working ', self.args, self.kwargs)
+        print('awd')
+        for file in self.files:
+            file.save()
+        # TODO: add log
+        # TODO: send notification(sms,email)
 
-
-BaseScheduleTask.run_on_thread()
-ScheduleFileBackupTask(4, unit='seconds')
+# BaseScheduleTask.run_on_thread() # TODO: should use command to run
+# ScheduleFileBackupTask(4, unit='seconds')

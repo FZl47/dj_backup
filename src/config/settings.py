@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Apps
     'dj_backup',
+    'django_q'
 ]
 
 MIDDLEWARE = [
@@ -118,7 +119,17 @@ STATICFILES_DIRS = (
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+Q_CLUSTER = {
+    'name': 'django-q',
+    'workers': 4,
+    'orm': 'default'
+}
+
 # DJ backup
 DJ_BACKUP_CONFIG = {
-    'BASE_ROOT': BASE_DIR
+    'BASE_ROOT': BASE_DIR,
+    'BACKUP_TEMP_DIR': BASE_DIR / 'backup/temp',
+    'BACKUP_DIRS': [
+        BASE_DIR / 'backup/result',
+    ]
 }

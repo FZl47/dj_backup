@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, View
 from .core.file.utils import get_files_dir
+from .core.storage import FileBackup
+from .core.task import ScheduleFileBackupTask
 
 
 class Index(TemplateView):
@@ -29,4 +31,10 @@ class FileBackupAdd(View):
 
     def post(self, request):
         data = request.POST
-        
+        locations = data.getlist('location', [])
+        file_backups = []
+        for location in locations:
+            file_backups.append(FileBackup(location))
+        # ScheduleFileBackupTask(file_backups, 10, 'seconds')
+        ScheduleFileBackupTask([FileBackup('F:\\Project\\dj_backup\\src\\test\\1.txt.txt')], 5, 'seconds')
+
