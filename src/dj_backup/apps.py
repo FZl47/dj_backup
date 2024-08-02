@@ -6,4 +6,4 @@ class DjBackupConfig(AppConfig):
     name = 'dj_backup'
 
     def ready(self):
-        from .core import task
+        from .core import tasks

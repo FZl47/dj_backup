@@ -1,3 +1,7 @@
 from django.contrib import admin
 
-# Register your models here.
+from dj_backup import models
+
+admin.site.register(models.DJFileBackUp)
+admin.site.register(models.DJDatabaseBackUp)
+admin.site.register(models.DJFile)

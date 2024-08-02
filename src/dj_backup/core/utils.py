@@ -3,6 +3,11 @@ import zipfile
 import os
 import shutil
 from django.conf import settings
+from django.utils import timezone
+
+
+def get_time(frmt='%Y-%m-%d'):
+    return timezone.now().strftime(frmt)
 
 
 def get_files_dir(root_location=None):
@@ -13,6 +18,10 @@ def get_files_dir(root_location=None):
 
 def get_location(location):
     return pathlib.Path(location)
+
+
+def is_dir(path):
+    return os.path.isdir(path)
 
 
 def zip_directory(directory, zip_name):
@@ -29,7 +38,7 @@ def zip_file(file_path, zip_name):
 
 
 def zip_item(directory_or_file, zip_name):
-    if os.path.isdir(directory_or_file):
+    if is_dir(directory_or_file):
         zip_directory(directory_or_file, zip_name)
     else:
         zip_file(directory_or_file, zip_name)
@@ -42,9 +51,12 @@ def get_or_create_dir(item_path):
 
 def delete_file(item_path):
     try:
-        os.remove(item_path)
-    except OSError:
-        # File does not exist
+        if is_dir(item_path):
+            shutil.rmtree(item_path)
+        else:
+            os.remove(item_path)
+    except OSError as e:
+        # File does not exist or is Read-Only
         # TODO: log err
         pass
 
@@ -55,3 +67,11 @@ def copy_item(src, dest):
     except IOError as e:
         # TODO: log err
         pass
+
+
+def get_file_name(path):
+    return pathlib.Path(path).name
+
+
+def join_paths(*paths):
+    return os.path.join(*paths)
