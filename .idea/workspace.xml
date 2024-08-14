@@ -8,18 +8,35 @@
       <change beforePath="$PROJECT_DIR$/.idea/dj_backup.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dj_backup.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backup/result/media.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/file/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/file/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/storage.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/storage.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/task.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/task.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/backup/db/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/backup/db/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/backup/db/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/backup/db/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/backup/file.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/backup/file.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/storages.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/tasks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/management/commands/run-backup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/management/commands/run-backup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/base/base_template.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/base/base_template.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/file/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/file/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dj_backup/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dj_backup/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/static/dj_backup/assets/css/dashlite.rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/static/dj_backup/assets/css/dashlite.rtl.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/static/dj_backup/assets/js/base.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/static/dj_backup/assets/js/base.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -48,17 +65,21 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;F:/Project/dj_backup/src/config/settings.py&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/Project/dj_backup/src/dj_backup/templates/dj_backup/backup&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.django.DjangoModulesConfigurable&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PythonContentEntriesConfigurable&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Project\dj_backup\src\dj_backup\templates\dj_backup\backup" />
+      <recent name="F:\Project\dj_backup\src\dj_backup\templates\dj_backup\db" />
+      <recent name="F:\Project\dj_backup\src\dj_backup\core\backup\db" />
+      <recent name="F:\Project\dj_backup\src\dj_backup\core" />
       <recent name="F:\Project\dj_backup\src\dj_backup\templates\dj_backup\dashboard" />
     </key>
   </component>
@@ -98,7 +119,35 @@
       <workItem from="1707626717064" duration="7134000" />
       <workItem from="1707706066780" duration="14856000" />
       <workItem from="1707798336104" duration="260000" />
-      <workItem from="1708502858644" duration="17299000" />
+      <workItem from="1708502858644" duration="31861000" />
+      <workItem from="1708598133336" duration="606000" />
+      <workItem from="1708599474023" duration="510000" />
+      <workItem from="1722264359091" duration="2547000" />
+      <workItem from="1722282004006" duration="815000" />
+      <workItem from="1722342876848" duration="13854000" />
+      <workItem from="1722384151124" duration="1964000" />
+      <workItem from="1722433417673" duration="4261000" />
+      <workItem from="1722442254048" duration="588000" />
+      <workItem from="1722540028223" duration="1740000" />
+      <workItem from="1722600722797" duration="19412000" />
+      <workItem from="1722696203442" duration="4814000" />
+      <workItem from="1722779751758" duration="16353000" />
+      <workItem from="1722884115927" duration="5055000" />
+      <workItem from="1722954367351" duration="26072000" />
+      <workItem from="1723081744856" duration="4699000" />
+      <workItem from="1723137568498" duration="17587000" />
+      <workItem from="1723174111244" duration="4404000" />
+      <workItem from="1723180288918" duration="302000" />
+      <workItem from="1723225758220" duration="21219000" />
+      <workItem from="1723319635177" duration="20492000" />
+      <workItem from="1723401591898" duration="5994000" />
+      <workItem from="1723434949305" duration="7482000" />
+      <workItem from="1723491059548" duration="743000" />
+      <workItem from="1723498976243" duration="6864000" />
+      <workItem from="1723517158710" duration="3833000" />
+      <workItem from="1723566648943" duration="181000" />
+      <workItem from="1723589442445" duration="587000" />
+      <workItem from="1723609512482" duration="2232000" />
     </task>
     <servers />
   </component>

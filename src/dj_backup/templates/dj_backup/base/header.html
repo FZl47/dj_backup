@@ -1,0 +1,100 @@
+{% load static %}
+<div class="nk-header nk-header-fixed is-light">
+    <div class="container-fluid">
+        <div class="nk-header-wrap">
+            <div class="nk-menu-trigger d-xl-none ms-n1">
+                <a href="#" class="btn btn-trigger btn-icon toggle"
+                   data-target="sidebarMenu"><em
+                        class="icon ni ni-menu"></em></a>
+            </div>
+            <div class="nk-header-app-name">
+                <div class="nk-header-app-logo">
+                    <em class="icon ni ni-folder bg-purple-dim"></em>
+                </div>
+                <div class="nk-header-app-info">
+                    <span class="sub-text">
+                        <a href="https://github.com/FZl47/dj_backup" style="color: inherit">DJ Backup</a>
+                    </span>
+                    <span class="lead-text">مدیریت و بک آپ</span>
+                </div>
+            </div>
+            <div class="nk-header-tools">
+                <ul class="nk-quick-nav">
+                    <li class="dropdown language-dropdown me-n1">
+                        <a  data-bs-toggle="dropdown" class="dropdown-toggle nk-quick-nav-icon"><em
+                                class="icon ni ni-globe"></em></a>
+                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-s1">
+                            <ul class="language-list">
+                                <li>
+                                    <a href="#" class="language-item">
+                                        <img src="{% static 'dj_backup/assets/images/iran.png' %}" alt="Persian"
+                                             class="language-flag"/>
+                                        <span class="language-name">فارسی</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="language-item">
+                                        <img src="{% static 'dj_backup/assets/images/uk.png' %}" alt="English"
+                                             class="language-flag"/>
+                                        <span class="language-name">English</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <!-- .dropdown -->
+                    <li class="dropdown user-dropdown">
+                        <a href="#" class="dropdown-toggle me-n1" data-bs-toggle="dropdown">
+                            <div class="user-toggle">
+                                <div class="user-avatar sm">
+                                    <em class="icon ni ni-user-alt"></em>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-md dropdown-menu-end">
+                            <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
+                                <div class="user-card">
+                                    <div class="user-avatar">
+                                        <span>ف‌ت</span>
+                                    </div>
+                                    <div class="user-info">
+                                        <span class="lead-text">{{ user.get_full_name|default:'Anonymous user' }}</span>
+                                        <span class="sub-text">{{ user.email|default:'' }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dropdown-inner">
+                                <ul class="link-list">
+                                    <li>
+                                        <a href="html/user-profile-regular.html"><em
+                                                class="icon ni ni-user-alt"></em><span>مشاهده پروفایل</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="html/user-profile-setting.html"><em
+                                                class="icon ni ni-setting-alt"></em><span>تنظیمات حساب</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="html/user-profile-activity.html"><em
+                                                class="icon ni ni-activity-alt"></em><span>فعالیت ورود</span></a>
+                                    </li>
+                                    <li>
+                                        <a class="dark-switch" href="#"><em
+                                                class="icon ni ni-moon"></em><span>حالت تاریک</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="dropdown-inner">
+                                <ul class="link-list">
+                                    <li>
+                                        <a href="#"><em
+                                                class="icon ni ni-signout"></em><span>خروج</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

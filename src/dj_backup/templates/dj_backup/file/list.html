@@ -10,1557 +10,158 @@
 
 {% block Content %}
     <div class="nk-app-root">
-        <div class="nk-apps-sidebar is-dark">
-            <div class="nk-apps-brand">
-                <a href="html/index.html" class="logo-link">
-                    <img class="logo-light logo-img" src="./images/logo-small.png" srcset="./images/logo-small2x.png 2x"
-                         alt="لوگو"/>
-                    <img class="logo-dark logo-img" src="./images/logo-dark-small.png"
-                         srcset="./images/logo-dark-small2x.png 2x" alt="لوگوی تاریک"/>
-                </a>
-            </div>
-            <div class="nk-sidebar-element">
-                <div class="nk-sidebar-body">
-                    <div class="nk-sidebar-content" data-simplebar>
-                        <div class="nk-sidebar-menu">
-                            <!-- Menu -->
-                            <ul class="nk-menu apps-menu">
-                                <li class="nk-menu-item">
-                                    <a href="html/cms/index.html" class="nk-menu-link" title="پنل سیستم مدیریت محتوا">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-template"></em></span>
-                                    </a>
-                                </li>
-                                <!-- .nk-menu-item -->
-                                <li class="nk-menu-hr"></li>
-                                <li class="nk-menu-item">
-                                    <a href="html/index.html" class="nk-menu-link" title="داشبورد تجزیه و تحلیل">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-dashboard"></em></span>
-                                    </a>
-                                </li>
-                                <li class="nk-menu-item">
-                                    <a href="html/index-sales.html" class="nk-menu-link" title="داشبورد فروش">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-speed"></em></span>
-                                    </a>
-                                </li>
-                                <li class="nk-menu-item">
-                                    <a href="html/index-crypto.html" class="nk-menu-link" title="داشبورد ارز دیجیتال">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-bitcoin-cash"></em></span>
-                                    </a>
-                                </li>
-                                <li class="nk-menu-item">
-                                    <a href="html/index-invest.html" class="nk-menu-link" title="داشبورد سرمایه گذاری">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-invest"></em></span>
-                                    </a>
-                                </li>
-                                <li class="nk-menu-hr"></li>
-                                <li class="nk-menu-item">
-                                    <a href="html/apps/mailbox.html" class="nk-menu-link" title="صندوق پستی">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-inbox"></em></span>
-                                    </a>
-                                </li>
-                                <li class="nk-menu-item">
-                                    <a href="html/apps/messages.html" class="nk-menu-link" title="پیام ها">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-chat"></em></span>
-                                    </a>
-                                </li>
-                                <li class="nk-menu-item">
-                                    <a href="html/apps/file-manager.html" class="nk-menu-link" title="مدیریت فایل ها">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-folder"></em></span>
-                                    </a>
-                                </li>
-                                <li class="nk-menu-item">
-                                    <a href="html/apps/chats.html" class="nk-menu-link" title="گفتگوها">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-chat-circle"></em></span>
-                                    </a>
-                                </li>
-                                <li class="nk-menu-item">
-                                    <a href="html/apps/calendar.html" class="nk-menu-link" title="تقویم">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-calendar"></em></span>
-                                    </a>
-                                </li>
-                                <li class="nk-menu-item">
-                                    <a href="html/apps/kanban.html" class="nk-menu-link">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-template"></em></span>
-                                    </a>
-                                </li>
-                                <li class="nk-menu-hr"></li>
-                                <li class="nk-menu-item">
-                                    <a href="html/components.html" class="nk-menu-link" title="رفتن به کامپوننت ها">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-layers"></em></span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="nk-sidebar-footer">
-                            <ul class="nk-menu nk-menu-md">
-                                <li class="nk-menu-item">
-                                    <a href="#" class="nk-menu-link" title="تنظیمات">
-                                        <span class="nk-menu-icon"><em class="icon ni ni-setting"></em></span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="nk-sidebar-profile nk-sidebar-profile-fixed dropdown">
-                        <a href="#" class="toggle" data-target="profileDD">
-                            <div class="user-avatar">
-                                <span>ف‌ت</span>
-                            </div>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-md m-1 nk-sidebar-profile-dropdown"
-                             data-content="profileDD">
-                            <div class="dropdown-inner user-card-wrap d-none d-md-block">
-                                <div class="user-card">
-                                    <div class="user-avatar">
-                                        <span>ف‌ت</span>
+    <!-- main @s -->
+    <div class="nk-main">
+        <!-- wrap @s -->
+        <div class="nk-wrap">
+            <!-- main header @s -->
+            {% include 'dj_backup/base/header.html' %}
+            <!-- main header @e -->
+            <!-- content @s -->
+            <div class="nk-content p-0">
+                <div class="nk-content-inner">
+                    <div class="nk-content-body">
+                        <div class="nk-fmg">
+                            {% include 'dj_backup/base/menu-aside.html' %}
+                            <!-- .nk-fmg-aside -->
+                            <div class="nk-fmg-body">
+                                <div class="nk-fmg-body-head d-none d-lg-flex">
+                                    <div class="nk-fmg-search">
+                                        <em class="icon ni ni-search"></em>
+                                        <input type="text" class="form-control border-transparent form-focus-none"
+                                               placeholder="جستجوی فایل ها، پوشه ها"/>
                                     </div>
-                                    <div class="user-info">
-                                        <span class="lead-text">فرشید ترنیان</span>
-                                        <span class="sub-text text-soft">your@email.com</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="dropdown-inner">
-                                <ul class="link-list">
-                                    <li>
-                                        <a href="html/user-profile-regular.html"><em
-                                                class="icon ni ni-user-alt"></em><span>مشاهده پروفایل</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="html/user-profile-setting.html"><em
-                                                class="icon ni ni-setting-alt"></em><span>تنظیمات حساب</span></a>
-                                    </li>
-                                    <li>
-                                        <a href="html/user-profile-activity.html"><em
-                                                class="icon ni ni-activity-alt"></em><span>فعالیت ورود</span></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="dropdown-inner">
-                                <ul class="link-list">
-                                    <li>
-                                        <a href="#"><em class="icon ni ni-signout"></em><span>خروج</span></a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- main @s -->
-        <div class="nk-main">
-            <!-- wrap @s -->
-            <div class="nk-wrap">
-                <!-- main header @s -->
-                <div class="nk-header nk-header-fixed is-light">
-                    <div class="container-fluid">
-                        <div class="nk-header-wrap">
-                            <div class="nk-menu-trigger d-xl-none ms-n1">
-                                <a href="#" class="nk-nav-toggle nk-quick-nav-icon" data-target="sidebarMenu"><em
-                                        class="icon ni ni-menu"></em></a>
-                            </div>
-                            <div class="nk-header-app-name">
-                                <div class="nk-header-app-logo">
-                                    <em class="icon ni ni-folder bg-purple-dim"></em>
-                                </div>
-                                <div class="nk-header-app-info">
-                                    <span class="sub-text">اپلیکیشن ها</span>
-                                    <span class="lead-text">مدیریت فایل ها</span>
-                                </div>
-                            </div>
-                            <div class="nk-header-tools">
-                                <ul class="nk-quick-nav">
-                                    <li class="dropdown hide-mb-sm">
-                                        <a data-bs-toggle="modal" href="#region" class="nk-quick-nav-icon"><em
-                                                class="icon ni ni-globe"></em></a>
-                                    </li>
-                                    <li class="dropdown chats-dropdown hide-mb-sm">
-                                        <a href="#" class="dropdown-toggle nk-quick-nav-icon" data-bs-toggle="dropdown">
-                                            <div class="icon-status icon-status-na"><em
-                                                    class="icon ni ni-comments"></em>
-                                            </div>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-xl dropdown-menu-end">
-                                            <div class="dropdown-head">
-                                                <span class="sub-title nk-dropdown-title">گفتگوهای اخیر</span>
-                                                <a href="#">تنظیمات</a>
-                                            </div>
-                                            <div class="dropdown-body">
-                                                <ul class="chat-list">
-                                                    <li class="chat-item">
-                                                        <a class="chat-link" href="html/apps/chats.html">
-                                                            <div class="chat-media user-avatar">
-                                                                <span>م‌م</span>
-                                                                <span class="status dot dot-lg dot-gray"></span>
-                                                            </div>
-                                                            <div class="chat-info">
-                                                                <div class="chat-from">
-                                                                    <div class="name">مهرداد موسوی</div>
-                                                                    <span class="time">الان</span>
-                                                                </div>
-                                                                <div class="chat-context">
-                                                                    <div class="text">شما: لطفا اگه آخرین پیام های من رو
-                                                                        دریافت کردید، تایید کنید.
-                                                                    </div>
-                                                                    <div class="status delivered">
-                                                                        <em class="icon ni ni-check-circle-fill"></em>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <!-- .chat-item -->
-                                                    <li class="chat-item is-unread">
-                                                        <a class="chat-link" href="html/apps/chats.html">
-                                                            <div class="chat-media user-avatar bg-pink">
-                                                                <span>ف‌ت</span>
-                                                                <span class="status dot dot-lg dot-success"></span>
-                                                            </div>
-                                                            <div class="chat-info">
-                                                                <div class="chat-from">
-                                                                    <div class="name">فرشید ترنیان</div>
-                                                                    <span class="time">4:49 صبح</span>
-                                                                </div>
-                                                                <div class="chat-context">
-                                                                    <div class="text">سلام، من ترنیان هستم، می تونید در
-                                                                        حل
-                                                                        این مشکل به من کمک کنید؟
-                                                                    </div>
-                                                                    <div class="status unread">
-                                                                        <em class="icon ni ni-bullet-fill"></em>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <!-- .chat-item -->
-                                                    <li class="chat-item">
-                                                        <a class="chat-link" href="html/apps/chats.html">
-                                                            <div class="chat-media user-avatar">
-                                                                <img src="./images/avatar/b-sm.jpg" alt=""/>
-                                                            </div>
-                                                            <div class="chat-info">
-                                                                <div class="chat-from">
-                                                                    <div class="name">دانیال فراهانی</div>
-                                                                    <span class="time">17 فروردین</span>
-                                                                </div>
-                                                                <div class="chat-context">
-                                                                    <div class="text">ادعای مونا رو دیدید؟</div>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <!-- .chat-item -->
-                                                    <li class="chat-item">
-                                                        <a class="chat-link" href="html/apps/chats.html">
-                                                            <div class="chat-media user-avatar user-avatar-multiple">
-                                                                <div class="user-avatar">
-                                                                    <img src="./images/avatar/c-sm.jpg" alt=""/>
-                                                                </div>
-                                                                <div class="user-avatar">
-                                                                    <span>ف‌ت</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="chat-info">
-                                                                <div class="chat-from">
-                                                                    <div class="name">گروه سافت نیو</div>
-                                                                    <span class="time">7 فروردین</span>
-                                                                </div>
-                                                                <div class="chat-context">
-                                                                    <div class="text">شما: من به تازگی یک کامپیوتر جدید
-                                                                        خریدم اما مشکلی دارم
-                                                                    </div>
-                                                                    <div class="status sent">
-                                                                        <em class="icon ni ni-check-circle"></em>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <!-- .chat-item -->
-                                                    <li class="chat-item">
-                                                        <a class="chat-link" href="html/apps/chats.html">
-                                                            <div class="chat-media user-avatar">
-                                                                <img src="./images/avatar/a-sm.jpg" alt=""/>
-                                                                <span class="status dot dot-lg dot-success"></span>
-                                                            </div>
-                                                            <div class="chat-info">
-                                                                <div class="chat-from">
-                                                                    <div class="name">کامران گودرزی</div>
-                                                                    <span class="time">14 فروردین</span>
-                                                                </div>
-                                                                <div class="chat-context">
-                                                                    <div class="text">سلام سامان! حالت چطوره؟</div>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <!-- .chat-item -->
-                                                    <li class="chat-item">
-                                                        <a class="chat-link" href="html/apps/chats.html">
-                                                            <div class="chat-media user-avatar bg-purple">
-                                                                <span>م‌ن</span>
-                                                            </div>
-                                                            <div class="chat-info">
-                                                                <div class="chat-from">
-                                                                    <div class="name">محمدرضا نیازی</div>
-                                                                    <span class="time">7 فروردین</span>
-                                                                </div>
-                                                                <div class="chat-context">
-                                                                    <div class="text">شما: من به تازگی یک کامپیوتر جدید
-                                                                        خریدم اما مشکلی دارم
-                                                                    </div>
-                                                                    <div class="status sent">
-                                                                        <em class="icon ni ni-check-circle"></em>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </a>
-                                                    </li>
-                                                    <!-- .chat-item -->
-                                                </ul>
-                                                <!-- .chat-list -->
-                                            </div>
-                                            <!-- .nk-dropdown-body -->
-                                            <div class="dropdown-foot center">
-                                                <a href="html/chats.html">مشاهده همه</a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="dropdown notification-dropdown">
-                                        <a href="#" class="dropdown-toggle nk-quick-nav-icon" data-bs-toggle="dropdown">
-                                            <div class="icon-status icon-status-info"><em class="icon ni ni-bell"></em>
-                                            </div>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-xl dropdown-menu-end">
-                                            <div class="dropdown-head">
-                                                <span class="sub-title nk-dropdown-title">اطلاع رسانی ها</span>
-                                                <a href="#">علامت گذاری همه به عنوان خوانده شده</a>
-                                            </div>
-                                            <div class="dropdown-body">
-                                                <div class="nk-notification">
-                                                    <div class="nk-notification-item dropdown-inner">
-                                                        <div class="nk-notification-icon">
-                                                            <em class="icon icon-circle bg-primary-dim ni ni-share"></em>
-                                                        </div>
-                                                        <div class="nk-notification-content">
-                                                            <div class="nk-notification-text">مهرداد
-                                                                <span>Dashlite-v2</span> را با شما به اشتراک گذاشت.
-                                                            </div>
-                                                            <div class="nk-notification-time">هم اکنون</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="nk-notification-item dropdown-inner">
-                                                        <div class="nk-notification-icon">
-                                                            <em class="icon icon-circle bg-info-dim ni ni-edit"></em>
-                                                        </div>
-                                                        <div class="nk-notification-content">
-                                                            <div class="nk-notification-text">مهرداد شما را به ویرایش
-                                                                پوشه
-                                                                <span>DashLite</span> <span>دعوت</span> کرد
-                                                            </div>
-                                                            <div class="nk-notification-time">2 ساعت پیش</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="nk-notification-item dropdown-inner">
-                                                        <div class="nk-notification-icon">
-                                                            <em class="icon icon-circle bg-primary-dim ni ni-share"></em>
-                                                        </div>
-                                                        <div class="nk-notification-content">
-                                                            <div class="nk-notification-text">شما
-                                                                <span>پروژه نسخه 2</span>
-                                                                را با مجید به اشتراک گذاشتید.
-                                                            </div>
-                                                            <div class="nk-notification-time">7 روز پیش</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="nk-notification-item dropdown-inner">
-                                                        <div class="nk-notification-icon">
-                                                            <em class="icon icon-circle bg-success-dim ni ni-spark"></em>
-                                                        </div>
-                                                        <div class="nk-notification-content">
-                                                            <div class="nk-notification-text"><span>اشتراک</span> شما با
-                                                                موفقیت تمدید شد.
-                                                            </div>
-                                                            <div class="nk-notification-time">2 ماه پیش</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- .nk-notification -->
-                                            </div>
-                                            <!-- .nk-dropdown-body -->
-                                            <div class="dropdown-foot center">
-                                                <a href="#">مشاهده همه</a>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="dropdown list-apps-dropdown d-lg-none">
-                                        <a href="#" class="dropdown-toggle nk-quick-nav-icon" data-bs-toggle="dropdown">
-                                            <div class="icon-status icon-status-na"><em
-                                                    class="icon ni ni-menu-circled"></em></div>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-end">
-                                            <div class="dropdown-body">
-                                                <ul class="list-apps">
-                                                    <li>
-                                                        <a href="html/index.html">
-                                                        <span class="list-apps-media"><em
-                                                                class="icon ni ni-dashlite bg-primary text-white"></em></span>
-                                                            <span class="list-apps-title">داشبورد</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="html/apps/chats.html">
-                                                        <span class="list-apps-media"><em
-                                                                class="icon ni ni-chat-circle bg-info-dim"></em></span>
-                                                            <span class="list-apps-title">گفتگوها</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="html/apps/mailbox.html">
-                                                        <span class="list-apps-media"><em
-                                                                class="icon ni ni-inbox bg-purple-dim"></em></span>
-                                                            <span class="list-apps-title">صندوق پستی</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="html/apps/messages.html">
-                                                        <span class="list-apps-media"><em
-                                                                class="icon ni ni-chat bg-success-dim"></em></span>
-                                                            <span class="list-apps-title">پیام ها</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="html/apps/file-manager.html">
-                                                        <span class="list-apps-media"><em
-                                                                class="icon ni ni-folder bg-purple-dim"></em></span>
-                                                            <span class="list-apps-title">مدیریت فایل ها</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="html/components.html">
-                                                        <span class="list-apps-media"><em
-                                                                class="icon ni ni-layers bg-secondary-dim"></em></span>
-                                                            <span class="list-apps-title">کامپوننت ها</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                                <ul class="list-apps">
-                                                    <li>
-                                                        <a href="/demo2/ecommerce/index.html">
-                                                        <span class="list-apps-media"><em
-                                                                class="icon ni ni-cart bg-danger-dim"></em></span>
-                                                            <span class="list-apps-title">پنل تجارت الکترونیک</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="/demo4/subscription/index.html">
-                                                        <span class="list-apps-media"><em
-                                                                class="icon ni ni-calendar-booking bg-primary-dim"></em></span>
-                                                            <span class="list-apps-title">پنل اشتراک</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="/demo5/crypto/index.html">
-                                                        <span class="list-apps-media"><em
-                                                                class="icon ni ni-bitcoin-cash bg-warning-dim"></em></span>
-                                                            <span class="list-apps-title">پنل کیف پول ارز دیجیتال</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="/demo6/invest/index.html">
-                                                        <span class="list-apps-media"><em
-                                                                class="icon ni ni-invest bg-blue-dim"></em></span>
-                                                            <span class="list-apps-title">پنل برنامه سرمایه گذاری با بازده بالا</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <!-- .nk-dropdown-body -->
-                                        </div>
-                                    </li>
-                                    <li class="dropdown language-dropdown d-none d-sm-block me-n1">
-                                        <a href="#" class="dropdown-toggle nk-quick-nav-icon" data-bs-toggle="dropdown">
-                                            <div class="quick-icon border border-light">
-                                                <img class="icon" src="./images/flags/iran-sq.png" alt=""/>
-                                            </div>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-s1">
-                                            <ul class="language-list">
-                                                <li>
-                                                    <a href="#" class="language-item">
-                                                        <img src="./images/flags/iran.png" alt=""
-                                                             class="language-flag"/>
-                                                        <span class="language-name">فارسی</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="language-item">
-                                                        <img src="./images/flags/english.png" alt=""
-                                                             class="language-flag"/>
-                                                        <span class="language-name">انگلیسی</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="language-item">
-                                                        <img src="./images/flags/germany.png" alt=""
-                                                             class="language-flag"/>
-                                                        <span class="language-name">آلمانی</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a href="#" class="language-item">
-                                                        <img src="./images/flags/french.png" alt=""
-                                                             class="language-flag"/>
-                                                        <span class="language-name">فرانسوی</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <!-- .dropdown -->
-                                    <li class="dropdown user-dropdown">
-                                        <a href="#" class="dropdown-toggle me-n1" data-bs-toggle="dropdown">
-                                            <div class="user-toggle">
-                                                <div class="user-avatar sm">
-                                                    <em class="icon ni ni-user-alt"></em>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-md dropdown-menu-end">
-                                            <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
-                                                <div class="user-card">
-                                                    <div class="user-avatar">
-                                                        <span>ف‌ت</span>
-                                                    </div>
-                                                    <div class="user-info">
-                                                        <span class="lead-text">فرشید ترنیان</span>
-                                                        <span class="sub-text">your@email.com</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="dropdown-inner">
-                                                <ul class="link-list">
-                                                    <li>
-                                                        <a href="html/user-profile-regular.html"><em
-                                                                class="icon ni ni-user-alt"></em><span>مشاهده پروفایل</span></a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="html/user-profile-setting.html"><em
-                                                                class="icon ni ni-setting-alt"></em><span>تنظیمات حساب</span></a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="html/user-profile-activity.html"><em
-                                                                class="icon ni ni-activity-alt"></em><span>فعالیت ورود</span></a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dark-switch" href="#"><em
-                                                                class="icon ni ni-moon"></em><span>حالت تاریک</span></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="dropdown-inner">
-                                                <ul class="link-list">
-                                                    <li>
-                                                        <a href="#"><em
-                                                                class="icon ni ni-signout"></em><span>خروج</span></a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- main header @e -->
-                <div class="nk-sidebar" data-content="sidebarMenu">
-                    <div class="nk-sidebar-inner" data-simplebar>
-                        <ul class="nk-menu nk-menu-md">
-                            <li class="nk-menu-heading">
-                                <h6 class="overline-title text-primary-alt">داشبوردها</h6>
-                            </li>
-                            <!-- .nk-menu-heading -->
-                            <li class="nk-menu-item">
-                                <a href="html/index.html" class="nk-menu-link">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-dashboard"></em></span>
-                                    <span class="nk-menu-text">داشبورد پیش فرض</span>
-                                </a>
-                            </li>
-                            <!-- .nk-menu-item -->
-                            <li class="nk-menu-item">
-                                <a href="html/index-sales.html" class="nk-menu-link">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-speed"></em></span>
-                                    <span class="nk-menu-text">داشبورد فروش</span>
-                                </a>
-                            </li>
-                            <!-- .nk-menu-item -->
-                            <li class="nk-menu-item">
-                                <a href="html/index-crypto.html" class="nk-menu-link">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-bitcoin-cash"></em></span>
-                                    <span class="nk-menu-text">داشبورد ارز دیجیتال</span>
-                                </a>
-                            </li>
-                            <!-- .nk-menu-item -->
-                            <li class="nk-menu-item">
-                                <a href="html/index-invest.html" class="nk-menu-link">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-coins"></em></span>
-                                    <span class="nk-menu-text">داشبورد سرمایه گذاری</span>
-                                </a>
-                            </li>
-                            <!-- .nk-menu-item -->
-                            <li class="nk-menu-heading">
-                                <h6 class="overline-title text-primary-alt">صفحه های از پیش ساخته شده</h6>
-                            </li>
-                            <!-- .nk-menu-heading -->
-                            <li class="nk-menu-item has-sub">
-                                <a href="#" class="nk-menu-link nk-menu-toggle">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-tile-thumb"></em></span>
-                                    <span class="nk-menu-text">پروژه ها</span>
-                                </a>
-                                <ul class="nk-menu-sub">
-                                    <li class="nk-menu-item">
-                                        <a href="html/project-card.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">کارت های پروژه</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/project-list.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">لیست پروژه ها</span></a>
-                                    </li>
-                                </ul>
-                                <!-- .nk-menu-sub -->
-                            </li>
-                            <!-- .nk-menu-item -->
-                            <li class="nk-menu-item has-sub">
-                                <a href="#" class="nk-menu-link nk-menu-toggle">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-users"></em></span>
-                                    <span class="nk-menu-text">مدیریت کاربران</span>
-                                </a>
-                                <ul class="nk-menu-sub">
-                                    <li class="nk-menu-item">
-                                        <a href="html/user-list-regular.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">لیست کاربران - عادی</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/user-list-compact.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">لیست کاربران - فشرده</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/user-details-regular.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">مشخصات کاربر - عادی</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/user-profile-regular.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">پروفایل کاربر - عادی</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/user-card.html" class="nk-menu-link"><span class="nk-menu-text">تماس با کاربر - کارت</span></a>
-                                    </li>
-                                </ul>
-                                <!-- .nk-menu-sub -->
-                            </li>
-                            <!-- .nk-menu-item -->
-                            <li class="nk-menu-item has-sub">
-                                <a href="#" class="nk-menu-link nk-menu-toggle">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-user-list"></em></span>
-                                    <span class="nk-menu-text">مشتریان</span>
-                                </a>
-                                <ul class="nk-menu-sub">
-                                    <li class="nk-menu-item">
-                                        <a href="html/customer-list.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">لیست مشتریان</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/customer-details.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">مشخصات مشتری</span></a>
-                                    </li>
-                                </ul>
-                                <!-- .nk-menu-sub -->
-                            </li>
-                            <!-- .nk-menu-item -->
-                            <li class="nk-menu-item has-sub">
-                                <a href="#" class="nk-menu-link nk-menu-toggle">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
-                                    <span class="nk-menu-text">احراز هویت مشتریان</span>
-                                </a>
-                                <ul class="nk-menu-sub">
-                                    <li class="nk-menu-item">
-                                        <a href="html/kyc-list-regular.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">لیست احراز هویت مشتریان - عادی</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/kyc-details-regular.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">جزئیات احراز هویت مشتری - عادی</span></a>
-                                    </li>
-                                </ul>
-                                <!-- .nk-menu-sub -->
-                            </li>
-                            <!-- .nk-menu-item -->
-                            <li class="nk-menu-item has-sub">
-                                <a href="#" class="nk-menu-link nk-menu-toggle">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-tranx"></em></span>
-                                    <span class="nk-menu-text">تراکنش ها</span>
-                                </a>
-                                <ul class="nk-menu-sub">
-                                    <li class="nk-menu-item">
-                                        <a href="html/transaction-basic.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">لیست تراکنش ها - پایه</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/transaction-crypto.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">لیست تراکنش ها - ارز دیجیتال</span></a>
-                                    </li>
-                                </ul>
-                                <!-- .nk-menu-sub -->
-                            </li>
-                            <!-- .nk-menu-item -->
-                            <li class="nk-menu-item has-sub">
-                                <a href="#" class="nk-menu-link nk-menu-toggle">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-file-docs"></em></span>
-                                    <span class="nk-menu-text">فاکتورها</span>
-                                </a>
-                                <ul class="nk-menu-sub">
-                                    <li class="nk-menu-item">
-                                        <a href="html/invoice-list.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">لیست فاکتورها</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/invoice-details.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">جزئیات فاکتور</span></a>
-                                    </li>
-                                </ul>
-                                <!-- .nk-menu-sub -->
-                            </li>
-                            <!-- .nk-menu-item -->
-                            <li class="nk-menu-item has-sub">
-                                <a href="#" class="nk-menu-link nk-menu-toggle">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-card-view"></em></span>
-                                    <span class="nk-menu-text">محصولات</span>
-                                </a>
-                                <ul class="nk-menu-sub">
-                                    <li class="nk-menu-item">
-                                        <a href="html/product-list.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">لیست محصولات</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/product-card.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">کارت های محصول</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/product-details.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">جزئیات محصول</span></a>
-                                    </li>
-                                </ul>
-                                <!-- .nk-menu-sub -->
-                            </li>
-                            <!-- .nk-menu-item -->
-                            <li class="nk-menu-item">
-                                <a href="html/pricing-table.html" class="nk-menu-link">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-view-col"></em></span>
-                                    <span class="nk-menu-text">جداول قیمت گذاری</span>
-                                </a>
-                            </li>
-                            <!-- .nk-menu-item -->
-                            <li class="nk-menu-item">
-                                <a href="html/gallery.html" class="nk-menu-link">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-img"></em></span>
-                                    <span class="nk-menu-text">گالری تصاویر</span>
-                                </a>
-                            </li>
-                            <!-- .nk-menu-item -->
-                            <li class="nk-menu-heading">
-                                <h6 class="overline-title text-primary-alt">صفحه های متفرقه</h6>
-                            </li>
-                            <!-- .nk-menu-heading -->
-                            <li class="nk-menu-item has-sub">
-                                <a href="#" class="nk-menu-link nk-menu-toggle">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-signin"></em></span>
-                                    <span class="nk-menu-text">صفحه های احراز هویت</span>
-                                </a>
-                                <ul class="nk-menu-sub">
-                                    <li class="nk-menu-item">
-                                        <a href="html/pages/auths/auth-login.html" class="nk-menu-link"
-                                           target="_blank"><span class="nk-menu-text">ورود</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/pages/auths/auth-register.html" class="nk-menu-link"
-                                           target="_blank"><span class="nk-menu-text">ثبت نام / عضویت</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/pages/auths/auth-reset.html" class="nk-menu-link"
-                                           target="_blank"><span class="nk-menu-text">فراموشی رمز عبور</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/pages/auths/auth-success.html" class="nk-menu-link"
-                                           target="_blank"><span class="nk-menu-text">موفقیت آمیز / تایید</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="#" class="nk-menu-link nk-menu-toggle"><span class="nk-menu-text">نسخه کلاسیک - نسخه 2</span></a>
-                                        <ul class="nk-menu-sub">
-                                            <li class="nk-menu-item">
-                                                <a href="html/pages/auths/auth-login-v2.html" class="nk-menu-link"
-                                                   target="_blank"><span class="nk-menu-text">ورود</span></a>
-                                            </li>
-                                            <li class="nk-menu-item">
-                                                <a href="html/pages/auths/auth-register-v2.html" class="nk-menu-link"
-                                                   target="_blank"><span class="nk-menu-text">ثبت نام / عضویت</span></a>
-                                            </li>
-                                            <li class="nk-menu-item">
-                                                <a href="html/pages/auths/auth-reset-v2.html" class="nk-menu-link"
-                                                   target="_blank"><span
-                                                        class="nk-menu-text">فراموشی رمز عبور</span></a>
-                                            </li>
-                                            <li class="nk-menu-item">
-                                                <a href="html/pages/auths/auth-success-v2.html" class="nk-menu-link"
-                                                   target="_blank"><span class="nk-menu-text">موفقیت آمیز / تایید</span></a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="#" class="nk-menu-link nk-menu-toggle"><span class="nk-menu-text">نسخه بدون اسلایدر - نسخه 3</span></a>
-                                        <ul class="nk-menu-sub">
-                                            <li class="nk-menu-item">
-                                                <a href="html/pages/auths/auth-login-v3.html" class="nk-menu-link"
-                                                   target="_blank"><span class="nk-menu-text">ورود</span></a>
-                                            </li>
-                                            <li class="nk-menu-item">
-                                                <a href="html/pages/auths/auth-register-v3.html" class="nk-menu-link"
-                                                   target="_blank"><span class="nk-menu-text">ثبت نام / عضویت</span></a>
-                                            </li>
-                                            <li class="nk-menu-item">
-                                                <a href="html/pages/auths/auth-reset-v3.html" class="nk-menu-link"
-                                                   target="_blank"><span
-                                                        class="nk-menu-text">فراموشی رمز عبور</span></a>
-                                            </li>
-                                            <li class="nk-menu-item">
-                                                <a href="html/pages/auths/auth-success-v3.html" class="nk-menu-link"
-                                                   target="_blank"><span class="nk-menu-text">موفقیت آمیز / تایید</span></a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                                <!-- .nk-menu-sub -->
-                            </li>
-                            <!-- .nk-menu-item -->
-                            <li class="nk-menu-item has-sub">
-                                <a href="#" class="nk-menu-link nk-menu-toggle">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-files"></em></span>
-                                    <span class="nk-menu-text">صفحه های خطا</span>
-                                </a>
-                                <ul class="nk-menu-sub">
-                                    <li class="nk-menu-item">
-                                        <a href="html/pages/errors/404-classic.html" target="_blank"
-                                           class="nk-menu-link"><span class="nk-menu-text">404 کلاسیک</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/pages/errors/504-classic.html" target="_blank"
-                                           class="nk-menu-link"><span class="nk-menu-text">504 کلاسیک</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/pages/errors/404-s1.html" target="_blank"
-                                           class="nk-menu-link"><span
-                                                class="nk-menu-text">404 مدرن</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/pages/errors/504-s1.html" target="_blank"
-                                           class="nk-menu-link"><span
-                                                class="nk-menu-text">504 مدرن</span></a>
-                                    </li>
-                                </ul>
-                                <!-- .nk-menu-sub -->
-                            </li>
-                            <!-- .nk-menu-item -->
-                            <li class="nk-menu-item has-sub">
-                                <a href="#" class="nk-menu-link nk-menu-toggle">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-files"></em></span>
-                                    <span class="nk-menu-text">سایر صفحه ها</span>
-                                </a>
-                                <ul class="nk-menu-sub">
-                                    <li class="nk-menu-item">
-                                        <a href="html/_blank.html" class="nk-menu-link"><span class="nk-menu-text">خالی / راه اندازی</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/pages/faqs.html" class="nk-menu-link"><span class="nk-menu-text">سوالات متداول / راهنمایی</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/pages/terms-policy.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">شرایط و ضوابط / سیاست</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/pages/regular-v1.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">صفحه عادی - نسخه 1</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/pages/regular-v2.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">صفحه عادی - نسخه 2</span></a>
-                                    </li>
-                                </ul>
-                                <!-- .nk-menu-sub -->
-                            </li>
-                            <!-- .nk-menu-item -->
-                            <li class="nk-menu-heading">
-                                <h6 class="overline-title text-primary-alt">کامپوننت ها</h6>
-                            </li>
-                            <!-- .nk-menu-heading -->
-                            <li class="nk-menu-item has-sub">
-                                <a href="#" class="nk-menu-link nk-menu-toggle">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-layers"></em></span>
-                                    <span class="nk-menu-text">عناصر رابط کاربری</span>
-                                </a>
-                                <ul class="nk-menu-sub">
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/elements/alerts.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">هشدارها</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/elements/accordions.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">آکاردئون ها</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/elements/avatar.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">آواتار</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/elements/badges.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">نشان ها</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/elements/buttons.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">دکمه ها</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/elements/buttons-group.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">گروه های دکمه</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/elements/breadcrumb.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">بردکرامب ها</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/elements/cards.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">کارت ها</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/elements/carousel.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">کاروسل ها</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/elements/list-dropdown.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">لیست های کشویی</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/elements/modals.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">مودال ها</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/elements/pagination.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">صفحه بندی</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/elements/popover.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">پاپ اورها</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/elements/progress.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">پیشرفت</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/elements/preloader.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">پیش بارگذارنده</span><span
-                                                class="nk-menu-badge">جدید</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/elements/placeholders.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">نگهدارنده مکان</span><span
-                                                class="nk-menu-badge">جدید</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/elements/spinner.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">اسپینرها</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/elements/tabs.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">زبانه ها</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/elements/toast.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">Toast ها</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/elements/tooltip.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">راهنمای ابزار</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/elements/typography.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">تایپوگرافی</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="#" class="nk-menu-link nk-menu-toggle"><span
-                                                class="nk-menu-text">ابزارها</span></a>
-                                        <ul class="nk-menu-sub">
-                                            <li class="nk-menu-item">
-                                                <a href="html/components/elements/util-border.html"
-                                                   class="nk-menu-link"><span class="nk-menu-text">خط حاشیه</span></a>
-                                            </li>
-                                            <li class="nk-menu-item">
-                                                <a href="html/components/elements/util-colors.html"
-                                                   class="nk-menu-link"><span class="nk-menu-text">رنگ ها</span></a>
-                                            </li>
-                                            <li class="nk-menu-item">
-                                                <a href="html/components/elements/util-display.html"
-                                                   class="nk-menu-link"><span class="nk-menu-text">نمایش</span></a>
-                                            </li>
-                                            <li class="nk-menu-item">
-                                                <a href="html/components/elements/util-embeded.html"
-                                                   class="nk-menu-link"><span class="nk-menu-text">جاسازی</span></a>
-                                            </li>
-                                            <li class="nk-menu-item">
-                                                <a href="html/components/elements/util-flex.html"
-                                                   class="nk-menu-link"><span
-                                                        class="nk-menu-text">فلکس</span></a>
-                                            </li>
-                                            <li class="nk-menu-item">
-                                                <a href="html/components/elements/util-text.html"
-                                                   class="nk-menu-link"><span
-                                                        class="nk-menu-text">متن</span></a>
-                                            </li>
-                                            <li class="nk-menu-item">
-                                                <a href="html/components/elements/util-sizing.html"
-                                                   class="nk-menu-link"><span class="nk-menu-text">سایزبندی</span></a>
-                                            </li>
-                                            <li class="nk-menu-item">
-                                                <a href="html/components/elements/util-spacing.html"
-                                                   class="nk-menu-link"><span
-                                                        class="nk-menu-text">فاصله گذاری</span></a>
-                                            </li>
-                                            <li class="nk-menu-item">
-                                                <a href="html/components/elements/util-others.html"
-                                                   class="nk-menu-link"><span class="nk-menu-text">سایر</span></a>
-                                            </li>
-                                        </ul>
-                                        <!-- .nk-menu-sub -->
-                                    </li>
-                                </ul>
-                                <!-- .nk-menu-sub -->
-                            </li>
-                            <!-- .nk-menu-item -->
-                            <li class="nk-menu-item has-sub">
-                                <a href="#" class="nk-menu-link nk-menu-toggle">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-dot-box"></em></span>
-                                    <span class="nk-menu-text">آیکون های ساخته شده</span>
-                                </a>
-                                <ul class="nk-menu-sub">
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/misc/svg-icons.html" class="nk-menu-link">
-                                            <span class="nk-menu-text">آیکون های SVG - انحصاری</span>
-                                        </a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/misc/nioicon.html" class="nk-menu-link">
-                                            <span class="nk-menu-text">Nioicon - دست ساز</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                                <!-- .nk-menu-sub -->
-                            </li>
-                            <!-- .nk-menu-item -->
-                            <li class="nk-menu-item">
-                                <a href="html/components/misc/icons.html" class="nk-menu-link">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-menu-circled"></em></span>
-                                    <span class="nk-menu-text">کتابخانه های آیکون</span>
-                                </a>
-                            </li>
-                            <!-- .nk-menu-item -->
-                            <li class="nk-menu-item has-sub">
-                                <a href="#" class="nk-menu-link nk-menu-toggle">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-table-view"></em></span>
-                                    <span class="nk-menu-text">جداول</span>
-                                </a>
-                                <ul class="nk-menu-sub">
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/tables/table-basic.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">جداول پایه</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/tables/table-special.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">جداول انحصاری</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/tables/table-datatable.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">جدول داده ها</span></a>
-                                    </li>
-                                </ul>
-                                <!-- .nk-menu-sub -->
-                            </li>
-                            <!-- .nk-menu-item -->
-                            <li class="nk-menu-item has-sub">
-                                <a href="#" class="nk-menu-link nk-menu-toggle">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-card-view"></em></span>
-                                    <span class="nk-menu-text">فرم ها</span>
-                                </a>
-                                <ul class="nk-menu-sub">
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/forms/form-elements.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">عناصر فرم</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/forms/checkbox-radio.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">چک باکس و رادیو</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/forms/advanced-controls.html"
-                                           class="nk-menu-link"><span
-                                                class="nk-menu-text">کنترل های پیشرفته</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/forms/input-group.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">گروه های ورودی</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/forms/form-upload.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">فرم آپلود</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/forms/datetime-picker.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">انتخابگر تاریخ و زمان</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/forms/number-spinner.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">اسپینر عدد</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/forms/nouislider.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">noUiSlider</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/forms/form-layouts.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">طرح بندی های فرم</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/forms/form-validation.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">اعتبارسنجی فرم</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="#" class="nk-menu-link nk-menu-toggle"><span class="nk-menu-text">چند مرحله ای</span></a>
-                                        <ul class="nk-menu-sub">
-                                            <li class="nk-menu-item">
-                                                <a href="html/components/forms/form-wizard.html"
-                                                   class="nk-menu-link"><span
-                                                        class="nk-menu-text">دموی پایه</span></a>
-                                            </li>
-                                            <li class="nk-menu-item">
-                                                <a href="html/components/forms/wizard/create-project.html"
-                                                   class="nk-menu-link"><span
-                                                        class="nk-menu-text">ایجاد پروژه</span></a>
-                                            </li>
-                                            <li class="nk-menu-item">
-                                                <a href="html/components/forms/wizard/create-profile.html"
-                                                   class="nk-menu-link"><span class="nk-menu-text">ایجاد پروفایل</span></a>
-                                            </li>
-                                            <li class="nk-menu-item">
-                                                <a href="html/components/forms/wizard/two-factor-auth.html"
-                                                   class="nk-menu-link"><span
-                                                        class="nk-menu-text">احراز هویت دو مرحله ای</span></a>
-                                            </li>
-                                            <li class="nk-menu-item">
-                                                <a target="_blank" href="html/components/forms/wizard/survey-v1.html"
-                                                   class="nk-menu-link"><span class="nk-menu-text">نظرسنجی</span></a>
-                                            </li>
-                                            <li class="nk-menu-item">
-                                                <a target="_blank" href="html/components/forms/wizard/survey-v2.html"
-                                                   class="nk-menu-link"><span class="nk-menu-text">نظرسنجی نسخه 2</span></a>
-                                            </li>
-                                        </ul>
-                                        <!-- .nk-menu-sub -->
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="#" class="nk-menu-link nk-menu-toggle"><span class="nk-menu-text">ویرایشگر توانمند</span></a>
-                                        <ul class="nk-menu-sub">
-                                            <li class="nk-menu-item">
-                                                <a href="html/components/forms/form-summernote.html"
-                                                   class="nk-menu-link"><span class="nk-menu-text">Summernote</span></a>
-                                            </li>
-                                            <li class="nk-menu-item">
-                                                <a href="html/components/forms/form-quill.html"
-                                                   class="nk-menu-link"><span
-                                                        class="nk-menu-text">Quill</span></a>
-                                            </li>
-                                            <li class="nk-menu-item">
-                                                <a href="html/components/forms/form-tinymce.html"
-                                                   class="nk-menu-link"><span
-                                                        class="nk-menu-text">Tinymce</span></a>
-                                            </li>
-                                        </ul>
-                                        <!-- .nk-menu-sub -->
-                                    </li>
-                                </ul>
-                                <!-- .nk-menu-sub -->
-                            </li>
-                            <!-- .nk-menu-item -->
-                            <li class="nk-menu-item has-sub">
-                                <a href="#" class="nk-menu-link nk-menu-toggle">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-pie"></em></span>
-                                    <span class="nk-menu-text">نمودارها</span>
-                                </a>
-                                <ul class="nk-menu-sub">
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/charts/chartjs.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">Chart JS</span></a>
-                                    </li>
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/charts/knob.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">Knob JS</span></a>
-                                    </li>
-                                </ul>
-                                <!-- .nk-menu-sub -->
-                            </li>
-                            <!-- .nk-menu-item -->
-                            <li class="nk-menu-item has-sub">
-                                <a href="#" class="nk-menu-link nk-menu-toggle">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-puzzle"></em></span>
-                                    <span class="nk-menu-text">ابزارک ها</span>
-                                </a>
-                                <ul class="nk-menu-sub">
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/widgets/cards.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">ابزارک های کارت</span></a>
-                                    </li>
-                                    <!-- .nk-menu-item -->
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/widgets/charts.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">ابزارک های نمودار</span></a>
-                                    </li>
-                                    <!-- .nk-menu-item -->
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/widgets/ratings.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">ابزارک های امتیازدهی</span></a>
-                                    </li>
-                                    <!-- .nk-menu-item -->
-                                </ul>
-                                <!-- .nk-menu-sub -->
-                            </li>
-                            <!-- .nk-menu-item -->
-                            <li class="nk-menu-item has-sub">
-                                <a href="#" class="nk-menu-link nk-menu-toggle">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-block-over"></em></span>
-                                    <span class="nk-menu-text">متفرقه</span>
-                                </a>
-                                <ul class="nk-menu-sub">
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/misc/slick-sliders.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">اسلایدر اسلیک</span></a>
-                                    </li>
-                                    <!-- .nk-menu-item -->
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/misc/toastr.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">Toastr</span></a>
-                                    </li>
-                                    <!-- .nk-menu-item -->
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/misc/sweet-alert.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">Sweet Alert</span></a>
-                                    </li>
-                                    <!-- .nk-menu-item -->
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/misc/js-tree.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">jsTree</span></a>
-                                    </li>
-                                    <!-- .nk-menu-item -->
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/misc/dual-listbox.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">لیست باکس دوتایی</span></a>
-                                    </li>
-                                    <!-- .nk-menu-item -->
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/misc/dragula.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">Dragula</span></a>
-                                    </li>
-                                    <!-- .nk-menu-item -->
-                                    <li class="nk-menu-item">
-                                        <a href="html/components/misc/map.html" class="nk-menu-link"><span
-                                                class="nk-menu-text">نقشه گوگل</span></a>
-                                    </li>
-                                    <!-- .nk-menu-item -->
-                                </ul>
-                                <!-- .nk-menu-sub -->
-                            </li>
-                            <!-- .nk-menu-item -->
-                            <li class="nk-menu-item">
-                                <a href="html/email-templates.html" class="nk-menu-link">
-                                    <span class="nk-menu-icon"><em class="icon ni ni-text-rich"></em></span>
-                                    <span class="nk-menu-text">قالب ایمیل</span>
-                                </a>
-                            </li>
-                        </ul>
-                        <!-- .nk-menu -->
-                    </div>
-                </div>
-                <!-- content @s -->
-                <div class="nk-content p-0">
-                    <div class="nk-content-inner">
-                        <div class="nk-content-body">
-                            <div class="nk-fmg">
-                                <div class="nk-fmg-aside" data-content="files-aside" data-toggle-overlay="true"
-                                     data-toggle-body="true" data-toggle-screen="lg" data-simplebar>
-                                    <div class="nk-fmg-aside-wrap">
-                                        <div class="nk-fmg-aside-top">
-                                            <ul class="nk-fmg-menu">
-                                                <li>
-                                                    <a class="nk-fmg-menu-item" href="html/apps/file-manager.html">
-                                                        <em class="icon ni ni-home-alt"></em>
-                                                        <span class="nk-fmg-menu-text">صفحه اصلی</span>
-                                                    </a>
-                                                </li>
-                                                <li class="active">
-                                                    <a class="nk-fmg-menu-item" href="html/apps/files.html">
-                                                        <em class="icon ni ni-file-docs"></em>
-                                                        <span class="nk-fmg-menu-text">فایل ها</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="nk-fmg-menu-item" href="html/apps/starred.html">
-                                                        <em class="icon ni ni-star"></em>
-                                                        <span class="nk-fmg-menu-text">ستاره دار</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="nk-fmg-menu-item" href="html/apps/shared.html">
-                                                        <em class="icon ni ni-share-alt"></em>
-                                                        <span class="nk-fmg-menu-text">به اشتراک گذاری شده</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="nk-fmg-menu-item" href="html/apps/recovery.html">
-                                                        <em class="icon ni ni-trash-alt"></em>
-                                                        <span class="nk-fmg-menu-text">بازیابی</span>
-                                                    </a>
-                                                </li>
-                                                <li>
-                                                    <a class="nk-fmg-menu-item" href="html/apps/settings.html">
-                                                        <em class="icon ni ni-setting-alt"></em>
-                                                        <span class="nk-fmg-menu-text">تنظیمات</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="nk-fmg-aside-bottom">
-                                            <div class="nk-fmg-status">
-                                                <h6 class="nk-fmg-status-title"><em
-                                                        class="icon ni ni-hard-drive"></em><span>فضای ذخیره سازی</span>
-                                                </h6>
-                                                <div class="progress progress-md bg-light">
-                                                    <div class="progress-bar" data-progress="5"></div>
-                                                </div>
-                                                <div class="nk-fmg-status-info">12.47 گیگابایت از 50 گیگابایت استفاده
-                                                    شده
-                                                </div>
-                                                <div class="nk-fmg-status-action">
-                                                    <a href="#" class="link link-primary link-sm">ارتقای فضای ذخیره
-                                                        سازی</a>
-                                                </div>
-                                            </div>
-                                            <div class="nk-fmg-switch">
+                                    <div class="nk-fmg-actions">
+                                        <ul class="nk-block-tools g-3">
+
+                                            <li class="d-none">
                                                 <div class="dropdown">
-                                                    <a href="#" data-bs-toggle="dropdown" data-offset="-10, 12"
-                                                       class="dropdown-toggle dropdown-indicator-unfold">
-                                                        <div class="lead-text">شخصی</div>
-                                                        <div class="sub-text">فقط شما</div>
-                                                    </a>
+                                                    <a href="#" class="btn btn-light" data-bs-toggle="dropdown"><em
+                                                            class="icon ni ni-plus"></em> <span>ایجاد</span></a>
                                                     <div class="dropdown-menu dropdown-menu-end">
                                                         <ul class="link-list-opt no-bdr">
                                                             <li>
-                                                                <a href="#"><span>طرح تیم</span></a>
+                                                                <a href="#file-upload" data-bs-toggle="modal"><em
+                                                                        class="icon ni ni-upload-cloud"></em><span>آپلود فایل</span></a>
                                                             </li>
                                                             <li>
-                                                                <a class="active" href="#"><span>شخصی</span></a>
+                                                                <a href="#"><em
+                                                                        class="icon ni ni-file-plus"></em><span>ایجاد فایل</span></a>
                                                             </li>
-                                                            <li class="divider"></li>
                                                             <li>
-                                                                <a class="link" href="#"><span>ارتقای طرح</span></a>
+                                                                <a href="#"><em
+                                                                        class="icon ni ni-folder-plus"></em><span>ایجاد پوشه</span></a>
                                                             </li>
                                                         </ul>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
+                                            </li>
+                                            <li class="d-none">
+                                                <a href="#file-upload" class="btn btn-primary"
+                                                   data-bs-toggle="modal"><em class="icon ni ni-upload-cloud"></em>
+                                                    <span>آپلود</span></a>
+                                            </li>
+                                        </ul>
                                     </div>
                                 </div>
-                                <!-- .nk-fmg-aside -->
-                                <div class="nk-fmg-body">
-                                    <div class="nk-fmg-body-head d-none d-lg-flex">
-                                        <div class="nk-fmg-search">
-                                            <em class="icon ni ni-search"></em>
-                                            <input type="text" class="form-control border-transparent form-focus-none"
-                                                   placeholder="جستجوی فایل ها، پوشه ها"/>
-                                        </div>
-                                        <div class="nk-fmg-actions">
-                                            <ul class="nk-block-tools g-3">
-                                                <li>
-                                                    <a href="#file-backup" class="btn btn-success" id="btn-file-backup"
-                                                       data-bs-toggle="modal"><em class="icon ni ni-upload-cloud"></em>
-                                                        <span>بک اپ</span></a>
-                                                </li>
-                                                <li class="d-none">
-                                                    <div class="dropdown">
-                                                        <a href="#" class="btn btn-light" data-bs-toggle="dropdown"><em
-                                                                class="icon ni ni-plus"></em> <span>ایجاد</span></a>
-                                                        <div class="dropdown-menu dropdown-menu-end">
-                                                            <ul class="link-list-opt no-bdr">
-                                                                <li>
-                                                                    <a href="#file-upload" data-bs-toggle="modal"><em
-                                                                            class="icon ni ni-upload-cloud"></em><span>آپلود فایل</span></a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#"><em
-                                                                            class="icon ni ni-file-plus"></em><span>ایجاد فایل</span></a>
-                                                                </li>
-                                                                <li>
-                                                                    <a href="#"><em
-                                                                            class="icon ni ni-folder-plus"></em><span>ایجاد پوشه</span></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="d-none">
-                                                    <a href="#file-upload" class="btn btn-primary"
-                                                       data-bs-toggle="modal"><em class="icon ni ni-upload-cloud"></em>
-                                                        <span>آپلود</span></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                    <div class="nk-fmg-body-content">
-                                        <div class="nk-block-head nk-block-head-sm">
-                                            <div class="nk-block-between position-relative">
-                                                <div class="nk-block-head-content">
-                                                    <h3 class="nk-block-title page-title">فایل ها</h3>
-                                                </div>
-                                                <div class="nk-block-head-content">
-                                                    <ul class="nk-block-tools g-1">
-                                                        <li class="d-lg-none">
-                                                            <a href="#"
-                                                               class="btn btn-trigger btn-icon search-toggle toggle-search"
-                                                               data-target="search"><em class="icon ni ni-search"></em></a>
-                                                        </li>
-                                                        <li class="d-lg-none">
-                                                            <div class="dropdown">
-                                                                <a href="#" class="btn btn-trigger btn-icon"
-                                                                   data-bs-toggle="dropdown"><em
-                                                                        class="icon ni ni-view-row-wd"></em></a>
-                                                                <div class="dropdown-menu dropdown-menu-end">
-                                                                    <ul class="link-list-opt no-bdr">
-                                                                        <li>
-                                                                            <a href="html/apps/files.html"><em
-                                                                                    class="icon ni ni-view-grid3-wd"></em><span>Grid View</span></a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="html/apps/files-group-view.html"><em
-                                                                                    class="icon ni ni-view-group-wd"></em><span>Group View</span></a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="html/apps/files-list-view.html"><em
-                                                                                    class="icon ni ni-view-row-wd"></em><span>List View</span></a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="d-lg-none">
-                                                            <div class="dropdown">
-                                                                <a href="#" class="btn btn-trigger btn-icon"
-                                                                   data-bs-toggle="dropdown"><em
-                                                                        class="icon ni ni-plus"></em></a>
-                                                                <div class="dropdown-menu dropdown-menu-end">
-                                                                    <ul class="link-list-opt no-bdr">
-                                                                        <li>
-                                                                            <a href="#file-upload"
-                                                                               data-bs-toggle="modal"><em
-                                                                                    class="icon ni ni-upload-cloud"></em><span>آپلود فایل</span></a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#"><em
-                                                                                    class="icon ni ni-file-plus"></em><span>ایجاد فایل</span></a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#"><em
-                                                                                    class="icon ni ni-folder-plus"></em><span>ایجاد پوشه</span></a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="d-lg-none me-n1">
-                                                            <a href="#" class="btn btn-trigger btn-icon toggle"
-                                                               data-target="files-aside"><em
-                                                                    class="icon ni ni-menu-alt-r"></em></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                                <div class="search-wrap px-2 d-lg-none" data-search="search">
-                                                    <div class="search-content">
-                                                        <a href="#" class="search-back btn btn-icon toggle-search"
-                                                           data-target="search"><em class="icon ni ni-arrow-left"></em></a>
-                                                        <input type="text"
-                                                               class="form-control border-transparent form-focus-none"
-                                                               placeholder="جستجو بر اساس کاربر یا پیام"/>
-                                                        <button class="search-submit btn btn-icon"><em
-                                                                class="icon ni ni-search"></em></button>
-                                                    </div>
-                                                </div>
-                                                <!-- .search-wrap -->
-                                                <div class="nk-block-head-content d-none d-lg-block">
-                                                    <ul class="nk-block-tools g-3">
-                                                        <li>
-                                                            <a href="html/apps/files.html" class="nk-switch-icon"><em
-                                                                    class="icon ni ni-view-grid3-wd"></em></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="html/apps/files-group-view.html"
-                                                               class="nk-switch-icon"><em
-                                                                    class="icon ni ni-view-group-wd"></em></a>
-                                                        </li>
-                                                        <li>
-                                                            <a href="html/apps/files-list-view.html"
-                                                               class="nk-switch-icon active"><em
+
+                                <div class="nk-fmg-body-content">
+                                    <div class="nk-block-head nk-block-head-sm">
+                                        <div class="nk-block-between position-relative">
+                                            <div class="nk-block-head-content">
+                                                <h3 class="nk-block-title page-title">فایل ها</h3>
+                                            </div>
+                                            <div class="nk-block-head-content">
+                                                <ul class="nk-block-tools g-1">
+                                                    <li class="d-lg-none">
+                                                        <a href="#"
+                                                           class="btn btn-trigger btn-icon search-toggle toggle-search"
+                                                           data-target="search"><em class="icon ni ni-search"></em></a>
+                                                    </li>
+                                                    <li class="d-lg-none">
+                                                        <div class="dropdown">
+                                                            <a href="#" class="btn btn-trigger btn-icon"
+                                                               data-bs-toggle="dropdown"><em
                                                                     class="icon ni ni-view-row-wd"></em></a>
-                                                        </li>
-                                                    </ul>
+                                                            <div class="dropdown-menu dropdown-menu-end">
+                                                                <ul class="link-list-opt no-bdr">
+                                                                    <li>
+                                                                        <a href="html/apps/files.html"><em
+                                                                                class="icon ni ni-view-grid3-wd"></em><span>Grid View</span></a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="html/apps/files-group-view.html"><em
+                                                                                class="icon ni ni-view-group-wd"></em><span>Group View</span></a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="html/apps/files-list-view.html"><em
+                                                                                class="icon ni ni-view-row-wd"></em><span>List View</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="d-lg-none">
+                                                        <div class="dropdown">
+                                                            <a href="#" class="btn btn-trigger btn-icon"
+                                                               data-bs-toggle="dropdown"><em
+                                                                    class="icon ni ni-plus"></em></a>
+                                                            <div class="dropdown-menu dropdown-menu-end">
+                                                                <ul class="link-list-opt no-bdr">
+                                                                    <li>
+                                                                        <a href="#file-upload"
+                                                                           data-bs-toggle="modal"><em
+                                                                                class="icon ni ni-upload-cloud"></em><span>آپلود فایل</span></a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#"><em
+                                                                                class="icon ni ni-file-plus"></em><span>ایجاد فایل</span></a>
+                                                                    </li>
+                                                                    <li>
+                                                                        <a href="#"><em
+                                                                                class="icon ni ni-folder-plus"></em><span>ایجاد پوشه</span></a>
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <li class="d-lg-none me-n1">
+                                                        <a href="#" class="btn btn-trigger btn-icon toggle"
+                                                           data-target="files-aside"><em
+                                                                class="icon ni ni-menu-alt-r"></em></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="search-wrap px-2 d-lg-none" data-search="search">
+                                                <div class="search-content">
+                                                    <a href="#" class="search-back btn btn-icon toggle-search"
+                                                       data-target="search"><em class="icon ni ni-arrow-left"></em></a>
+                                                    <input type="text"
+                                                           class="form-control border-transparent form-focus-none"
+                                                           placeholder="جستجو بر اساس کاربر یا پیام"/>
+                                                    <button class="search-submit btn btn-icon"><em
+                                                            class="icon ni ni-search"></em></button>
                                                 </div>
                                             </div>
                                         </div>
                                         <!-- .nk-block-head -->
                                         <div class="nk-fmg-listing nk-block">
                                             <div class="col-12 text-end">
-                                                <button class="btn btn-primary"
-                                                        onclick="history.back()">
-                                                    بازگشت
-                                                    <em class="icon ni ni-arrow-right"></em>
-                                                </button>
+
+                                                <a href="#file-backup" class="btn btn-success mb-3 my-2"
+                                                   id="btn-file-backup"
+                                                   data-bs-toggle="modal"><em class="icon ni ni-upload-cloud"></em>
+                                                    <span>بک اپ</span></a>
+
                                             </div>
                                             <div class="nk-files nk-files-view-list">
 
                                                 <div class="nk-files-head">
                                                     <div class="nk-file-item">
                                                         <div class="nk-file-info">
-                                                            <div class="tb-head dropdown-toggle dropdown-indicator-caret"
+                                                            <div class="tb-head dropdown-toggle"
                                                                  data-bs-toggle="dropdown">نام
                                                             </div>
-                                                            <div class="dropdown-menu dropdown-menu-xs">
-                                                                <ul class="link-list-opt no-bdr">
-                                                                    <li class="opt-head"><span>مرتب سازی بر اساس</span>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#"><span>نزولی</span></a>
-                                                                    </li>
-                                                                    <li>
-                                                                        <a href="#"><span>صعودی</span></a>
-                                                                    </li>
-                                                                </ul>
-                                                            </div>
-                                                            <div class="tb-head"></div>
                                                         </div>
                                                         <div class="nk-file-meta">
                                                             <div class="dropdown">
@@ -1569,61 +170,31 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="nk-file-members">
-                                                            <div class="tb-head">اعضا</div>
-                                                        </div>
                                                         <div class="nk-file-actions">
-                                                            <div class="dropdown">
-                                                                <a href=""
-                                                                   class="dropdown-toggle btn btn-sm btn-icon btn-trigger"
-                                                                   data-bs-toggle="dropdown"><em
-                                                                        class="icon ni ni-more-h"></em></a>
-                                                                <div class="dropdown-menu dropdown-menu-end">
-                                                                    <ul class="link-list-opt no-bdr">
-                                                                        <li>
-                                                                            <a href="#file-share"
-                                                                               data-bs-toggle="modal"><em
-                                                                                    class="icon ni ni-share"></em><span>به اشتراک گذاری</span></a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#file-copy" data-bs-toggle="modal"><em
-                                                                                    class="icon ni ni-copy"></em><span>کپی</span></a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#file-move" data-bs-toggle="modal"><em
-                                                                                    class="icon ni ni-forward-arrow"></em><span>انتقال</span></a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#" class="file-dl-toast"><em
-                                                                                    class="icon ni ni-download"></em><span>دانلود</span></a>
-                                                                        </li>
-                                                                        <li>
-                                                                            <a href="#"><em
-                                                                                    class="icon ni ni-trash"></em><span>حذف</span></a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
+                                                            <a
+                                                                    class="btn btn-sm btn-icon btn-trigger"><em
+                                                                    class="icon ni ni-more-h"></em></a>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <!-- .nk-files-head -->
                                                 <div class="nk-files-list">
-                                                    {% for file in files %}
-                                                        <div class="nk-file-item nk-file">
-                                                            <div class="nk-file-info">
-                                                                <div class="nk-file-title">
-                                                                    <div class="custom-control custom-control-sm custom-checkbox notext">
-                                                                        <input type="checkbox"
-                                                                               class="custom-control-input"
-                                                                               data-file-extension="{{ file.suffix }}"
-                                                                               data-file-location="{{ file.resolve }}"
-                                                                               data-file-name="{{ file.name }}"
-                                                                               id="file-check-n{{ forloop.counter }}"/>
-                                                                        <label class="custom-control-label"
-                                                                               for="file-check-n{{ forloop.counter }}"></label>
-                                                                    </div>
-                                                                    <div class="nk-file-icon">
+                                                    {% for files in files_iter %}
+                                                        {% for file in files %}
+                                                            <div class="nk-file-item nk-file">
+                                                                <div class="nk-file-info">
+                                                                    <div class="nk-file-title">
+                                                                        <div class="custom-control custom-control-sm custom-checkbox notext">
+                                                                            <input type="checkbox"
+                                                                                   class="custom-control-input"
+                                                                                   data-file-extension="{{ file.suffix }}"
+                                                                                   data-file-location="{{ file.resolve }}"
+                                                                                   data-file-name="{{ file.name }}"
+                                                                                   id="file-check-n{{ forloop.counter }}"/>
+                                                                            <label class="custom-control-label"
+                                                                                   for="file-check-n{{ forloop.counter }}"></label>
+                                                                        </div>
+                                                                        <div class="nk-file-icon">
                                                                         <span class="nk-file-icon-type icon-by-extension"
                                                                               extension="{{ file.suffix }}">
                                                                             <svg xmlns="http://www.w3.org/2000/svg"
@@ -1648,76 +219,70 @@
                                                                                       d="M7.7,59c2.2,2.4,4.7,2,6.3,2h45c1.1,0,3.2,0.1,5.3-2H7.7z"/>
                                                                             </svg>
                                                                         </span>
-                                                                    </div>
-                                                                    <div class="nk-file-name">
-                                                                        <div class="nk-file-name-text">
-                                                                            {% if not file.is_file %}
-                                                                                <a href="{% url 'dj_backup:file__list' %}?dir={{ file.resolve }}"
-                                                                                   class="title">{{ file.name }}</a>
-                                                                            {% else %}
-                                                                                <span class="title">{{ file.name }}</span>
-                                                                            {% endif %}
-                                                                            <div class="nk-file-star asterisk">
-                                                                                <a href="#"><em
-                                                                                        class="asterisk-off icon ni ni-star"></em><em
-                                                                                        class="asterisk-on icon ni ni-star-fill"></em></a>
+                                                                        </div>
+                                                                        <div class="nk-file-name">
+                                                                            <div class="nk-file-name-text">
+                                                                                {% if not file.is_file %}
+                                                                                    <a href="{% url 'dj_backup:file__list' %}?dir={{ file.resolve }}"
+                                                                                       class="title">{{ file.name }}</a>
+                                                                                {% else %}
+                                                                                    <span class="title">{{ file.name }}</span>
+                                                                                {% endif %}
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div class="nk-file-meta">
-                                                                <div class="tb-lead file-size-convert"
-                                                                     data-size="{{ file.stat.st_size }}">{{ file.stat.st_size }}</div>
-                                                            </div>
-                                                            <div class="nk-file-members">
-                                                                <div class="tb-lead">فقط من</div>
-                                                            </div>
-                                                            <div class="nk-file-actions">
-                                                                <div class="dropdown">
-                                                                    <a href=""
-                                                                       class="dropdown-toggle btn btn-sm btn-icon btn-trigger"
-                                                                       data-bs-toggle="dropdown"><em
-                                                                            class="icon ni ni-more-h"></em></a>
-                                                                    <div class="dropdown-menu dropdown-menu-end">
-                                                                        <ul class="link-list-plain no-bdr">
-                                                                            <li>
-                                                                                <a href="#file-details"
-                                                                                   data-bs-toggle="modal"><em
-                                                                                        class="icon ni ni-eye"></em><span>جزئیات</span></a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="#file-share"
-                                                                                   data-bs-toggle="modal"><em
-                                                                                        class="icon ni ni-share"></em><span>به اشتراک گذاری</span></a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="#file-copy"
-                                                                                   data-bs-toggle="modal"><em
-                                                                                        class="icon ni ni-copy"></em><span>کپی</span></a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="#file-move"
-                                                                                   data-bs-toggle="modal"><em
-                                                                                        class="icon ni ni-forward-arrow"></em><span>انتقال</span></a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="#" class="file-dl-toast"><em
-                                                                                        class="icon ni ni-download"></em><span>دانلود</span></a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="#"><em
-                                                                                        class="icon ni ni-pen"></em><span>تغییر نام</span></a>
-                                                                            </li>
-                                                                            <li>
-                                                                                <a href="#"><em
-                                                                                        class="icon ni ni-trash"></em><span>حذف</span></a>
-                                                                            </li>
-                                                                        </ul>
+                                                                <div class="nk-file-meta">
+                                                                    <div class="tb-lead file-size-convert"
+                                                                         data-size="{{ file.stat.st_size }}">{{ file.stat.st_size }}</div>
+                                                                </div>
+                                                                <div class="nk-file-actions">
+                                                                    <div class="dropdown">
+                                                                        <a href=""
+                                                                           class="dropdown-toggle btn btn-sm btn-icon btn-trigger"
+                                                                           data-bs-toggle="dropdown"><em
+                                                                                class="icon ni ni-more-h"></em></a>
+                                                                        <div class="dropdown-menu dropdown-menu-end">
+                                                                            <ul class="link-list-plain no-bdr">
+                                                                                <li>
+                                                                                    <a href="#file-details"
+                                                                                       data-bs-toggle="modal"><em
+                                                                                            class="icon ni ni-eye"></em><span>جزئیات</span></a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href="#file-share"
+                                                                                       data-bs-toggle="modal"><em
+                                                                                            class="icon ni ni-share"></em><span>به اشتراک گذاری</span></a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href="#file-copy"
+                                                                                       data-bs-toggle="modal"><em
+                                                                                            class="icon ni ni-copy"></em><span>کپی</span></a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href="#file-move"
+                                                                                       data-bs-toggle="modal"><em
+                                                                                            class="icon ni ni-forward-arrow"></em><span>انتقال</span></a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href="#"
+                                                                                       class="file-dl-toast"><em
+                                                                                            class="icon ni ni-download"></em><span>دانلود</span></a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href="#"><em
+                                                                                            class="icon ni ni-pen"></em><span>تغییر نام</span></a>
+                                                                                </li>
+                                                                                <li>
+                                                                                    <a href="#"><em
+                                                                                            class="icon ni ni-trash"></em><span>حذف</span></a>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        {% endfor %}
                                                         <!-- .nk-file -->
                                                     {% endfor %}
                                                 </div>
@@ -2593,11 +1158,43 @@
                                     <div class="form-note">هر چه مدت یکبار بک اپ گرفته شود</div>
                                 </div>
                                 <div class="form-group">
+                                    <label class="form-label" for="repeats">تعداد بک آپ گیری</label>
+                                    <div class="form-control-wrap">
+                                        <input type="number" class="form-control" id="repeats"
+                                               placeholder="-1" value="-1" required name="repeats">
+                                    </div>
+                                    <div class="form-note">برای بک آپ همیشگی مقدار "1-" را وارد نمایید</div>
+                                </div>
+                                <div class="form-group">
                                     <label class="form-label">ذخیره در </label>
                                     <div class="form-control-wrap">
-                                        <select class="form-select js-select2" multiple required>
-                                            <option value="local" selected>ذخیره داخلی</option>
+                                        <select name="storages" class="form-select js-select2" multiple required>
+                                            {% for storage in storages %}
+                                                {% if storage.is_available %}
+                                                    <option value="{{ storage.id }}"
+                                                            selected>{{ storage.display_name }}</option>
+                                                {% endif %}
+                                            {% endfor %}
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">نگه داری فایل های موقت</label>
+                                    <div class="form-control-wrap">
+                                        <select name="has_temp" class="form-select js-select2"
+                                                required>
+                                            <option value="true" selected>
+                                                بله
+                                            </option>
+                                            <option value="false">
+                                                خیر
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="form-note">برای دسترسی سریع و راحت تر به فایل بک آپ این گزینه را
+                                        فعال کنید. نکته:
+                                        <b>توجه کنید فعال کردن نگه داری فایل ها باعث افزایش حجم بر روی
+                                            دیسک میشود.</b>
                                     </div>
                                 </div>
                             </div>
@@ -2625,65 +1222,6 @@
 
 {% block Script %}
     <script>
-        let FILE_EXTENSIONS = {
-            'video': ['mp4', 'mkv'],
-            'image': ['png', 'jpg'],
-            'zip': ['zip', 'rar'],
-            'text': ['text', 'txt', 'doc'],
-            'folder': [],
-        }
-
-        function setFileIcons() {
-            document.querySelectorAll('.icon-by-extension').forEach(function (el) {
-                // TODO: should be completed
-                let extension = el.getAttribute('extension')
-                if (extension == '') {
-                    el.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 72 72">
-                        <path fill="#6C87FE" d="M57.5,31h-23c-1.4,0-2.5-1.1-2.5-2.5v-10c0-1.4,1.1-2.5,2.5-2.5h23c1.4,0,2.5,1.1,2.5,2.5v10
-                        C60,29.9,58.9,31,57.5,31z"></path>
-                        <path fill="#8AA3FF" d="M59.8,61H12.2C8.8,61,6,58,6,54.4V17.6C6,14,8.8,11,12.2,11h18.5c1.7,0,3.3,1,4.1,2.6L38,24h21.8
-                        c3.4,0,6.2,2.4,6.2,6v24.4C66,58,63.2,61,59.8,61z"></path>
-                         <path display="none" fill="#8AA3FF" d="M62.1,61H9.9C7.8,61,6,59.2,6,57c0,0,0-31.5,0-42c0-2.2,1.8-4,3.9-4h19.3
-                        c1.6,0,3.2,0.2,3.9,2.3l2.7,6.8c0.5,1.1,1.6,1.9,2.8,1.9h23.5c2.2,0,3.9,1.8,3.9,4v31C66,59.2,64.2,61,62.1,61z"></path>
-                        <path fill="#798BFF" d="M7.7,59c2.2,2.4,4.7,2,6.3,2h45c1.1,0,3.2,0.1,5.3-2H7.7z"></path>
-                  </svg>
-                `
-                } else {
-                    el.innerHTML = `
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 72 72">
-                        <g>
-                            <path d="M50,61H22a6,6,0,0,1-6-6V22l9-11H50a6,6,0,0,1,6,6V55A6,6,0,0,1,50,61Z" style="fill: #599def;"></path>
-                            <path d="M25,20.556A1.444,1.444,0,0,1,23.556,22H16l9-11h0Z" style="fill: #c2e1ff;"></path>
-                            <rect x="27" y="31" width="18" height="2" rx="1" ry="1" style="fill: #fff;"></rect>
-                            <rect x="27" y="36" width="18" height="2" rx="1" ry="1" style="fill: #fff;"></rect>
-                            <rect x="27" y="41" width="18" height="2" rx="1" ry="1" style="fill: #fff;"></rect>
-                            <rect x="27" y="46" width="12" height="2" rx="1" ry="1" style="fill: #fff;"></rect>
-                        </g>
-                    </svg>
-                `
-                }
-            })
-        }
-
-        setFileIcons()
-
-        function formatBytes(bytes, decimals = 2) {
-            if (!+bytes) return '0 Bytes'
-
-            const k = 1024
-            const dm = decimals < 0 ? 0 : decimals
-            const sizes = ['Bytes', 'KiB', 'MiB', 'GiB', 'TiB', 'PiB', 'EiB', 'ZiB', 'YiB']
-
-            const i = Math.floor(Math.log(bytes) / Math.log(k))
-
-            return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`
-        }
-
-        document.querySelectorAll('.file-size-convert').forEach(function (el) {
-            el.innerHTML = formatBytes(el.getAttribute('data-size'))
-        })
-
 
         // btn file backup
         document.getElementById('btn-file-backup').addEventListener('click', function () {

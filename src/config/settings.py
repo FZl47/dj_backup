@@ -65,8 +65,24 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     },
+# }
+
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'test',
+        'USER': 'root',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',  # Or an IP Address that your DB is hosted on
+        'PORT': '3306',
+    },
+    'default_sqlite': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     }
@@ -122,14 +138,55 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 Q_CLUSTER = {
     'name': 'django-q',
     'workers': 4,
-    'orm': 'default'
+    'orm': 'default',
+    'retries': 20,
+    'timeout': 15
 }
 
 # DJ backup
 DJ_BACKUP_CONFIG = {
-    'BASE_ROOT': BASE_DIR,
+    'BASE_ROOT_DIRS': [
+        BASE_DIR,
+    ],
     'BACKUP_TEMP_DIR': BASE_DIR / 'backup/temp',
-    'BACKUP_DIRS': [
-        BASE_DIR / 'backup/result',
-    ]
+    'STORAGES': {
+        'LOCAL': {
+            'OUT': BASE_DIR / 'backup/result'
+        },
+        'SFTP_SERVER': {
+            'HOST': 'xxx.xxx.xxx.xxx',
+            'USERNAME': 'xxx',
+            'PASSWORD': 'xxx',
+            'OUT': '/home/test_dj_backup/'
+        },
+        'FTP_SERVER': {
+            'HOST': "xxx.xxx.xxx.xxx",
+            'USERNAME': "xxx",
+            'PASSWORD': "xxx",
+            'OUT': '/test_dj_backup/'
+        },
+        'DROPBOX': {
+            'ACCESS_TOKEN': 'xxx-xxx-xxx-..',
+            'OUT': '/dj_backup/'
+        }
+    }
+}
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': BASE_DIR.parent / 'logs/server.log',
+        },
+    },
+    'loggers': {
+        '': {
+            'handlers': ['file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
 }

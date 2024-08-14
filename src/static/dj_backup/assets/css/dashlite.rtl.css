@@ -46273,7 +46273,7 @@ div.dataTables_wrapper div.dataTables_filter .nk-reply-form-field input,
     transform: none;
     transition: none;
     width: 260px;
-    right: 80px;
+    right: 0;
   }
 
   .nk-fmg-aside-top {
@@ -46941,7 +46941,7 @@ div.dataTables_wrapper div.dataTables_filter .nk-file-share-field input,
   }
 
   .nk-files-view-group .nk-file {
-    width: calc(20% - 16px);
+    width: calc(23% - 16px);
   }
 }
 
