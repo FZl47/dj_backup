@@ -30,7 +30,7 @@ class Logout(View):
         return redirect('admin:index')
 
 
-class Index(mixins.SuperUserRequiredMixin, TemplateView):
+class Index(mixins.DJViewMixin, TemplateView):
     auth_redirect = True
     template_name = 'dj_backup/index.html'
 
@@ -42,7 +42,7 @@ class Index(mixins.SuperUserRequiredMixin, TemplateView):
         return context
 
 
-class FileList(mixins.SuperUserRequiredMixin, TemplateView):
+class FileList(mixins.DJViewMixin, TemplateView):
     template_name = 'dj_backup/file/list.html'
 
     def get_context_data(self, **kwargs):
@@ -71,7 +71,7 @@ class FileList(mixins.SuperUserRequiredMixin, TemplateView):
         return context
 
 
-class FileBackupAdd(mixins.SuperUserRequiredMixin, View):
+class FileBackupAdd(mixins.DJViewMixin, View):
     form = forms.DJFileBackUpForm
     form_file = forms.DJFileForm
 
@@ -108,7 +108,7 @@ class FileBackupAdd(mixins.SuperUserRequiredMixin, View):
         return redirect(self.get_referrer_url())
 
 
-class DataBaseList(mixins.SuperUserRequiredMixin, TemplateView):
+class DataBaseList(mixins.DJViewMixin, TemplateView):
     template_name = 'dj_backup/db/list.html'
 
     def get_context_data(self, **kwargs):
@@ -120,7 +120,7 @@ class DataBaseList(mixins.SuperUserRequiredMixin, TemplateView):
         return context
 
 
-class DataBaseBackupAdd(mixins.SuperUserRequiredMixin, View):
+class DataBaseBackupAdd(mixins.DJViewMixin, View):
     form = forms.DJDataBaseBackUpForm
 
     def get_referrer_url(self):
@@ -140,7 +140,7 @@ class DataBaseBackupAdd(mixins.SuperUserRequiredMixin, View):
         return redirect(self.get_referrer_url())
 
 
-class BackupList(mixins.SuperUserRequiredMixin, ListView):
+class BackupList(mixins.DJViewMixin, ListView):
     template_name = 'dj_backup/backup/list.html'
     paginate_by = 20
 
@@ -158,7 +158,7 @@ class BackupList(mixins.SuperUserRequiredMixin, ListView):
         return qs
 
 
-class BackupDetail(mixins.SuperUserRequiredMixin, TemplateView):
+class BackupDetail(mixins.DJViewMixin, TemplateView):
     template_name = 'dj_backup/backup/detail.html'
     paginate_by_results = 20
 
@@ -184,7 +184,7 @@ class BackupDetail(mixins.SuperUserRequiredMixin, TemplateView):
         return context
 
 
-class BackupDelete(mixins.SuperUserRequiredMixin, View):
+class BackupDelete(mixins.DJViewMixin, View):
 
     def post(self, request, backup_id):
         backup = models.get_backup_object(backup_id)
@@ -195,7 +195,7 @@ class BackupDelete(mixins.SuperUserRequiredMixin, View):
         return redirect('dj_backup:backup__list')
 
 
-class BackupUpdate(mixins.SuperUserRequiredMixin, View):
+class BackupUpdate(mixins.DJViewMixin, View):
 
     def get_form(self, backup):
         data = self.request.POST
@@ -223,7 +223,7 @@ class BackupUpdate(mixins.SuperUserRequiredMixin, View):
         return redirect(backup.get_absolute_url())
 
 
-class BackupManageRunningStatus(mixins.SuperUserRequiredMixin, View):
+class BackupManageRunningStatus(mixins.DJViewMixin, View):
 
     def post(self, request, backup_id):
         backup = models.get_backup_object(backup_id)
@@ -250,7 +250,7 @@ class BackupManageRunningStatus(mixins.SuperUserRequiredMixin, View):
         return redirect(backup.get_absolute_url())
 
 
-class DJBackupResultDownload(mixins.SuperUserRequiredMixin, View):
+class DJBackupResultDownload(mixins.DJViewMixin, View):
 
     def get(self, request, backup_result_id):
         try:

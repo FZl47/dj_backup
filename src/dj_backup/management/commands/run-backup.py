@@ -11,23 +11,24 @@ class Command(BaseCommand):
     help = 'Start and run DJ Backup'
 
     def handle(self, *args, **kwargs):
-
-
         self.stdout.write(self.style.SUCCESS('DJ-Backup STARTING...'))
-        # create dirs
+
         self.stdout.write(self.style.SUCCESS('CREATE BACKUP DIRS...'))
+        # create dirs
         self.create_backup_dirs()
+
         # initial storages
         self.stdout.write(self.style.SUCCESS('INITIAL STORAGES...'))
         self.initial_storages()
+
         self.stdout.write(self.style.SUCCESS('STARTED !'))
-        # create storages object
 
         # run django-q
         call_command('qcluster')
 
     @staticmethod
     def initial_storages():
+        # create storages object
         models.DJStorage.objects.get_or_create(name='LOCAL', display_name=_('Local'),
                                                defaults={'name': 'LOCAL'})
         models.DJStorage.objects.get_or_create(name='SFTP_SERVER', display_name=_('Sftp server'),

@@ -4,21 +4,19 @@
 
 [ ] complete code TODO
 
-[ ] fix access direction in list files(prevent access to out of base dirs)
+[x] fix access direction in list files(prevent access to out of base dirs)
 
 [x] add update/delete backup object
 
 [x] add storages in dashboard
 
-[ ] add login page
+[x] add user required mixin views
 
-[ ] add user required mixin views
+[x] add ftp server storage
 
-[x] add ftp server storages
+[x] add sftp server storage
 
-[x] add sftp server storages
-
-[x] add drop box storages
+[x] add drop box storage
 
 #### Update TODO:
 

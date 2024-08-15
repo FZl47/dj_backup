@@ -14,7 +14,7 @@ ALL_STORAGES_DICT = {
 STORAGES_AVAILABLE = []
 
 
-def _get_storages_available():
+def get_storages_available():
     storages_config = settings.get_storages_config()
     for st_name, st_config in storages_config.items():
         try:
@@ -27,4 +27,3 @@ def _get_storages_available():
             STORAGES_AVAILABLE.append(storage_cls)
 
 
-_get_storages_available()
