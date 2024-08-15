@@ -27,8 +27,6 @@ class BaseDB(BaseBackup):
             self.export_location = self._get_export_location()
 
     def _get_export_location(self):
-        # TODO: add count backup, remove random string,
-        #  add to parent folder with backup name
         temp_dir = settings.get_backup_temp_dir()
         return utils.join_paths(temp_dir, self.backup_obj.get_backup_location(self.OUTPUT_FORMAT))
 

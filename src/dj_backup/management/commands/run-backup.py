@@ -11,7 +11,7 @@ class Command(BaseCommand):
     help = 'Start and run DJ Backup'
 
     def handle(self, *args, **kwargs):
-        # TODO: must be completed
+
 
         self.stdout.write(self.style.SUCCESS('DJ-Backup STARTING...'))
         # create dirs

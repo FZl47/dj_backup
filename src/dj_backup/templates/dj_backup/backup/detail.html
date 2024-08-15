@@ -267,7 +267,7 @@
                                                 <!-- .nk-files-head -->
                                                 <div class="nk-files-group">
                                                     <div class="nk-files-list">
-                                                        {% for result in backup.get_results %}
+                                                        {% for result in results %}
                                                             <div class="nk-file-item nk-file">
                                                                 <div class="nk-file-info">
                                                                     <div class="nk-file-title">
@@ -327,6 +327,43 @@
                                                         {% endfor %}
                                                     </div>
                                                 </div>
+                                                <div class="card-inner my-5">
+                                                    <div class="nk-block-between-md justify-content-center">
+                                                        <div class="g">
+                                                            <ul class="pagination justify-content-center justify-content-md-start">
+                                                                {% if page_obj.has_previous %}
+                                                                    <li class="page-item"><a
+                                                                            class="page-link add-params-to-href"
+                                                                            href="?page=1">اول</a>
+                                                                    </li>
+                                                                    <li class="page-item"><a
+                                                                            class="page-link add-params-to-href"
+                                                                            href="?page={{ page_obj.previous_page_number }}">قبلی</a>
+                                                                    </li>
+                                                                {% endif %}
+
+                                                                <span class="fs-13px mt-1 mx-2">
+                                                                        صفحه {{ page_obj.number }} از {{ page_obj.paginator.num_pages }}.
+                                                                </span>
+
+                                                                {% if page_obj.has_next %}
+                                                                    <li class="page-item"><a
+                                                                            class="page-link add-params-to-href"
+                                                                            href="?page={{ page_obj.next_page_number }}">بعدی</a>
+                                                                    </li>
+                                                                    <li class="page-item"><a
+                                                                            class="page-link add-params-to-href"
+                                                                            href="?page={{ page_obj.paginator.num_pages }}">اخرین</a>
+                                                                    </li>
+                                                                {% endif %}
+                                                            </ul>
+                                                            <!-- .pagination -->
+                                                        </div>
+
+                                                        <!-- .pagination-goto -->
+                                                    </div>
+                                                    <!-- .nk-block-between -->
+                                                </div>
                                             </div>
 
                                             <!-- .nk-files -->
@@ -348,7 +385,7 @@
     </div>
     <!-- app-root @e -->
 
-    {% for result in backup.get_results %}
+    {% for result in results %}
         <div class="modal fade" tabindex="-1" role="dialog" id="result-detail-{{ result.id }}">
             <div class="modal-dialog modal-md" role="document">
                 <div class="modal-content">

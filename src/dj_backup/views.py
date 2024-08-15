@@ -1,31 +1,37 @@
 from itertools import chain
 
-from django.utils.translation import gettext_lazy as _
-from django.views.generic import TemplateView, View, ListView
-from django.shortcuts import redirect, Http404
-from django.contrib import messages
+from django.views.generic import TemplateView, View, ListView, RedirectView
 from django.contrib.auth import logout as logout_django
+from django.utils.translation import gettext_lazy as _
+from django.core.exceptions import PermissionDenied
+from django.shortcuts import redirect, Http404
+from django.core.paginator import Paginator
 from django.http import HttpResponse
+from django.urls import reverse_lazy
+from django.contrib import messages
 
-from dj_backup.core.utils import get_files_dir, get_file_name
 from dj_backup.core.backup.db import DATABASES_AVAILABLE
-from dj_backup.core import tasks
+from dj_backup.core import tasks, utils
 from dj_backup import models, forms
+from dj_backup.core import mixins
 from dj_backup import settings
 
 
-class Login(TemplateView):
-    pass
+class Login(RedirectView):
+
+    def get_redirect_url(self, *args, **kwargs):
+        return reverse_lazy('admin:index')
 
 
 class Logout(View):
 
     def get(self, request):
         logout_django(request)
-        return redirect('')
+        return redirect('admin:index')
 
 
-class Index(TemplateView):
+class Index(mixins.SuperUserRequiredMixin, TemplateView):
+    auth_redirect = True
     template_name = 'dj_backup/index.html'
 
     def get_context_data(self, **kwargs):
@@ -36,18 +42,28 @@ class Index(TemplateView):
         return context
 
 
-class FileList(TemplateView):
+class FileList(mixins.SuperUserRequiredMixin, TemplateView):
     template_name = 'dj_backup/file/list.html'
 
     def get_context_data(self, **kwargs):
-        # TODO: should be restrict dir locations(prevent security bugs and access)
         context = super(FileList, self).get_context_data(**kwargs)
         dir_location = self.request.GET.get('dir')
+
+        base_dirs = settings.get_base_root_dirs()
         if dir_location:
+            #  dir path must in base root
+            can_access_dir = False
+            for base_dir in base_dirs:
+                if utils.is_subdirectory(base_dir, dir_location):
+                    can_access_dir = True
+            if not can_access_dir:
+                raise PermissionDenied
+
             dir_location = [dir_location]
         else:
-            dir_location = settings.get_base_root_dirs()
-        files_iter = get_files_dir(*dir_location)
+            dir_location = base_dirs
+
+        files_iter = utils.get_files_dir(*dir_location)
         context.update({
             'files_iter': files_iter,
             'storages': models.DJStorage.objects.all()
@@ -55,7 +71,7 @@ class FileList(TemplateView):
         return context
 
 
-class FileBackupAdd(View):
+class FileBackupAdd(mixins.SuperUserRequiredMixin, View):
     form = forms.DJFileBackUpForm
     form_file = forms.DJFileForm
 
@@ -74,10 +90,9 @@ class FileBackupAdd(View):
         for file_dir in file_dirs:
             f = self.form_file({
                 'dir': file_dir,
-                'name': get_file_name(file_dir)
+                'name': utils.get_file_name(file_dir)
             })
             if not f.is_valid():
-                # TODO: log exception
                 messages.error(request, _('Something went wrong in file object creation'))
                 return redirect(self.get_referrer_url())
             file_obj = f.save()
@@ -93,7 +108,7 @@ class FileBackupAdd(View):
         return redirect(self.get_referrer_url())
 
 
-class DataBaseList(TemplateView):
+class DataBaseList(mixins.SuperUserRequiredMixin, TemplateView):
     template_name = 'dj_backup/db/list.html'
 
     def get_context_data(self, **kwargs):
@@ -105,7 +120,7 @@ class DataBaseList(TemplateView):
         return context
 
 
-class DataBaseBackupAdd(View):
+class DataBaseBackupAdd(mixins.SuperUserRequiredMixin, View):
     form = forms.DJDataBaseBackUpForm
 
     def get_referrer_url(self):
@@ -125,7 +140,7 @@ class DataBaseBackupAdd(View):
         return redirect(self.get_referrer_url())
 
 
-class BackupList(ListView):
+class BackupList(mixins.SuperUserRequiredMixin, ListView):
     template_name = 'dj_backup/backup/list.html'
     paginate_by = 20
 
@@ -143,8 +158,9 @@ class BackupList(ListView):
         return qs
 
 
-class BackupDetail(TemplateView):
+class BackupDetail(mixins.SuperUserRequiredMixin, TemplateView):
     template_name = 'dj_backup/backup/detail.html'
+    paginate_by_results = 20
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
@@ -159,11 +175,16 @@ class BackupDetail(TemplateView):
             storage.count_backup = backup.get_count_backup_storage(storage)
         context['backup_storages'] = backup_storages
         context['all_storages'] = models.DJStorage.objects.all()
-
+        # paginate results
+        results = backup.get_results()
+        paginator = Paginator(results, self.paginate_by_results)
+        paginator = paginator.get_page(self.request.GET.get('page', 1))
+        context['page_obj'] = paginator
+        context['results'] = paginator.object_list
         return context
 
 
-class BackupDelete(View):
+class BackupDelete(mixins.SuperUserRequiredMixin, View):
 
     def post(self, request, backup_id):
         backup = models.get_backup_object(backup_id)
@@ -174,7 +195,7 @@ class BackupDelete(View):
         return redirect('dj_backup:backup__list')
 
 
-class BackupUpdate(View):
+class BackupUpdate(mixins.SuperUserRequiredMixin, View):
 
     def get_form(self, backup):
         data = self.request.POST
@@ -202,7 +223,7 @@ class BackupUpdate(View):
         return redirect(backup.get_absolute_url())
 
 
-class BackupManageRunningStatus(View):
+class BackupManageRunningStatus(mixins.SuperUserRequiredMixin, View):
 
     def post(self, request, backup_id):
         backup = models.get_backup_object(backup_id)
@@ -229,7 +250,7 @@ class BackupManageRunningStatus(View):
         return redirect(backup.get_absolute_url())
 
 
-class DJBackupResultDownload(View):
+class DJBackupResultDownload(mixins.SuperUserRequiredMixin, View):
 
     def get(self, request, backup_result_id):
         try:
@@ -242,6 +263,3 @@ class DJBackupResultDownload(View):
             response = HttpResponse(file.read(), content_type='application/octet-stream')
             response['Content-Disposition'] = f'attachment; filename={br.backup_name}'
             return response
-
-
-

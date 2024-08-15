@@ -20,7 +20,7 @@
             </div>
             <div class="nk-header-tools">
                 <ul class="nk-quick-nav">
-                    <li class="dropdown language-dropdown me-n1">
+                    <li class="dropdown language-dropdown me-n1 d-none">
                         <a  data-bs-toggle="dropdown" class="dropdown-toggle nk-quick-nav-icon"><em
                                 class="icon ni ni-globe"></em></a>
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-s1">
@@ -55,7 +55,9 @@
                             <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
                                 <div class="user-card">
                                     <div class="user-avatar">
-                                        <span>ف‌ت</span>
+                                        <span>
+                                            {{ user.first_name.0|default:'A' }}{{ user.last_name.0|default:'u' }}
+                                        </span>
                                     </div>
                                     <div class="user-info">
                                         <span class="lead-text">{{ user.get_full_name|default:'Anonymous user' }}</span>
@@ -66,16 +68,16 @@
                             <div class="dropdown-inner">
                                 <ul class="link-list">
                                     <li>
-                                        <a href="html/user-profile-regular.html"><em
-                                                class="icon ni ni-user-alt"></em><span>مشاهده پروفایل</span></a>
+                                        <a href="{% url 'dj_backup:backup__list' %}"><em
+                                                class="icon ni ni-folder-list"></em><span>مشاهده بک اپ ها</span></a>
                                     </li>
                                     <li>
-                                        <a href="html/user-profile-setting.html"><em
-                                                class="icon ni ni-setting-alt"></em><span>تنظیمات حساب</span></a>
+                                        <a href="{% url 'dj_backup:db__list' %}"><em
+                                                class="icon ni ni-dashboard"></em><span>لیست دیتابیس ها</span></a>
                                     </li>
                                     <li>
-                                        <a href="html/user-profile-activity.html"><em
-                                                class="icon ni ni-activity-alt"></em><span>فعالیت ورود</span></a>
+                                        <a href="{% url 'dj_backup:file__list' %}"><em
+                                                class="icon ni ni-file-docs"></em><span>لیست فایل ها</span></a>
                                     </li>
                                     <li>
                                         <a class="dark-switch" href="#"><em
@@ -86,7 +88,7 @@
                             <div class="dropdown-inner">
                                 <ul class="link-list">
                                     <li>
-                                        <a href="#"><em
+                                        <a href="{% url 'dj_backup:logout' %}"><em
                                                 class="icon ni ni-signout"></em><span>خروج</span></a>
                                     </li>
                                 </ul>

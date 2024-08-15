@@ -34,6 +34,15 @@ def is_dir(path):
     return os.path.isdir(path)
 
 
+def is_subdirectory(root, sub):
+    try:
+        root = os.path.abspath(root)
+        sub = os.path.abspath(sub)
+        return os.path.commonpath([root]) == os.path.commonpath([root, sub])
+    except:
+        return False
+
+
 def zip_directory(directory, zip_name):
     with zipfile.ZipFile(zip_name, 'w', zipfile.ZIP_DEFLATED) as zipf:
         for root, _, files in os.walk(directory):

@@ -18,7 +18,6 @@ class SqliteDB(BaseDB):
             return cls._DB
         db_name = cls.CONFIG['NAME']
         try:
-            # TODO: check exception handler
             # check db is exists
             if not utils.file_is_exists(db_name):
                 raise sqlite3.DatabaseError('Database `%s` not exists' % db_name)
