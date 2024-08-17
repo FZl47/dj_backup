@@ -65,7 +65,7 @@ def zip_item(directory_or_file, zip_name):
 
 def get_or_create_dir(item_path):
     p = pathlib.Path(item_path)
-    return p.mkdir(exist_ok=True)
+    return p.mkdir(exist_ok=True, parents=True)
 
 
 def delete_file(item_path):

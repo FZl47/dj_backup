@@ -10,7 +10,7 @@ ALL_DATABASES_DICT = {
 DATABASES_AVAILABLE = []
 
 
-def get_databases_available():
+def _get_databases_available():
     databases_config = settings.get_databases_config()
     for db_config_name, db_config in databases_config.items():
         db_type = db_config['ENGINE']
@@ -25,3 +25,5 @@ def get_databases_available():
         if db_cls.check():
             DATABASES_AVAILABLE.append(db_cls)
 
+
+_get_databases_available()

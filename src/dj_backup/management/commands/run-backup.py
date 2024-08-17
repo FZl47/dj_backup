@@ -43,3 +43,4 @@ class Command(BaseCommand):
         # create backup temp dir
         utils.get_or_create_dir(settings.get_backup_temp_dir())
         utils.log_event('Backup dirs were created successfully', 'debug')
+

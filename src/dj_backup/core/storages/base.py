@@ -9,6 +9,7 @@ from dj_backup import models
 class BaseStorageConnector(abc.ABC):
     STORAGE_NAME = None
     CONFIG = None
+    _check_status = None
 
     def __init__(self, backup_obj=None, file_path=None):
         """
@@ -52,13 +53,16 @@ class BaseStorageConnector(abc.ABC):
 
     @classmethod
     def check(cls, raise_exc=True):
+        if cls._check_status:
+            return cls._check_status
         utils.log_event('Storages checking started..!', 'debug')
         try:
             cls._connect()
             cls._close()
-
+            cls._check_status = True
             return True
         except Exception as e:
+            cls._check_status = False
             msg = """
                 The `%s` storage check encountered an error.
                 make sure the config are set correctly.

@@ -15,6 +15,7 @@ class BaseDB(BaseBackup):
     ADDITIONAL_ARGS_NAME = {}
     ADDITIONAL_ARGS = {}
 
+    _check_status = None
     export_location = None
 
     def __init__(self, backup_obj=None):
@@ -81,11 +82,15 @@ class BaseDB(BaseBackup):
 
     @classmethod
     def check(cls, raise_exc=True):
+        if cls._check_status:
+            return cls._check_status
         try:
             cls.connect()
             cls.close()
+            cls._check_status = True
             return True
         except Exception as e:
+            cls._check_status = False
             msg = 'There is some problem in checking %s db. more info [%s]' % (cls.__name__, e)
             utils.log_event(msg, 'error')
             if raise_exc:

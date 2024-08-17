@@ -42,4 +42,6 @@ class Settings:
     @classmethod
     def get_backup_temp_dir(cls):
         _default = django_settings.BASE_DIR / 'backup/temp'
-        return django_settings.DJ_BACKUP_CONFIG.get('BACKUP_TEMP_DIR', _default)
+        return django_settings.DJ_BACKUP_CONFIG.get('BACKUP_TEMP_DIR', _default)\
+
+

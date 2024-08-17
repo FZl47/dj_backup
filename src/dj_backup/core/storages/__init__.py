@@ -14,7 +14,7 @@ ALL_STORAGES_DICT = {
 STORAGES_AVAILABLE = []
 
 
-def get_storages_available():
+def _get_storages_available():
     storages_config = settings.get_storages_config()
     for st_name, st_config in storages_config.items():
         try:
@@ -23,7 +23,9 @@ def get_storages_available():
             raise ValueError('Unknown `%s` storage' % st_name)
 
         storage_cls.set_config(st_config)
+
         if storage_cls.check():
             STORAGES_AVAILABLE.append(storage_cls)
 
 
+_get_storages_available()

@@ -66,8 +66,9 @@ class ScheduleFileBackupTask(ScheduleBackupBaseTask):
         backup_obj.save()
 
         # delete task when the count number reaches 0
-        if backup_obj.schedule_task.repeats == 0:
-            backup_obj.schedule_task.delete()
+        if backup_obj.schedule_task:
+            if backup_obj.schedule_task.repeats == 0:
+                backup_obj.schedule_task.delete()
 
 
 class ScheduleDataBaseBackupTask(ScheduleBackupBaseTask):
@@ -103,5 +104,6 @@ class ScheduleDataBaseBackupTask(ScheduleBackupBaseTask):
         backup_obj.save()
 
         # delete task when the count number reaches 0
-        if backup_obj.schedule_task.repeats == 0:
-            backup_obj.schedule_task.delete()
+        if backup_obj.schedule_task:
+            if backup_obj.schedule_task.repeats == 0:
+                backup_obj.schedule_task.delete()
