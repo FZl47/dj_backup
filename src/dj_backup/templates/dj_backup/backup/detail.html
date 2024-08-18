@@ -409,7 +409,7 @@
                             <div class="nk-file-details-row">
                                 <div class="nk-file-details-col">وضعیت</div>
                                 <div class="nk-file-details-col">
-                                    <span class="badge badge-dot {% if result.status == 'successful' %}bg-success{% else %}bg-danger{% endif %}">{{ result.status }}</span>
+                                    <span class="badge badge-dot {% if result.status == 'successful' %}bg-success{% else %}bg-danger{% endif %}">{{ result.get_status_display }}</span>
                                 </div>
                             </div>
                             <div class="nk-file-details-row">

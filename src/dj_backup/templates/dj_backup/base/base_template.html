@@ -34,7 +34,9 @@
 
     // active menu item
     try {
-        document.querySelector(`a[href="${window.location.pathname}"]`).parentElement.classList.add('active')
+        document.querySelectorAll(`a[href="${window.location.pathname}"]`).forEach(function (el){
+            el.parentElement.classList.add('active')
+        })
     } catch (e) {
     }
 

@@ -1,0 +1,114 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-18 06:31+0330\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: .\dj_backup\core\backup\db\mysql.py:20
+msgid "Only data"
+msgstr ""
+
+#: .\dj_backup\core\backup\db\mysql.py:21
+msgid "Only structure"
+msgstr ""
+
+#: .\dj_backup\core\backup\db\mysql.py:22
+msgid "No database creation"
+msgstr ""
+
+#: .\dj_backup\management\commands\run-backup.py:32
+msgid "Local"
+msgstr ""
+
+#: .\dj_backup\management\commands\run-backup.py:34
+msgid "Sftp server"
+msgstr ""
+
+#: .\dj_backup\management\commands\run-backup.py:36
+msgid "Ftp server"
+msgstr ""
+
+#: .\dj_backup\management\commands\run-backup.py:38
+msgid "Dropbox"
+msgstr ""
+
+#: .\dj_backup\models.py:28
+msgid "Once"
+msgstr "یکبار"
+
+#: .\dj_backup\models.py:29
+msgid "Minutes"
+msgstr "دقیقه"
+
+#: .\dj_backup\models.py:30
+msgid "Hours"
+msgstr "ساعت"
+
+#: .\dj_backup\models.py:31
+msgid "Days"
+msgstr "روز"
+
+#: .\dj_backup\models.py:32
+msgid "Weeks"
+msgstr "هفته"
+
+#: .\dj_backup\models.py:180
+msgid "Successful"
+msgstr "موفق"
+
+#: .\dj_backup\models.py:181
+msgid "Unsuccessful"
+msgstr "ناموفق"
+
+#: .\dj_backup\views.py:86
+msgid "You should set file to backup"
+msgstr "شما باید فایل را برای بک آپ ارسال کنید"
+
+#: .\dj_backup\views.py:96
+msgid "Something went wrong in file object creation"
+msgstr "مشکلی هنگام ایجاد فایل ابجکت رخ داده است"
+
+#: .\dj_backup\views.py:103 .\dj_backup\views.py:135 .\dj_backup\views.py:214
+msgid "Please enter fields correctly"
+msgstr "لطفا فیلد هارا به درستی پر نمایید"
+
+#: .\dj_backup\views.py:107
+msgid "Backup file submited successfully"
+msgstr "بک اپ فایل با موفقیت ثبت شد"
+
+#: .\dj_backup\views.py:139
+msgid "Backup database submited successfully"
+msgstr "بک اپ دیتابیس با موفقیت ثبت شد"
+
+#: .\dj_backup\views.py:194
+msgid "Backup deleted successfully"
+msgstr "بک اپ با موفقیت حذف شد"
+
+#: .\dj_backup\views.py:222
+msgid "Backup updated successfully"
+msgstr "بک اپ با موفقیت بروزرسانی شد"
+
+#: .\dj_backup\views.py:235
+msgid "Field status is required"
+msgstr "فیلد وضعیت اجباری است"
+
+#: .\dj_backup\views.py:247
+msgid "Backup status changed to running"
+msgstr "بک اپ به حالت در حال اجرا در آمد"
+
+#: .\dj_backup\views.py:249
+msgid "Backup status changed to stopped"
+msgstr "بک اپ به حالت توقف در آمد"

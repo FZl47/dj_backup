@@ -7,16 +7,11 @@
     <list default="true" id="49de342e-06dd-4d83-be69-4b15b555c32e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/backup/db/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/backup/db/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/backup/db/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/backup/db/base.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dj_backup/core/mixins.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/mixins.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/storages/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/storages/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/storages/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/storages/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/tasks.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/management/commands/run-backup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/management/commands/run-backup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/backup/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/backup/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/base/base_template.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/base/base_template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/db/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/db/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/file/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/file/list.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -138,7 +133,8 @@
       <workItem from="1723609512482" duration="2607000" />
       <workItem from="1723682722033" duration="8883000" />
       <workItem from="1723776161610" duration="1742000" />
-      <workItem from="1723922118230" duration="7383000" />
+      <workItem from="1723922118230" duration="7524000" />
+      <workItem from="1723949406532" duration="2069000" />
     </task>
     <servers />
   </component>
