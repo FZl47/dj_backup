@@ -143,10 +143,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 Q_CLUSTER = {
     'name': 'django-q',
-    'workers': 4,
     'orm': 'default',
-    'retries': 20,
-    'timeout': 15
+    'retries': 3,
 }
 
 # DJ backup
@@ -177,6 +175,7 @@ DJ_BACKUP_CONFIG = {
         }
     }
 }
+
 
 LOCALE_PATHS = (
     BASE_DIR / 'dj_backup/locale',

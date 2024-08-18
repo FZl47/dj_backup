@@ -69,6 +69,7 @@ class ScheduleFileBackupTask(ScheduleBackupBaseTask):
         if backup_obj.schedule_task:
             if backup_obj.schedule_task.repeats == 0:
                 backup_obj.schedule_task.delete()
+                return
 
 
 class ScheduleDataBaseBackupTask(ScheduleBackupBaseTask):
@@ -107,3 +108,4 @@ class ScheduleDataBaseBackupTask(ScheduleBackupBaseTask):
         if backup_obj.schedule_task:
             if backup_obj.schedule_task.repeats == 0:
                 backup_obj.schedule_task.delete()
+                return
