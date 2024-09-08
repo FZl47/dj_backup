@@ -26,6 +26,7 @@ class BaseDB(BaseBackup):
         self.backup_obj = backup_obj
         if backup_obj:
             self.export_location = self._get_export_location()
+            self.normalized_export_location = self.normalize_location(self.export_location)
 
     def _get_export_location(self):
         temp_dir = settings.get_backup_temp_dir()
@@ -112,3 +113,8 @@ class BaseDB(BaseBackup):
         args = self.ADDITIONAL_ARGS_NAME
         r = [{'name': an, 'value': av} for an, av in args.items()]
         return r
+
+    def normalize_location(self, location):
+        # add dump location(To avoid errors, i put paths with spaces
+        # inside double quotes.)
+        return '"{}"'.format(location)

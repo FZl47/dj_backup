@@ -4,16 +4,10 @@
 import os
 from pathlib import Path
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-=e65traxe&q$)glc@3!ar9)cl_9z#*k^67k)=l7z3l0n(op%dc'
 
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -67,22 +61,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     },
-# }
-
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'test',
-    #     'USER': 'root',
-    #     'PASSWORD': '',
-    #     'HOST': '127.0.0.1',  # Or an IP Address that your DB is hosted on
-    #     'PORT': '3306',
-    # },
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
@@ -107,8 +86,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# Internationalization
-# https://docs.djangoproject.com/en/4.2/topics/i18n/
 
 LANGUAGE_CODE = 'fa-ir'
 
@@ -122,8 +99,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = 'static/'
 MEDIA_URL = 'media/'
@@ -136,8 +111,6 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'dj_backup/static/'),
 )
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -149,6 +122,17 @@ Q_CLUSTER = {
 
 # DJ backup
 DJ_BACKUP_CONFIG = {
+    'POSTGRESQL_DUMP_PATH': None,  # optional(If the postgresql dump file is not found, you can set it)
+    'MYSQL_DUMP_PATH': None,  # optional(If the mysql dump file is not found, you can set it)
+    'EXTERNAL_DATABASES': {
+        'external_db_1': {
+            'ENGINE': 'xxx',
+            'NAME': 'xxx',
+            'USER': 'xxx',
+            'PASSWORD': 'xxx',
+            'HOST': '127.0.0.1',  # Or an IP Address that your DB is hosted on
+        },
+    },
     'BASE_ROOT_DIRS': [
         BASE_DIR,
     ],

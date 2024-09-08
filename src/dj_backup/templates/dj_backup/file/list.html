@@ -60,7 +60,7 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        <div class="nk-file-actions">
+                                                        <div class="nk-file-actions d-none">
                                                             <a
                                                                     class="btn btn-sm btn-icon btn-trigger"><em
                                                                     class="icon ni ni-more-h"></em></a>
@@ -127,7 +127,7 @@
                                                                          data-size="{{ file.stat.st_size }}">{{ file.stat.st_size }}</div>
                                                                 </div>
                                                                 <div class="nk-file-actions">
-                                                                    <div class="dropdown">
+                                                                    <div class="dropdown d-none">
                                                                         <a href=""
                                                                            class="dropdown-toggle btn btn-sm btn-icon btn-trigger"
                                                                            data-bs-toggle="dropdown"><em
@@ -171,6 +171,10 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                            </div>
+                                                        {% empty %}
+                                                            <div class="text-center p-4">
+                                                                <h5 class="text-warning">فایلی یافت نشد</h5>
                                                             </div>
                                                         {% endfor %}
                                                         <!-- .nk-file -->

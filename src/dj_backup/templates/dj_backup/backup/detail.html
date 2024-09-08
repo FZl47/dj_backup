@@ -223,6 +223,22 @@
                                                         {% if backup.backup_type == 'database' %}
                                                             <div class="data-item">
                                                                 <div class="data-col">
+                                                                    <span class="data-label">نام دیتابیس</span>
+                                                                    <span class="data-value">
+                                                                        {{ backup.database }}
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                             <div class="data-item">
+                                                                <div class="data-col">
+                                                                    <span class="data-label">نوع دیتابیس</span>
+                                                                    <span class="data-value">
+                                                                        {{ backup.database_type }}
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="data-item">
+                                                                <div class="data-col">
                                                                     <span class="data-label">ارگومان های اضافه</span>
                                                                     <span class="data-value">
                                                                         {% for args in backup.get_additional_args %}

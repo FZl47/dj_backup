@@ -1,5 +1,7 @@
+import os
 import subprocess
-import MySQLdb as _MySQLdb
+import psycopg2
+import pathlib
 
 from django.utils.translation import gettext_lazy as _
 
@@ -9,27 +11,29 @@ from dj_backup import settings
 from .base import BaseDB
 
 
-class MysqlDB(BaseDB):
+class PostgresqlDB(BaseDB):
     CONFIG = {
         'NAME': None,
         'USER': None,
         'PASSWORD': None,
         'HOST': None,
-        'PORT': 3306,
+        'PORT': 5432,
     }
     ADDITIONAL_ARGS_NAME = {
         'only_data': _('Only data'),
         'only_structure': _('Only structure'),
-        'no_db': _('No database creation'),
+        'create_db': _('Create database'),
+        'ignore_if_exists': _('Ignore if data(table,schema,object or ..) is exists'),
     }
     ADDITIONAL_ARGS = {
-        'only_data': '--no-create-info',
-        'only_structure': '--no-data',
-        'no_db': '--no-create-db',
+        'only_data': '--data-only',
+        'only_structure': '--schema-only',
+        'create_db': '--create',
+        'ignore_if_exists': '--if-exists',
     }
-    NAME = 'mysql'
-    DUMP_PREFIX = 'mysqldump'
-    DUMP_PREFIX_WIN = 'mysqldump.exe'
+    NAME = 'postgresql'
+    DUMP_PREFIX = 'pg_dump'
+    DUMP_PREFIX_WIN = 'pg_dump.exe'
     _BASE_DIR = None
     _DB = None
 
@@ -39,12 +43,12 @@ class MysqlDB(BaseDB):
             return cls._DB
         c = cls.CONFIG
         try:
-            db = _MySQLdb.connect(host=c['HOST'], port=int(c['PORT']), user=c['USER'],
-                                  password=c['PASSWORD'], db=c['NAME'])
-        except _MySQLdb.Error as e:
-            msg = 'Mysql connection error. please check your config or service status. more info [%s]' % e
+            db = psycopg2.connect(host=c['HOST'], port=int(c['PORT']), user=c['USER'],
+                                  password=c['PASSWORD'], database=c['NAME'])
+        except psycopg2.Error as e:
+            msg = 'Postgresql connection error. please check your config or service status. more info [%s]' % e
             utils.log_event(msg, 'error', exc_info=True)
-            raise _MySQLdb.Error(msg)
+            raise psycopg2.Error(msg)
         cls._DB = db
         return cls._DB
 
@@ -54,23 +58,23 @@ class MysqlDB(BaseDB):
             cls._DB.close()
             cls._DB = None
 
-    def get_mysqldump_win(self):
+    def get_pg_dump_win(self):
         """
-            get mysqldump location in windows
+            get pg_dump location in windows
         """
 
-        def get_mysql_base_dir():
+        def get_postgresql_base_dir():
             if self._BASE_DIR:
                 return self._BASE_DIR
             cmd = """
-                SELECT @@GLOBAL.basedir;
+                SHOW data_directory;
             """
             db = self.connect()
             curs = db.cursor()
             try:
                 curs.execute(cmd)
             except db.Error:
-                msg = 'Variable `basedir` not found in mysql global variables'
+                msg = 'Variable `data_directory` not found in postgresql global variables'
                 utils.log_event(msg, 'error', exc_info=True)
                 raise
             base_dir = curs.fetchone()[0]
@@ -79,7 +83,8 @@ class MysqlDB(BaseDB):
             self._BASE_DIR = base_dir
             return self._BASE_DIR
 
-        base_dir = get_mysql_base_dir()
+        base_dir = pathlib.Path(get_postgresql_base_dir()).parent
+
         dump_path = utils.find_file(self.DUMP_PREFIX_WIN, base_dir)
         if not dump_path:
             msg = 'File `%s` not found in %s path' % (self.DUMP_PREFIX_WIN, base_dir)
@@ -88,11 +93,11 @@ class MysqlDB(BaseDB):
         return dump_path
 
     def get_dump_prefix(self):
-        dump_path = settings.get_config().get('MYSQL_DUMP_PATH', None)
+        dump_path = settings.get_config().get('POSTGRESQL_DUMP_PATH', None)
         if dump_path:
             return self.normalize_location(dump_path)
         if utils.get_os_name() == 'Windows':
-            return self.normalize_location(self.get_mysqldump_win())
+            return self.normalize_location(self.get_pg_dump_win())
         return self.normalize_location(self.DUMP_PREFIX)
 
     def prepare_cmd(self):
@@ -101,13 +106,14 @@ class MysqlDB(BaseDB):
         """
         c = self.CONFIG
 
-        CMD = f"{self.get_dump_prefix()} -P {c['PORT']} -h {c['HOST']} -u {c['USER']} "
+        CMD = f" {self.get_dump_prefix()} -p {c['PORT']} -h {c['HOST']} -U {c['USER']} "
 
+        # set password in environment
         password = c['PASSWORD']
         if password:
-            CMD += f" -p{password} "
+            os.putenv('PGPASSWORD', password)
 
-        CMD += f" --databases {c['NAME']} --result-file={self.normalized_export_location} "
+        CMD += f" -d {c['NAME']} -f {self.normalized_export_location} "
 
         self.CMD = CMD
 
@@ -134,3 +140,18 @@ class MysqlDB(BaseDB):
             msg = 'There is some problem in dump `%s` db' % self.__class__.__name__
             utils.log_event(msg, 'critical', exc_info=True)
         return exc_loc_compress
+
+#
+# db = PostgresqlDB()
+# db.set_config({
+#
+#     'ENGINE': 'postgresql',
+#     'NAME': 'postgres',
+#     'USER': 'postgres',
+#     'PASSWORD': 'admin',
+#     'HOST': '127.0.0.1',  # Or an IP Address that your DB is hosted on
+#
+# })
+# db.connect()
+# print(db.get_dump_prefix())
+# db.close()

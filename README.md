@@ -20,9 +20,9 @@
 
 #### Update TODO:
 
-[ ] add external databases
+[x] add external databases
 
-[ ] add postgresql db backup
+[x] add postgresql db backup
 
 [ ] add google cloud and aws S3 storages
 

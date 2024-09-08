@@ -22,7 +22,9 @@ class Settings:
 
     @classmethod
     def get_databases_config(cls):
-        databases_dict = django_settings.DATABASES
+        databases_dict = django_settings.DATABASES.copy()
+        external_databases_dict = cls.get_config().get('EXTERNAL_DATABASES', {})
+        databases_dict.update(external_databases_dict)
         return databases_dict
 
     @classmethod
@@ -42,6 +44,4 @@ class Settings:
     @classmethod
     def get_backup_temp_dir(cls):
         _default = django_settings.BASE_DIR / 'backup/temp'
-        return django_settings.DJ_BACKUP_CONFIG.get('BACKUP_TEMP_DIR', _default)\
-
-
+        return django_settings.DJ_BACKUP_CONFIG.get('BACKUP_TEMP_DIR', _default)

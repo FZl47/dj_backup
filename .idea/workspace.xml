@@ -6,8 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="49de342e-06dd-4d83-be69-4b15b555c32e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/tasks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/backup/db/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/backup/db/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/backup/db/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/backup/db/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/backup/db/mysql.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/backup/db/mysql.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/backup/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/backup/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/file/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/file/list.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +55,7 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PythonContentEntriesConfigurable&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
@@ -131,7 +138,10 @@
       <workItem from="1723776161610" duration="1742000" />
       <workItem from="1723922118230" duration="7524000" />
       <workItem from="1723949406532" duration="2766000" />
-      <workItem from="1724004463048" duration="2879000" />
+      <workItem from="1724004463048" duration="3812000" />
+      <workItem from="1724194136581" duration="338000" />
+      <workItem from="1725788945743" duration="15673000" />
+      <workItem from="1725817324018" duration="841000" />
     </task>
     <servers />
   </component>
