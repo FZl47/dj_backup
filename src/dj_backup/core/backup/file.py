@@ -17,7 +17,7 @@ class FileBackup(BaseBackup):
         files_obj = self.backup_obj.get_files()
         # create base dir(self backup direction)
         utils.get_or_create_dir(self.base_dir_name)
-        utils.log_event('Direction %s created' % self.base_dir_name)
+        utils.log_event('Directory %s created' % self.base_dir_name, 'debug')
         for file_obj in files_obj:
             file_obj.save_temp_compress(self.base_dir_name)
 
@@ -36,11 +36,11 @@ class FileBackup(BaseBackup):
         utils.log_event('Temp files created !', 'debug')
         return self._get_base_dir_compress()
 
-    def delete_temp(self):
+    def delete_raw_temp(self):
         # delete raw file
         b = self.base_dir_name
         try:
-            utils.delete_file(b)
+            utils.delete_item(b)
             utils.log_event('Temp file `%s` deleted successfully!' % b, 'debug')
         except OSError:
             utils.log_event('Error in delete temp file `%s` ' % b, 'warning', exc_info=True)

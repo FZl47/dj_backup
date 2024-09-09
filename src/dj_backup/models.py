@@ -193,7 +193,7 @@ class DJBackUpStorageResult(models.Model):
         if not self.temp_location:
             return
         try:
-            utils.delete_file(self.temp_location)
+            utils.delete_item(self.temp_location)
             utils.log_event('Temp file `%s` deleted successfully!' % self.temp_location, 'debug')
         except OSError:
             utils.log_event('Error in delete temp file `%s` ' % self.temp_location, 'warning', exc_info=True)

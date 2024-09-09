@@ -58,12 +58,14 @@ class ScheduleFileBackupTask(ScheduleBackupBaseTask):
         for storage_obj in storages:
             storage_class = storage_obj.storage_class
             storage_class(backup_obj, file_path).save()
-        # delete raw temp file
-        fb.delete_temp()
-        if not backup_obj.has_temp:
-            backup_obj.delete_temp_files()
+
         backup_obj.count_run += 1
         backup_obj.save()
+
+        # delete raw temp file
+        fb.delete_raw_temp()
+        if not backup_obj.has_temp:
+            backup_obj.delete_temp_files()
 
         # delete task when the count number reaches 0
         if backup_obj.schedule_task:
@@ -97,12 +99,14 @@ class ScheduleDataBaseBackupTask(ScheduleBackupBaseTask):
         for storage_obj in storages:
             storage_class = storage_obj.storage_class
             storage_class(backup_obj, file_path).save()
+
+        backup_obj.count_run += 1
+        backup_obj.save()
+
         # delete raw temp file
         db_instance.delete_dump_file()
         if not backup_obj.has_temp:
             backup_obj.delete_temp_files()
-        backup_obj.count_run += 1
-        backup_obj.save()
 
         # delete task when the count number reaches 0
         if backup_obj.schedule_task:

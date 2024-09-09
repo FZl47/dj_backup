@@ -74,7 +74,7 @@ class BaseDB(BaseBackup):
         exp_loc = self.export_location
 
         try:
-            utils.delete_file(exp_loc)
+            utils.delete_item(exp_loc)
             utils.log_event(
                 'Temp dump file `%s` from `%s` db deleted successfully!' % (exp_loc, self.__class__.__name__), 'debug')
         except OSError:

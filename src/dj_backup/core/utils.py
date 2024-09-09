@@ -68,7 +68,7 @@ def get_or_create_dir(item_path):
     return p.mkdir(exist_ok=True, parents=True)
 
 
-def delete_file(item_path):
+def delete_item(item_path):
     if is_dir(item_path):
         shutil.rmtree(item_path)
     else:
