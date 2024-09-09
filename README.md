@@ -33,3 +33,7 @@
 [ ] add schedule task for clear temp files
 
 [ ] add object logs
+
+[ ] use local file instead temp files if not available to download
+
+[ ] change structure load and initial storages
