@@ -1,5 +1,7 @@
 import abc
 
+from model_utils.managers import InheritanceManager
+
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
 from django.db import models
@@ -9,18 +11,7 @@ from dj_backup.core import storages, backup
 
 
 def get_backup_object(backup_id):
-    backup = None
-    try:
-        backup = DJDataBaseBackUp.objects.get(id=backup_id)
-    except DJDataBaseBackUp.DoesNotExist:
-        pass
-
-    if not backup:
-        try:
-            backup = DJFileBackUp.objects.get(id=backup_id)
-        except DJFileBackUp.DoesNotExist:
-            pass
-    return backup
+    return DJBackUpBase.objects.get_subclass(id=backup_id)
 
 
 class DJBackUpBase(models.Model):
@@ -45,8 +36,9 @@ class DJBackUpBase(models.Model):
     results = models.ManyToManyField('DJBackUpStorageResult', blank=True)
 
     class Meta:
-        abstract = True
         ordering = ('-id',)
+
+    objects = InheritanceManager()
 
     def __str__(self):
         return self.name
