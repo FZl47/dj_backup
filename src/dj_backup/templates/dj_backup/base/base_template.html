@@ -8,6 +8,7 @@
     <meta name="description" content="dj backup"/>
     <!-- Fav Icon  -->
     <link rel="shortcut icon" href="{% static 'dj_backup/assets/images/favicon.png' %}"/>
+    <link rel="icon" type="image/x-icon" href="{% static 'dj_backup/assets/images/favicon.png' %}">
     <!-- Page Title  -->
     <title>{% block Title %}{% endblock %}| dj-backup</title>
     <!-- StyleSheets  -->
@@ -34,7 +35,7 @@
 
     // active menu item
     try {
-        document.querySelectorAll(`a[href="${window.location.pathname}"]`).forEach(function (el){
+        document.querySelectorAll(`a[href="${window.location.pathname}"]`).forEach(function (el) {
             el.parentElement.classList.add('active')
         })
     } catch (e) {
