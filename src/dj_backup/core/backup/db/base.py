@@ -118,3 +118,6 @@ class BaseDB(BaseBackup):
         # add dump location(To avoid errors, i put paths with spaces
         # inside double quotes.)
         return '"{}"'.format(location)
+
+    def _get_backup(self):
+        return self.dump()
