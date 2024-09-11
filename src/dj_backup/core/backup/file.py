@@ -19,7 +19,7 @@ class FileBackup(BaseBackup):
         utils.get_or_create_dir(self.base_dir_name)
         utils.log_event('Directory %s created' % self.base_dir_name, 'debug')
         for file_obj in files_obj:
-            file_obj.save_temp_compress(self.base_dir_name)
+            file_obj.save_temp(self.base_dir_name)
 
     def save_temp(self):
         """
@@ -44,3 +44,6 @@ class FileBackup(BaseBackup):
             utils.log_event('Temp file `%s` deleted successfully!' % b, 'debug')
         except OSError:
             utils.log_event('Error in delete temp file `%s` ' % b, 'warning', exc_info=True)
+
+    def _get_backup(self):
+        return self.save_temp()
