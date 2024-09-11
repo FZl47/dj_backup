@@ -1,4 +1,5 @@
 import abc
+import time
 
 from django.db.models import ObjectDoesNotExist
 
@@ -10,6 +11,7 @@ class BaseStorageConnector(abc.ABC):
     STORAGE_NAME = None
     CONFIG = None
     _check_status = None
+    time_taken = 0
 
     def __init__(self, backup_obj=None, file_path=None):
         """
@@ -18,9 +20,17 @@ class BaseStorageConnector(abc.ABC):
         self.backup_obj = backup_obj
         self.file_path = file_path
 
-    @abc.abstractmethod
     def save(self):
-        raise NotImplementedError
+        # calc time taken
+        _st = time.time()
+        try:
+            self._save()
+            self.time_taken += time.time() - _st
+            output = utils.join_paths(self.CONFIG['OUT'], self.get_file_name())
+            self.save_result(output)
+        except Exception as e:
+            self.time_taken += time.time() - _st
+            self.save_fail_result(e)
 
     @classmethod
     def set_config(cls, config):
@@ -29,7 +39,7 @@ class BaseStorageConnector(abc.ABC):
                 config_val = config[ck]
             except KeyError:
                 if not cv:
-                    raise AttributeError('You should define field'
+                    raise AttributeError('You should set field'
                                          ' `%s` in `%s` '
                                          'storage config' % (ck, cls.STORAGE_NAME))
                 config_val = cv
@@ -128,6 +138,10 @@ class BaseStorageConnector(abc.ABC):
     def _upload(self, *args, **kwargs):
         pass
 
+    @abc.abstractmethod
+    def _save(self, *args, **kwargs):
+        pass
+
     @classmethod
     def get_available_of_space(cls):
         return None
@@ -158,6 +172,7 @@ class BaseStorageConnector(abc.ABC):
                 storage=st_obj,
                 backup_name=self.get_file_name(),
                 out=out,
+                time_taken=self.normalize_time_sec(self.time_taken),
                 temp_location=self.file_path,
                 size=self.get_file_size(),
             )
@@ -174,6 +189,7 @@ class BaseStorageConnector(abc.ABC):
                 storage=st_obj,
                 backup_name=self.get_file_name(),
                 size=self.get_file_size(),
+                time_taken=self.normalize_time_sec(self.time_taken),
                 temp_location=self.file_path,
                 description=str(exception)
             )
@@ -188,3 +204,6 @@ class BaseStorageConnector(abc.ABC):
     @classmethod
     def get_name(cls):
         return cls.STORAGE_NAME
+
+    def normalize_time_sec(self, time):
+        return float("%.2f" % time)

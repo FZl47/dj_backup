@@ -34,15 +34,12 @@ class DropBoxConnector(BaseStorageConnector):
         with open(self.file_path, 'rb') as file:
             dbx.files_upload(file.read(), output)
 
-    def save(self):
-        try:
-            self.check_before_save()
-            dbx = self.connect()
-            file_name = self.get_file_name()
-            output = utils.join_paths(self.CONFIG['OUT'], file_name)
-            self.upload(dbx, output)
-            self.close()
-        except Exception as e:
-            self.save_fail_result(e)
-        else:
-            self.save_result(output)
+    def _save(self):
+        self.check_before_save()
+        dbx = self.connect()
+        file_name = self.get_file_name()
+        output = utils.join_paths(self.CONFIG['OUT'], file_name)
+        self.upload(dbx, output)
+        self.close()
+
+

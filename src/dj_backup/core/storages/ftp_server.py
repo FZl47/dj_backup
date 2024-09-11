@@ -48,16 +48,12 @@ class FTPServerConnector(BaseStorageConnector):
             # upload
             ftp.storbinary(f'STOR {file_name}', file)
 
-    def save(self):
-        try:
-            self.check_before_save()
-            ftp = self.connect()
-            file_name = self.get_file_name()
-            base_output = self.CONFIG['OUT']
-            self.upload(ftp, base_output, file_name)
-            self.close()
-        except Exception as e:
-            self.save_fail_result(e)
-        else:
-            output = utils.join_paths(base_output, file_name)
-            self.save_result(output)
+    def _save(self):
+        self.check_before_save()
+        ftp = self.connect()
+        file_name = self.get_file_name()
+        base_output = self.CONFIG['OUT']
+        self.upload(ftp, base_output, file_name)
+        self.close()
+
+

@@ -28,12 +28,9 @@ class LocalStorageConnector(BaseStorageConnector):
         file_path = self.file_path
         utils.copy_item(file_path, out)
 
-    def save(self):
-        try:
-            self.check_before_save()
-            self.upload()
-        except Exception as e:
-            self.save_fail_result(e)
-        else:
-            out = self.CONFIG['OUT']
-            self.save_result(utils.join_paths(out, self.get_file_name()))
+    def _save(self):
+        self.check_before_save()
+        self.upload()
+
+
+
