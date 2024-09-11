@@ -145,13 +145,13 @@ DJ_BACKUP_CONFIG = {
             'HOST': 'xxx.xxx.xxx.xxx',
             'USERNAME': 'xxx',
             'PASSWORD': 'xxx',
-            'OUT': '/home/test_dj_backup/'
+            'OUT': '/home/dj_backup/'
         },
         'FTP_SERVER': {
             'HOST': "xxx.xxx.xxx.xxx",
             'USERNAME': "xxx",
             'PASSWORD': "xxx",
-            'OUT': '/test_dj_backup/'
+            'OUT': '/dj_backup/'
         },
         'DROPBOX': {
             'ACCESS_TOKEN': 'xxx-xxx-xxx-..',
