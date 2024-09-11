@@ -76,7 +76,10 @@ def delete_item(item_path):
 
 
 def copy_item(src, dest):
-    shutil.copy2(src, dest)
+    if is_dir(src):
+        shutil.copytree(src, dest, dirs_exist_ok=True)
+    else:
+        shutil.copy2(src, dest)
 
 
 def get_file_name(path):
