@@ -6,6 +6,8 @@ from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
 from django.db import models
 
+from django_q.models import Task
+
 from dj_backup.core import utils
 from dj_backup.core import storages, backup
 
@@ -32,6 +34,7 @@ class DJBackUpBase(models.Model):
     repeats = models.SmallIntegerField(default=0)
     count_run = models.PositiveIntegerField(default=0)
     has_temp = models.BooleanField(default=True)
+    has_running_task = models.BooleanField(default=False)
     storages = models.ManyToManyField('DJStorage', blank=True)
     results = models.ManyToManyField('DJBackUpStorageResult', blank=True)
 
@@ -95,6 +98,15 @@ class DJBackUpBase(models.Model):
 
     def get_absolute_url(self):
         return reverse_lazy('dj_backup:backup__detail', args=(self.id,))
+
+    def delete_tasks(self):
+        schedule_task = self.schedule_task
+        if schedule_task:
+            try:
+                Task.objects.get(id=schedule_task.task).delete()
+            except Task.DoesNotExist:
+                utils.log_event('Task not found id: `%s`' % schedule_task.task, 'warning')
+            schedule_task.delete()
 
 
 class DJFileBackUp(DJBackUpBase):
@@ -164,7 +176,12 @@ class DJFile(models.Model):
     def save_temp_compress(self, base_dir_name):
         dest = f'{base_dir_name}/file__{self.name}.zip'
         utils.zip_item(self.dir, dest)
-        utils.log_event('DJFile(`%s`) temp file `%s` created' % (self.name, dest))
+        utils.zip_item(self.dir, dest)
+        utils.log_event('DJFile `%s` temp file created in `%s`' % (self.name, dest), 'debug')
+
+    def save_temp(self, base_dir_name):
+        utils.copy_item(self.dir, base_dir_name)
+        utils.log_event('DJFile `%s` temp file created in `%s`' % (self.name, base_dir_name), 'debug')
 
 
 class DJBackUpStorageResult(models.Model):
@@ -175,10 +192,11 @@ class DJBackUpStorageResult(models.Model):
 
     status = models.CharField(max_length=12, choices=STATUS)
     storage = models.ForeignKey('DJStorage', on_delete=models.SET_NULL, null=True, blank=True)
-    backup_name = models.CharField(max_length=300)
+    backup_name = models.TextField()
     out = models.TextField(null=True, blank=True)
     temp_location = models.TextField(null=True, blank=True)
-    size = models.PositiveBigIntegerField()  # (Bytes)
+    size = models.PositiveIntegerField()  # (Bytes)
+    time_taken = models.FloatField(default=0)  # (seconds)
     description = models.TextField(null=True, blank=True)
 
     created_at = models.DateTimeField(auto_now_add=True)
@@ -202,15 +220,23 @@ class DJBackUpStorageResult(models.Model):
         return self.created_at.strftime('%Y-%m-%d %H:%M')
 
     def get_download_link(self):
-        if self.has_temp_file:
+        if self.get_local_file_path():
             return reverse_lazy('dj_backup:backup__result_download', args=(self.id,))
         return None
 
-    @property
-    def has_temp_file(self):
+    def get_local_file_path(self):
+        if self.status != 'successful':
+            return
         if self.temp_location and utils.file_is_exists(self.temp_location):
-            return True
-        return False
+            return self.temp_location
+        storage = getattr(self, 'storage', None)
+        if not storage:
+            return
+        if not storage.name == 'LOCAL':
+            return
+        if utils.file_is_exists(self.out):
+            return self.out
+        return None
 
 
 class DJStorage(models.Model):
