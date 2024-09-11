@@ -64,6 +64,7 @@ class FileList(mixins.DJViewMixin, TemplateView):
             dir_location = base_dirs
 
         files_iter = utils.get_files_dir(*dir_location)
+
         context.update({
             'files_iter': files_iter,
             'storages': models.DJStorage.objects.all()
@@ -235,9 +236,8 @@ class BackupManageRunningStatus(mixins.DJViewMixin, View):
             messages.error(request, _('Field status is required'))
             return redirect(backup.get_absolute_url())
 
-        if backup.schedule_task:
-            # delete schedule task
-            backup.schedule_task.delete()
+        # delete tasks
+        backup.delete_tasks()
 
         if status == 'start':
             if backup.backup_type == 'file':
@@ -257,9 +257,10 @@ class DJBackupResultDownload(mixins.DJViewMixin, View):
             br = models.DJBackUpStorageResult.objects.get(id=backup_result_id)
         except (models.DJBackUpStorageResult.DoesNotExist, models.DJBackUpStorageResult.MultipleObjectsReturned):
             raise Http404
-        if not br.has_temp_file:
+        local_file = br.get_local_file_path()
+        if not local_file:
             raise Http404
-        with open(br.temp_location, 'rb') as file:
+        with open(local_file, 'rb') as file:
             response = HttpResponse(file.read(), content_type='application/octet-stream')
             response['Content-Disposition'] = f'attachment; filename={br.backup_name}'
             return response
