@@ -45,22 +45,41 @@ class ScheduleFileBackupTask(ScheduleBackupBaseTask):
         backup_obj_id = kwargs['backup_obj_id']
         try:
             backup_obj = models.DJFileBackUp.objects.get(id=backup_obj_id)
+            if backup_obj.has_running_task:
+                utils.log_event('Backup(`%s`) has currently running task' % backup_obj_id, 'warning', exc_info=True)
+                return
         except models.DJFileBackUp.DoesNotExist:
             utils.log_event('DJFileBackup object not found. object id `%s`' % backup_obj_id, 'error', exc_info=True)
             return
 
-        fb = FileBackup(backup_obj)
-        try:
-            file_path = fb.save_temp()
-        except Exception:
-            return
-        storages = backup_obj.get_storages()
-        for storage_obj in storages:
-            storage_class = storage_obj.storage_class
-            storage_class(backup_obj, file_path).save()
+        """
+            To solve the problem of interference between two or more tasks, the `has_running_task` variable is used 
+            so that it does not interfere when a task takes longer than the time of the next task.
+        """
+        backup_obj.has_running_task = True
+        backup_obj.save(update_fields=['has_running_task'])
 
-        backup_obj.count_run += 1
-        backup_obj.save()
+        fb = FileBackup(backup_obj)
+
+        def handler():
+            """It can take a long time"""
+            file_path = fb.get_backup()
+            storages = backup_obj.get_storages()
+            for storage_obj in storages:
+                storage = storage_obj.storage_class(backup_obj, file_path)
+                # add time taken backup to storage
+                storage.time_taken += fb.time_taken
+                storage.save()
+            """End"""
+
+        try:
+            handler()
+        except Exception:
+            pass
+        finally:
+            backup_obj.count_run += 1
+            backup_obj.has_running_task = False
+            backup_obj.save()
 
         # delete raw temp file
         fb.delete_raw_temp()
@@ -82,6 +101,9 @@ class ScheduleDataBaseBackupTask(ScheduleBackupBaseTask):
         backup_obj_id = kwargs['backup_obj_id']
         try:
             backup_obj = models.DJDataBaseBackUp.objects.get(id=backup_obj_id)
+            if backup_obj.has_running_task:
+                utils.log_event('Backup(`%s`) has currently running task' % backup_obj_id, 'warning', exc_info=True)
+                return
         except models.DJDataBaseBackUp.DoesNotExist:
             utils.log_event('DJDataBaseBackUp object not found. object id `%s`' % backup_obj_id, 'error', exc_info=True)
             return
@@ -90,18 +112,33 @@ class ScheduleDataBaseBackupTask(ScheduleBackupBaseTask):
         if not db_instance:
             return
 
-        # create export dump file
-        try:
-            file_path = db_instance.dump()
-        except Exception:
-            return
-        storages = backup_obj.get_storages()
-        for storage_obj in storages:
-            storage_class = storage_obj.storage_class
-            storage_class(backup_obj, file_path).save()
+        """
+            To solve the problem of interference between two or more tasks, the `has_running_task` variable is used 
+            so that it does not interfere when a task takes longer than the time of the next task.
+        """
+        backup_obj.has_running_task = True
+        backup_obj.save(update_fields=['has_running_task'])
 
-        backup_obj.count_run += 1
-        backup_obj.save()
+        def handler():
+            """It can take a long time"""
+            # create export dump file
+            file_path = db_instance.get_backup()
+            storages = backup_obj.get_storages()
+            for storage_obj in storages:
+                storage = storage_obj.storage_class(backup_obj, file_path)
+                # add time taken backup to storage
+                storage.time_taken += db_instance.time_taken
+                storage.save()
+            """End"""
+
+        try:
+            handler()
+        except Exception:
+            pass
+        finally:
+            backup_obj.count_run += 1
+            backup_obj.has_running_task = False
+            backup_obj.save()
 
         # delete raw temp file
         db_instance.delete_dump_file()
