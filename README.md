@@ -34,6 +34,14 @@
 
 [ ] add object logs
 
-[ ] use local file instead temp files if not available to download
+[x] use local file instead temp files if not available to download
 
-[ ] change structure load and initial storages
+[ ] * change structure load and initial storages
+
+[ ] prevent backup dirs in file list(loop backup)
+
+[x] add time taken to generate and store backup
+
+[ ] * use pure schedule library or apscheduler or etc. instead django_q(has problems)
+
+[ ] refactor storages exception level
