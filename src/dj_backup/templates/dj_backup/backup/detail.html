@@ -229,7 +229,7 @@
                                                                     </span>
                                                                 </div>
                                                             </div>
-                                                             <div class="data-item">
+                                                            <div class="data-item">
                                                                 <div class="data-col">
                                                                     <span class="data-label">نوع دیتابیس</span>
                                                                     <span class="data-value">
@@ -245,6 +245,19 @@
                                                                             <span class="badge badge-dim bg-info">{{ args }}</span>
                                                                         {% empty %}
                                                                             <em class="ni ni-cross text-warning"></em>
+                                                                        {% endfor %}
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                            {% else %}
+                                                            <div class="data-item">
+                                                                <div class="data-col">
+                                                                    <span class="data-label">فایل ها</span>
+                                                                    <span class="data-value">
+                                                                        {% for file in backup.get_files %}
+                                                                            <span class="badge badge-dim bg-info m-1" style="white-space: normal!important;">
+                                                                                {{ file.dir }}
+                                                                            </span>
                                                                         {% endfor %}
                                                                     </span>
                                                                 </div>
@@ -436,6 +449,13 @@
                                 <div class="nk-file-details-col">حجم</div>
                                 <div class="nk-file-details-col">
                                     <span class="file-size-convert" data-size="{{ result.size }}"></span>
+                                </div>
+                            </div>
+                            <div class="nk-file-details-row">
+                                <div class="nk-file-details-col">زمان صرف شده</div>
+                                <div class="nk-file-details-col">
+                                    <span>{{ result.time_taken }}</span>
+                                    ثانیه
                                 </div>
                             </div>
                             <div class="nk-file-details-row">
