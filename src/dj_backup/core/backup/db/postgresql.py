@@ -141,17 +141,4 @@ class PostgresqlDB(BaseDB):
             utils.log_event(msg, 'critical', exc_info=True)
         return exc_loc_compress
 
-#
-# db = PostgresqlDB()
-# db.set_config({
-#
-#     'ENGINE': 'postgresql',
-#     'NAME': 'postgres',
-#     'USER': 'postgres',
-#     'PASSWORD': 'admin',
-#     'HOST': '127.0.0.1',  # Or an IP Address that your DB is hosted on
-#
-# })
-# db.connect()
-# print(db.get_dump_prefix())
-# db.close()
+

@@ -8,12 +8,19 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/backup/db/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/backup/db/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/backup/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/backup/base.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dj_backup/core/backup/db/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/backup/db/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/backup/db/mysql.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/backup/db/mysql.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/backup/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/backup/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/file/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/file/list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/backup/db/postgresql.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/backup/db/postgresql.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/backup/file.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/backup/file.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/storages/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/storages/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/storages/drop_box.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/storages/drop_box.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/storages/ftp_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/storages/ftp_server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/storages/local.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/storages/local.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/storages/sftp_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/storages/sftp_server.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/tasks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/migrations/0001_initial.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +57,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;F:/Project/dj_backup/src/dj_backup/static&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/Project/dj_backup/src/dj_backup/static/dj_backup/assets/images&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -62,11 +69,14 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\Project\dj_backup\src\dj_backup\static\dj_backup\assets\images" />
+      <recent name="F:\Project\dj_backup\src\static\admin\img" />
       <recent name="F:\Project\dj_backup\src\dj_backup\static" />
       <recent name="F:\Project\dj_backup\src\dj_backup\templates\dj_backup\backup" />
       <recent name="F:\Project\dj_backup\src\dj_backup\templates\dj_backup\db" />
-      <recent name="F:\Project\dj_backup\src\dj_backup\core\backup\db" />
-      <recent name="F:\Project\dj_backup\src\dj_backup\core" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\Project\dj_backup\src\dj_backup\static\dj_backup\assets\images" />
     </key>
   </component>
   <component name="RunManager">
@@ -141,7 +151,14 @@
       <workItem from="1724004463048" duration="3812000" />
       <workItem from="1724194136581" duration="338000" />
       <workItem from="1725788945743" duration="15673000" />
-      <workItem from="1725817324018" duration="841000" />
+      <workItem from="1725817324018" duration="4195000" />
+      <workItem from="1725867994541" duration="4131000" />
+      <workItem from="1725890705194" duration="3013000" />
+      <workItem from="1725896781655" duration="1094000" />
+      <workItem from="1725974752976" duration="16348000" />
+      <workItem from="1726057810718" duration="2334000" />
+      <workItem from="1726069288759" duration="183000" />
+      <workItem from="1726070519174" duration="9357000" />
     </task>
     <servers />
   </component>
