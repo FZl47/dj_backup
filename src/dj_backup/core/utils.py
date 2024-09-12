@@ -52,7 +52,7 @@ def zip_directory(directory, zip_name):
 
 
 def zip_file(file_path, zip_name):
-    with zipfile.ZipFile(zip_name, 'w') as zipf:
+    with zipfile.ZipFile(zip_name, 'w', zipfile.ZIP_DEFLATED) as zipf:
         zipf.write(file_path, arcname=os.path.basename(file_path))
 
 
