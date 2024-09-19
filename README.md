@@ -49,7 +49,17 @@ LOCALE_PATHS = (
 )
 ```
 
-### 5. set dj_backup config to django settings
+5. dj_backup urls to django urls
+
+```python
+urlpatterns = [
+    ...
+    path('dj-backup/', include('dj_backup.urls', namespace='dj_backup')),
+    ...
+]
+```
+
+### 6. set dj_backup config to django settings
 ```python
     DJ_BACKUP_CONFIG = {
     # optional (if dj_backup cant find `pg_dump` file then you must fill this
@@ -100,7 +110,7 @@ LOCALE_PATHS = (
 }
 
 ```
-### 6. migrate & collect static files
+### 7. migrate & collect static files
 ```python
     python manage.py migrate
 ```
@@ -108,10 +118,23 @@ LOCALE_PATHS = (
     python manage.py collectstatic
 ```
 
-### 7. run backup!
+### 8. run backup!
 ```python
     python manage.py run-backup
 ```
+
+### 9. Dashboard
+#### now you can access to `dj_backup` dashboard
+```djangourlpath
+    127.0.0.1:8000/dj-backup/
+```
+OR 
+```djangourlpath
+    xxx.xxx:xxxx/dj-backup/  
+```
+    
+
+
 
 ## NOTE:
     If you need any of the storages, you must remove that configuration
