@@ -137,7 +137,7 @@ OR
 
 
 ## NOTE:
-    If you need any of the storages, you must remove that configuration
+    If you dont need any of the storages, you must remove that configuration
     because you get an error if it cant be connected
 
 
