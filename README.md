@@ -100,9 +100,12 @@ LOCALE_PATHS = (
 }
 
 ```
-### 6. migrate
+### 6. migrate & collect static files
 ```python
     python manage.py migrate
+```
+```python
+    python manage.py collectstatic
 ```
 
 ### 7. run backup!
