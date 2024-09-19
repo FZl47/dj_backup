@@ -53,9 +53,9 @@ LOCALE_PATHS = (
 ```python
     DJ_BACKUP_CONFIG = {
     # optional (if dj_backup cant find `pg_dump` file then you must fill this
-    'POSTGRESQL_DUMP_PATH': r'C:\Program Files\PostgreSQL\16\bin\pg_dump.exe',
+    'POSTGRESQL_DUMP_PATH': None,
     # optional (if dj_backup cant find `mysqldump` file then you must fill this
-    'MYSQL_DUMP_PATH': r'C:\Program Files\Mysql\mysqldump.exe',
+    'MYSQL_DUMP_PATH': None,
     # if you want backup external databases you can set this config
     # By default local databases are accessible and can be backed up
     'EXTERNAL_DATABASES': {
