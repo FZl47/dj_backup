@@ -49,5 +49,3 @@ class SFTPServerConnector(BaseStorageConnector):
         output = utils.join_paths(self.CONFIG['OUT'], file_name)
         self.upload(sftp, output)
         self.close()
-
-

@@ -86,7 +86,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 LANGUAGE_CODE = 'fa-ir'
 
 LANGUAGES = (
@@ -99,7 +98,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 STATIC_URL = 'static/'
 MEDIA_URL = 'media/'
 
@@ -111,7 +109,6 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'dj_backup/static/'),
 )
 
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 Q_CLUSTER = {
@@ -121,17 +118,62 @@ Q_CLUSTER = {
 }
 
 # DJ backup
+# DJ_BACKUP_CONFIG = {
+#     'POSTGRESQL_DUMP_PATH': None,  # optional(If the postgresql dump file is not found, you can set it)
+#     'MYSQL_DUMP_PATH': None,  # optional(If the mysql dump file is not found, you can set it)
+#     'EXTERNAL_DATABASES': {
+#         'external_db_1': {
+#             'ENGINE': 'xxx',
+#             'NAME': 'xxx',
+#             'USER': 'xxx',
+#             'PASSWORD': 'xxx',
+#             'HOST': '127.0.0.1',  # Or an IP Address that your DB is hosted on
+#         },
+#     },
+#     'BASE_ROOT_DIRS': [
+#         BASE_DIR,
+#     ],
+#     'BACKUP_TEMP_DIR': BASE_DIR / 'backup/temp',
+#     'STORAGES': {
+#         'LOCAL': {
+#             'OUT': BASE_DIR / 'backup/result'
+#         },
+#         'SFTP_SERVER': {
+#             'HOST': 'xxx.xxx.xxx.xxx',
+#             'USERNAME': 'xxx',
+#             'PASSWORD': 'xxx',
+#             'OUT': '/home/test_dj_backup/'
+#         },
+#         'FTP_SERVER': {
+#             'HOST': "xxx.xxx.xxx.xxx",
+#             'USERNAME': "xxx",
+#             'PASSWORD': "xxx",
+#             'OUT': '/test_dj_backup/'
+#         },
+#         'DROPBOX': {
+#             'ACCESS_TOKEN': 'xxx-xxx-xxx-..',
+#             'OUT': '/dj_backup/'
+#         }
+#     }
+# }
+
 DJ_BACKUP_CONFIG = {
-    'POSTGRESQL_DUMP_PATH': None,  # optional(If the postgresql dump file is not found, you can set it)
-    'MYSQL_DUMP_PATH': None,  # optional(If the mysql dump file is not found, you can set it)
+    # 'POSTGRESQL_DUMP_PATH': r'C:\Program Files\PostgreSQL\16\bin\pg_dump.exe',
     'EXTERNAL_DATABASES': {
-        'external_db_1': {
-            'ENGINE': 'xxx',
-            'NAME': 'xxx',
-            'USER': 'xxx',
-            'PASSWORD': 'xxx',
-            'HOST': '127.0.0.1',  # Or an IP Address that your DB is hosted on
-        },
+        # 'default2': {
+        #     'ENGINE': 'postgresql',
+        #     'NAME': 'test',
+        #     'USER': 'postgres',
+        #     'PASSWORD': 'admin',
+        #     'HOST': '127.0.0.1',  # Or an IP Address that your DB is hosted on
+        # },
+        # 'default3': {
+        #     'ENGINE': 'mysql',
+        #     'NAME': 'test',
+        #     'USER': 'root',
+        #     'PASSWORD': '',
+        #     'HOST': '127.0.0.1',  # Or an IP Address that your DB is hosted on
+        # },
     },
     'BASE_ROOT_DIRS': [
         BASE_DIR,
@@ -141,25 +183,35 @@ DJ_BACKUP_CONFIG = {
         'LOCAL': {
             'OUT': BASE_DIR / 'backup/result'
         },
-        'SFTP_SERVER': {
-            'HOST': 'xxx.xxx.xxx.xxx',
-            'USERNAME': 'xxx',
-            'PASSWORD': 'xxx',
-            'OUT': '/home/dj_backup/'
-        },
-        'FTP_SERVER': {
-            'HOST': "xxx.xxx.xxx.xxx",
-            'USERNAME': "xxx",
-            'PASSWORD': "xxx",
-            'OUT': '/dj_backup/'
-        },
-        'DROPBOX': {
-            'ACCESS_TOKEN': 'xxx-xxx-xxx-..',
-            'OUT': '/dj_backup/'
+        'TELEGRAM_BOT': {
+            'BOT_TOKEN': '7829547114:AAG67YnscuYDnG7pkwU9v_yiiwbSe9c6tIE',
+            'CHAT_ID': '-1002319319898'
         }
+        # 'SFTP_SERVER': {
+        #     'HOST': '78.39.57.149',
+        #     'USERNAME': 'root',
+        #     'PASSWORD': 'FazelMomeni',
+        #     'OUT': '/root/projects/dj_backup_result_backup'
+        # },
+        # 'FTP_SERVER': {
+        #     'HOST': "shahin.mrservers.net",
+        #     'USERNAME': "dj_backup@farhikhteganmes.ir",
+        #     'PASSWORD': "W@Cr&dcGf-3Z",
+        #     'OUT': 'backups'
+        # },
+        # 'DROPBOX': {
+        #     'ACCESS_TOKEN': '',
+        #     'OUT': '/dj_backup/'
+        # }
+        # 'GOOGLE_CLOUD_STORAGE': {
+        #     'HOST': '',
+        #     'PORT': 22,
+        #     'USERNAME': '',
+        #     'PASSWORD': '',
+        #     'BUCKET': ''
+        # }
     }
 }
-
 
 LOCALE_PATHS = (
     BASE_DIR / 'dj_backup/locale',

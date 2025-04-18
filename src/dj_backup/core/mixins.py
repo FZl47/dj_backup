@@ -1,6 +1,8 @@
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import redirect, reverse
 
+from dj_backup.core.storages import load_storage
+
 
 class SuperUserRequiredMixin:
     auth_redirect = False
@@ -14,4 +16,8 @@ class SuperUserRequiredMixin:
 
 
 class DJViewMixin(SuperUserRequiredMixin):
-    pass
+
+    def dispatch(self, request, *args, **kwargs):
+        # load storages
+        load_storage()
+        return super().dispatch(request, *args, **kwargs)

@@ -20,7 +20,7 @@ from dj_backup import settings
 class Login(RedirectView):
 
     def get_redirect_url(self, *args, **kwargs):
-        return reverse_lazy('admin:index')
+        return reverse_lazy('dj_backup:dashboard__index')
 
 
 class Logout(View):

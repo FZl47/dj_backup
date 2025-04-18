@@ -6,9 +6,9 @@ import random
 import string
 import shutil
 import platform
+import pickle
 
 from django.utils import timezone
-from dj_backup import settings
 
 plt = platform.system()
 _logger = logging.getLogger()
@@ -120,3 +120,5 @@ def log_event(msg, level='info', exc_info=False, **kwargs):
         'CRITICAL': 50,
     }
     logging.log(levels[level], msg=msg, exc_info=exc_info, **kwargs)
+
+

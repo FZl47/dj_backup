@@ -151,7 +151,7 @@ class BaseStorageConnector(abc.ABC):
             return utils.get_file_size(self.file_path)
         except OSError:
             utils.log_event('File `%s` does not exist or is inaccessible' % self.file_path, 'warning', exc_info=True)
-            return 0
+            return -1
 
     def get_file_name(self):
         return utils.get_file_name(self.file_path)
@@ -167,36 +167,38 @@ class BaseStorageConnector(abc.ABC):
     def save_result(self, out):
         try:
             st_obj = self.get_storage_object()
-            result = models.DJBackUpStorageResult.objects.create(
-                status='successful',
-                storage=st_obj,
-                backup_name=self.get_file_name(),
-                out=out,
-                time_taken=self.normalize_time_sec(self.time_taken),
-                temp_location=self.file_path,
-                size=self.get_file_size(),
-            )
-            self.backup_obj.results.add(result)
-            return result
         except ObjectDoesNotExist:
-            pass
+            return None
+
+        result = models.DJBackUpStorageResult.objects.create(
+            status='successful',
+            storage=st_obj,
+            backup_name=self.get_file_name(),
+            out=out,
+            time_taken=self.normalize_time_sec(self.time_taken),
+            temp_location=self.file_path,
+            size=self.get_file_size(),
+        )
+        self.backup_obj.results.add(result)
+        return result
 
     def save_fail_result(self, exception):
         try:
             st_obj = self.get_storage_object()
-            result = models.DJBackUpStorageResult.objects.create(
-                status='unsuccessful',
-                storage=st_obj,
-                backup_name=self.get_file_name(),
-                size=self.get_file_size(),
-                time_taken=self.normalize_time_sec(self.time_taken),
-                temp_location=self.file_path,
-                description=str(exception)
-            )
-            self.backup_obj.results.add(result)
-            return result
         except ObjectDoesNotExist:
-            pass
+            return None
+
+        result = models.DJBackUpStorageResult.objects.create(
+            status='unsuccessful',
+            storage=st_obj,
+            backup_name=self.get_file_name(),
+            size=self.get_file_size(),
+            time_taken=self.normalize_time_sec(self.time_taken),
+            temp_location=self.file_path,
+            description=str(exception)
+        )
+        self.backup_obj.results.add(result)
+        return result
 
     def __str__(self):
         return self.STORAGE_NAME

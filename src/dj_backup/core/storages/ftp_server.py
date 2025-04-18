@@ -1,7 +1,5 @@
 import ftplib
 
-from dj_backup.core import utils
-
 from .base import BaseStorageConnector
 
 

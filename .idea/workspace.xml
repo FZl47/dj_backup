@@ -8,19 +8,15 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/backup/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/backup/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/backup/db/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/backup/db/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/backup/db/postgresql.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/backup/db/postgresql.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/backup/file.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/backup/file.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/mixins.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/mixins.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/storages/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/storages/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dj_backup/core/storages/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/storages/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/storages/drop_box.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/storages/drop_box.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dj_backup/core/storages/ftp_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/storages/ftp_server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/storages/local.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/storages/local.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dj_backup/core/storages/sftp_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/storages/sftp_server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/tasks.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dj_backup/core/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/migrations/0001_initial.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/migrations/0001_initial.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/management/commands/run-backup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/management/commands/run-backup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +53,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;F:/Project/dj_backup/src/dj_backup/static/dj_backup/assets/images&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/Project-Company/Smarten/gold_gallery&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -158,7 +154,24 @@
       <workItem from="1725974752976" duration="16348000" />
       <workItem from="1726057810718" duration="2334000" />
       <workItem from="1726069288759" duration="183000" />
-      <workItem from="1726070519174" duration="9357000" />
+      <workItem from="1726070519174" duration="9784000" />
+      <workItem from="1726085685493" duration="86000" />
+      <workItem from="1726145971456" duration="117000" />
+      <workItem from="1726148363608" duration="426000" />
+      <workItem from="1726152678229" duration="586000" />
+      <workItem from="1726155471311" duration="1259000" />
+      <workItem from="1726307885621" duration="2270000" />
+      <workItem from="1726320237550" duration="1287000" />
+      <workItem from="1726754576719" duration="1799000" />
+      <workItem from="1726756845060" duration="362000" />
+      <workItem from="1726762233483" duration="797000" />
+      <workItem from="1741503159435" duration="2365000" />
+      <workItem from="1741593403069" duration="1838000" />
+      <workItem from="1741841216246" duration="502000" />
+      <workItem from="1742630249724" duration="1294000" />
+      <workItem from="1743405115699" duration="580000" />
+      <workItem from="1743672374451" duration="947000" />
+      <workItem from="1744989173382" duration="12689000" />
     </task>
     <servers />
   </component>
