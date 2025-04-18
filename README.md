@@ -4,8 +4,8 @@
 
     DJ Backup is a Django app that provides the capability to back up your files and databases.
 
-    
 ##### supported databases
+
 - mysql
 - postgres
 - sqlite
@@ -45,7 +45,7 @@ STATICFILES_DIRS = (
 ```python
 LOCALE_PATHS = (
     ...
-    BASE_DIR / 'dj_backup/locale',
+    BASE_DIR/ 'dj_backup/locale',
 )
 ```
 
@@ -60,6 +60,7 @@ urlpatterns = [
 ```
 
 ### 6. set dj_backup config to django settings
+
 ```python
     DJ_BACKUP_CONFIG = {
     # optional (if dj_backup cant find `pg_dump` file then you must fill this
@@ -110,37 +111,47 @@ urlpatterns = [
 }
 
 ```
+
 ### 7. migrate & collect static files
+
 ```python
-    python manage.py migrate
+    python
+manage.py
+migrate
 ```
+
 ```python
-    python manage.py collectstatic
+    python
+manage.py
+collectstatic
 ```
 
 ### 8. run backup!
+
 ```python
-    python manage.py run-backup
+    python
+manage.py
+run - backup
 ```
 
 ### 9. Dashboard
+
 #### now you can access to `dj_backup` dashboard
+
 ```djangourlpath
     127.0.0.1:8000/dj-backup/
 ```
-OR 
+
+OR
+
 ```djangourlpath
     xxx.xxx:xxxx/dj-backup/  
 ```
-    
-
-
 
 ## NOTE:
+
     If you dont need any of the storages, you must remove that configuration
     because you get an error if it cant be connected
-
-
 
 ### TODO:
 
@@ -170,7 +181,7 @@ OR
 
 [ ] add notification(email)
 
-[ ] add storages free space
+[/] add storages free space
 
 [ ] add schedule task for clear temp files
 
@@ -178,12 +189,14 @@ OR
 
 [x] use local file instead temp files if not available to download
 
-[ ] * change structure load and initial storages
-
-[ ] prevent backup dirs in file list(loop backup)
+[x] * change structure load and initial storages
 
 [x] add time taken to generate and store backup
 
 [ ] * use pure schedule library or apscheduler or etc. instead django_q(has problems)
 
 [ ] refactor storages exception level
+
+[ ] add password for backups
+
+[ ] add telegram storage
