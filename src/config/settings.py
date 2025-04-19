@@ -158,7 +158,13 @@ Q_CLUSTER = {
 # }
 
 DJ_BACKUP_CONFIG = {
-    # 'POSTGRESQL_DUMP_PATH': r'C:\Program Files\PostgreSQL\16\bin\pg_dump.exe',
+    # 'POSTGRESQL_DUMP_PATH': None,  # optional(If the postgresql dump file is not found, you can set it)
+    # 'MYSQL_DUMP_PATH': None,  # optional(If the mysql dump file is not found, you can set it)
+    'NOTIFICATIONS': {
+        'EMAIL': {
+            'LEVEL': 'ERROR'
+        },
+    },
     'EXTERNAL_DATABASES': {
         # 'default2': {
         #     'ENGINE': 'postgresql',
