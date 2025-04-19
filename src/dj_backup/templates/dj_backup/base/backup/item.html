@@ -17,6 +17,8 @@
                     <em class="ni ni-google-drive"></em>
                 {% elif storage.name == 'AWS_S3' %}
                     <em class="ni ni-amazon"></em>
+                {% elif storage.name == 'TELEGRAM_BOT' %}
+                    <em class="ni ni-telegram"></em>
                 {% endif %}
             {% empty %}
                 -
@@ -40,8 +42,8 @@
             <span>زمانبندی</span>
             <span>
                 هر
-                {{ backup.unit }}
                 {{ backup.interval }}
+                {{ backup.unit_label }}
             </span>
         </div>
     </div>

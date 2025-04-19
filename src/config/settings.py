@@ -160,11 +160,6 @@ Q_CLUSTER = {
 DJ_BACKUP_CONFIG = {
     # 'POSTGRESQL_DUMP_PATH': None,  # optional(If the postgresql dump file is not found, you can set it)
     # 'MYSQL_DUMP_PATH': None,  # optional(If the mysql dump file is not found, you can set it)
-    'NOTIFICATIONS': {
-        'EMAIL': {
-            'LEVEL': 'ERROR'
-        },
-    },
     'EXTERNAL_DATABASES': {
         # 'default2': {
         #     'ENGINE': 'postgresql',
@@ -190,8 +185,8 @@ DJ_BACKUP_CONFIG = {
             'OUT': BASE_DIR / 'backup/result'
         },
         'TELEGRAM_BOT': {
-            'BOT_TOKEN': '7829547114:AAG67YnscuYDnG7pkwU9v_yiiwbSe9c6tIE',
-            'CHAT_ID': '-1002319319898'
+            'BOT_TOKEN': 'xxx',
+            'CHAT_ID': 'xxx'
         }
         # 'SFTP_SERVER': {
         #     'HOST': '78.39.57.149',
@@ -241,3 +236,5 @@ LOGGING = {
         },
     },
 }
+
+

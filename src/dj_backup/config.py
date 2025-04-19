@@ -6,6 +6,12 @@ class Settings:
     def __init__(self):
         self._check_config()
 
+    @property
+    def is_email_configured(self):
+        if django_settings.EMAIL_HOST_USER and django_settings.EMAIL_HOST_PASSWORD:
+            return True
+        return False
+
     @classmethod
     def _check_config(cls):
         # check config(in django settings)

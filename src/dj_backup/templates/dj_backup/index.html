@@ -71,11 +71,11 @@
                                             <div class="toggle-expand-content expanded" data-content="quick-access">
                                                 <div class="nk-files nk-files-view-grid text-center d-block">
                                                     <div class="nk-files-list text-center d-block">
-                                                        {% for backup in file_backups|slice:':8' %}
+                                                        {% for backup in file_backups %}
                                                             {% include 'dj_backup/base/backup/item.html' with backup=backup %}
                                                         {% endfor %}
 
-                                                        {% for backup in db_backups|slice:':8' %}
+                                                        {% for backup in db_backups %}
                                                             {% include 'dj_backup/base/backup/item.html' with backup=backup %}
                                                         {% endfor %}
                                                     </div>
@@ -87,7 +87,7 @@
                                             <div class="nk-block-head-xs">
                                                 <div class="nk-block-between g-2">
                                                     <div class="nk-block-head-content">
-                                                        <h6 class="nk-block-title title">ذخیره سازی</h6>
+                                                        <h6 class="nk-block-title title">ذخیره سازها</h6>
                                                     </div>
                                                     <div class="nk-block-head-content">
                                                         <a href="#" class="link link-primary toggle-opt active"
@@ -124,6 +124,8 @@
                                                                                         <em class="ni ni-google-drive"></em>
                                                                                     {% elif storage.name == 'AWS_S3' %}
                                                                                         <em class="ni ni-amazon"></em>
+                                                                                    {% elif storage.name == 'TELEGRAM_BOT' %}
+                                                                                        <em class="ni ni-telegram"></em>
                                                                                     {% endif %}
                                                                                 </span>
                                                                             </div>

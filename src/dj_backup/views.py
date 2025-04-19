@@ -37,8 +37,8 @@ class Index(mixins.DJViewMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super(Index, self).get_context_data(**kwargs)
         context['storages'] = models.DJStorage.objects.all()
-        context['file_backups'] = models.DJFileBackUp.objects.all()
-        context['db_backups'] = models.DJDataBaseBackUp.objects.all()
+        context['file_backups'] = models.DJFileBackUp.objects.all()[:7]
+        context['db_backups'] = models.DJDataBaseBackUp.objects.all()[:7]
         return context
 
 

@@ -1,0 +1,115 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DJBackup Log | {{ level }}</title>
+    <style>
+        .title {
+            font-size: 40px;
+            text-align: center;
+            margin: 10px;
+            padding: 10px;
+            color: #09ff68;
+        }
+
+        .content {
+            margin-top: 20px;
+            text-align: center;
+            border-radius: 20px;
+            padding: 5px;
+        }
+
+        .content.CRITICAL {
+            background: #ffd8e1;
+        }
+
+        .content.ERROR {
+            background: #ffeef1;
+        }
+
+        .content.WARNING {
+            background: #fff7e6;
+        }
+
+        .content.INFO {
+            background: #d4f3ff;
+        }
+
+        .content.DEBUG {
+            background: #ffffff;
+        }
+
+        .log-level {
+            font-size: 30px;
+            text-align: center;
+        }
+
+        .log-level.CRITICAL {
+            color: #dc003f;
+        }
+
+        .log-level.ERROR {
+            color: #ff5e8a;
+        }
+
+        .log-level.WARNING {
+            color: #ffdd47;
+        }
+
+        .log-level.INFO {
+            color: #065bff;
+        }
+
+        .log-level.DEBUG {
+            color: #858585;
+        }
+
+        .log-item {
+            text-align: center;
+            width: 100%;
+            border-bottom: 1px solid rgba(175, 175, 175, 0.35);
+            margin-bottom: 5px;
+            padding: 5px;
+        }
+
+        .log-item.latest{
+            border-bottom: none;
+        }
+
+        .log-item .label {
+            color: #555;
+            font-size: 15px;
+            display: inline-block;
+            width: 30%;
+        }
+
+        .log-item .value {
+            color: #111;
+            font-size: 19px;
+            display: inline-block;
+            width: 60%;
+        }
+
+    </style>
+</head>
+<body>
+<h2 class="title">DJBackup Logging</h2>
+<div class="content {{ level }}">
+    <h4 class="log-level {{ level }}">{{ level }} Log</h4>
+    <div class="log-item">
+        <span class="label">Message:</span>
+        <span class="value">{{ msg }}</span>
+    </div>
+    <div class="log-item">
+        <span class="label">Level:</span>
+        <span class="value">{{ level }}</span>
+    </div>
+    <div class="log-item latest">
+        <span class="label">Exception:</span>
+        <span class="value">{{ exc }}</span>
+    </div>
+</div>
+</body>
+</html>

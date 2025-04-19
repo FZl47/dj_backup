@@ -5,17 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="49de342e-06dd-4d83-be69-4b15b555c32e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/mixins.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/mixins.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/storages/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/storages/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/storages/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/storages/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/storages/ftp_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/storages/ftp_server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/storages/sftp_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/storages/sftp_server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/management/commands/run-backup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/management/commands/run-backup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/apps.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/tasks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/static/dj_backup/assets/css/dashlite.rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/static/dj_backup/assets/css/dashlite.rtl.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/base/backup/item.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/base/backup/item.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dj_backup/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,24 +46,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;F:/Project-Company/Smarten/gold_gallery&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PythonContentEntriesConfigurable&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/FZl/Desktop/icestar/icestar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PythonContentEntriesConfigurable",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\Project\dj_backup\src\dj_backup\static\dj_backup\assets\images" />
@@ -171,7 +172,8 @@
       <workItem from="1742630249724" duration="1294000" />
       <workItem from="1743405115699" duration="580000" />
       <workItem from="1743672374451" duration="947000" />
-      <workItem from="1744989173382" duration="12689000" />
+      <workItem from="1744989173382" duration="20270000" />
+      <workItem from="1745078046635" duration="15106000" />
     </task>
     <servers />
   </component>

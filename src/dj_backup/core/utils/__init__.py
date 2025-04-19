@@ -1,5 +1,4 @@
 import pathlib
-import logging
 import zipfile
 import os
 import random
@@ -9,8 +8,10 @@ import platform
 
 from django.utils import timezone
 
+# using by utils file
+from dj_backup.core.logging import log_event
+
 plt = platform.system()
-_logger = logging.getLogger()
 
 
 def random_str(n=7, characters=string.ascii_letters + string.digits):
@@ -108,16 +109,6 @@ def get_os_name():
     return plt
 
 
-def log_event(msg, level='info', exc_info=False, **kwargs):
-    level = level.upper()
-    levels = {
-        'NOTSET': 0,
-        'DEBUG': 10,
-        'INFO': 20,
-        'WARNING': 30,
-        'ERROR': 40,
-        'CRITICAL': 50,
-    }
-    logging.log(levels[level], msg=msg, exc_info=exc_info, **kwargs)
+
 
 

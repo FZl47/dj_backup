@@ -6,4 +6,4 @@ class DjBackupConfig(AppConfig):
     name = 'dj_backup'
 
     def ready(self):
-        from . import signals
+        from . import signals, notification

@@ -12,10 +12,6 @@ from dj_backup.core import utils
 from dj_backup.core import storages, backup
 
 
-def get_backup_object(backup_id):
-    return DJBackUpBase.objects.get_subclass(id=backup_id)
-
-
 class DJBackUpBase(models.Model):
     UNITS = (
         ('once', _('Once')),
@@ -265,14 +261,3 @@ class DJStorage(models.Model):
 
     def get_usage_size(self):
         return self.djbackupstorageresult_set.all().aggregate(total=models.Sum('size'))['total'] or 0
-
-
-class DJBackupLog(models.Model):
-    level = models.CharField(max_length=10)
-    name = models.CharField(max_length=40)
-    exc = models.TextField()
-    is_seen = models.BooleanField(default=False)
-    created_at = models.DateTimeField(auto_now_add=True)
-
-    def __str__(self):
-        return f'{self.name} - {self.exc[:10]}'
