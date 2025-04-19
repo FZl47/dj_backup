@@ -47,6 +47,10 @@ class DJBackUpBase(models.Model):
         return self.name
 
     @property
+    def unit_label(self):
+        return self.get_unit_display()
+
+    @property
     def is_running(self):
         if self.schedule_task:
             return True
@@ -175,7 +179,6 @@ class DJFile(models.Model):
 
     def save_temp_compress(self, base_dir_name):
         dest = f'{base_dir_name}/file__{self.name}.zip'
-        utils.zip_item(self.dir, dest)
         utils.zip_item(self.dir, dest)
         utils.log_event('DJFile `%s` temp file created in `%s`' % (self.name, dest), 'debug')
 
