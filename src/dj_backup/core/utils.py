@@ -6,7 +6,6 @@ import random
 import string
 import shutil
 import platform
-import pickle
 
 from django.utils import timezone
 
