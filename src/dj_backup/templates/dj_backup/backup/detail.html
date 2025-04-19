@@ -143,8 +143,10 @@
                                                                 <span class="data-value">
                                                                    <span>
                                                                        هر
-                                                                       <b>{{ backup.unit }}</b>
-                                                                       {{ backup.interval }}
+                                                                       <b>
+                                                                           {{ backup.interval }}
+                                                                           {{ backup.unit_label }}
+                                                                       </b>
                                                                    </span>
                                                                 </span>
                                                             </div>
@@ -154,8 +156,8 @@
                                                             <div class="data-col">
                                                                 <span class="data-label">تعداد اجرا</span>
                                                                 <span class="data-value">
-                                                                        <span class="badge badge-dim bg-primary badge-sm spread-num-el">{{ backup.count_run }}</span>
-                                                                    </span>
+                                                                    <span class="badge badge-dim bg-warning badge-sm spread-num-el">{{ backup.count_run }}</span>
+                                                                </span>
                                                             </div>
                                                         </div>
 
@@ -172,9 +174,10 @@
                                                             <div class="data-col">
                                                                 <span class="data-label">تعداد تکرار</span>
                                                                 <span class="data-value">
-                                                                   <span class="spread-num-el">{{ backup.repeats }}</span>
                                                                     {% if backup.repeats == -1 %}
                                                                         <span class="badge bg-secondary">برای همیشه</span>
+                                                                    {% else %}
+                                                                        <span class="spread-num-el">{{ backup.repeats }}</span>
                                                                     {% endif %}
                                                                 </span>
                                                             </div>
@@ -195,7 +198,7 @@
                                                                 <span class="data-label">ذخیره سازی در</span>
                                                                 <span class="data-value">
                                                                    {% for storage in backup_storages %}
-                                                                       <span class="badge badge-dim bg-warning badge-sm m-1">
+                                                                       <span class="badge badge-dim bg-success badge-sm m-1">
                                                                             {{ storage.display_name }}
                                                                             (<span class="file-size-convert"
                                                                                    data-size="{{ storage.usage_size }}"></span>)
@@ -249,13 +252,14 @@
                                                                     </span>
                                                                 </div>
                                                             </div>
-                                                            {% else %}
+                                                        {% else %}
                                                             <div class="data-item">
                                                                 <div class="data-col">
                                                                     <span class="data-label">فایل ها</span>
                                                                     <span class="data-value">
                                                                         {% for file in backup.get_files %}
-                                                                            <span class="badge badge-dim bg-info m-1" style="white-space: normal!important;">
+                                                                            <span class="badge badge-dim bg-info m-1"
+                                                                                  style="white-space: normal!important;">
                                                                                 {{ file.dir }}
                                                                             </span>
                                                                         {% endfor %}
