@@ -195,8 +195,6 @@ OR
 
 [ ] * use pure schedule library or apscheduler or etc. instead django_q(has problems)
 
-[ ] refactor storages exception level
-
 [ ] add password for backups
 
-[ ] add telegram storage
+[x] add telegram storage
