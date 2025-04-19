@@ -22,7 +22,7 @@ class Command(BaseCommand):
         self.stdout.write(self.style.SUCCESS('STARTED !'))
 
         # run django-q
-        # call_command('qcluster')
+        call_command('qcluster')
 
     @staticmethod
     def initial_storages():
