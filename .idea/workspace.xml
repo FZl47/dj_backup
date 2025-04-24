@@ -4,41 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="49de342e-06dd-4d83-be69-4b15b555c32e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/result/fb__2025-04-19_01-22__fggd__30-3.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/result/fb__2025-04-19_01-22__fggd__30-4.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/result/fb__2025-04-19_17-24__fggd__30-5.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/result/fb__2025-04-19_17-24__test__31-0.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/result/fb__2025-04-19_17-54__test__31-1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-04-18_23-05__ad__29-0.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-04-18_23-06__ad__29-1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-04-18_23-06__ad__29-2.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-04-18_23-06__ad__29-3.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-04-18_23-06__ad__29-4.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-04-18_23-06__ad__29-5.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-04-18_23-07__ad__29-6.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-04-18_23-07__ad__29-7.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-04-18_23-08__ad__29-8.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-04-18_23-12__fggd__30-0.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-04-18_23-19__fggd__30-1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-04-18_23-19__fggd__30-2.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-04-19_01-22__fggd__30-3.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-04-19_01-22__fggd__30-4.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-04-19_17-24__fggd__30-5.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/mixins.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/mixins.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/tasks.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/models/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/models/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/models/notification.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/models/notification.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/static/dj_backup/assets/css/dashlite.rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/static/dj_backup/assets/css/dashlite.rtl.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/base/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/base/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/base/menu-aside.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/base/menu-aside.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/notification/log.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/notification/log-mail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="49de342e-06dd-4d83-be69-4b15b555c32e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -197,7 +163,7 @@
       <workItem from="1745181136435" duration="392000" />
       <workItem from="1745222681004" duration="18000" />
       <workItem from="1745267798911" duration="1742000" />
-      <workItem from="1745458402304" duration="170000" />
+      <workItem from="1745458402304" duration="327000" />
     </task>
     <servers />
   </component>
