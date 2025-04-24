@@ -14,6 +14,8 @@ urlpatterns = [
     path('db/list', views.DataBaseList.as_view(), name='db__list'),
     path('db/backup/add', views.DataBaseBackupAdd.as_view(), name='db_backup__add'),
 
+    path('notif/list', views.NotificationList.as_view(), name='notification__list'),
+
     path('backup/list', views.BackupList.as_view(), name='backup__list'),
     path('backup/<int:backup_id>/detail', views.BackupDetail.as_view(), name='backup__detail'),
     path('backup/<int:backup_id>/delete', views.BackupDelete.as_view(), name='backup__delete'),
@@ -23,6 +25,5 @@ urlpatterns = [
 
     path('backup/result/<int:backup_result_id>/download', views.DJBackupResultDownload.as_view(),
          name='backup__result_download'),
-
 
 ]

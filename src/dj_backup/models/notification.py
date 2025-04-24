@@ -13,12 +13,18 @@ class DJBackupLog(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        ordering = ('created_at',)
+
     def __str__(self):
         return f'{self.level} - {self.exc[:10]}'
 
     @property
     def subject(self):
         return _('DJBackup Log')
+
+    def get_created_at(self):
+        return self.created_at.strftime('%Y-%m-%d %H:%M')
 
 
 class DJBackupLogLevel(models.Model):
@@ -35,5 +41,5 @@ class DJBackupLogLevel(models.Model):
             'exc': log.exc,
             'level': log.level,
         }
-        html_content = render_to_string('dj_backup/notification/log.html', context)
+        html_content = render_to_string('dj_backup/notification/log-mail.html', context)
         send_mail(log.subject, log.msg, settings.EMAIL_HOST_USER, [self.email], html_message=html_content)

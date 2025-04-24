@@ -9,6 +9,7 @@ from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.contrib import messages
+from django.db.models import Q
 
 from dj_backup.core.backup.db import DATABASES_AVAILABLE
 from dj_backup.core import tasks, utils
@@ -264,3 +265,20 @@ class DJBackupResultDownload(mixins.DJViewMixin, View):
             response = HttpResponse(file.read(), content_type='application/octet-stream')
             response['Content-Disposition'] = f'attachment; filename={br.backup_name}'
             return response
+
+
+class NotificationList(mixins.DJViewMixin, ListView):
+    template_name = 'dj_backup/notification/list.html'
+    paginate_by = 30
+
+    def search(self, objects):
+        search = self.request.GET.get('search')
+        if not search:
+            return objects
+        lookup = Q(level=search) | Q(msg__icontains=search)
+        objects = objects.filter(lookup)
+        return objects
+
+    def get_queryset(self):
+        qs = self.search(models.DJBackupLog.objects.all()).order_by('-created_at', '-is_seen')
+        return qs

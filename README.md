@@ -177,15 +177,15 @@ OR
 
 [x] add postgresql db backup
 
-[ ] add google cloud and aws S3 storages
+[/] add google cloud and aws S3 storages
 
-[ ] add notification(email)
+[x] add notification(email)
 
 [/] add storages free space
 
 [ ] add schedule task for clear temp files
 
-[ ] add object logs
+[x] add object logs
 
 [x] use local file instead temp files if not available to download
 

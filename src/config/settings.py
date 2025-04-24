@@ -118,44 +118,6 @@ Q_CLUSTER = {
 }
 
 # DJ backup
-# DJ_BACKUP_CONFIG = {
-#     'POSTGRESQL_DUMP_PATH': None,  # optional(If the postgresql dump file is not found, you can set it)
-#     'MYSQL_DUMP_PATH': None,  # optional(If the mysql dump file is not found, you can set it)
-#     'EXTERNAL_DATABASES': {
-#         'external_db_1': {
-#             'ENGINE': 'xxx',
-#             'NAME': 'xxx',
-#             'USER': 'xxx',
-#             'PASSWORD': 'xxx',
-#             'HOST': '127.0.0.1',  # Or an IP Address that your DB is hosted on
-#         },
-#     },
-#     'BASE_ROOT_DIRS': [
-#         BASE_DIR,
-#     ],
-#     'BACKUP_TEMP_DIR': BASE_DIR / 'backup/temp',
-#     'STORAGES': {
-#         'LOCAL': {
-#             'OUT': BASE_DIR / 'backup/result'
-#         },
-#         'SFTP_SERVER': {
-#             'HOST': 'xxx.xxx.xxx.xxx',
-#             'USERNAME': 'xxx',
-#             'PASSWORD': 'xxx',
-#             'OUT': '/home/test_dj_backup/'
-#         },
-#         'FTP_SERVER': {
-#             'HOST': "xxx.xxx.xxx.xxx",
-#             'USERNAME': "xxx",
-#             'PASSWORD': "xxx",
-#             'OUT': '/test_dj_backup/'
-#         },
-#         'DROPBOX': {
-#             'ACCESS_TOKEN': 'xxx-xxx-xxx-..',
-#             'OUT': '/dj_backup/'
-#         }
-#     }
-# }
 
 DJ_BACKUP_CONFIG = {
     # 'POSTGRESQL_DUMP_PATH': None,  # optional(If the postgresql dump file is not found, you can set it)
@@ -185,31 +147,24 @@ DJ_BACKUP_CONFIG = {
             'OUT': BASE_DIR / 'backup/result'
         },
         'TELEGRAM_BOT': {
-            'BOT_TOKEN': 'xxx',
-            'CHAT_ID': 'xxx'
+            'BOT_TOKEN': 'xxx-xxx',
+            'CHAT_ID': 'xxx-xxx'
         }
         # 'SFTP_SERVER': {
-        #     'HOST': '78.39.57.149',
-        #     'USERNAME': 'root',
-        #     'PASSWORD': 'FazelMomeni',
-        #     'OUT': '/root/projects/dj_backup_result_backup'
+        #     'HOST': 'xxx',
+        #     'USERNAME': 'xxx',
+        #     'PASSWORD': 'xxx',
+        #     'OUT': 'xxx'
         # },
         # 'FTP_SERVER': {
-        #     'HOST': "shahin.mrservers.net",
-        #     'USERNAME': "dj_backup@farhikhteganmes.ir",
-        #     'PASSWORD': "W@Cr&dcGf-3Z",
+        #     'HOST': "xxx",
+        #     'USERNAME': "xxx",
+        #     'PASSWORD': "xxx",
         #     'OUT': 'backups'
         # },
         # 'DROPBOX': {
-        #     'ACCESS_TOKEN': '',
+        #     'ACCESS_TOKEN': 'xxx-xxx',
         #     'OUT': '/dj_backup/'
-        # }
-        # 'GOOGLE_CLOUD_STORAGE': {
-        #     'HOST': '',
-        #     'PORT': 22,
-        #     'USERNAME': '',
-        #     'PASSWORD': '',
-        #     'BUCKET': ''
         # }
     }
 }
@@ -237,4 +192,9 @@ LOGGING = {
     },
 }
 
-
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'xxx'
+EMAIL_HOST_PASSWORD = 'xxx'

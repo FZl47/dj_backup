@@ -14,7 +14,6 @@ from dj_backup.core import storages, backup
 
 class DJBackUpBase(models.Model):
     UNITS = (
-        ('once', _('Once')),
         ('minutes', _('Minutes')),
         ('hours', _('Hours')),
         ('days', _('Days')),
@@ -194,7 +193,7 @@ class DJBackUpStorageResult(models.Model):
     backup_name = models.TextField()
     out = models.TextField(null=True, blank=True)
     temp_location = models.TextField(null=True, blank=True)
-    size = models.PositiveIntegerField()  # (Bytes)
+    size = models.PositiveIntegerField()  # (bytes)
     time_taken = models.FloatField(default=0)  # (seconds)
     description = models.TextField(null=True, blank=True)
 

@@ -51321,3 +51321,60 @@ body.dark-mode .backup-footer .icon {
     background: #263980;
     border-color: #010918;
 }
+
+.has-notif span::before{
+    content: " ";
+    width: 5px;
+    height: 5px;
+    border-radius: 20px;
+    display: block;
+    background: #fa1f93;
+}
+
+.has-notif em{
+    animation: animation_bell_notif 4s infinite ease-in-out;
+}
+
+.nk-fmg-menu-item.has-notif span::before{
+    display: none;
+}
+
+.notif-DEBUG{
+    color: #8c8c8c;
+}
+
+.notif-INFO{
+    color: #3a65ff;
+}
+
+.notif-WARNING{
+    color: #e7ca0e;
+}
+
+.notif-ERROR{
+    color: #d52359;
+}
+
+.notif-CRITICAL{
+    color: #d109e0;
+}
+
+@keyframes animation_bell_notif {
+
+    50%{
+        transform: rotate(-15deg);
+    }
+    51%{
+        transform: rotate(15deg);
+    }
+    52%{
+        transform: rotate(-15deg);
+    }
+    53%{
+        transform: rotate(15deg);
+    }
+    54%{
+        transform: rotate(0);
+    }
+
+}

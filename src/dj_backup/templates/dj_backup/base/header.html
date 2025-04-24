@@ -20,27 +20,12 @@
             </div>
             <div class="nk-header-tools">
                 <ul class="nk-quick-nav">
-                    <li class="dropdown language-dropdown me-n1 d-none">
-                        <a  data-bs-toggle="dropdown" class="dropdown-toggle nk-quick-nav-icon"><em
-                                class="icon ni ni-globe"></em></a>
-                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-s1">
-                            <ul class="language-list">
-                                <li>
-                                    <a href="#" class="language-item">
-                                        <img src="{% static 'dj_backup/assets/images/iran.png' %}" alt="Persian"
-                                             class="language-flag"/>
-                                        <span class="language-name">فارسی</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="language-item">
-                                        <img src="{% static 'dj_backup/assets/images/uk.png' %}" alt="English"
-                                             class="language-flag"/>
-                                        <span class="language-name">English</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                    <li class="dropdown language-dropdown me-n1">
+                        <a href="{% url 'dj_backup:notification__list' %}"
+                           class="nk-quick-nav-icon header-notif {% if notifications_count > 0 %}has-notif{% endif %}">
+                            <span class="fs-16px">{{ notifications_count }}</span>
+                            <em class="icon ni {% if notifications_count > 0 %}ni-bell-fill{% else %}ni-bell{% endif %}"></em>
+                        </a>
                     </li>
                     <!-- .dropdown -->
                     <li class="dropdown user-dropdown">

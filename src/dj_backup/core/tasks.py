@@ -30,7 +30,7 @@ class ScheduleBackupBaseTask(abc.ABC):
 
     @staticmethod
     @abc.abstractmethod
-    def run():
+    def run(backup_obj_id, *args, **kwargs):
         raise NotImplementedError
 
     def test(self):
@@ -41,8 +41,7 @@ class ScheduleFileBackupTask(ScheduleBackupBaseTask):
     _func_run = 'dj_backup.core.tasks.ScheduleFileBackupTask.run'
 
     @staticmethod
-    def run(*args, **kwargs):
-        backup_obj_id = kwargs['backup_obj_id']
+    def run(backup_obj_id, *args, **kwargs):
         try:
             backup_obj = models.DJFileBackUp.objects.get(id=backup_obj_id)
             if backup_obj.has_running_task:
@@ -97,8 +96,7 @@ class ScheduleDataBaseBackupTask(ScheduleBackupBaseTask):
     _func_run = 'dj_backup.core.tasks.ScheduleDataBaseBackupTask.run'
 
     @staticmethod
-    def run(*args, **kwargs):
-        backup_obj_id = kwargs['backup_obj_id']
+    def run(backup_obj_id, *args, **kwargs):
         try:
             backup_obj = models.DJDataBaseBackUp.objects.get(id=backup_obj_id)
             if backup_obj.has_running_task:

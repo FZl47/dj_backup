@@ -5,18 +5,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="49de342e-06dd-4d83-be69-4b15b555c32e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backup/result/fb__2025-04-19_01-22__fggd__30-3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backup/result/fb__2025-04-19_01-22__fggd__30-4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backup/result/fb__2025-04-19_17-24__fggd__30-5.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backup/result/fb__2025-04-19_17-24__test__31-0.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backup/result/fb__2025-04-19_17-54__test__31-1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-04-18_23-05__ad__29-0.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-04-18_23-06__ad__29-1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-04-18_23-06__ad__29-2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-04-18_23-06__ad__29-3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-04-18_23-06__ad__29-4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-04-18_23-06__ad__29-5.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-04-18_23-07__ad__29-6.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-04-18_23-07__ad__29-7.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-04-18_23-08__ad__29-8.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-04-18_23-12__fggd__30-0.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-04-18_23-19__fggd__30-1.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-04-18_23-19__fggd__30-2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-04-19_01-22__fggd__30-3.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-04-19_01-22__fggd__30-4.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-04-19_17-24__fggd__30-5.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/mixins.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/mixins.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dj_backup/core/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/tasks.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/utils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/models/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/models/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/models/notification.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/models/notification.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dj_backup/static/dj_backup/assets/css/dashlite.rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/static/dj_backup/assets/css/dashlite.rtl.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/base/backup/item.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/base/backup/item.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/base/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/base/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/base/menu-aside.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/base/menu-aside.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/notification/log.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/notification/log-mail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dj_backup/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,24 +66,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/FZl/Desktop/icestar/icestar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PythonContentEntriesConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/FZl/Desktop/icestar/icestar&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PythonContentEntriesConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="F:\Project\dj_backup\src\dj_backup\static\dj_backup\assets\images" />
@@ -173,7 +193,11 @@
       <workItem from="1743405115699" duration="580000" />
       <workItem from="1743672374451" duration="947000" />
       <workItem from="1744989173382" duration="20270000" />
-      <workItem from="1745078046635" duration="15106000" />
+      <workItem from="1745078046635" duration="25338000" />
+      <workItem from="1745181136435" duration="392000" />
+      <workItem from="1745222681004" duration="18000" />
+      <workItem from="1745267798911" duration="1742000" />
+      <workItem from="1745458402304" duration="170000" />
     </task>
     <servers />
   </component>
