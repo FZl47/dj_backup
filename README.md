@@ -10,6 +10,15 @@
 - postgres
 - sqlite
 
+##### supported storages
+
+- local
+- sftp server
+- ftp server
+- dropbox(beta)
+- telegram bot
+
+
 ## How to use ?
 
 1. First you need to install dj_backup
@@ -49,7 +58,7 @@ LOCALE_PATHS = (
 )
 ```
 
-5. dj_backup urls to django urls
+5. add dj_backup urls to project urls
 
 ```python
 urlpatterns = [
@@ -106,7 +115,11 @@ urlpatterns = [
         'DROPBOX': {
             'ACCESS_TOKEN': 'xxx.xxx.xxx.xxx',
             'OUT': '/backups'
-        }
+        },
+        'TELEGRAM_BOT': {
+             'BOT_TOKEN': 'xxx',
+             'CHAT_ID': 'xxx'
+         }
     }
 }
 
@@ -115,23 +128,17 @@ urlpatterns = [
 ### 7. migrate & collect static files
 
 ```python
-    python
-manage.py
-migrate
+    python manage.py migrate
 ```
 
 ```python
-    python
-manage.py
-collectstatic
+    python manage.py collectstatic
 ```
 
 ### 8. run backup!
 
 ```python
-    python
-manage.py
-run - backup
+    python manage.py run-backup
 ```
 
 ### 9. Dashboard
@@ -153,48 +160,4 @@ OR
     If you dont need any of the storages, you must remove that configuration
     because you get an error if it cant be connected
 
-### TODO:
 
-[ ] complete code TODO
-
-[x] fix access direction in list files(prevent access to out of base dirs)
-
-[x] add update/delete backup object
-
-[x] add storages in dashboard
-
-[x] add user required mixin views
-
-[x] add ftp server storage
-
-[x] add sftp server storage
-
-[x] add drop box storage
-
-#### Update TODO:
-
-[x] add external databases
-
-[x] add postgresql db backup
-
-[/] add google cloud and aws S3 storages
-
-[x] add notification(email)
-
-[/] add storages free space
-
-[ ] add schedule task for clear temp files
-
-[x] add object logs
-
-[x] use local file instead temp files if not available to download
-
-[x] * change structure load and initial storages
-
-[x] add time taken to generate and store backup
-
-[ ] * use pure schedule library or apscheduler or etc. instead django_q(has problems)
-
-[ ] add password for backups
-
-[x] add telegram storage
