@@ -9,7 +9,7 @@ from dj_backup import models
 
 class ScheduleBackupBaseTask(abc.ABC):
     _func_run = None
-    test_run = True
+    test_run = False
 
     def __init__(self, backup_obj):
         self.backup_obj = backup_obj

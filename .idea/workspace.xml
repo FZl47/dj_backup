@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="49de342e-06dd-4d83-be69-4b15b555c32e" name="Changes" comment="" />
+    <list default="true" id="49de342e-06dd-4d83-be69-4b15b555c32e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/tasks.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -163,7 +165,7 @@
       <workItem from="1745181136435" duration="392000" />
       <workItem from="1745222681004" duration="18000" />
       <workItem from="1745267798911" duration="1742000" />
-      <workItem from="1745458402304" duration="327000" />
+      <workItem from="1745458402304" duration="690000" />
     </task>
     <servers />
   </component>
