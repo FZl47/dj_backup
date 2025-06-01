@@ -1,0 +1,2 @@
+recursive-include dj_backup/static *
+recursive-include dj_backup/templates *

@@ -1,0 +1,87 @@
+{% load static %}
+<div class="nk-header nk-header-fixed is-light">
+    <div class="container-fluid">
+        <div class="nk-header-wrap">
+            <div class="nk-menu-trigger d-xl-none ms-n1">
+                <a href="#" class="btn btn-trigger btn-icon toggle"
+                   data-target="sidebarMenu"><em
+                        class="icon ni ni-menu"></em></a>
+            </div>
+            <div class="nk-header-app-name">
+                <div class="nk-header-app-logo">
+                    <em class="icon ni ni-folder bg-purple-dim"></em>
+                </div>
+                <div class="nk-header-app-info">
+                    <span class="sub-text">
+                        <a href="https://github.com/FZl47/dj_backup" style="color: inherit">DJ Backup</a>
+                    </span>
+                    <span class="lead-text">مدیریت و بک آپ</span>
+                </div>
+            </div>
+            <div class="nk-header-tools">
+                <ul class="nk-quick-nav">
+                    <li class="dropdown language-dropdown me-n1">
+                        <a href="{% url 'dj_backup:notification__list' %}"
+                           class="nk-quick-nav-icon header-notif {% if notifications_count > 0 %}has-notif{% endif %}">
+                            <span class="fs-16px">{{ notifications_count }}</span>
+                            <em class="icon ni {% if notifications_count > 0 %}ni-bell-fill{% else %}ni-bell{% endif %}"></em>
+                        </a>
+                    </li>
+                    <!-- .dropdown -->
+                    <li class="dropdown user-dropdown">
+                        <a href="#" class="dropdown-toggle me-n1" data-bs-toggle="dropdown">
+                            <div class="user-toggle">
+                                <div class="user-avatar sm">
+                                    <em class="icon ni ni-user-alt"></em>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-md dropdown-menu-end">
+                            <div class="dropdown-inner user-card-wrap bg-lighter d-none d-md-block">
+                                <div class="user-card">
+                                    <div class="user-avatar">
+                                        <span>
+                                            {{ user.first_name.0|default:'A' }}{{ user.last_name.0|default:'u' }}
+                                        </span>
+                                    </div>
+                                    <div class="user-info">
+                                        <span class="lead-text">{{ user.get_full_name|default:'Anonymous user' }}</span>
+                                        <span class="sub-text">{{ user.email|default:'' }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="dropdown-inner">
+                                <ul class="link-list">
+                                    <li>
+                                        <a href="{% url 'dj_backup:backup__list' %}"><em
+                                                class="icon ni ni-folder-list"></em><span>مشاهده بک اپ ها</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'dj_backup:db__list' %}"><em
+                                                class="icon ni ni-dashboard"></em><span>لیست دیتابیس ها</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'dj_backup:file__list' %}"><em
+                                                class="icon ni ni-file-docs"></em><span>لیست فایل ها</span></a>
+                                    </li>
+                                    <li>
+                                        <a class="dark-switch" href="#"><em
+                                                class="icon ni ni-moon"></em><span>حالت تاریک</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="dropdown-inner">
+                                <ul class="link-list">
+                                    <li>
+                                        <a href="{% url 'dj_backup:logout' %}"><em
+                                                class="icon ni ni-signout"></em><span>خروج</span></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

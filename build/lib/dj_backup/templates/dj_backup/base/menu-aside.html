@@ -1,0 +1,68 @@
+<div class="nk-fmg-aside" data-content="sidebarMenu" data-toggle-overlay="true"
+     data-toggle-body="true" data-toggle-screen="lg" data-simplebar>
+    <div class="nk-fmg-aside-wrap">
+        <div class="nk-fmg-aside-top">
+            <ul class="nk-fmg-menu">
+                <li>
+                    <a class="nk-fmg-menu-item" href="{% url 'dj_backup:dashboard__index' %}">
+                        <em class="icon ni ni-home-alt"></em>
+                        <span class="nk-fmg-menu-text">صفحه اصلی</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nk-fmg-menu-item" href="{% url 'dj_backup:db__list' %}">
+                        <em class="icon ni ni-dashboard"></em>
+                        <span class="nk-fmg-menu-text">دیتابیس ها</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nk-fmg-menu-item" href="{% url 'dj_backup:file__list' %}">
+                        <em class="icon ni ni-file-docs"></em>
+                        <span class="nk-fmg-menu-text">فایل ها</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nk-fmg-menu-item" href="{% url 'dj_backup:backup__list' %}">
+                        <em class="icon ni ni-folder-list"></em>
+                        <span class="nk-fmg-menu-text">بک اپ ها</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nk-fmg-menu-item has-notif" href="{% url 'dj_backup:notification__list' %}">
+                        <em class="icon ni ni-bell"></em>
+                        <span class="nk-fmg-menu-text">اعلانات</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nk-fmg-menu-item" href="{% url 'dj_backup:logout' %}">
+                        <em class="icon ni ni-signout"></em>
+                        <span class="nk-fmg-menu-text">خروج</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="nk-fmg-aside-bottom">
+            <div class="nk-fmg-status d-none">
+                <h6 class="nk-fmg-status-title"><em
+                        class="icon ni ni-hard-drive"></em><span>فضای ذخیره سازی</span>
+                </h6>
+                <div class="progress progress-md bg-light">
+                    <div class="progress-bar" data-progress="5"></div>
+                </div>
+                <div class="nk-fmg-status-info">12.47 گیگابایت از 50 گیگابایت استفاده
+                    شده
+                </div>
+                <div class="nk-fmg-status-action">
+                    <a href="#" class="link link-primary link-sm">ارتقای فضای ذخیره
+                        سازی</a>
+                </div>
+            </div>
+            <div class="nk-fmg-switch p-4 text-center fs-14px">
+                Made with
+                <em class="ni ni-coffee-fill"></em>
+                by
+                <a href="https://github.com/FZl47" target="_blank">Fazel Momeni</a>
+            </div>
+        </div>
+    </div>
+</div>

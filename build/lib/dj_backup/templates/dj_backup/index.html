@@ -1,0 +1,233 @@
+{% extends 'dj_backup/base/base_template.html' %}
+
+{% block Title %}
+    صفحه اصلی
+{% endblock %}
+
+{% block Style %}
+    <style>
+        .storage-is-available {
+            box-shadow: 0 2px 1px #0bd25c;
+        }
+
+        .storage-not-available {
+            box-shadow: 0 2px 1px #ee1831;
+        }
+
+        .backup-save {
+            position: absolute !important;
+            padding: 5px !important;
+            display: inline-block !important;
+            right: 6px;
+            text-align: right;
+        }
+
+        .backup-save em {
+            margin: 3px;
+            font-size: 13px;
+        }
+
+
+    </style>
+{% endblock %}
+
+{% block BodyClass %}
+    has-rtl nk-body npc-apps apps-only has-apps-sidebar npc-apps-files
+{% endblock %}
+
+{% block Content %}
+
+    <div class="nk-app-root">
+        <!-- main @s -->
+        <div class="nk-main">
+            <!-- wrap @s -->
+            <div class="nk-wrap">
+                <!-- main header @s -->
+                {% include 'dj_backup/base/header.html' %}
+                <!-- main header @e -->
+                <!-- content @s -->
+                <div class="nk-content p-0">
+                    <div class="nk-content-inner">
+                        <div class="nk-content-body">
+                            <div class="nk-fmg">
+                                {% include 'dj_backup/base/menu-aside.html' %}
+                                <!-- .nk-fmg-aside -->
+                                <div class="nk-fmg-body">
+
+                                    <div class="nk-fmg-body-content">
+                                        <div class="nk-fmg-quick-list nk-block">
+                                            <div class="nk-block-head-xs">
+                                                <div class="nk-block-between g-2">
+                                                    <div class="nk-block-head-content">
+                                                        <h6 class="nk-block-title title">برخی از بک اپ ها</h6>
+                                                    </div>
+                                                    <div class="nk-block-head-content">
+                                                        <a href="{% url 'dj_backup:backup__list' %}" class="link">مشاهده
+                                                            همه</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- .nk-block-head -->
+                                            <div class="toggle-expand-content expanded" data-content="quick-access">
+                                                <div class="nk-files nk-files-view-grid text-center d-block">
+                                                    <div class="nk-files-list text-center d-block">
+                                                        {% for backup in file_backups %}
+                                                            {% include 'dj_backup/base/backup/item.html' with backup=backup %}
+                                                        {% endfor %}
+
+                                                        {% for backup in db_backups %}
+                                                            {% include 'dj_backup/base/backup/item.html' with backup=backup %}
+                                                        {% endfor %}
+                                                    </div>
+                                                </div>
+                                                <!-- .nk-files -->
+                                            </div>
+                                        </div>
+                                        <div class="nk-fmg-listing nk-block">
+                                            <div class="nk-block-head-xs">
+                                                <div class="nk-block-between g-2">
+                                                    <div class="nk-block-head-content">
+                                                        <h6 class="nk-block-title title">ذخیره سازها</h6>
+                                                    </div>
+                                                    <div class="nk-block-head-content">
+                                                        <a href="#" class="link link-primary toggle-opt active"
+                                                           data-target="recent-files">
+                                                            <div class="inactive-text">نمایش دادن</div>
+                                                            <div class="active-text">پنهان کردن</div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- .nk-block-head -->
+                                            <div class="toggle-expand-content expanded" data-content="recent-files">
+                                                <div class="nk-files nk-files-view-group">
+
+                                                    <!-- .nk-files-head -->
+                                                    <div class="nk-files-group">
+                                                        <h6 class="title">ذخیره ساز ها</h6>
+                                                        <div class="nk-files-list">
+                                                            {% for storage in storages %}
+                                                                <div class="nk-file-item nk-file {% if storage.is_available %}storage-is-available{% else %}storage-not-available{% endif %}">
+                                                                    <div class="nk-file-info">
+                                                                        <div class="nk-file-title">
+                                                                            <div class="nk-file-icon">
+                                                                                <span class="nk-file-icon-type">
+                                                                                    {% if storage.name == 'LOCAL' %}
+                                                                                        <em class="ni ni-hard-drive"></em>
+                                                                                    {% elif storage.name == 'SFTP_SERVER' %}
+                                                                                        <em class="ni ni-server"></em>
+                                                                                    {% elif storage.name == 'FTP_SERVER' %}
+                                                                                        <em class="ni ni-server"></em>
+                                                                                    {% elif storage.name == 'DROPBOX' %}
+                                                                                        <em class="ni ni-dropbox"></em>
+                                                                                    {% elif storage.name == 'GOOGLE_CLOUD' %}
+                                                                                        <em class="ni ni-google-drive"></em>
+                                                                                    {% elif storage.name == 'AWS_S3' %}
+                                                                                        <em class="ni ni-amazon"></em>
+                                                                                    {% elif storage.name == 'TELEGRAM_BOT' %}
+                                                                                        <em class="ni ni-telegram"></em>
+                                                                                    {% endif %}
+                                                                                </span>
+                                                                            </div>
+                                                                            <div class="nk-file-name">
+                                                                                <div class="nk-file-name-text">
+                                                                                    <a href="#"
+                                                                                       class="title">{{ storage.display_name }}</a>
+                                                                                    <div class="asterisk">
+                                                                                        <a href="#"><em
+                                                                                                class="asterisk-off icon ni ni-star"></em><em
+                                                                                                class="asterisk-on icon ni ni-star-fill"></em></a>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <ul class="nk-file-desc text-end">
+                                                                            <li class="size">
+                                                                                <span class="file-size-convert"
+                                                                                      data-size="{{ storage.get_usage_size }}"></span>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                    <div class="nk-file-status">
+                                                                        {% if storage.is_available %}
+                                                                            <span class="badge badge-dim bg-success">فعال</span>
+                                                                        {% else %}
+                                                                            <span class="badge badge-dim bg-danger">غیرفعال</span>
+                                                                        {% endif %}
+                                                                    </div>
+                                                                    <div class="nk-file-actions d-none">
+                                                                        <div class="dropdown">
+                                                                            <a href=""
+                                                                               class="dropdown-toggle btn btn-sm btn-icon btn-trigger"
+                                                                               data-bs-toggle="dropdown"><em
+                                                                                    class="icon ni ni-more-h"></em></a>
+                                                                            <div class="dropdown-menu dropdown-menu-end">
+                                                                                <ul class="link-list-plain no-bdr">
+                                                                                    <li>
+                                                                                        <a href="#file-details"
+                                                                                           data-bs-toggle="modal"><em
+                                                                                                class="icon ni ni-eye"></em><span>جزئیات</span></a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#file-share"
+                                                                                           data-bs-toggle="modal"><em
+                                                                                                class="icon ni ni-share"></em><span>به اشتراک گذاری</span></a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#file-copy"
+                                                                                           data-bs-toggle="modal"><em
+                                                                                                class="icon ni ni-copy"></em><span>کپی</span></a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#file-move"
+                                                                                           data-bs-toggle="modal"><em
+                                                                                                class="icon ni ni-forward-arrow"></em><span>انتقال</span></a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#"
+                                                                                           class="file-dl-toast"><em
+                                                                                                class="icon ni ni-download"></em><span>دانلود</span></a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#"><em
+                                                                                                class="icon ni ni-pen"></em><span>تغییر نام</span></a>
+                                                                                    </li>
+                                                                                    <li>
+                                                                                        <a href="#"><em
+                                                                                                class="icon ni ni-trash"></em><span>حذف</span></a>
+                                                                                    </li>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            {% endfor %}
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- .nk-files -->
+                                            </div>
+                                        </div>
+                                        <!-- .nk-block -->
+                                    </div>
+                                    <!-- .nk-fmg-body-content -->
+                                </div>
+                                <!-- .nk-fmg-body -->
+                            </div>
+                            <!-- .nk-fmg -->
+                        </div>
+                    </div>
+                </div>
+                <!-- content @e -->
+            </div>
+            <!-- wrap @e -->
+        </div>
+        <!-- main @e -->
+    </div>
+    <!-- app-root @e -->
+
+{% endblock %}
+
+
+
