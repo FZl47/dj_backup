@@ -33,7 +33,7 @@ class FileBackup(BaseBackup):
             msg = 'There is some problem in save_temp FileBackup'
             utils.log_event(msg, 'error', exc_info=True)
             raise
-        utils.log_event('Temp files created !', 'debug')
+        utils.log_event("Temp files 'FileBackup' created !", 'debug')
         return self._get_base_dir_compress()
 
     def delete_raw_temp(self):
@@ -43,7 +43,7 @@ class FileBackup(BaseBackup):
             utils.delete_item(b)
             utils.log_event('Temp file `%s` deleted successfully!' % b, 'debug')
         except OSError:
-            utils.log_event('Error in delete temp file `%s` ' % b, 'warning', exc_info=True)
+            utils.log_event('Some problem in delete temp file `%s`' % b, 'warning', exc_info=True)
 
     def _get_backup(self):
         return self.save_temp()

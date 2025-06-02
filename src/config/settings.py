@@ -23,7 +23,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Apps
     'dj_backup',
-    'django_q'
 ]
 
 MIDDLEWARE = [
@@ -111,15 +110,9 @@ STATICFILES_DIRS = (
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-Q_CLUSTER = {
-    'name': 'django-q',
-    'orm': 'default',
-    'retries': 3,
-}
-
 # DJ backup
-
 DJ_BACKUP_CONFIG = {
+    'MAX_WORKERS': 5,
     # 'POSTGRESQL_DUMP_PATH': None,  # optional(If the postgresql dump file is not found, you can set it)
     # 'MYSQL_DUMP_PATH': None,  # optional(If the mysql dump file is not found, you can set it)
     'EXTERNAL_DATABASES': {
@@ -142,14 +135,15 @@ DJ_BACKUP_CONFIG = {
         BASE_DIR,
     ],
     'BACKUP_TEMP_DIR': BASE_DIR / 'backup/temp',
+    'BACKUP_SYS_DIR': BASE_DIR / 'backup/sys',
     'STORAGES': {
         'LOCAL': {
             'OUT': BASE_DIR / 'backup/result'
         },
-        'TELEGRAM_BOT': {
-            'BOT_TOKEN': 'xxx-xxx',
-            'CHAT_ID': 'xxx-xxx'
-        }
+        # 'TELEGRAM_BOT': {
+        #     'BOT_TOKEN': 'xxx-xxx',
+        #     'CHAT_ID': 'xxx-xxx'
+        # }
         # 'SFTP_SERVER': {
         #     'HOST': 'xxx',
         #     'USERNAME': 'xxx',
@@ -196,5 +190,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = 'xxx'
-EMAIL_HOST_PASSWORD = 'xxx'
+EMAIL_HOST_USER = None
+EMAIL_HOST_PASSWORD = None

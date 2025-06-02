@@ -6,8 +6,6 @@ from django.utils.translation import gettext_lazy as _
 from django.urls import reverse_lazy
 from django.db import models
 
-from django_q.models import Task
-
 from dj_backup.core import utils
 from dj_backup.core import storages, backup
 
@@ -24,7 +22,7 @@ class DJBackUpBase(models.Model):
     note = models.TextField(null=True, blank=True)
     unit = models.CharField(max_length=10, choices=UNITS)
     interval = models.SmallIntegerField()
-    schedule_task = models.OneToOneField('django_q.Schedule', on_delete=models.SET_NULL, null=True, blank=True)
+    schedule_task = models.OneToOneField('TaskSchedule', on_delete=models.SET_NULL, null=True, blank=True)
     last_run = models.DateTimeField(auto_now=True)
     repeats = models.SmallIntegerField(default=0)
     count_run = models.PositiveIntegerField(default=0)
@@ -50,6 +48,10 @@ class DJBackUpBase(models.Model):
         if self.schedule_task:
             return True
         return False
+
+    @property
+    def has_storage(self):
+        return self.get_storages().exists()
 
     @abc.abstractmethod
     def get_backup_location(self, *args, **kwargs):
@@ -83,6 +85,9 @@ class DJBackUpBase(models.Model):
             return self.interval * 7 * 24 * 60
         raise ValueError('you must set valid `unit` field')
 
+    def convert_unit_interval_to_seconds(self):
+        return self.convert_unit_interval_to_minute() * 60
+
     def get_storages(self):
         return self.storages.all()
 
@@ -102,10 +107,9 @@ class DJBackUpBase(models.Model):
         schedule_task = self.schedule_task
         if schedule_task:
             try:
-                Task.objects.get(id=schedule_task.task).delete()
-            except Task.DoesNotExist:
-                utils.log_event('Task not found id: `%s`' % schedule_task.task, 'warning')
-            schedule_task.delete()
+                TaskSchedule.objects.get(task_id=self.schedule_task.task_id).delete()
+            except TaskSchedule.DoesNotExist:
+                utils.log_event('Task not found id: `%s`' % schedule_task.task_id, 'warning')
 
 
 class DJFileBackUp(DJBackUpBase):
@@ -249,7 +253,7 @@ class DJStorage(models.Model):
     def storage_class(self):
         s = storages.ALL_STORAGES_DICT.get(self.name)
         if not s:
-            utils.log_event('There is not exists storage with `%s` name' % self.name, 'error')
+            utils.log_event('There is not exists storage with `%s` name' % self.name, 'warning')
             return None
         return s
 
@@ -260,3 +264,34 @@ class DJStorage(models.Model):
 
     def get_usage_size(self):
         return self.djbackupstorageresult_set.all().aggregate(total=models.Sum('size'))['total'] or 0
+
+
+class TaskSchedule(models.Model):
+    task_id = models.CharField(max_length=300)
+    func = models.TextField()
+    seconds = models.PositiveBigIntegerField()
+    repeats = models.IntegerField(default=-1)  # '-1' forever
+    count_run = models.IntegerField(default=0, editable=False)
+    kwargs = models.JSONField(null=True, blank=True)
+    args = models.TextField(null=True, blank=True)
+
+    last_run = models.DateTimeField(null=True, blank=True, default=None)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.task_id
+
+    @property
+    def is_available(self):
+        if self.repeats < 0:
+            return True
+        if self.repeats > self.count_run:
+            return True
+        return False
+
+    @property
+    def is_available_for_run(self):
+        if DJBackUpBase.objects.filter(schedule_task=self).exists():
+            return True
+        return False

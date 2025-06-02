@@ -1,4 +1,5 @@
 from dj_backup.core.backup.db import mysql, sqlite, postgresql
+from dj_backup.core.backup.db import sqlite
 from dj_backup import settings
 
 ALL_DATABASES_DICT = {

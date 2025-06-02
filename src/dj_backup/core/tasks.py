@@ -1,14 +1,11 @@
 import abc
 
-from django_q.models import Schedule
-
 from dj_backup.core.backup.file import FileBackup
-from dj_backup.core import utils
+from dj_backup.core import utils, task, logging
 from dj_backup import models
 
 
 class ScheduleBackupBaseTask(abc.ABC):
-    _func_run = None
     test_run = False
 
     def __init__(self, backup_obj):
@@ -16,16 +13,12 @@ class ScheduleBackupBaseTask(abc.ABC):
         if self.test_run:
             self.test()
             return
-        st = Schedule.objects.create(
-            name='schedule_backup_task_%s' % backup_obj.name,
-            schedule_type='I',
-            repeats=backup_obj.repeats,
-            minutes=backup_obj.convert_unit_interval_to_minute(),
-            kwargs={'backup_obj_id': backup_obj.id},
-            func=self._func_run,
-        )
 
-        backup_obj.schedule_task = st
+        task_id = 'schedule_backup_task_{}_{}'.format(backup_obj.name, utils.random_str(20))
+        st = task.TaskSchedule(self.run, backup_obj.convert_unit_interval_to_seconds(), backup_obj.repeats,
+                               task_id=task_id, f_kwargs={'backup_obj_id': backup_obj.id})
+
+        backup_obj.schedule_task = st.task_obj
         backup_obj.save()
 
     @staticmethod
@@ -38,7 +31,6 @@ class ScheduleBackupBaseTask(abc.ABC):
 
 
 class ScheduleFileBackupTask(ScheduleBackupBaseTask):
-    _func_run = 'dj_backup.core.tasks.ScheduleFileBackupTask.run'
 
     @staticmethod
     def run(backup_obj_id, *args, **kwargs):
@@ -73,8 +65,9 @@ class ScheduleFileBackupTask(ScheduleBackupBaseTask):
 
         try:
             handler()
-        except Exception:
-            pass
+        except Exception as e:
+            logging.log_event('There is some problem in schedule file backup task [%s]' % e.__str__(), 'ERROR',
+                              exc_info=True)
         finally:
             backup_obj.count_run += 1
             backup_obj.has_running_task = False
@@ -85,15 +78,8 @@ class ScheduleFileBackupTask(ScheduleBackupBaseTask):
         if not backup_obj.has_temp:
             backup_obj.delete_temp_files()
 
-        # delete task when the count number reaches 0
-        if backup_obj.schedule_task:
-            if backup_obj.schedule_task.repeats == 0:
-                backup_obj.schedule_task.delete()
-                return
-
 
 class ScheduleDataBaseBackupTask(ScheduleBackupBaseTask):
-    _func_run = 'dj_backup.core.tasks.ScheduleDataBaseBackupTask.run'
 
     @staticmethod
     def run(backup_obj_id, *args, **kwargs):
@@ -131,8 +117,9 @@ class ScheduleDataBaseBackupTask(ScheduleBackupBaseTask):
 
         try:
             handler()
-        except Exception:
-            pass
+        except Exception as e:
+            logging.log_event('There is some problem in schedule database backup task [%s]' % e.__str__(), 'ERROR',
+                              exc_info=True)
         finally:
             backup_obj.count_run += 1
             backup_obj.has_running_task = False
@@ -142,9 +129,3 @@ class ScheduleDataBaseBackupTask(ScheduleBackupBaseTask):
         db_instance.delete_dump_file()
         if not backup_obj.has_temp:
             backup_obj.delete_temp_files()
-
-        # delete task when the count number reaches 0
-        if backup_obj.schedule_task:
-            if backup_obj.schedule_task.repeats == 0:
-                backup_obj.schedule_task.delete()
-                return

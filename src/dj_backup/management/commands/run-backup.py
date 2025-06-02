@@ -1,12 +1,11 @@
 from django.core.management.base import BaseCommand
-from django.core.management import call_command
 
 from dj_backup import settings
 from dj_backup.core import utils, storages
 
 
 class Command(BaseCommand):
-    help = 'Start and run DJ Backup'
+    help = 'Start and Run dj_backup'
 
     def handle(self, *args, **kwargs):
         self.stdout.write(self.style.SUCCESS('DJ-Backup STARTING...'))
@@ -19,10 +18,10 @@ class Command(BaseCommand):
         self.stdout.write(self.style.SUCCESS('INITIAL STORAGES...'))
         self.initial_storages()
 
-        self.stdout.write(self.style.SUCCESS('STARTED !'))
+        self.stdout.write(self.style.SUCCESS('TASK RUNNER STARTED ..!'))
 
-        # run django-q
-        call_command('qcluster')
+        from dj_backup.core.task import runner
+        runner.run()
 
     @staticmethod
     def initial_storages():
@@ -33,4 +32,7 @@ class Command(BaseCommand):
     def create_backup_dirs():
         # create backup temp dir
         utils.get_or_create_dir(settings.get_backup_temp_dir())
+        # create backup sys dir
+        utils.get_or_create_dir(settings.get_backup_sys_dir())
+
         utils.log_event('Backup dirs were created successfully', 'debug')

@@ -193,7 +193,7 @@ OR
 
 [x] add time taken to generate and store backup
 
-[ ] * use pure schedule library or apscheduler or etc. instead django_q(has problems)
+[x] * use pure schedule library or apscheduler or etc. instead django_q(has problems)
 
 [ ] add password for backups
 

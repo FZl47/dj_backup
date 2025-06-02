@@ -45,12 +45,10 @@ _load_storages_initialized = False
 
 
 def load_storage():
-    # load storages object by pickle content
     # NOTE! load and call only with main runner
     global _load_storages_initialized
     if _load_storages_initialized:
         return
-
     storages_obj = models.DJStorage.objects.filter(checked=True)
     for storage_obj in storages_obj:
         storage_cls = storage_obj.storage_class

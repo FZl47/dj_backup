@@ -1,6 +1,8 @@
 from django.db.models.signals import pre_delete
 from django.dispatch import receiver
 
+from dj_backup.core.task.schedule import StorageTask
+
 from . import models
 
 
@@ -24,3 +26,6 @@ def delete_dj_file_backup_handler(sender, instance, **kwargs):
     delete_backup_handler(instance)
 
 
+@receiver(pre_delete, sender=models.TaskSchedule)
+def delete_task_job_handler(sender, instance, **kwargs):
+    StorageTask.remote_task_by_id(instance.task_id)
