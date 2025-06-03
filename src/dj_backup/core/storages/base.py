@@ -10,6 +10,7 @@ from dj_backup import models
 class BaseStorageConnector(abc.ABC):
     STORAGE_NAME = None
     CONFIG = None
+    IMPORT_STATUS = None
     _check_status = None
     time_taken = 0
 
@@ -65,11 +66,14 @@ class BaseStorageConnector(abc.ABC):
     def check(cls, raise_exc=True):
         if cls._check_status:
             return cls._check_status
-        utils.log_event('Storages checking started..!', 'debug')
+        if cls.IMPORT_STATUS is False:
+            return False
+        utils.log_event('Storage [%s] checking started..!' % cls.STORAGE_NAME, 'debug')
         try:
             cls._connect()
             cls._close()
             cls._check_status = True
+            utils.log_event('Storage [%s] checked successfully!' % cls.STORAGE_NAME, 'debug')
             return True
         except Exception as e:
             cls._check_status = False
@@ -160,7 +164,7 @@ class BaseStorageConnector(abc.ABC):
         obj = models.DJStorage.objects.filter(name=self.STORAGE_NAME).first()
         if not obj:
             msg = 'DJStorage object not found with `%s` name' % self.STORAGE_NAME
-            utils.log_event(msg, exc_info=True)
+            utils.log_event(msg, 'warning', exc_info=True)
             raise ObjectDoesNotExist(msg)
         return obj
 

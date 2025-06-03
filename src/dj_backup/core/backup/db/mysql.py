@@ -1,5 +1,15 @@
 import subprocess
-import MySQLdb as _MySQLdb
+import warnings
+
+try:
+    import MySQLdb as _MySQLdb
+
+    package_imported = True
+except ImportError:
+    package_imported = False
+    warnings.warn("""
+        To back up database 'Mysql', you need to install its package using the following command; otherwise, it cannot be used:
+        'pip install djbackup[mysql]'""")
 
 from django.utils.translation import gettext_lazy as _
 
@@ -10,6 +20,7 @@ from .base import BaseDB
 
 
 class MysqlDB(BaseDB):
+    IMPORT_STATUS = package_imported
     CONFIG = {
         'NAME': None,
         'USER': None,

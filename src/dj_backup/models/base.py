@@ -251,9 +251,8 @@ class DJStorage(models.Model):
 
     @property
     def storage_class(self):
-        s = storages.ALL_STORAGES_DICT.get(self.name)
+        s = storages.STORAGES_AVAILABLE_DICT.get(self.name)
         if not s:
-            utils.log_event('There is not exists storage with `%s` name' % self.name, 'warning')
             return None
         return s
 

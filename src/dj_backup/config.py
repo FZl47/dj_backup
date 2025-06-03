@@ -61,3 +61,18 @@ class Settings:
     @classmethod
     def get_max_workers_count(cls):
         return django_settings.DJ_BACKUP_CONFIG.get('MAX_WORKERS', 3)
+
+    @classmethod
+    def get_notification_object_log_level(cls):
+        return django_settings.DJ_BACKUP_CONFIG.get('NOTIFICATION_OBJECT_LOG_LEVEL', 'WARNING').upper()
+
+    @classmethod
+    def get_log_level_num(cls):
+        return {
+            'NOTSET': 0,
+            'DEBUG': 10,
+            'INFO': 20,
+            'WARNING': 30,
+            'ERROR': 40,
+            'CRITICAL': 50,
+        }

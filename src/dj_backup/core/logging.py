@@ -3,22 +3,16 @@ import traceback
 import logging
 
 from dj_backup.core.triggers import TriggerLogBase
+from dj_backup import settings
 
 logger = logging.getLogger('dj_backup')
 
-LOG_LEVELS_NAME = {
-    'NOTSET': 0,
-    'DEBUG': 10,
-    'INFO': 20,
-    'WARNING': 30,
-    'ERROR': 40,
-    'CRITICAL': 50,
-}
+LOG_LEVELS_NUM = settings.get_log_level_num()
 
 
 def log_event(msg, level='info', exc_info=False, **kwargs):
     level = level.upper()
-    level_n = LOG_LEVELS_NAME[level]
+    level_n = LOG_LEVELS_NUM[level]
     logger.log(level_n, msg=msg, exc_info=exc_info, **kwargs)
     exc = None
     if exc_info:

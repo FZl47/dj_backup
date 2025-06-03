@@ -1,7 +1,17 @@
 import os
 import subprocess
-import psycopg2
 import pathlib
+import warnings
+
+try:
+    import psycopg2
+
+    package_imported = True
+except ImportError:
+    package_imported = False
+    warnings.warn("""
+        To back up database 'Postgresql', you need to install its package using the following command; otherwise, it cannot be used:
+        'pip install djbackup[postgresql]'""")
 
 from django.utils.translation import gettext_lazy as _
 
@@ -12,6 +22,7 @@ from .base import BaseDB
 
 
 class PostgresqlDB(BaseDB):
+    IMPORT_STATUS = package_imported
     CONFIG = {
         'NAME': None,
         'USER': None,
@@ -140,5 +151,3 @@ class PostgresqlDB(BaseDB):
             msg = 'There is some problem in dump `%s` db' % self.__class__.__name__
             utils.log_event(msg, 'critical', exc_info=True)
         return exc_loc_compress
-
-

@@ -282,3 +282,28 @@ class NotificationList(mixins.DJViewMixin, ListView):
     def get_queryset(self):
         qs = self.search(models.DJBackupLog.objects.all()).order_by('-created_at', '-is_seen')
         return qs
+
+
+class NotificationDetail(mixins.DJViewMixin, TemplateView):
+    template_name = 'dj_backup/notification/detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        try:
+            notification = models.DJBackupLog.objects.get(id=kwargs['notif_id'])
+            notification.is_seen = True
+            notification.save(update_fields=['is_seen'])
+            context['notif'] = notification
+        except models.DJBackupLog.DoesNotExist:
+            raise Http404
+        return context
+
+
+class NotificationSeenAll(mixins.DJViewMixin, RedirectView):
+
+    def get_redirect_url(self, *args, **kwargs):
+        return reverse_lazy('dj_backup:notification__list')
+
+    def get(self, request, *args, **kwargs):
+        models.DJBackupLog.objects.filter(is_seen=False).update(is_seen=True)
+        return super().get(request, *args, **kwargs)

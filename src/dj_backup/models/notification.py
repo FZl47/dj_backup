@@ -1,8 +1,9 @@
 from django.utils.translation import gettext_lazy as _
 from django.template.loader import render_to_string
-from django.db import models
 from django.core.mail import send_mail
+from django.urls import reverse_lazy
 from django.conf import settings
+from django.db import models
 
 
 class DJBackupLog(models.Model):
@@ -20,11 +21,20 @@ class DJBackupLog(models.Model):
         return f'{self.level} - {self.exc[:10]}'
 
     @property
+    def name(self):
+        if not self.msg:
+            return '-'
+        return self.msg[:30]
+
+    @property
     def subject(self):
         return _('DJBackup Log')
 
     def get_created_at(self):
         return self.created_at.strftime('%Y-%m-%d %H:%M')
+
+    def get_absolute_url(self):
+        return reverse_lazy('dj_backup:notification__detail', args=(self.id,))
 
 
 class DJBackupLogLevel(models.Model):

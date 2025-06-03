@@ -1,0 +1,148 @@
+{% extends 'dj_backup/base/base_template.html' %}
+
+{% block Title %}
+    جزئیات اعلان - {{ notif.name }}
+{% endblock %}
+
+{% block BodyClass %}
+    has-rtl nk-body npc-apps apps-only has-apps-sidebar npc-apps-files
+{% endblock %}
+
+{% block Style %}
+    <style>
+
+        .nk-file-details-row .nk-file-details-col:last-of-type {
+            color: #aab5c4;
+        }
+
+        @media screen and (max-width: 768px) {
+            .data-value {
+                display: block !important;
+                text-align: center;
+                margin: 5px auto;
+            }
+        }
+
+    </style>
+{% endblock %}
+
+{% block Content %}
+    <div class="nk-app-root">
+    <!-- main @s -->
+    <div class="nk-main">
+        <!-- wrap @s -->
+        <div class="nk-wrap">
+            <!-- main header @s -->
+            {% include 'dj_backup/base/header.html' %}
+            <!-- main header @e -->
+            <!-- content @s -->
+            <div class="nk-content p-0">
+                <div class="nk-content-inner">
+                    <div class="nk-content-body">
+                        <div class="nk-fmg">
+                            {% include 'dj_backup/base/menu-aside.html' %}
+                            <!-- .nk-fmg-aside -->
+                            <div class="nk-fmg-body">
+
+                                <div class="nk-fmg-body-content">
+                                    <div class="nk-block-head nk-block-head-md">
+                                        <div class="nk-block-between position-relative">
+                                            <div class="nk-block-head-content mb-3">
+                                                <h3 class="nk-block-title page-title">
+                                                    جزئیات اعلان - {{ notif.name }}
+                                                </h3>
+                                            </div>
+                                        </div>
+                                        <!-- .nk-block -->
+                                    </div>
+
+                                    <div class="nk-block col-12 col-md-10 col-lg-7 col-lg-9 mx-auto">
+                                        <div class="card card-bordered ">
+
+                                            <!-- .nav-tabs -->
+                                            <div class="card-inner card-inner-md">
+                                                <!-- .nk-block-head -->
+                                                <div class="nk-block">
+                                                    <div class="nk-data data-list data-list-s2">
+                                                        <div class="data-item">
+                                                            <div class="data-col">
+                                                                <span class="data-label">سطح</span>
+                                                                <span class="data-value">
+                                                                    <span class="fs-6 badge badge-dot fw-bold notif-{{ notif.level }}">{{ notif.level }}</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="data-item">
+                                                            <div class="data-col">
+                                                                <span class="data-label">نام</span>
+                                                                <span class="data-value" dir="ltr">
+                                                                        {{ notif.name }}
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <!-- data-item -->
+                                                        <div class="data-item">
+                                                            <div class="data-col">
+                                                                <span class="data-label">توضیحات</span>
+                                                                <span class="data-value" dir="ltr">
+                                                                    {{ notif.msg|default:'-' }}
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="data-item">
+                                                            <div class="data-col">
+                                                                <span class="data-label">خطا</span>
+                                                                <span class="data-value" dir="ltr">
+                                                                    {{ notif.exc|default:'-' }}
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="data-item">
+                                                            <div class="data-col">
+                                                                <span class="data-label">وضعیت بازدید</span>
+                                                                <span class="data-value">
+                                                                    {% if notif.is_seen %}
+                                                                        <span class="badge badge-dot bg-success">
+                                                                            دیده شده
+                                                                        </span>
+                                                                    {% else %}
+                                                                        <span class="badge badge-dot bg-danger">
+                                                                            دیده نشده
+                                                                        </span>
+                                                                    {% endif %}
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="data-item">
+                                                            <div class="data-col">
+                                                                <span class="data-label">تاریخ ایجاد</span>
+                                                                <span class="data-value">
+                                                                    <span class="date">{{ notif.get_created_at }}</span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- .nk-block -->
+                                            </div>
+                                            <!-- .card-inner -->
+                                        </div>
+                                    </div>
+                                    <!-- .nk-fmg-body-content -->
+                                </div>
+                                <!-- .nk-fmg-body -->
+                            </div>
+                            <!-- .nk-fmg -->
+                        </div>
+                    </div>
+                </div>
+                <!-- content @e -->
+            </div>
+            <!-- wrap @e -->
+        </div>
+        <!-- main @e -->
+    </div>
+    <!-- app-root @e -->
+
+{% endblock %}
+

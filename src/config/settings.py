@@ -112,6 +112,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # DJ backup
 DJ_BACKUP_CONFIG = {
+    'NOTIFICATION_OBJECT_LOG_LEVEL': 'WARNING',  # ['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL']
     'MAX_WORKERS': 5,
     # 'POSTGRESQL_DUMP_PATH': None,  # optional(If the postgresql dump file is not found, you can set it)
     # 'MYSQL_DUMP_PATH': None,  # optional(If the mysql dump file is not found, you can set it)
