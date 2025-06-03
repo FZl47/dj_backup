@@ -5,65 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="49de342e-06dd-4d83-be69-4b15b555c32e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_00-38__test-1__6-0.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_00-38__test-1__6-1.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_00-38__test-1__6-2.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_00-38__test-1__6-3.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_00-38__test-1__6-4.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_00-38__test-1__6-5.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_01-07__test-1__6-10.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_01-07__test-1__6-11.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_01-07__test-1__6-12.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_01-07__test-1__6-13.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_01-07__test-1__6-14.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_01-07__test-1__6-15.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_01-07__test-1__6-16.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_01-07__test-1__6-6.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_01-07__test-1__6-7.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_01-07__test-1__6-8.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_01-07__test-1__6-9.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_01-09__test-1__6-17.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_01-09__test-1__6-18.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_01-09__test-1__6-19.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_01-09__test-1__6-20.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_01-09__test-1__6-21.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_01-09__test-1__6-22.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_01-09__test-1__6-23.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_01-09__test-1__6-24.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_01-09__test-1__6-25.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_01-09__test-1__6-26.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_01-09__test-1__6-27.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_01-09__test-1__6-28.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_01-10__test-1-21313__6-34.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_01-10__test-1-21313__6-35.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_01-10__test-1-21313__6-36.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_01-10__test-1-21313__6-37.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_01-10__test-1__6-29.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_01-10__test-1__6-30.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_01-10__test-1__6-31.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_01-10__test-1__6-32.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backup/temp/fb__2025-06-02_01-10__test-1__6-33.zip" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/backup/db/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/backup/db/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/backup/db/mysql.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/backup/db/mysql.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/backup/db/postgresql.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/backup/db/postgresql.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/logging.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/logging.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/storages/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/storages/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/storages/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/storages/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/storages/drop_box.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/storages/drop_box.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/storages/ftp_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/storages/ftp_server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/storages/sftp_server.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/storages/sftp_server.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/storages/telegram_bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/storages/telegram_bot.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/task/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/task/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/backup/db/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/backup/db/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dj_backup/models/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/models/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/models/notification.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/models/notification.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/notification.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/notification.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/notification/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/notification/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
