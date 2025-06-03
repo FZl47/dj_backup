@@ -5,33 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="49de342e-06dd-4d83-be69-4b15b555c32e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dj_backup.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dj_backup.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/backup/db/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/backup/db/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/backup/file.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/backup/file.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/logging.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/logging.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/storages/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/storages/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/tasks.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/management/commands/run-backup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/management/commands/run-backup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/migrations/0002_djstorage_checked.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/migrations/0003_remove_djstorage_checked.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/migrations/0004_djstoragepickle.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/migrations/0005_delete_djstoragepickle_djstorage_checked.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/migrations/0006_djbackuplogemail.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/migrations/0007_djbackuploglevel_delete_djbackuplogemail_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/migrations/0008_alter_djbackuploglevel_options_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/migrations/0009_alter_djbackuplog_options_and_more.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/models/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/models/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/models/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/notification.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/notification.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/signals.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/backup/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/backup/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/notification/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/templates/dj_backup/notification/list.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +167,8 @@
       <workItem from="1745267798911" duration="1742000" />
       <workItem from="1745458402304" duration="690000" />
       <workItem from="1748821468439" duration="9679000" />
-      <workItem from="1748831365762" duration="144000" />
+      <workItem from="1748831365762" duration="217000" />
+      <workItem from="1748839406627" duration="584000" />
     </task>
     <servers />
   </component>
