@@ -52,7 +52,7 @@ OR
 ```python
 STATICFILES_DIRS = (
     ...
-    os.path.join(BASE_DIR, 'dj_backup/static/'),
+    'dj_backup/static/',
 )
 
 ```
@@ -62,7 +62,7 @@ STATICFILES_DIRS = (
 ```python
 LOCALE_PATHS = (
     ...
-    BASE_DIR/ 'dj_backup/locale',
+    'dj_backup/locale',
 )
 ```
 
