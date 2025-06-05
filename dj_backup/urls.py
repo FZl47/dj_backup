@@ -15,6 +15,8 @@ urlpatterns = [
     path('db/backup/add', views.DataBaseBackupAdd.as_view(), name='db_backup__add'),
 
     path('notif/list', views.NotificationList.as_view(), name='notification__list'),
+    path('notif/list/seen/all', views.NotificationSeenAll.as_view(), name='notification__seen_all'),
+    path('notif/<int:notif_id>/detail', views.NotificationDetail.as_view(), name='notification__detail'),
 
     path('backup/list', views.BackupList.as_view(), name='backup__list'),
     path('backup/<int:backup_id>/detail', views.BackupDetail.as_view(), name='backup__detail'),

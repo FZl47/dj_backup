@@ -1,4 +1,15 @@
-import paramiko
+import warnings
+
+try:
+    import paramiko
+
+    package_imported = True
+except ImportError:
+    package_imported = False
+    warnings.warn("""
+        To use the storage provider 'SFTP Server', you need to install its package; otherwise, it cannot be used.
+        You can install the required package using the following command:
+        'pip install djbackup[sftpserver]'""")
 
 from dj_backup.core import utils
 
@@ -6,6 +17,7 @@ from .base import BaseStorageConnector
 
 
 class SFTPServerConnector(BaseStorageConnector):
+    IMPORT_STATUS = package_imported
     # paramiko.sftp_file.SFTPFile.MAX_REQUEST_SIZE = pow(2, 22)  # 4MB per chunk
     CONFIG = {
         'HOST': None,

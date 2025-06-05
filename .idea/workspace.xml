@@ -4,6 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="49de342e-06dd-4d83-be69-4b15b555c32e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/lib/dj_backup/__init__.py" beforeDir="false" />
@@ -61,6 +62,9 @@
       <change beforePath="$PROJECT_DIR$/djbackup.egg-info/top_level.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
     </list>
+=======
+    <list default="true" id="49de342e-06dd-4d83-be69-4b15b555c32e" name="Changes" comment="" />
+>>>>>>> main
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -93,9 +97,16 @@
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+<<<<<<< HEAD
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;pypi&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/FZl/Desktop/icestar/icestar&quot;,
+=======
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;F:/Project/dj_backup/src/dj_backup/templates/dj_backup/notification&quot;,
+>>>>>>> main
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -107,11 +118,18 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+<<<<<<< HEAD
+=======
+      <recent name="F:\Project\dj_backup\src\dj_backup\templates\dj_backup\notification" />
+>>>>>>> main
       <recent name="F:\Project\dj_backup\src\dj_backup\static\dj_backup\assets\images" />
       <recent name="F:\Project\dj_backup\src\static\admin\img" />
       <recent name="F:\Project\dj_backup\src\dj_backup\static" />
       <recent name="F:\Project\dj_backup\src\dj_backup\templates\dj_backup\backup" />
+<<<<<<< HEAD
       <recent name="F:\Project\dj_backup\src\dj_backup\templates\dj_backup\db" />
+=======
+>>>>>>> main
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="F:\Project\dj_backup\src\dj_backup\static\dj_backup\assets\images" />
@@ -218,11 +236,19 @@
       <workItem from="1745181136435" duration="392000" />
       <workItem from="1745222681004" duration="18000" />
       <workItem from="1745267798911" duration="1742000" />
+<<<<<<< HEAD
       <workItem from="1745458402304" duration="5467000" />
       <workItem from="1745535018562" duration="3140000" />
       <workItem from="1745594412291" duration="3954000" />
       <workItem from="1745739256993" duration="1240000" />
       <workItem from="1745892955140" duration="433000" />
+=======
+      <workItem from="1745458402304" duration="690000" />
+      <workItem from="1748821468439" duration="9679000" />
+      <workItem from="1748831365762" duration="217000" />
+      <workItem from="1748839406627" duration="584000" />
+      <workItem from="1749086247496" duration="943000" />
+>>>>>>> main
     </task>
     <servers />
   </component>
