@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="49de342e-06dd-4d83-be69-4b15b555c32e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/task/schedule.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/task/schedule.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/migrations/0001_initial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/migrations/0002_rename_task_taskschedule.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,6 +172,7 @@
       <workItem from="1748821468439" duration="9679000" />
       <workItem from="1748831365762" duration="217000" />
       <workItem from="1748839406627" duration="584000" />
+      <workItem from="1749115917081" duration="332000" />
     </task>
     <servers />
   </component>
