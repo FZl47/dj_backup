@@ -40,7 +40,6 @@ dj_backup/management/__init__.py
 dj_backup/management/commands/__init__.py
 dj_backup/management/commands/run-backup.py
 dj_backup/migrations/0001_initial.py
-dj_backup/migrations/0002_rename_task_taskschedule.py
 dj_backup/migrations/__init__.py
 dj_backup/models/__init__.py
 dj_backup/models/base.py
