@@ -10,7 +10,7 @@ def parse_requirements(filename):
 
 setup(
     name='djbackup',
-    version='2.1.0',
+    version='2.1.1',
     description='dj_backup is an installable module for Django that is used for backup purposes.',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
@@ -35,8 +35,8 @@ setup(
             *parse_requirements('./requirements/storages/ftpserver.txt'),
             *parse_requirements('./requirements/storages/dropbox.txt'),
 
-            *parse_requirements('./requirements/storages/mysql.txt'),
-            *parse_requirements('./requirements/storages/postgresql.txt'),
+            *parse_requirements('./requirements/databases/mysql.txt'),
+            *parse_requirements('./requirements/databases/postgresql.txt'),
         ],
     },
     classifiers=[

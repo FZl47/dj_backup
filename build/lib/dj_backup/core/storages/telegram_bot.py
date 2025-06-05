@@ -1,9 +1,21 @@
-from telegram import Bot
+import warnings
+
+try:
+    from telegram import Bot
+
+    package_imported = True
+except ImportError:
+    package_imported = False
+    warnings.warn("""
+        To use the storage provider 'Telegram Bot', you need to install its package; otherwise, it cannot be used.
+        You can install the required package using the following command:
+        'pip install djbackup[telegram]'""")
 
 from .base import BaseStorageConnector
 
 
 class TelegramBOTConnector(BaseStorageConnector):
+    IMPORT_STATUS = package_imported
     CONFIG = {
         'BOT_TOKEN': None,
         'CHAT_ID': 22,

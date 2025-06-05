@@ -1,9 +1,21 @@
-import ftplib
+import warnings
+try:
+    import ftplib
+
+    package_imported = True
+except ImportError:
+    package_imported = False
+    warnings.warn("""
+        To use the storage provider 'FTP Server', you need to install its package; otherwise, it cannot be used.
+        You can install the required package using the following command:
+        'pip install djbackup[ftpserver]'""")
+
 
 from .base import BaseStorageConnector
 
 
 class FTPServerConnector(BaseStorageConnector):
+    IMPORT_STATUS = package_imported
     CONFIG = {
         'HOST': None,
         'PORT': 21,

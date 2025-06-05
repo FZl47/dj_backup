@@ -1,5 +1,5 @@
 from .base import (
-    DJBackUpBase, DJFileBackUp, DJDataBaseBackUp, DJBackUpStorageResult, DJStorage, DJFile,
+    DJBackUpBase, DJFileBackUp, DJDataBaseBackUp, DJBackUpStorageResult, DJStorage, DJFile, TaskSchedule
 )
 from .notification import *
 
@@ -11,6 +11,6 @@ def get_backup_object(backup_id):
 __all__ = [
     'DJBackUpBase', 'DJFileBackUp', 'DJDataBaseBackUp',
     'DJBackUpStorageResult', 'DJStorage', 'DJFile',
-    'DJBackupLog',
+    'DJBackupLog', 'TaskSchedule',
     'get_backup_object',
 ]

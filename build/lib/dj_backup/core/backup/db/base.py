@@ -6,6 +6,7 @@ from dj_backup.core.backup.base import BaseBackup
 
 
 class BaseDB(BaseBackup):
+    IMPORT_STATUS = None
     NAME = None
     CMD = None
     CONFIG_NAME = None
@@ -85,6 +86,8 @@ class BaseDB(BaseBackup):
     def check(cls, raise_exc=True):
         if cls._check_status:
             return cls._check_status
+        if cls.IMPORT_STATUS is False:
+            return False
         try:
             cls.connect()
             cls.close()
