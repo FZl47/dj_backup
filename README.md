@@ -4,6 +4,11 @@
 
     DJ Backup is a Django app that provides the capability to back up your files and databases.
 
+### Available at:
+- #### <a href="https://pypi.org/project/djbackup/">pypi</a>
+- #### <a href="https://github.com/FZl47/dj_backup">github</a>
+
+
 ##### supported databases
 
 - mysql
@@ -18,16 +23,20 @@
 - dropbox(beta)
 - telegram bot
 
-
 ## How to use ?
 
-1. First you need to install dj_backup
+####  1. First you need to install dj_backup
 
 ```sh
     pip install djbackup
 ```
+OR
+- #### for using all features
+```sh
+    pip install djbackup[all]
+```
 
-#### 2. After that, add the `dj_backup` and `django_q` apps to your Django project's installed apps.
+#### 2. After that, add the `dj_backup` app to your Django project's installed apps.
 
 ```pycon
     INSTALLED_APPS = [
@@ -35,11 +44,10 @@
     ...
     # apps
     'dj_backup',
-    'django_q'
 ]
 ```
 
-3. add static files dir path to django
+#### 3. add static files dir path to django
 
 ```python
 STATICFILES_DIRS = (
@@ -49,7 +57,7 @@ STATICFILES_DIRS = (
 
 ```
 
-4. add locale file to django(`optional`)
+#### 4. add locale file to django(`optional`)
 
 ```python
 LOCALE_PATHS = (
@@ -58,7 +66,7 @@ LOCALE_PATHS = (
 )
 ```
 
-5. add dj_backup urls to project urls
+#### 5. add dj_backup urls to project urls
 
 ```python
 urlpatterns = [
@@ -68,64 +76,21 @@ urlpatterns = [
 ]
 ```
 
-### 6. set dj_backup config to django settings
+#### 6. set dj_backup <span style="text-decoration: underline;">basic config</span> to django settings
 
 ```python
-    DJ_BACKUP_CONFIG = {
-    # optional (if dj_backup cant find `pg_dump` file then you must fill this
-    'POSTGRESQL_DUMP_PATH': None,
-    # optional (if dj_backup cant find `mysqldump` file then you must fill this
-    'MYSQL_DUMP_PATH': None,
-    # if you want backup external databases you can set this config
-    # By default local databases are accessible and can be backed up
-    'EXTERNAL_DATABASES': {
-        # 'external_db': {
-        #     'ENGINE': 'mysql',
-        #     'NAME': 'test',
-        #     'USER': 'test',
-        #     'PASSWORD': 'test',
-        #     'HOST': '127.0.0.1',  # Or an IP Address that your DB is hosted on
-        #     'PORT': 3306  # optional
-        # },
-        ...
-        ...
-    },
-    'BASE_ROOT_DIRS': [
-        # the main path for the files that need to be backed up
-        BASE_DIR,
-        ...
-    ],
-    'BACKUP_TEMP_DIR': BASE_DIR / 'backup/temp',
+
+DJ_BACKUP_CONFIG = {
     'STORAGES': {
         'LOCAL': {
-            'OUT': BASE_DIR / 'backup/result'  # the path local storage
+            'OUT': BASE_DIR / 'backup/result'
         },
-        'SFTP_SERVER': {
-            'HOST': 'xxx.xxx.xxx.xxx',
-            'USERNAME': 'xxx.xxx.xxx.xxx',
-            'PASSWORD': 'xxx.xxx.xxx.xxx',
-            'OUT': '/backups'
-        },
-        'FTP_SERVER': {
-            'HOST': "xxx.xxx.xxx.xxx",
-            'USERNAME': "xxx.xxx.xxx.xxx",
-            'PASSWORD': "xxx.xxx.xxx.xxx",
-            'OUT': '/backups'
-        },
-        'DROPBOX': {
-            'ACCESS_TOKEN': 'xxx.xxx.xxx.xxx',
-            'OUT': '/backups'
-        },
-        'TELEGRAM_BOT': {
-             'BOT_TOKEN': 'xxx',
-             'CHAT_ID': 'xxx'
-         }
     }
 }
 
 ```
 
-### 7. migrate & collect static files
+#### 7. migrate & collect static files
 
 ```python
     python manage.py migrate
@@ -135,13 +100,23 @@ urlpatterns = [
     python manage.py collectstatic
 ```
 
-### 8. run backup!
+#### 8. run backup!
+
+- command is for managing settings and executing backup tasks
 
 ```python
     python manage.py run-backup
 ```
 
-### 9. Dashboard
+### 9. run django
+
+```python
+    python manage.py runserver
+```
+
+- OR use wsgi/asgi handler like: (uwsgi, gunicorn, waitress or etc)
+
+### Dashboard
 
 #### now you can access to `dj_backup` dashboard
 
@@ -154,6 +129,83 @@ OR
 ```djangourlpath
     xxx.xxx:xxxx/dj-backup/  
 ```
+
+### Additional Config
+
+```python
+DJ_BACKUP_CONFIG = {
+    # 'MAX_WORKERS': 5, #(optional)
+    # 'NOTIFICATION_OBJECT_LOG_LEVEL': 'WARNING', #(optional)  # options => ['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL']
+    # 'POSTGRESQL_DUMP_PATH': None,  # optional(If the postgresql dump file is not found, you can set it)
+    # 'MYSQL_DUMP_PATH': None,  # optional(If the mysql dump file is not found, you can set it)
+    # 'EXTERNAL_DATABASES': {
+    # 'default2': {
+    #     'ENGINE': 'postgresql',
+    #     'NAME': 'test',
+    #     'USER': 'postgres',
+    #     'PASSWORD': 'xxx',
+    #     'HOST': '127.0.0.1',  # Or an IP Address that your DB is hosted on
+    # },
+    # 'default3': {
+    #     'ENGINE': 'mysql',
+    #     'NAME': 'test',
+    #     'USER': 'root',
+    #     'PASSWORD': 'xxx',
+    #     'HOST': '127.0.0.1',  # Or an IP Address that your DB is hosted on
+    # },
+    # },
+    'BASE_ROOT_DIRS': [
+        BASE_DIR,
+    ],
+    # 'BACKUP_TEMP_DIR': BASE_DIR / 'backup/temp', #(optional)
+    # 'BACKUP_SYS_DIR': BASE_DIR / 'backup/sys', #(optional)
+    'STORAGES': {
+        'LOCAL': {
+            'OUT': BASE_DIR / 'backup/result'
+        },
+        # 'TELEGRAM_BOT': {
+        #     'BOT_TOKEN': 'xxx-xxx',
+        #     'CHAT_ID': 'xxx-xxx'
+        # }
+        # 'SFTP_SERVER': {
+        #     'HOST': 'xxx',
+        #     'USERNAME': 'xxx',
+        #     'PASSWORD': 'xxx',
+        #     'OUT': 'xxx'
+        # },
+        # 'FTP_SERVER': {
+        #     'HOST': "xxx",
+        #     'USERNAME': "xxx",
+        #     'PASSWORD': "xxx",
+        #     'OUT': 'backups'
+        # },
+        # 'DROPBOX': {
+        #     'ACCESS_TOKEN': 'xxx-xxx',
+        #     'OUT': '/dj_backup/'
+        # }
+    }
+}
+```
+
+- ### <span style="text-decoration: underline;line-height:50px;">To use storage providers or perform database backups, you need to install the appropriate packages according to your needs using the commands below</span>
+
+### - storages:
+
+| storage      | install command                        |
+|--------------|----------------------------------------| 
+| TELEGRAM_BOT | ```pip install djbackup[telegram]```   |
+| SFTP_SERVER  | ```pip install djbackup[sftpserver]``` |
+| FTP_SERVER   | ```pip install djbackup[ftpserver]```  |
+| DROPBOX      | ```pip install djbackup[dropbox]```    |
+
+
+### - databases:
+
+| database   | install command                        |
+|------------|----------------------------------------| 
+| mysql      | ```pip install djbackup[mysql]```      |
+| postgresql | ```pip install djbackup[postgresql]``` |
+
 
 ## NOTE:
 
