@@ -196,7 +196,7 @@ class TaskSchedule(StorageTask):
 
 
 class BackgroundScheduler(_BackgroundScheduler, ListenToTasksSignals):
-    executors = None | dict
+    executors = None
 
     def __init__(self, *args, **kwargs):
         # set config
