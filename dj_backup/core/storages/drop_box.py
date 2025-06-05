@@ -1,4 +1,15 @@
-import dropbox
+import warnings
+
+try:
+    import dropbox
+
+    package_imported = True
+except ImportError:
+    package_imported = False
+    warnings.warn("""
+        To use the storage provider 'Dropbox', you need to install its package; otherwise, it cannot be used.
+        You can install the required package using the following command:
+        'pip install djbackup[dropbox]'""")
 
 from dj_backup.core import utils
 
@@ -6,6 +17,7 @@ from .base import BaseStorageConnector
 
 
 class DropBoxConnector(BaseStorageConnector):
+    IMPORT_STATUS = package_imported
     CONFIG = {
         'ACCESS_TOKEN': None,
         'OUT': '/dj_backup/'
@@ -41,5 +53,3 @@ class DropBoxConnector(BaseStorageConnector):
         output = utils.join_paths(self.CONFIG['OUT'], file_name)
         self.upload(dbx, output)
         self.close()
-
-

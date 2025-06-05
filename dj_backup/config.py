@@ -2,6 +2,7 @@ from django.conf import settings as django_settings
 
 
 class Settings:
+    listen_to_tasks_time_loop = 5  # seconds
 
     def __init__(self):
         self._check_config()
@@ -51,3 +52,27 @@ class Settings:
     def get_backup_temp_dir(cls):
         _default = django_settings.BASE_DIR / 'backup/temp'
         return django_settings.DJ_BACKUP_CONFIG.get('BACKUP_TEMP_DIR', _default)
+
+    @classmethod
+    def get_backup_sys_dir(cls):
+        _default = django_settings.BASE_DIR / 'backup/sys'
+        return django_settings.DJ_BACKUP_CONFIG.get('BACKUP_SYS_DIR', _default)
+
+    @classmethod
+    def get_max_workers_count(cls):
+        return django_settings.DJ_BACKUP_CONFIG.get('MAX_WORKERS', 3)
+
+    @classmethod
+    def get_notification_object_log_level(cls):
+        return django_settings.DJ_BACKUP_CONFIG.get('NOTIFICATION_OBJECT_LOG_LEVEL', 'WARNING').upper()
+
+    @classmethod
+    def get_log_level_num(cls):
+        return {
+            'NOTSET': 0,
+            'DEBUG': 10,
+            'INFO': 20,
+            'WARNING': 30,
+            'ERROR': 40,
+            'CRITICAL': 50,
+        }

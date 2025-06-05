@@ -27,7 +27,7 @@
 {% endblock %}
 
 {% block Content %}
-    <div class="nk-app-root">
+<div class="nk-app-root">
     <!-- main @s -->
     <div class="nk-main">
         <!-- wrap @s -->
@@ -66,28 +66,30 @@
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-end">
                                                 <ul class="link-list-opt no-bdr">
-                                                    {% if not backup.is_running %}
+                                                    {% if backup.has_storage %}
+                                                        {% if not backup.is_running %}
+                                                            <li>
+                                                                <button type="button" class="btn text-success"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#modal-start-running">شروع بک آپ
+                                                                    گیری
+                                                                </button>
+                                                            </li>
+                                                        {% else %}
+                                                            <li>
+                                                                <button type="button" class="btn text-warning"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#modal-stop-running">توقف بک آپ گیری
+                                                                </button>
+                                                            </li>
+                                                        {% endif %}
                                                         <li>
-                                                            <button type="button" class="btn text-success"
+                                                            <button type="button" class="btn text-info"
                                                                     data-bs-toggle="modal"
-                                                                    data-bs-target="#modal-start-running">شروع بک آپ
-                                                                گیری
-                                                            </button>
-                                                        </li>
-                                                    {% else %}
-                                                        <li>
-                                                            <button type="button" class="btn text-warning"
-                                                                    data-bs-toggle="modal"
-                                                                    data-bs-target="#modal-stop-running">توقف بک آپ گیری
+                                                                    data-bs-target="#modal-update">ویرایش
                                                             </button>
                                                         </li>
                                                     {% endif %}
-                                                    <li>
-                                                        <button type="button" class="btn text-info"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#modal-update">ویرایش
-                                                        </button>
-                                                    </li>
                                                     <li>
                                                         <button type="button" class="btn text-danger"
                                                                 data-bs-toggle="modal"
@@ -724,21 +726,21 @@
         </div>
     </div>
 
-{% endblock %}
+    {% endblock %}
 
-{% block Script %}
-    <script>
-        document.querySelectorAll('.file-dl-toast').forEach(function (el) {
-            el.addEventListener('click', function (e) {
-                let href = this.getAttribute('href')
-                let link = document.createElement('a')
-                link.href = href
-                link.download = true
-                link.style.display = 'none'
-                document.body.appendChild(link)
-                link.click()
-                link.remove()
+    {% block Script %}
+        <script>
+            document.querySelectorAll('.file-dl-toast').forEach(function (el) {
+                el.addEventListener('click', function (e) {
+                    let href = this.getAttribute('href')
+                    let link = document.createElement('a')
+                    link.href = href
+                    link.download = true
+                    link.style.display = 'none'
+                    document.body.appendChild(link)
+                    link.click()
+                    link.remove()
+                })
             })
-        })
-    </script>
-{% endblock %}
+        </script>
+    {% endblock %}
