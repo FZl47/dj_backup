@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: djbackup
-Version: 2.1.2
+Version: 2.1.3
 Summary: dj_backup is an installable module for Django that is used for backup purposes.
 Home-page: https://github.com/FZl47/dj_backup
 Author: FZl47
