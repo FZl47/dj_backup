@@ -6,7 +6,7 @@ tzdata
 tzlocal
 
 [all]
-python-telegram-bot==13.0
+python-telegram-bot
 paramiko
 ftplib
 dropbox
@@ -29,4 +29,4 @@ psycopg2
 paramiko
 
 [telegram]
-python-telegram-bot==13.0
+python-telegram-bot

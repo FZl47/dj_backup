@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: djbackup
-Version: 2.1.5
+Version: 2.1.6
 Summary: dj_backup is an installable module for Django that is used for backup purposes.
 Home-page: https://github.com/FZl47/dj_backup
 Author: FZl47
@@ -16,7 +16,7 @@ Requires-Dist: sqlparse
 Requires-Dist: tzdata
 Requires-Dist: tzlocal
 Provides-Extra: telegram
-Requires-Dist: python-telegram-bot==13.0; extra == "telegram"
+Requires-Dist: python-telegram-bot; extra == "telegram"
 Provides-Extra: sftpserver
 Requires-Dist: paramiko; extra == "sftpserver"
 Provides-Extra: ftpserver
@@ -28,7 +28,7 @@ Requires-Dist: mysqlclient; extra == "mysql"
 Provides-Extra: postgresql
 Requires-Dist: psycopg2; extra == "postgresql"
 Provides-Extra: all
-Requires-Dist: python-telegram-bot==13.0; extra == "all"
+Requires-Dist: python-telegram-bot; extra == "all"
 Requires-Dist: paramiko; extra == "all"
 Requires-Dist: ftplib; extra == "all"
 Requires-Dist: dropbox; extra == "all"

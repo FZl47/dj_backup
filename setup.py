@@ -1,4 +1,4 @@
-from setuptools import setup, find_packages
+from setuptools import setup
 
 
 def parse_requirements(filename):
@@ -10,7 +10,7 @@ def parse_requirements(filename):
 
 setup(
     name='djbackup',
-    version='2.1.5',
+    version='2.1.6',
     description='dj_backup is an installable module for Django that is used for backup purposes.',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
