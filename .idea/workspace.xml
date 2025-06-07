@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="49de342e-06dd-4d83-be69-4b15b555c32e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/task/schedule.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/task/schedule.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/migrations/0001_initial.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dj_backup/migrations/0002_rename_task_taskschedule.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/logging.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/logging.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/core/storages/telegram_bot.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/core/storages/telegram_bot.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/dj_backup/static/dj_backup/assets/css/dashlite.rtl.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/dj_backup/static/dj_backup/assets/css/dashlite.rtl.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

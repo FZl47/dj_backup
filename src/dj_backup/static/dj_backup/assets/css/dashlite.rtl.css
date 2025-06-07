@@ -39227,6 +39227,7 @@ h6 .badge,
 .data-value {
     color: #526484;
     font-size: 0.9375rem;
+    overflow: auto;
 }
 
 .data-more {
@@ -39293,7 +39294,7 @@ h6 .badge,
     color: #8094ae;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
     .data-list:not(:first-child) {
         margin-top: 2rem;
     }
@@ -39307,8 +39308,12 @@ h6 .badge,
     }
 
     .data-col {
-        display: flex;
-        align-items: center;
+        display: block;
+    }
+
+    .data-value{
+        display: block!important;
+        text-align: center;
     }
 
     .data-col-end {

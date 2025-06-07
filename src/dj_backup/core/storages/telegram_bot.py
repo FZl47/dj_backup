@@ -18,8 +18,7 @@ class TelegramBOTConnector(BaseStorageConnector):
     IMPORT_STATUS = package_imported
     CONFIG = {
         'BOT_TOKEN': None,
-        'CHAT_ID': 22,
-        'TIMEOUT': 60
+        'CHAT_ID': None,
     }
     STORAGE_NAME = 'TELEGRAM_BOT'
     _BOT = None
@@ -41,7 +40,7 @@ class TelegramBOTConnector(BaseStorageConnector):
     def _upload(self):
         c = self.CONFIG
         with open(self.file_path, 'rb') as f:
-            self._BOT.send_document(chat_id=c['CHAT_ID'], document=f, timeout=c['TIMEOUT'])
+            self._BOT.send_document(chat_id=c['CHAT_ID'], document=f)
 
     def _save(self):
         self.check_before_save()
