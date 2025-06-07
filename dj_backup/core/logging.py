@@ -7,10 +7,10 @@ from dj_backup import settings
 
 logger = logging.getLogger('dj_backup')
 
-LOG_LEVELS_NUM = settings.get_log_level_num()
-
 
 def log_event(msg, level='info', exc_info=False, **kwargs):
+    LOG_LEVELS_NUM = settings.get_log_level_num()
+
     level = level.upper()
     level_n = LOG_LEVELS_NUM[level]
     logger.log(level_n, msg=msg, exc_info=exc_info, **kwargs)

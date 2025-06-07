@@ -1,3 +1,10 @@
+from django.utils.functional import SimpleLazyObject
+
 from dj_backup.config import Settings
 
-settings = Settings()
+
+def load_settings():
+    return Settings()
+
+
+settings = SimpleLazyObject(load_settings)
