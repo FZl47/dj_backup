@@ -1,0 +1,240 @@
+{% extends 'dj_backup/base/base_template.html' %}
+
+{% block Title %}
+    لیست اعلانات
+{% endblock %}
+
+{% block BodyClass %}
+    has-rtl nk-body npc-apps apps-only has-apps-sidebar npc-apps-files
+{% endblock %}
+
+{% block Content %}
+    <div class="nk-app-root">
+    <!-- main @s -->
+    <div class="nk-main">
+        <!-- wrap @s -->
+        <div class="nk-wrap">
+            <!-- main header @s -->
+            {% include 'dj_backup/base/header.html' %}
+            <!-- main header @e -->
+            <!-- content @s -->
+            <div class="nk-content p-0">
+                <div class="nk-content-inner">
+                    <div class="nk-content-body">
+                        <div class="nk-fmg">
+                            {% include 'dj_backup/base/menu-aside.html' %}
+                            <!-- .nk-fmg-aside -->
+                            <div class="nk-fmg-body">
+                                <div class="nk-fmg-body-head d-none d-lg-flex">
+                                    <div class="nk-fmg-search">
+                                        <em class="icon ni ni-search"></em>
+                                        <form class="w-100">
+                                            <input type="text" class="form-control border-transparent form-focus-none"
+                                                   placeholder="جستجو بر اساس متن یا نوع اعلان" name="search"
+                                                   value="{{ request.GET.search }}"/>
+                                        </form>
+                                    </div>
+                                </div>
+
+                                <div class="nk-fmg-body-content">
+                                    <div class="nk-block-head nk-block-head-sm">
+                                        <div class="nk-block-between position-relative mt-3">
+                                            <div class="nk-block-head-content mb-4 col-lg-12 col-10 d-flex justify-content-between">
+                                                <h3 class="nk-block-title page-title">لیست اعلانات</h3>
+                                                <a href="{% url 'dj_backup:notification__seen_all' %}"
+                                                   class="btn btn-outline-primary d-none d-lg-inline-block" style="border-radius: 10px">
+                                                     مشاهده همه
+                                                    <em class="icon ni ni-eye"></em>
+                                                </a>
+                                            </div>
+                                            <div class="nk-block-head-content">
+                                                <ul class="nk-block-tools g-1">
+                                                    <li class="d-lg-none">
+                                                        <a href="#"
+                                                           class="btn btn-trigger btn-icon search-toggle toggle-search"
+                                                           data-target="search"><em class="icon ni ni-search"></em></a>
+                                                    </li>
+                                                    <li class="d-lg-none">
+                                                        <a href="{% url 'dj_backup:notification__seen_all' %}"
+                                                           class="btn btn-trigger btn-icon"
+                                                        ><em class="icon ni ni-eye"></em></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="search-wrap px-2 d-lg-none" data-search="search">
+                                                <div class="search-content">
+                                                    <form>
+                                                        <a href="#" class="search-back btn btn-icon toggle-search"
+                                                           data-target="search"><em class="icon ni ni-arrow-left"></em></a>
+                                                        <input type="text" name="search"
+                                                               value="{{ request.GET.search }}"
+                                                               class="form-control border-transparent form-focus-none"
+                                                               placeholder="جستجو بر اساس متن یا نوع اعلان"/>
+                                                        <button class="search-submit btn btn-icon"><em
+                                                                class="icon ni ni-search"></em></button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- .nk-block-head -->
+                                        <div class="nk-content-wrap">
+                                            <!-- .nk-block-head -->
+                                            <div class="nk-block">
+                                                <div class="card card-bordered card-stretch">
+                                                    <div class="card-inner-group">
+                                                        <!-- .card-inner -->
+                                                        <div class="card-inner p-0">
+                                                            <table class="table table-tranx">
+                                                                <thead>
+                                                                <tr class="tb-tnx-head">
+                                                                    <th class="tb-tnx-id"><span class="">سطح</span></th>
+                                                                    <th class="tb-tnx-info">
+                                                                        <span class="tb-tnx-desc d-none d-sm-inline-block">
+                                                                            <span>متن</span>
+                                                                        </span>
+                                                                        <span class="tb-tnx-date d-md-inline-block d-none">
+                                                                            <span class="d-md-none">زمان ایجاد</span>
+                                                                            <span class="d-none d-md-block">
+                                                                                <span>زمان ایجاد</span>
+                                                                            </span>
+                                                                        </span>
+                                                                    </th>
+                                                                    <th class="tb-tnx-amount">
+                                                                        <span class="tb-tnx-total">وضعیت بازدید</span>
+                                                                    </th>
+                                                                    <th>
+                                                                        <span>عملیات</span>
+                                                                    </th>
+                                                                </tr>
+                                                                <!-- tb-tnx-item -->
+                                                                </thead>
+                                                                <tbody>
+                                                                {% for notification in object_list %}
+                                                                    <tr class="tb-tnx-item">
+                                                                        <td class="tb-tnx-id">
+                                                                            <a href="{{ notification.get_absolute_url }}">
+                                                                                <span class="badge badge-dot fw-bold notif-{{ notification.level }}">{{ notification.level }}</span>
+                                                                            </a>
+                                                                        </td>
+                                                                        <td class="tb-tnx-info">
+                                                                            <div class="tb-tnx-desc">
+                                                                                <span class="title">
+                                                                                    <a href="{{ notification.get_absolute_url }}">{{ notification.name }}</a>
+                                                                                </span>
+                                                                            </div>
+                                                                            <div class="tb-tnx-date">
+                                                                                <span class="date">{{ notification.get_created_at }}</span>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="tb-tnx-amount is-alt">
+                                                                            <div class="tb-tnx-status ">
+
+                                                                                {% if notification.is_seen %}
+                                                                                    <span class="badge badge-dim bg-success fs-10px">
+                                                                                         مشاهده شده
+                                                                                     </span>
+                                                                                {% else %}
+                                                                                    <span class="badge badge-dim bg-warning fs-10px">
+                                                                                         مشاهده نشده
+                                                                                     </span>
+                                                                                {% endif %}
+
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="tb-tnx-action">
+                                                                            <div class="dropdown">
+                                                                                <a class="text-soft dropdown-toggle btn btn-icon btn-trigger"
+                                                                                   data-bs-toggle="dropdown"><em
+                                                                                        class="icon ni ni-more-h"></em></a>
+                                                                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-xs">
+                                                                                    <ul class="link-list-plain">
+                                                                                        <li>
+                                                                                            <a href="{{ notification.get_absolute_url }}">مشاهده</a>
+                                                                                        </li>
+                                                                                    </ul>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                {% empty %}
+                                                                    <tr>
+                                                                        <td>
+                                                                            <span class="fs-18px">چیزی یافت نشد</span>
+                                                                            {% if request.GET.search %}
+                                                                                <a class="link text-warning fs-12px"
+                                                                                   href="{% url 'dj_backup:notification__list' %}">
+                                                                                    حذف فیلتر و جست و جو
+                                                                                    <em class="ni ni-cross-circle m-1"></em>
+                                                                                </a>
+                                                                            {% endif %}
+                                                                        </td>
+                                                                    </tr>
+                                                                {% endfor %}
+                                                                <!-- tb-tnx-item -->
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                    <!-- .card-inner-group -->
+                                                </div>
+                                                <!-- .card -->
+                                            </div>
+                                            <!-- .nk-block -->
+                                        </div>
+                                        <!-- .nk-block -->
+                                    </div>
+                                    <div class="card-inner">
+                                        <div class="nk-block-between-md justify-content-center">
+                                            <div class="g">
+                                                <ul class="pagination justify-content-center justify-content-md-start">
+                                                    {% if page_obj.has_previous %}
+                                                        <li class="page-item"><a
+                                                                class="page-link add-params-to-href"
+                                                                href="?page=1">اول</a>
+                                                        </li>
+                                                        <li class="page-item"><a
+                                                                class="page-link add-params-to-href"
+                                                                href="?page={{ page_obj.previous_page_number }}">قبلی</a>
+                                                        </li>
+                                                    {% endif %}
+
+                                                    <span class="fs-13px mt-1 mx-2">
+                                                                        صفحه {{ page_obj.number }} از {{ page_obj.paginator.num_pages }}.
+                                                                </span>
+
+                                                    {% if page_obj.has_next %}
+                                                        <li class="page-item"><a
+                                                                class="page-link add-params-to-href"
+                                                                href="?page={{ page_obj.next_page_number }}">بعدی</a>
+                                                        </li>
+                                                        <li class="page-item"><a
+                                                                class="page-link add-params-to-href"
+                                                                href="?page={{ page_obj.paginator.num_pages }}">اخرین</a>
+                                                        </li>
+                                                    {% endif %}
+                                                </ul>
+                                                <!-- .pagination -->
+                                            </div>
+
+                                            <!-- .pagination-goto -->
+                                        </div>
+                                        <!-- .nk-block-between -->
+                                    </div>
+                                    <!-- .nk-fmg-body-content -->
+                                </div>
+                                <!-- .nk-fmg-body -->
+                            </div>
+                            <!-- .nk-fmg -->
+                        </div>
+                    </div>
+                </div>
+                <!-- content @e -->
+            </div>
+            <!-- wrap @e -->
+        </div>
+        <!-- main @e -->
+    </div>
+    <!-- app-root @e -->
+
+{% endblock %}
+

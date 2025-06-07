@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" class="js">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="author" content="https://github.com/FZl47"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content="dj backup"/>
+    <!-- Fav Icon  -->
+    <link rel="shortcut icon" href="{% static 'dj_backup/assets/images/favicon.png' %}"/>
+    <link rel="icon" type="image/x-icon" href="{% static 'dj_backup/assets/images/favicon.png' %}">
+    <!-- Page Title  -->
+    <title>{% block Title %}{% endblock %}| dj-backup</title>
+    <!-- StyleSheets  -->
+    <link rel="stylesheet" href="{% static 'dj_backup/assets/css/dashlite.rtl.css' %}"/>
+    <link rel="stylesheet" href="{% static 'dj_backup/assets/css/notify.css' %}">
+
+    {% block Style %}{% endblock %}
+</head>
+<body class="{% block BodyClass %}{% endblock %}" dir="rtl">
+{% block Content %}{% endblock %}
+<script src="{% static 'dj_backup/assets/js/bundle.js' %}"></script>
+<script src="{% static 'dj_backup/assets/js/scripts.js' %}"></script>
+<script src="{% static 'dj_backup/assets/js/apps/file-manager.js' %}"></script>
+<script src="{% static 'dj_backup/assets/js/base.js' %}"></script>
+<script src="{% static 'dj_backup/assets/js/notify.js' %}"></script>
+<script>
+    {% for message in messages %}
+        createNotify({
+            title: '{{ message.tags }}',
+            message: '{{ message }}',
+            theme: '{{ message.tags }}'
+        })
+    {% endfor %}
+
+    // active menu item
+    try {
+        document.querySelectorAll(`a[href="${window.location.pathname}"]`).forEach(function (el) {
+            el.parentElement.classList.add('active')
+        })
+    } catch (e) {
+    }
+
+</script>
+{% block Script %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,264 @@
+{% extends 'dj_backup/base/base_template.html' %}
+
+{% block Title %}
+    لیست دیتابیس ها
+{% endblock %}
+
+{% block Style %}
+    <style>
+
+        .selected-db-backup-cnt .nk-upload-icon {
+            display: inline-block;
+            margin-right: 10px;
+            width: 35px;
+        }
+
+        .selected-db-backup-cnt .nk-upload-title {
+            display: inline-block;
+
+        }
+    </style>
+{% endblock %}
+
+{% block BodyClass %}
+    has-rtl nk-body npc-apps apps-only has-apps-sidebar npc-apps-files
+{% endblock %}
+
+{% block Content %}
+    <div class="nk-app-root">
+    <!-- main @s -->
+    <div class="nk-main">
+        <!-- wrap @s -->
+        <div class="nk-wrap">
+            <!-- main header @s -->
+            {% include 'dj_backup/base/header.html' %}
+            <!-- main header @e -->
+            <!-- content @s -->
+            <div class="nk-content p-0">
+                <div class="nk-content-inner">
+                    <div class="nk-content-body">
+                        <div class="nk-fmg">
+                            {% include 'dj_backup/base/menu-aside.html' %}
+                            <!-- .nk-fmg-aside -->
+                            <div class="nk-fmg-body">
+
+
+                                <div class="nk-fmg-body-content">
+                                    <div class="nk-block-head nk-block-head-sm">
+                                        <div class="nk-block-between position-relative">
+                                            <div class="nk-block-head-content">
+                                                <h3 class="nk-block-title page-title">دیتابیس ها</h3>
+                                            </div>
+                                        </div>
+                                        <!-- .nk-block-head -->
+                                        <div class="nk-fmg-listing nk-block">
+
+                                            <div class="nk-files nk-files-view-list mt-3">
+
+                                                <div class="nk-files-head">
+                                                    <div class="nk-file-item">
+                                                        <div class="nk-file-info">
+                                                            <div class="tb-head dropdown-toggle"
+                                                                 data-bs-toggle="dropdown">نام
+                                                            </div>
+                                                        </div>
+                                                        <div class="nk-file-meta">
+                                                            <div class="dropdown">
+                                                                <div class="tb-head dropdown-toggle"
+                                                                     data-bs-toggle="dropdown">نوع دیتابیس
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="nk-file-actions">
+                                                            <a
+                                                                    class="btn btn-sm btn-icon btn-trigger"><em
+                                                                    class="icon ni ni-more-h"></em></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- .nk-files-head -->
+                                                <div class="nk-files-list">
+                                                    {% for db in databases %}
+                                                        <div class="nk-file-item nk-file">
+                                                            <div class="nk-file-info">
+                                                                <div class="nk-file-title">
+                                                                    <div class="nk-file-name">
+                                                                        <div class="nk-file-name-text">
+                                                                            <span class="title">
+                                                                                {{ db.CONFIG_NAME }}
+                                                                                <span class="nk-file-icon-type icon-by-extension m-1"
+                                                                                      extension="{{ db.NAME }}"></span>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="nk-file-meta">
+                                                                <div class="tb-lead">
+                                                                    {{ db.NAME }}
+                                                                </div>
+                                                            </div>
+                                                            <div class="nk-file-actions">
+                                                                <a href="#db-backup-modal-{{ forloop.counter }}"
+                                                                   class="btn btn-success m-1"
+                                                                   id="btn-file-backup"
+                                                                   data-bs-toggle="modal"><em
+                                                                        class="icon ni ni-upload-cloud"></em>
+                                                                    <span>بک اپ</span></a>
+                                                            </div>
+                                                        </div>
+                                                        <!-- .nk-file -->
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+                                            <!-- .nk-files -->
+                                        </div>
+                                        <!-- .nk-block -->
+                                    </div>
+                                    <!-- .nk-fmg-body-content -->
+                                </div>
+                                <!-- .nk-fmg-body -->
+                            </div>
+                            <!-- .nk-fmg -->
+                        </div>
+                    </div>
+                </div>
+                <!-- content @e -->
+            </div>
+            <!-- wrap @e -->
+        </div>
+        <!-- main @e -->
+    </div>
+    <!-- app-root @e -->
+
+    {% for database in databases %}
+        <div class="modal fade" tabindex="-1" role="dialog" id="db-backup-modal-{{ forloop.counter }}">
+            <div class="modal-dialog modal-md" role="document">
+                <div class="modal-content">
+                    <a href="#" class="close" data-bs-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
+                    <form action="{% url 'dj_backup:db_backup__add' %}" class="form-validate is-alter" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="database" value="{{ database.CONFIG_NAME }}">
+                        <input type="hidden" name="database_type" value="{{ database.NAME }}">
+                        <div class="modal-body modal-body-md">
+                            <div class="nk-upload-form">
+                                <h4 class="title mb-4">بک آپ دیتابیس</h4>
+                                <div>
+                                    <div class="nk-upload-list selected-db-backup-cnt mb-3">
+                                        <h6>دیتابیس انتخاب شده</h6>
+                                        <div class="nk-upload-item">
+                                            <div class="nk-upload-info">
+                                                <div class="nk-upload-title"><span
+                                                        class="title">{{ database.CONFIG_NAME }}</span></div>
+                                                <div class="nk-upload-icon icon-by-extension"
+                                                     extension="{{ database.NAME }}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <h6 class="title">تنظیمات</h6>
+                                    <div class="form-group">
+                                        <label class="form-label" for="name">نام</label>
+                                        <div class="form-control-wrap">
+                                            <input type="text" maxlength="100" class="form-control" id="name"
+                                                   placeholder="نام" required name="name">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="note">توضیحات</label>
+                                        <div class="form-control-wrap">
+                                        <textarea type="text" class="form-control" id="note"
+                                                  placeholder="توضیحات" name="note"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="backup-time">زمان</label>
+                                        <div class="form-control-wrap">
+                                            <div class="form-text-hint">
+                                                <select name="unit" required class="js-select2 overline-title">
+                                                    <option value="minutes">دقیقه</option>
+                                                    <option value="hours">ساعت</option>
+                                                    <option value="days">روز</option>
+                                                    <option value="weeks">هفته</option>
+                                                </select>
+                                                <p class="overline-title" style="margin-right: 12px">یکبار</p>
+                                            </div>
+                                            <input type="number" class="form-control" id="interval-time"
+                                                   placeholder="زمان بک اپ گیری" required name="interval">
+                                        </div>
+                                        <div class="form-note">هر چه مدت یکبار بک اپ گرفته شود</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="repeats">تعداد بک آپ گیری</label>
+                                        <div class="form-control-wrap">
+                                            <input type="number" class="form-control" id="repeats"
+                                                   placeholder="-1" value="-1" required name="repeats">
+                                        </div>
+                                        <div class="form-note">برای بک آپ همیشگی مقدار "1-" را وارد نمایید</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">ذخیره در </label>
+                                        <div class="form-control-wrap">
+                                            <select name="storages" class="form-select js-select2" multiple required>
+                                                {% for storage in storages %}
+                                                    {% if storage.is_available %}
+                                                        <option value="{{ storage.id }}"
+                                                                selected>{{ storage.display_name }}</option>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">نگه داری فایل های موقت</label>
+                                        <div class="form-control-wrap">
+                                            <select name="has_temp" class="form-select js-select2"
+                                                    required>
+                                                <option value="true" selected>
+                                                    بله
+                                                </option>
+                                                <option value="false">
+                                                    خیر
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="form-note">برای دسترسی سریع و راحت تر به فایل بک آپ این گزینه را
+                                            فعال کنید. نکته:
+                                            <b>توجه کنید فعال کردن نگه داری فایل ها باعث افزایش حجم بر روی
+                                            دیسک میشود.</b>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label">ارگومان های اضافه</label>
+                                        <div class="form-control-wrap">
+                                            <select name="additional_args" class="form-select js-select2" multiple>
+                                                {% for arg in database.get_additional_args_name_as_list %}
+                                                    <option value="{{ arg.name }}">{{ arg.value }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <div class="form-note">توجه کنید ممکن است بعضی از ارگومان ها با یکدیگر تداخل
+                                            داشته باشد
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="nk-modal-action justify-end">
+                                <ul class="btn-toolbar g-4 align-center">
+                                    <li><a href="#" data-bs-dismiss="modal" class="link link-primary">لغو</a></li>
+                                    <li>
+                                        <button class="btn btn-primary">ثبت بک اپ گیری</button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- .modal-content -->
+            </div>
+            <!-- .modla-dialog -->
+        </div>
+    {% endfor %}
+
+{% endblock %}
