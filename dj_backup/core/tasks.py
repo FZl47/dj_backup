@@ -8,14 +8,15 @@ from dj_backup import models
 class ScheduleBackupBaseTask(abc.ABC):
     test_run = False
 
-    def __init__(self, backup_obj):
+    def __init__(self, backup_obj, strict=True):
         self.backup_obj = backup_obj
         if self.test_run:
             self.test()
             return
 
-        task_id = 'schedule_backup_task_{}_{}'.format(backup_obj.name, utils.random_str(20))
+        task_id = backup_obj.get_task_id()
         st = task.TaskSchedule(self.run, backup_obj.convert_unit_interval_to_seconds(), backup_obj.repeats,
+                               strict=strict,
                                task_id=task_id, f_kwargs={'backup_obj_id': backup_obj.id})
 
         backup_obj.schedule_task = st.task_obj
