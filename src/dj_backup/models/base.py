@@ -111,6 +111,9 @@ class DJBackUpBase(models.Model):
             except TaskSchedule.DoesNotExist:
                 utils.log_event('Task not found id: `%s`' % schedule_task.task_id, 'warning')
 
+    def get_task_id(self):
+        return 'schedule_backup_task_{}_{}'.format(self.name, self.id)
+
 
 class DJFileBackUp(DJBackUpBase):
     backup_type = 'file'
