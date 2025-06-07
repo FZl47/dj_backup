@@ -44,15 +44,17 @@ class StorageBackground(StorageBase):
         c.close()
         return d
 
-    def flush(self):
-        c = self._get_connection()
-        c[self._list_key] = []
+    @classmethod
+    def flush(cls):
+        c = cls._get_connection()
+        c[cls._list_key] = []
         c.close()
         log_event('StorageTask: Tasks list flushed !', 'DEBUG')
 
-    def flush_delete_tasks(self):
-        c = self._get_connection()
-        c[self._list_delete_key] = []
+    @classmethod
+    def flush_delete_tasks(cls):
+        c = cls._get_connection()
+        c[cls._list_delete_key] = []
         c.close()
         log_event('StorageTask: Delete tasks list flushed !', 'DEBUG')
 
@@ -117,7 +119,7 @@ class ListenToTasksSignals(abc.ABC, StorageBackground):
 
 class TaskSchedule(StorageTask):
 
-    def __init__(self, func, seconds, repeats=-1, task_id=None,
+    def __init__(self, func, seconds, repeats=-1, task_id=None, strict=True,
                  f_args=None, f_kwargs=None):
         self.func = func
         self.seconds = seconds
@@ -130,8 +132,11 @@ class TaskSchedule(StorageTask):
 
         if models.TaskSchedule.objects.filter(task_id=self.task_id).first():
             msg = f"The task object must be unique, an object with this ID '{task_id}' already exists."
-            log_event(msg, 'ERROR')
-            raise ValueError(msg)
+            log_event(msg, 'warning')
+            if strict:
+                raise ValueError(msg)
+            else:
+                return
 
         self.task_obj = models.TaskSchedule.objects.create(
             task_id=self.task_id,
