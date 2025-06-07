@@ -5,9 +5,9 @@
     DJ Backup is a Django app that provides the capability to back up your files and databases.
 
 ### Available at:
+
 - #### <a href="https://pypi.org/project/djbackup/">pypi</a>
 - #### <a href="https://github.com/FZl47/dj_backup">github</a>
-
 
 ##### supported databases
 
@@ -25,13 +25,16 @@
 
 ## How to use ?
 
-####  1. First you need to install dj_backup
+#### 1. First you need to install dj_backup
 
 ```sh
     pip install djbackup
 ```
+
 OR
+
 - #### for using all features
+
 ```sh
     pip install djbackup[all]
 ```
@@ -50,23 +53,16 @@ OR
 #### 3. add static files dir path to django
 
 ```python
+from dj_backup.core.utils.static import load_static
+
 STATICFILES_DIRS = (
     ...
-    'dj_backup/static/',
+    load_static()
 )
 
 ```
 
-#### 4. add locale file to django(`optional`)
-
-```python
-LOCALE_PATHS = (
-    ...
-    'dj_backup/locale',
-)
-```
-
-#### 5. add dj_backup urls to project urls
+#### 4. add dj_backup urls to project urls
 
 ```python
 urlpatterns = [
@@ -76,7 +72,7 @@ urlpatterns = [
 ]
 ```
 
-#### 6. set dj_backup <span style="text-decoration: underline;">basic config</span> to django settings
+#### 5. set dj_backup <span style="text-decoration: underline;">basic config</span> to django settings
 
 ```python
 
@@ -90,7 +86,7 @@ DJ_BACKUP_CONFIG = {
 
 ```
 
-#### 7. migrate & collect static files
+#### 6. migrate & collect static files
 
 ```python
     python manage.py migrate
@@ -100,7 +96,7 @@ DJ_BACKUP_CONFIG = {
     python manage.py collectstatic
 ```
 
-#### 8. run backup!
+#### 7. run backup!
 
 - command is for managing settings and executing backup tasks
 
@@ -108,7 +104,8 @@ DJ_BACKUP_CONFIG = {
     python manage.py run-backup
 ```
 
-### 9. run django
+#### 8. run django
+
 
 ```python
     python manage.py runserver
@@ -198,14 +195,12 @@ DJ_BACKUP_CONFIG = {
 | FTP_SERVER   | ```pip install djbackup[ftpserver]```  |
 | DROPBOX      | ```pip install djbackup[dropbox]```    |
 
-
 ### - databases:
 
 | database   | install command                        |
 |------------|----------------------------------------| 
 | mysql      | ```pip install djbackup[mysql]```      |
 | postgresql | ```pip install djbackup[postgresql]``` |
-
 
 ## NOTE:
 
