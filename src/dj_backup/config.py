@@ -2,6 +2,7 @@ from django.conf import settings as django_settings
 
 
 class Settings:
+    # TODO: add load lazy
     listen_to_tasks_time_loop = 5  # seconds
 
     def __init__(self):
