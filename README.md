@@ -201,7 +201,7 @@ OR
 
 [ ] add sql-server db  backup
 
-[ ] add English lang
+[x] change dashboard lang to english
 
 [ ] add section notification manage to dashboard
 
