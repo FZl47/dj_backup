@@ -1,7 +1,7 @@
 {% extends 'dj_backup/base/base_template.html' %}
 
 {% block Title %}
-    صفحه اصلی
+    Home | dj backup
 {% endblock %}
 
 {% block Style %}
@@ -59,11 +59,10 @@
                                             <div class="nk-block-head-xs">
                                                 <div class="nk-block-between g-2">
                                                     <div class="nk-block-head-content">
-                                                        <h6 class="nk-block-title title">برخی از بک اپ ها</h6>
+                                                        <h6 class="nk-block-title title">Some backups</h6>
                                                     </div>
                                                     <div class="nk-block-head-content">
-                                                        <a href="{% url 'dj_backup:backup__list' %}" class="link">مشاهده
-                                                            همه</a>
+                                                        <a href="{% url 'dj_backup:backup__list' %}" class="link">view all</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -87,13 +86,13 @@
                                             <div class="nk-block-head-xs">
                                                 <div class="nk-block-between g-2">
                                                     <div class="nk-block-head-content">
-                                                        <h6 class="nk-block-title title">ذخیره سازها</h6>
+                                                        <h6 class="nk-block-title title">Storages</h6>
                                                     </div>
                                                     <div class="nk-block-head-content">
                                                         <a href="#" class="link link-primary toggle-opt active"
                                                            data-target="recent-files">
-                                                            <div class="inactive-text">نمایش دادن</div>
-                                                            <div class="active-text">پنهان کردن</div>
+                                                            <div class="inactive-text">show</div>
+                                                            <div class="active-text">hide</div>
                                                         </a>
                                                     </div>
                                                 </div>
@@ -104,7 +103,7 @@
 
                                                     <!-- .nk-files-head -->
                                                     <div class="nk-files-group">
-                                                        <h6 class="title">ذخیره ساز ها</h6>
+                                                        <h6 class="title">Storages</h6>
                                                         <div class="nk-files-list">
                                                             {% for storage in storages %}
                                                                 <div class="nk-file-item nk-file {% if storage.is_available %}storage-is-available{% else %}storage-not-available{% endif %}">
@@ -150,9 +149,9 @@
                                                                     </div>
                                                                     <div class="nk-file-status">
                                                                         {% if storage.is_available %}
-                                                                            <span class="badge badge-dim bg-success">فعال</span>
+                                                                            <span class="badge badge-dim bg-success">available</span>
                                                                         {% else %}
-                                                                            <span class="badge badge-dim bg-danger">غیرفعال</span>
+                                                                            <span class="badge badge-dim bg-danger">not available</span>
                                                                         {% endif %}
                                                                     </div>
                                                                     <div class="nk-file-actions d-none">
@@ -166,35 +165,35 @@
                                                                                     <li>
                                                                                         <a href="#file-details"
                                                                                            data-bs-toggle="modal"><em
-                                                                                                class="icon ni ni-eye"></em><span>جزئیات</span></a>
+                                                                                                class="icon ni ni-eye"></em><span>detail</span></a>
                                                                                     </li>
                                                                                     <li>
                                                                                         <a href="#file-share"
                                                                                            data-bs-toggle="modal"><em
-                                                                                                class="icon ni ni-share"></em><span>به اشتراک گذاری</span></a>
+                                                                                                class="icon ni ni-share"></em><span>share</span></a>
                                                                                     </li>
                                                                                     <li>
                                                                                         <a href="#file-copy"
                                                                                            data-bs-toggle="modal"><em
-                                                                                                class="icon ni ni-copy"></em><span>کپی</span></a>
+                                                                                                class="icon ni ni-copy"></em><span>copy</span></a>
                                                                                     </li>
                                                                                     <li>
                                                                                         <a href="#file-move"
                                                                                            data-bs-toggle="modal"><em
-                                                                                                class="icon ni ni-forward-arrow"></em><span>انتقال</span></a>
+                                                                                                class="icon ni ni-forward-arrow"></em><span>transfer</span></a>
                                                                                     </li>
                                                                                     <li>
                                                                                         <a href="#"
                                                                                            class="file-dl-toast"><em
-                                                                                                class="icon ni ni-download"></em><span>دانلود</span></a>
+                                                                                                class="icon ni ni-download"></em><span>download</span></a>
                                                                                     </li>
                                                                                     <li>
                                                                                         <a href="#"><em
-                                                                                                class="icon ni ni-pen"></em><span>تغییر نام</span></a>
+                                                                                                class="icon ni ni-pen"></em><span>change name</span></a>
                                                                                     </li>
                                                                                     <li>
                                                                                         <a href="#"><em
-                                                                                                class="icon ni ni-trash"></em><span>حذف</span></a>
+                                                                                                class="icon ni ni-trash"></em><span>delete</span></a>
                                                                                     </li>
                                                                                 </ul>
                                                                             </div>

@@ -27,21 +27,21 @@
     </div>
     <div class="backup-detail">
         <div>
-            <span>تعداد بک اپ گرفته شده</span>
+            <span>Backups taken</span>
             <span class="spread-num-el">{{ backup.get_success_results.count }}</span>
         </div>
         <div>
-            <span>اخرین بک اپ</span>
+            <span>Last backup</span>
             <span>{{ backup.get_last_run }}</span>
         </div>
         <div>
-            <span>حجم کل</span>
+            <span>Total volume</span>
             <span class="file-size-convert" data-size="{{ backup.get_usage_size }}"></span>
         </div>
         <div>
-            <span>زمانبندی</span>
+            <span>Timing</span>
             <span>
-                هر
+                every
                 {{ backup.interval }}
                 {{ backup.unit_label }}
             </span>

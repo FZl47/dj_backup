@@ -1,7 +1,7 @@
 {% extends 'dj_backup/base/base_template.html' %}
 
 {% block Title %}
-    لیست دیتابیس ها
+    Database list
 {% endblock %}
 
 {% block Style %}
@@ -47,7 +47,7 @@
                                     <div class="nk-block-head nk-block-head-sm">
                                         <div class="nk-block-between position-relative">
                                             <div class="nk-block-head-content">
-                                                <h3 class="nk-block-title page-title">دیتابیس ها</h3>
+                                                <h3 class="nk-block-title page-title">Databases</h3>
                                             </div>
                                         </div>
                                         <!-- .nk-block-head -->
@@ -59,13 +59,13 @@
                                                     <div class="nk-file-item">
                                                         <div class="nk-file-info">
                                                             <div class="tb-head dropdown-toggle"
-                                                                 data-bs-toggle="dropdown">نام
+                                                                 data-bs-toggle="dropdown">name
                                                             </div>
                                                         </div>
                                                         <div class="nk-file-meta">
                                                             <div class="dropdown">
                                                                 <div class="tb-head dropdown-toggle"
-                                                                     data-bs-toggle="dropdown">نوع دیتابیس
+                                                                     data-bs-toggle="dropdown">type
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -104,7 +104,7 @@
                                                                    id="btn-file-backup"
                                                                    data-bs-toggle="modal"><em
                                                                         class="icon ni ni-upload-cloud"></em>
-                                                                    <span>بک اپ</span></a>
+                                                                    <span>Backup</span></a>
                                                             </div>
                                                         </div>
                                                         <!-- .nk-file -->
@@ -142,10 +142,10 @@
                         <input type="hidden" name="database_type" value="{{ database.NAME }}">
                         <div class="modal-body modal-body-md">
                             <div class="nk-upload-form">
-                                <h4 class="title mb-4">بک آپ دیتابیس</h4>
+                                <h4 class="title mb-4">Database backup</h4>
                                 <div>
                                     <div class="nk-upload-list selected-db-backup-cnt mb-3">
-                                        <h6>دیتابیس انتخاب شده</h6>
+                                        <h6>Selected database</h6>
                                         <div class="nk-upload-item">
                                             <div class="nk-upload-info">
                                                 <div class="nk-upload-title"><span
@@ -156,48 +156,48 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <h6 class="title">تنظیمات</h6>
+                                    <h6 class="title">Settings</h6>
                                     <div class="form-group">
-                                        <label class="form-label" for="name">نام</label>
+                                        <label class="form-label" for="name">Name</label>
                                         <div class="form-control-wrap">
                                             <input type="text" maxlength="100" class="form-control" id="name"
-                                                   placeholder="نام" required name="name">
+                                                   placeholder="name" required name="name">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-label" for="note">توضیحات</label>
+                                        <label class="form-label" for="note">Note</label>
                                         <div class="form-control-wrap">
                                         <textarea type="text" class="form-control" id="note"
-                                                  placeholder="توضیحات" name="note"></textarea>
+                                                  placeholder="note" name="note"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-label" for="backup-time">زمان</label>
+                                        <label class="form-label" for="backup-time">Timing</label>
                                         <div class="form-control-wrap">
                                             <div class="form-text-hint">
+                                                <p class="overline-title d-inline-block">every</p>
+                                                <input type="number" class="form-control" id="interval-time"
+                                                       placeholder="backup timing" required name="interval">
                                                 <select name="unit" required class="js-select2 overline-title">
-                                                    <option value="minutes">دقیقه</option>
-                                                    <option value="hours">ساعت</option>
-                                                    <option value="days">روز</option>
-                                                    <option value="weeks">هفته</option>
+                                                    <option value="minutes">minute</option>
+                                                    <option value="hours">hour</option>
+                                                    <option value="days">day</option>
+                                                    <option value="weeks">week</option>
                                                 </select>
-                                                <p class="overline-title" style="margin-right: 12px">یکبار</p>
                                             </div>
-                                            <input type="number" class="form-control" id="interval-time"
-                                                   placeholder="زمان بک اپ گیری" required name="interval">
                                         </div>
-                                        <div class="form-note">هر چه مدت یکبار بک اپ گرفته شود</div>
+                                        {#                                    <div class="form-note">Interval for backups</div>#}
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-label" for="repeats">تعداد بک آپ گیری</label>
+                                        <label class="form-label" for="repeats">Number of backups</label>
                                         <div class="form-control-wrap">
                                             <input type="number" class="form-control" id="repeats"
                                                    placeholder="-1" value="-1" required name="repeats">
                                         </div>
-                                        <div class="form-note">برای بک آپ همیشگی مقدار "1-" را وارد نمایید</div>
+                                        <div class="form-note">Enter '-1' for permanent backup</div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-label">ذخیره در </label>
+                                        <label class="form-label">Store in </label>
                                         <div class="form-control-wrap">
                                             <select name="storages" class="form-select js-select2" multiple required>
                                                 {% for storage in storages %}
@@ -210,26 +210,26 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-label">نگه داری فایل های موقت</label>
+                                        <label class="form-label">Keep temporary files</label>
                                         <div class="form-control-wrap">
                                             <select name="has_temp" class="form-select js-select2"
                                                     required>
                                                 <option value="true" selected>
-                                                    بله
+                                                    Yes
                                                 </option>
                                                 <option value="false">
-                                                    خیر
+                                                    No
                                                 </option>
                                             </select>
                                         </div>
-                                        <div class="form-note">برای دسترسی سریع و راحت تر به فایل بک آپ این گزینه را
-                                            فعال کنید. نکته:
-                                            <b>توجه کنید فعال کردن نگه داری فایل ها باعث افزایش حجم بر روی
-                                            دیسک میشود.</b>
+                                        <div class="form-note">
+                                            To enable quick and easy access to backups, activate this option.
+                                            Note:
+                                            <b>Be aware that enabling file retention will increase disk space usage.</b>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="form-label">ارگومان های اضافه</label>
+                                        <label class="form-label">Additional db config</label>
                                         <div class="form-control-wrap">
                                             <select name="additional_args" class="form-select js-select2" multiple>
                                                 {% for arg in database.get_additional_args_name_as_list %}
@@ -237,8 +237,8 @@
                                                 {% endfor %}
                                             </select>
                                         </div>
-                                        <div class="form-note">توجه کنید ممکن است بعضی از ارگومان ها با یکدیگر تداخل
-                                            داشته باشد
+                                        <div class="form-note">
+                                            Please note that some arguments may conflict with each other.
                                         </div>
                                     </div>
                                 </div>
@@ -246,9 +246,9 @@
 
                             <div class="nk-modal-action justify-end">
                                 <ul class="btn-toolbar g-4 align-center">
-                                    <li><a href="#" data-bs-dismiss="modal" class="link link-primary">لغو</a></li>
+                                    <li><a href="#" data-bs-dismiss="modal" class="link link-primary">cancel</a></li>
                                     <li>
-                                        <button class="btn btn-primary">ثبت بک اپ گیری</button>
+                                        <button class="btn btn-primary">Create backup</button>
                                     </li>
                                 </ul>
                             </div>

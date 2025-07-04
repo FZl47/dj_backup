@@ -1,7 +1,7 @@
 {% extends 'dj_backup/base/base_template.html' %}
 
 {% block Title %}
-    جزئیات اعلان - {{ notif.name }}
+    detail - {{ notif.name }}
 {% endblock %}
 
 {% block BodyClass %}
@@ -49,7 +49,7 @@
                                         <div class="nk-block-between position-relative">
                                             <div class="nk-block-head-content mb-3">
                                                 <h3 class="nk-block-title page-title">
-                                                    جزئیات اعلان - {{ notif.name }}
+                                                    detail - {{ notif.name }}
                                                 </h3>
                                             </div>
                                         </div>
@@ -66,7 +66,7 @@
                                                     <div class="nk-data data-list data-list-s2">
                                                         <div class="data-item">
                                                             <div class="data-col">
-                                                                <span class="data-label">سطح</span>
+                                                                <span class="data-label">level</span>
                                                                 <span class="data-value">
                                                                     <span class="fs-6 badge badge-dot fw-bold notif-{{ notif.level }}">{{ notif.level }}</span>
                                                                 </span>
@@ -74,7 +74,7 @@
                                                         </div>
                                                         <div class="data-item">
                                                             <div class="data-col">
-                                                                <span class="data-label">نام</span>
+                                                                <span class="data-label">name</span>
                                                                 <span class="data-value" dir="ltr">
                                                                         {{ notif.name }}
                                                                 </span>
@@ -83,7 +83,7 @@
                                                         <!-- data-item -->
                                                         <div class="data-item">
                                                             <div class="data-col">
-                                                                <span class="data-label">توضیحات</span>
+                                                                <span class="data-label">description</span>
                                                                 <span class="data-value" dir="ltr">
                                                                     {{ notif.msg|default:'-' }}
                                                                 </span>
@@ -91,7 +91,7 @@
                                                         </div>
                                                         <div class="data-item">
                                                             <div class="data-col">
-                                                                <span class="data-label">خطا</span>
+                                                                <span class="data-label">exception</span>
                                                                 <span class="data-value" dir="ltr">
                                                                     {{ notif.exc|default:'-' }}
                                                                 </span>
@@ -99,15 +99,15 @@
                                                         </div>
                                                         <div class="data-item">
                                                             <div class="data-col">
-                                                                <span class="data-label">وضعیت بازدید</span>
+                                                                <span class="data-label">visit status</span>
                                                                 <span class="data-value">
                                                                     {% if notif.is_seen %}
                                                                         <span class="badge badge-dot bg-success">
-                                                                            دیده شده
+                                                                            seen
                                                                         </span>
                                                                     {% else %}
                                                                         <span class="badge badge-dot bg-danger">
-                                                                            دیده نشده
+                                                                            unseen
                                                                         </span>
                                                                     {% endif %}
                                                                 </span>
@@ -115,7 +115,7 @@
                                                         </div>
                                                         <div class="data-item">
                                                             <div class="data-col">
-                                                                <span class="data-label">تاریخ ایجاد</span>
+                                                                <span class="data-label">creation date</span>
                                                                 <span class="data-value">
                                                                     <span class="date">{{ notif.get_created_at }}</span>
                                                                 </span>

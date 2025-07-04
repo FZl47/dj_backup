@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="fa" class="js">
+<html lang="en" class="js">
 <head>
     <meta charset="utf-8"/>
     <meta name="author" content="https://github.com/FZl47"/>
@@ -10,13 +10,13 @@
     <link rel="shortcut icon" href="{% static 'dj_backup/assets/images/favicon.png' %}"/>
     <link rel="icon" type="image/x-icon" href="{% static 'dj_backup/assets/images/favicon.png' %}">
     <!-- Page Title  -->
-    <title>{% block Title %}{% endblock %}| dj-backup</title>
+    <title>{% block Title %}{% endblock %}| dj backup</title>
     <!-- StyleSheets  -->
-    <link rel="stylesheet" href="{% static 'dj_backup/assets/css/dashlite.rtl.css' %}"/>
+    <link rel="stylesheet" href="{% static 'dj_backup/assets/css/dashlite.css' %}"/>
     <link rel="stylesheet" href="{% static 'dj_backup/assets/css/notify.css' %}">
 
     {% block Style %}{% endblock %}
-</head>
+</head>s
 <body class="{% block BodyClass %}{% endblock %}" dir="rtl">
 {% block Content %}{% endblock %}
 <script src="{% static 'dj_backup/assets/js/bundle.js' %}"></script>
