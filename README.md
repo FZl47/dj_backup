@@ -198,3 +198,13 @@ OR
 [ ] add password for backups
 
 [x] add telegram storage
+
+[ ] add sql-server db  backup
+
+[ ] add English lang
+
+[ ] add section notification manage to dashboard
+
+[ ] update dropbox storage to stable state
+
+ 
