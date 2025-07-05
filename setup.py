@@ -10,8 +10,8 @@ def parse_requirements(filename):
 
 setup(
     name='djbackup',
-    version='2.1.6',
-    description='dj_backup is an installable module for Django that is used for backup purposes.',
+    version='2.2.0',
+    description='djbackup(django backup) is an installable module for Django that is used for backup purposes, specifically for backing up the database and media files.',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
     include_package_data=True,
@@ -19,6 +19,18 @@ setup(
     author='FZl47',
     author_email='fzl8747@gmail.com',
     install_requires=parse_requirements('./requirements/common.txt'),
+    keywords=[
+        "django",
+        "database",
+        "media",
+        "backup",
+        "dropbox",
+        "ftp",
+        "sftp",
+        "mysql",
+        "postgresql",
+        "sqlite",
+    ],
     extras_require={
         # storages
         'telegram': parse_requirements('./requirements/storages/telegram.txt'),
@@ -39,9 +51,19 @@ setup(
             *parse_requirements('./requirements/databases/postgresql.txt'),
         ],
     },
+
     classifiers=[
-        'Programming Language :: Python :: 3',
-        'License :: OSI Approved :: MIT License',
-        'Operating System :: OS Independent',
+        "Development Status :: 5 - Production/Stable",
+        "Environment :: Web Environment",
+        "Framework :: Django",
+        "Intended Audience :: Developers",
+        "Intended Audience :: System Administrators",
+        "License :: OSI Approved :: MIT License",
+        "Operating System :: OS Independent",
+        "Programming Language :: Python :: 3",
+        "Topic :: Database",
+        "Topic :: System :: Archiving",
+        "Topic :: System :: Archiving :: Backup",
+        "Topic :: System :: Archiving :: Compression",
     ],
 )
