@@ -4,7 +4,6 @@ from dj_backup.core.utils import log_event
 from dj_backup import settings
 
 _DATABASES_MODULE = {
-    'sqlite': ('dj_backup.core.backup.db.sqlite', 'SqliteDB'),
     'sqlite3': ('dj_backup.core.backup.db.sqlite', 'SqliteDB'),
     'mysql': ('dj_backup.core.backup.db.mysql', 'MysqlDB'),
     'postgresql': ('dj_backup.core.backup.db.postgresql', 'PostgresqlDB'),

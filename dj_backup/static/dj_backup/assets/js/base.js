@@ -364,7 +364,7 @@ function setFileIcons() {
                         <path fill="#798BFF" d="M7.7,59c2.2,2.4,4.7,2,6.3,2h45c1.1,0,3.2,0.1,5.3-2H7.7z"></path>
                   </svg>
                 `
-        } else if (extension == 'sqlite') {
+        } else if (extension == 'sqlite' || extension == 'sqlite3') {
             el.innerHTML = `
                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="transform: scale(1.3)"  viewBox="0 -142 512 512"  preserveAspectRatio="xMidYMid">
                         <defs>

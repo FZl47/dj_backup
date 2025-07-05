@@ -15,7 +15,7 @@
                     <span class="sub-text">
                         <a href="https://github.com/FZl47/dj_backup" style="color: inherit">DJ Backup</a>
                     </span>
-                    <span class="lead-text">مدیریت و بک آپ</span>
+                    <span class="lead-text">Manage backups</span>
                 </div>
             </div>
             <div class="nk-header-tools">
@@ -24,7 +24,7 @@
                         <a href="{% url 'dj_backup:notification__list' %}"
                            class="nk-quick-nav-icon header-notif {% if notifications_count > 0 %}has-notif{% endif %}">
                             <span class="fs-16px">{{ notifications_count }}</span>
-                            <em class="icon ni {% if notifications_count > 0 %}ni-bell-fill{% else %}ni-bell{% endif %}"></em>
+                            <em class="icon ni {% if notifications_count > 0 %}ni-bell{% else %}ni-bell{% endif %}"></em>
                         </a>
                     </li>
                     <!-- .dropdown -->
@@ -54,19 +54,19 @@
                                 <ul class="link-list">
                                     <li>
                                         <a href="{% url 'dj_backup:backup__list' %}"><em
-                                                class="icon ni ni-folder-list"></em><span>مشاهده بک اپ ها</span></a>
+                                                class="icon ni ni-folder-list"></em><span>View backups</span></a>
                                     </li>
                                     <li>
                                         <a href="{% url 'dj_backup:db__list' %}"><em
-                                                class="icon ni ni-dashboard"></em><span>لیست دیتابیس ها</span></a>
+                                                class="icon ni ni-dashboard"></em><span>List of databases</span></a>
                                     </li>
                                     <li>
                                         <a href="{% url 'dj_backup:file__list' %}"><em
-                                                class="icon ni ni-file-docs"></em><span>لیست فایل ها</span></a>
+                                                class="icon ni ni-file-docs"></em><span>List of files</span></a>
                                     </li>
                                     <li>
                                         <a class="dark-switch" href="#"><em
-                                                class="icon ni ni-moon"></em><span>حالت تاریک</span></a>
+                                                class="icon ni ni-moon"></em><span>Dark Mode</span></a>
                                     </li>
                                 </ul>
                             </div>
@@ -74,7 +74,7 @@
                                 <ul class="link-list">
                                     <li>
                                         <a href="{% url 'dj_backup:logout' %}"><em
-                                                class="icon ni ni-signout"></em><span>خروج</span></a>
+                                                class="icon ni ni-signout"></em><span>Logout</span></a>
                                     </li>
                                 </ul>
                             </div>

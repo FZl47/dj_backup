@@ -52,10 +52,10 @@ OR
 ```python
 from dj_backup.core.utils.static import load_static
 
-STATICFILES_DIRS = (
+STATICFILES_DIRS = [
     ...
     load_static()
-)
+]
 
 ```
 
@@ -123,10 +123,10 @@ OR
     xxx.xxx:xxxx/dj-backup/  
 ```
 
-### Additional Config
+### Full Config
 
 ```python
-DJ_BACKUP_CONFIG = {
+# DJ_BACKUP_CONFIG = {
     # 'MAX_WORKERS': 5, #(optional)
     # 'NOTIFICATION_OBJECT_LOG_LEVEL': 'WARNING', #(optional)  # options => ['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL']
     # 'POSTGRESQL_DUMP_PATH': None,  # optional(If the postgresql dump file is not found, you can set it)
@@ -147,15 +147,15 @@ DJ_BACKUP_CONFIG = {
     #     'HOST': '127.0.0.1',  # Or an IP Address that your DB is hosted on
     # },
     # },
-    'BASE_ROOT_DIRS': [
-        BASE_DIR,
-    ],
+    # 'BASE_ROOT_DIRS': [
+        # BASE_DIR,
+    # ],
     # 'BACKUP_TEMP_DIR': BASE_DIR / 'backup/temp', #(optional)
     # 'BACKUP_SYS_DIR': BASE_DIR / 'backup/sys', #(optional)
-    'STORAGES': {
-        'LOCAL': {
-            'OUT': BASE_DIR / 'backup/result'
-        },
+    # 'STORAGES': {
+    #     'LOCAL': {
+    #         'OUT': BASE_DIR / 'backup/result'
+    #     },
         # 'TELEGRAM_BOT': {
         #     'BOT_TOKEN': 'xxx-xxx',
         #     'CHAT_ID': 'xxx-xxx'
@@ -176,8 +176,8 @@ DJ_BACKUP_CONFIG = {
         #     'ACCESS_TOKEN': 'xxx-xxx',
         #     'OUT': '/dj_backup/'
         # }
-    }
-}
+    # }
+# }
 ```
 
 - ### <span style="text-decoration: underline;line-height:50px;">To use storage providers or perform database backups, you need to install the appropriate packages according to your needs using the commands below</span>

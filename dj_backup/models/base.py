@@ -154,8 +154,9 @@ class DJDataBaseBackUp(DJBackUpBase):
         """
         db_cls = backup.db.ALL_DATABASES_DICT.get(self.database_type)
         if not db_cls:
-            utils.log_event('There is not exists database backup with `%s` name' % self.name, 'ERROR')
-            return None
+            msg = 'There is not exists database backup with `%s` name' % self.name
+            utils.log_event(msg, 'ERROR')
+            raise KeyError(msg)
         return db_cls
 
     def get_backup_location(self, frmt):
