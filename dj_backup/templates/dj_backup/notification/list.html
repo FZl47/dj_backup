@@ -1,7 +1,7 @@
 {% extends 'dj_backup/base/base_template.html' %}
 
 {% block Title %}
-    لیست اعلانات
+    Notification list
 {% endblock %}
 
 {% block BodyClass %}
@@ -30,7 +30,7 @@
                                         <em class="icon ni ni-search"></em>
                                         <form class="w-100">
                                             <input type="text" class="form-control border-transparent form-focus-none"
-                                                   placeholder="جستجو بر اساس متن یا نوع اعلان" name="search"
+                                                   placeholder="Search by text or notification type" name="search"
                                                    value="{{ request.GET.search }}"/>
                                         </form>
                                     </div>
@@ -40,10 +40,10 @@
                                     <div class="nk-block-head nk-block-head-sm">
                                         <div class="nk-block-between position-relative mt-3">
                                             <div class="nk-block-head-content mb-4 col-lg-12 col-10 d-flex justify-content-between">
-                                                <h3 class="nk-block-title page-title">لیست اعلانات</h3>
+                                                <h3 class="nk-block-title page-title">Notification list</h3>
                                                 <a href="{% url 'dj_backup:notification__seen_all' %}"
                                                    class="btn btn-outline-primary d-none d-lg-inline-block" style="border-radius: 10px">
-                                                     مشاهده همه
+                                                     See All
                                                     <em class="icon ni ni-eye"></em>
                                                 </a>
                                             </div>
@@ -69,7 +69,7 @@
                                                         <input type="text" name="search"
                                                                value="{{ request.GET.search }}"
                                                                class="form-control border-transparent form-focus-none"
-                                                               placeholder="جستجو بر اساس متن یا نوع اعلان"/>
+                                                               placeholder="Search by text or notification type"/>
                                                         <button class="search-submit btn btn-icon"><em
                                                                 class="icon ni ni-search"></em></button>
                                                     </form>
@@ -87,23 +87,23 @@
                                                             <table class="table table-tranx">
                                                                 <thead>
                                                                 <tr class="tb-tnx-head">
-                                                                    <th class="tb-tnx-id"><span class="">سطح</span></th>
+                                                                    <th class="tb-tnx-id"><span class="">level</span></th>
                                                                     <th class="tb-tnx-info">
                                                                         <span class="tb-tnx-desc d-none d-sm-inline-block">
-                                                                            <span>متن</span>
+                                                                            <span>detail</span>
                                                                         </span>
                                                                         <span class="tb-tnx-date d-md-inline-block d-none">
-                                                                            <span class="d-md-none">زمان ایجاد</span>
+                                                                            <span class="d-md-none">creation date</span>
                                                                             <span class="d-none d-md-block">
-                                                                                <span>زمان ایجاد</span>
+                                                                                <span>creation date</span>
                                                                             </span>
                                                                         </span>
                                                                     </th>
                                                                     <th class="tb-tnx-amount">
-                                                                        <span class="tb-tnx-total">وضعیت بازدید</span>
+                                                                        <span class="tb-tnx-total">visit status</span>
                                                                     </th>
                                                                     <th>
-                                                                        <span>عملیات</span>
+                                                                        <span>action</span>
                                                                     </th>
                                                                 </tr>
                                                                 <!-- tb-tnx-item -->
@@ -131,11 +131,11 @@
 
                                                                                 {% if notification.is_seen %}
                                                                                     <span class="badge badge-dim bg-success fs-10px">
-                                                                                         مشاهده شده
+                                                                                         seen
                                                                                      </span>
                                                                                 {% else %}
                                                                                     <span class="badge badge-dim bg-warning fs-10px">
-                                                                                         مشاهده نشده
+                                                                                        unseen
                                                                                      </span>
                                                                                 {% endif %}
 
@@ -149,7 +149,7 @@
                                                                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-xs">
                                                                                     <ul class="link-list-plain">
                                                                                         <li>
-                                                                                            <a href="{{ notification.get_absolute_url }}">مشاهده</a>
+                                                                                            <a href="{{ notification.get_absolute_url }}">view</a>
                                                                                         </li>
                                                                                     </ul>
                                                                                 </div>
@@ -159,11 +159,11 @@
                                                                 {% empty %}
                                                                     <tr>
                                                                         <td>
-                                                                            <span class="fs-18px">چیزی یافت نشد</span>
+                                                                            <span class="fs-18px">No results found</span>
                                                                             {% if request.GET.search %}
                                                                                 <a class="link text-warning fs-12px"
                                                                                    href="{% url 'dj_backup:notification__list' %}">
-                                                                                    حذف فیلتر و جست و جو
+                                                                                    clear filter
                                                                                     <em class="ni ni-cross-circle m-1"></em>
                                                                                 </a>
                                                                             {% endif %}
@@ -190,26 +190,26 @@
                                                     {% if page_obj.has_previous %}
                                                         <li class="page-item"><a
                                                                 class="page-link add-params-to-href"
-                                                                href="?page=1">اول</a>
+                                                                href="?page=1">first</a>
                                                         </li>
                                                         <li class="page-item"><a
                                                                 class="page-link add-params-to-href"
-                                                                href="?page={{ page_obj.previous_page_number }}">قبلی</a>
+                                                                href="?page={{ page_obj.previous_page_number }}">previous</a>
                                                         </li>
                                                     {% endif %}
 
                                                     <span class="fs-13px mt-1 mx-2">
-                                                                        صفحه {{ page_obj.number }} از {{ page_obj.paginator.num_pages }}.
+                                                                        page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
                                                                 </span>
 
                                                     {% if page_obj.has_next %}
                                                         <li class="page-item"><a
                                                                 class="page-link add-params-to-href"
-                                                                href="?page={{ page_obj.next_page_number }}">بعدی</a>
+                                                                href="?page={{ page_obj.next_page_number }}">next</a>
                                                         </li>
                                                         <li class="page-item"><a
                                                                 class="page-link add-params-to-href"
-                                                                href="?page={{ page_obj.paginator.num_pages }}">اخرین</a>
+                                                                href="?page={{ page_obj.paginator.num_pages }}">last</a>
                                                         </li>
                                                     {% endif %}
                                                 </ul>

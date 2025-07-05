@@ -1,7 +1,7 @@
 {% extends 'dj_backup/base/base_template.html' %}
 
 {% block Title %}
-    جزئیات بک اپ - {{ backup.name }}
+    detail - {{ backup.name }}
 {% endblock %}
 
 {% block BodyClass %}
@@ -27,7 +27,7 @@
 {% endblock %}
 
 {% block Content %}
-<div class="nk-app-root">
+    <div class="nk-app-root">
     <!-- main @s -->
     <div class="nk-main">
         <!-- wrap @s -->
@@ -48,8 +48,10 @@
                                     <div class="nk-block-head nk-block-head-md">
                                         <div class="nk-block-between position-relative">
                                             <div class="nk-block-head-content mb-3">
-                                                <h3 class="nk-block-title page-title">جزئیات بک اپ
+                                                <h3 class="nk-block-title page-title">
                                                     {{ backup.name }}
+                                                    |
+                                                    detail
                                                 </h3>
                                             </div>
                                         </div>
@@ -61,7 +63,7 @@
                                             <a href="#"
                                                class="dropdown-toggle btn btn-icon btn-secondary px-2 text-center"
                                                data-bs-toggle="dropdown" aria-expanded="false">
-                                                عملیات
+                                                action
                                                 <em class="icon ni ni-setting"></em>
                                             </a>
                                             <div class="dropdown-menu dropdown-menu-end">
@@ -71,29 +73,30 @@
                                                             <li>
                                                                 <button type="button" class="btn text-success"
                                                                         data-bs-toggle="modal"
-                                                                        data-bs-target="#modal-start-running">شروع بک آپ
-                                                                    گیری
+                                                                        data-bs-target="#modal-start-running">Start
+                                                                    backup
                                                                 </button>
                                                             </li>
                                                         {% else %}
                                                             <li>
                                                                 <button type="button" class="btn text-warning"
                                                                         data-bs-toggle="modal"
-                                                                        data-bs-target="#modal-stop-running">توقف بک آپ گیری
+                                                                        data-bs-target="#modal-stop-running">Pause
+                                                                    backup
                                                                 </button>
                                                             </li>
                                                         {% endif %}
                                                         <li>
                                                             <button type="button" class="btn text-info"
                                                                     data-bs-toggle="modal"
-                                                                    data-bs-target="#modal-update">ویرایش
+                                                                    data-bs-target="#modal-update">Edit
                                                             </button>
                                                         </li>
                                                     {% endif %}
                                                     <li>
                                                         <button type="button" class="btn text-danger"
                                                                 data-bs-toggle="modal"
-                                                                data-bs-target="#modal-delete">حذف
+                                                                data-bs-target="#modal-delete">Delete
                                                         </button>
                                                     </li>
                                                 </ul>
@@ -108,7 +111,7 @@
                                                     <div class="nk-data data-list data-list-s2">
                                                         <div class="data-item">
                                                             <div class="data-col">
-                                                                <span class="data-label">نام</span>
+                                                                <span class="data-label">Name</span>
                                                                 <span class="data-value">
                                                                         {{ backup.name }}
                                                                 </span>
@@ -117,7 +120,7 @@
                                                         <!-- data-item -->
                                                         <div class="data-item">
                                                             <div class="data-col">
-                                                                <span class="data-label">توضیحات</span>
+                                                                <span class="data-label">Note</span>
                                                                 <span class="data-value">
                                                                     {{ backup.note|default:'-' }}
                                                                 </span>
@@ -125,15 +128,15 @@
                                                         </div>
                                                         <div class="data-item">
                                                             <div class="data-col">
-                                                                <span class="data-label">وضعیت اجرا</span>
+                                                                <span class="data-label">Execution status</span>
                                                                 <span class="data-value">
                                                                     {% if backup.is_running %}
                                                                         <span class="badge badge-dot bg-success">
-                                                                            در حال اجرا
+                                                                            is running
                                                                         </span>
                                                                     {% else %}
                                                                         <span class="badge badge-dot bg-danger">
-                                                                            متوقف شده است
+                                                                           paused
                                                                         </span>
                                                                     {% endif %}
                                                                 </span>
@@ -141,10 +144,10 @@
                                                         </div>
                                                         <div class="data-item">
                                                             <div class="data-col">
-                                                                <span class="data-label">زمان بندی</span>
+                                                                <span class="data-label">Timing</span>
                                                                 <span class="data-value">
                                                                    <span>
-                                                                       هر
+                                                                       every
                                                                        <b>
                                                                            {{ backup.interval }}
                                                                            {{ backup.unit_label }}
@@ -156,7 +159,7 @@
 
                                                         <div class="data-item">
                                                             <div class="data-col">
-                                                                <span class="data-label">تعداد اجرا</span>
+                                                                <span class="data-label">Count of runs</span>
                                                                 <span class="data-value">
                                                                     <span class="badge badge-dim bg-warning badge-sm spread-num-el">{{ backup.count_run }}</span>
                                                                 </span>
@@ -165,7 +168,7 @@
 
                                                         <div class="data-item">
                                                             <div class="data-col">
-                                                                <span class="data-label">اخرین اجرا</span>
+                                                                <span class="data-label">Last run time</span>
                                                                 <span class="data-value">
                                                                         <span>{{ backup.get_last_run }}</span>
                                                                     </span>
@@ -174,10 +177,10 @@
                                                         <!-- data-item -->
                                                         <div class="data-item">
                                                             <div class="data-col">
-                                                                <span class="data-label">تعداد تکرار</span>
+                                                                <span class="data-label">Repeats</span>
                                                                 <span class="data-value">
                                                                     {% if backup.repeats == -1 %}
-                                                                        <span class="badge bg-secondary">برای همیشه</span>
+                                                                        <span class="badge bg-secondary">forever</span>
                                                                     {% else %}
                                                                         <span class="spread-num-el">{{ backup.repeats }}</span>
                                                                     {% endif %}
@@ -187,7 +190,7 @@
                                                         <!-- data-item -->
                                                         <div class="data-item">
                                                             <div class="data-col">
-                                                                <span class="data-label">حجم کل</span>
+                                                                <span class="data-label">Total size</span>
                                                                 <span class="data-value">
                                                                    <span class="file-size-convert"
                                                                          data-size="{{ backup.get_usage_size }}"></span>
@@ -197,7 +200,7 @@
                                                         <!-- data-item -->
                                                         <div class="data-item">
                                                             <div class="data-col">
-                                                                <span class="data-label">ذخیره سازی در</span>
+                                                                <span class="data-label">Store in</span>
                                                                 <span class="data-value">
                                                                    {% for storage in backup_storages %}
                                                                        <span class="badge badge-dim bg-success badge-sm m-1">
@@ -205,7 +208,7 @@
                                                                             (<span class="file-size-convert"
                                                                                    data-size="{{ storage.usage_size }}"></span>)
                                                                             <hr>
-                                                                           تعداد:
+                                                                           count:
                                                                             <span class="spread-num-el">{{ storage.count_backup }}</span>
                                                                         </span>
                                                                    {% endfor %}
@@ -215,7 +218,7 @@
                                                         <!-- data-item -->
                                                         <div class="data-item">
                                                             <div class="data-col">
-                                                                <span class="data-label">نگه داری فایل های موقت</span>
+                                                                <span class="data-label">Keep temporary files</span>
                                                                 <span class="data-value">
                                                                     {% if backup.has_temp %}
                                                                         <em class="icon ni ni-check text-success"></em>
@@ -228,7 +231,7 @@
                                                         {% if backup.backup_type == 'database' %}
                                                             <div class="data-item">
                                                                 <div class="data-col">
-                                                                    <span class="data-label">نام دیتابیس</span>
+                                                                    <span class="data-label">Database name</span>
                                                                     <span class="data-value">
                                                                         {{ backup.database }}
                                                                     </span>
@@ -236,7 +239,7 @@
                                                             </div>
                                                             <div class="data-item">
                                                                 <div class="data-col">
-                                                                    <span class="data-label">نوع دیتابیس</span>
+                                                                    <span class="data-label">Database type</span>
                                                                     <span class="data-value">
                                                                         {{ backup.database_type }}
                                                                     </span>
@@ -244,7 +247,7 @@
                                                             </div>
                                                             <div class="data-item">
                                                                 <div class="data-col">
-                                                                    <span class="data-label">ارگومان های اضافه</span>
+                                                                    <span class="data-label">Additional config(args)</span>
                                                                     <span class="data-value">
                                                                         {% for args in backup.get_additional_args %}
                                                                             <span class="badge badge-dim bg-info">{{ args }}</span>
@@ -257,7 +260,7 @@
                                                         {% else %}
                                                             <div class="data-item">
                                                                 <div class="data-col">
-                                                                    <span class="data-label">فایل ها</span>
+                                                                    <span class="data-label">Files</span>
                                                                     <span class="data-value">
                                                                         {% for file in backup.get_files %}
                                                                             <span class="badge badge-dim bg-info m-1"
@@ -271,7 +274,7 @@
                                                         {% endif %}
                                                         <div class="data-item">
                                                             <div class="data-col">
-                                                                <span class="data-label">تعداد نتایج موفق</span>
+                                                                <span class="data-label">Count of successful results</span>
                                                                 <span class="data-value">
                                                                     <span class="badge badge-dim bg-success badge-sm spread-num-el">{{ backup.get_success_results.count }}</span>
                                                                 </span>
@@ -279,7 +282,7 @@
                                                         </div>
                                                         <div class="data-item">
                                                             <div class="data-col">
-                                                                <span class="data-label">تعداد نتایج ناموفق</span>
+                                                                <span class="data-label">Count of unsuccessful results</span>
                                                                 <span class="data-value">
                                                                     <span class="badge badge-dim bg-danger badge-sm spread-num-el">{{ backup.get_unsuccessful_results.count }}</span>
                                                                 </span>
@@ -295,7 +298,7 @@
                                         <div class="nk-fmg-listing nk-block my-4">
                                             <div class="nk-block-head-content mb-3">
                                                 <h4 class="nk-block-title page-title">
-                                                    نتایج
+                                                    Results
                                                 </h4>
                                             </div>
                                             <div class="nk-files nk-files-view-group">
@@ -339,7 +342,7 @@
                                                                                 <li>
                                                                                     <a href="#result-detail-{{ result.id }}"
                                                                                        data-bs-toggle="modal"><em
-                                                                                            class="icon ni ni-eye"></em><span>جزئیات</span></a>
+                                                                                            class="icon ni ni-eye"></em><span>detail</span></a>
                                                                                 </li>
                                                                                 <li>
                                                                                     {% with result.get_download_link as download_link %}
@@ -347,7 +350,7 @@
                                                                                             <a href="{{ download_link }}"
                                                                                                download="download"
                                                                                                class="file-dl-toast"><em
-                                                                                                    class="icon ni ni-download"></em><span>دانلود</span></a>
+                                                                                                    class="icon ni ni-download"></em><span>download</span></a>
                                                                                         {% endif %}
                                                                                     {% endwith %}
                                                                                 </li>
@@ -357,38 +360,38 @@
                                                                 </div>
                                                             </div>
                                                         {% empty %}
-                                                            <h6 class="text-warning m-2">نتیجه ای تا به حال به دست
-                                                                نیامده است</h6>
+                                                            <h6 class="text-warning m-2">No results found</h6>
                                                         {% endfor %}
                                                     </div>
                                                 </div>
-                                                <div class="card-inner my-5">
+
+                                                <div class="card-inner  my-5">
                                                     <div class="nk-block-between-md justify-content-center">
                                                         <div class="g">
                                                             <ul class="pagination justify-content-center justify-content-md-start">
                                                                 {% if page_obj.has_previous %}
                                                                     <li class="page-item"><a
                                                                             class="page-link add-params-to-href"
-                                                                            href="?page=1">اول</a>
+                                                                            href="?page=1">first</a>
                                                                     </li>
                                                                     <li class="page-item"><a
                                                                             class="page-link add-params-to-href"
-                                                                            href="?page={{ page_obj.previous_page_number }}">قبلی</a>
+                                                                            href="?page={{ page_obj.previous_page_number }}">previous</a>
                                                                     </li>
                                                                 {% endif %}
 
                                                                 <span class="fs-13px mt-1 mx-2">
-                                                                        صفحه {{ page_obj.number }} از {{ page_obj.paginator.num_pages }}.
+                                                                        page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
                                                                 </span>
 
                                                                 {% if page_obj.has_next %}
                                                                     <li class="page-item"><a
                                                                             class="page-link add-params-to-href"
-                                                                            href="?page={{ page_obj.next_page_number }}">بعدی</a>
+                                                                            href="?page={{ page_obj.next_page_number }}">next</a>
                                                                     </li>
                                                                     <li class="page-item"><a
                                                                             class="page-link add-params-to-href"
-                                                                            href="?page={{ page_obj.paginator.num_pages }}">اخرین</a>
+                                                                            href="?page={{ page_obj.paginator.num_pages }}">last</a>
                                                                     </li>
                                                                 {% endif %}
                                                             </ul>
@@ -432,7 +435,7 @@
                                 </span>
                             </div>
                             <div class="nk-file-name">
-                                <div class="nk-file-name-text"><span class="title">نتیجه بک آپ</span>
+                                <div class="nk-file-name-text"><span class="title">Backup result</span>
                                 </div>
                                 <div class="nk-file-name-sub">{{ backup.name|truncatechars:20 }}</div>
                             </div>
@@ -442,48 +445,48 @@
                     <div class="modal-body">
                         <div class="nk-file-details">
                             <div class="nk-file-details-row">
-                                <div class="nk-file-details-col">وضعیت</div>
+                                <div class="nk-file-details-col">Status</div>
                                 <div class="nk-file-details-col">
                                     <span class="badge badge-dot {% if result.status == 'successful' %}bg-success{% else %}bg-danger{% endif %}">{{ result.get_status_display }}</span>
                                 </div>
                             </div>
                             <div class="nk-file-details-row">
-                                <div class="nk-file-details-col">ذخیره ساز</div>
+                                <div class="nk-file-details-col">Store in</div>
                                 <div class="nk-file-details-col">{{ result.storage.display_name }}</div>
                             </div>
                             <div class="nk-file-details-row">
-                                <div class="nk-file-details-col">حجم</div>
+                                <div class="nk-file-details-col">Size</div>
                                 <div class="nk-file-details-col">
                                     <span class="file-size-convert" data-size="{{ result.size }}"></span>
                                 </div>
                             </div>
                             <div class="nk-file-details-row">
-                                <div class="nk-file-details-col">زمان صرف شده</div>
+                                <div class="nk-file-details-col">Time taken</div>
                                 <div class="nk-file-details-col">
                                     <span>{{ result.time_taken }}</span>
-                                    ثانیه
+                                    seconds
                                 </div>
                             </div>
                             <div class="nk-file-details-row">
-                                <div class="nk-file-details-col">نام بک اپ فایل</div>
+                                <div class="nk-file-details-col">Backup file name</div>
                                 <div class="nk-file-details-col">
                                     {{ result.backup_name }}
                                 </div>
                             </div>
                             <div class="nk-file-details-row">
-                                <div class="nk-file-details-col">خروجی</div>
+                                <div class="nk-file-details-col">Result loc(out)</div>
                                 <div class="nk-file-details-col">{{ result.out|default:'-' }}</div>
                             </div>
                             <div class="nk-file-details-row">
-                                <div class="nk-file-details-col">ادرس فایل موقت</div>
+                                <div class="nk-file-details-col">Temp location</div>
                                 <div class="nk-file-details-col">{{ result.temp_location|default:'-' }}</div>
                             </div>
                             <div class="nk-file-details-row">
-                                <div class="nk-file-details-col">توضیحات</div>
+                                <div class="nk-file-details-col">Description</div>
                                 <div class="nk-file-details-col">{{ result.description|default:'-' }}</div>
                             </div>
                             <div class="nk-file-details-row">
-                                <div class="nk-file-details-col">زمان ایجاد</div>
+                                <div class="nk-file-details-col">Creation time</div>
                                 <div class="nk-file-details-col">{{ result.get_created_at }}</div>
                             </div>
                         </div>
@@ -496,11 +499,11 @@
                                     {% with result.get_download_link as download_link %}
                                         {% if download_link %}
                                             <li><a href="{{ download_link }}" download="download"
-                                                   class="btn btn-primary file-dl-toast">دانلود</a></li>
+                                                   class="btn btn-primary file-dl-toast">Download</a></li>
                                         {% else %}
-                                            <li><a class="btn btn-outline-light btn-white" style="cursor:not-allowed;">فایل
-                                                برای دانلود در
-                                                دسترس نمیباشد</a></li>
+                                            <li><a class="btn btn-outline-light btn-white" style="cursor:not-allowed;">
+                                                The backup is not available for download
+                                            </a></li>
                                         {% endif %}
                                     {% endwith %}
                                 </ul>
@@ -509,9 +512,9 @@
                     </div>
                     <!-- .modal-footer -->
                 </div>
-                <!-- .modal-content -->
+                <!--.modal-content -->
             </div>
-            <!-- .modla-dialog -->
+            <!--.modla-dialog -->
         </div>
     {% endfor %}
 
@@ -521,9 +524,9 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">
-                        اجرای بک اپ
+                        Start backup
                     </h5>
-                    <a href="#" class="close" data-bs-dismiss="modal" aria-label="بستن">
+                    <a href="#" class="close" data-bs-dismiss="modal" aria-label="close">
                         <em class="icon ni ni-cross"></em>
                     </a>
                 </div>
@@ -534,15 +537,11 @@
                         {% csrf_token %}
                         <input type="hidden" name="status" value="start">
                         <div class="badge-dim bg-success fs-17px p-2" style="border-radius: 10px">
-                            <p>
-                                ایا از اجرای اجرای بک اپ
-                                {{ backup.name }}
-                                اطمینان دارید ؟
-                            </p>
+                            <p>Are you sure you want to run the backup '{{ backup.name }}'?</p>
                         </div>
                         <div class="form-group text-end mt-3">
                             <button type="submit" class="btn btn-lg btn-success p-1 px-2">
-                                بله، اجرا
+                                Yes, start
                                 <em class="icon icon-circle ni ni-check bg-success"></em>
                             </button>
                         </div>
@@ -556,9 +555,9 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">
-                        توقف اجرا
+                        Pause backup
                     </h5>
-                    <a href="#" class="close" data-bs-dismiss="modal" aria-label="بستن">
+                    <a href="#" class="close" data-bs-dismiss="modal" aria-label="close">
                         <em class="icon ni ni-cross"></em>
                     </a>
                 </div>
@@ -569,15 +568,11 @@
                         {% csrf_token %}
                         <input type="hidden" name="status" value="stop">
                         <div class="badge-dim bg-danger fs-17px p-2" style="border-radius: 10px">
-                            <p>
-                                ایا از توقف اجرای بک اپ
-                                {{ backup.name }}
-                                اطمینان دارید ؟
-                            </p>
+                            <p>Are you sure you want to pause the backup '{{ backup.name }}'?</p>
                         </div>
                         <div class="form-group text-end mt-3">
                             <button type="submit" class="btn btn-lg btn-danger p-1 px-2">
-                                بله، توقف
+                                Yes, pause
                                 <em class="icon icon-circle ni ni-cross bg-danger"></em>
                             </button>
                         </div>
@@ -591,9 +586,9 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">
-                        ویرایش بک آپ
+                        Edit backup
                     </h5>
-                    <a href="#" class="close" data-bs-dismiss="modal" aria-label="بستن">
+                    <a href="#" class="close" data-bs-dismiss="modal" aria-label="close">
                         <em class="icon ni ni-cross"></em>
                     </a>
                 </div>
@@ -602,52 +597,51 @@
                           action="{% url 'dj_backup:backup__update' backup_id=backup.id %}"
                           class="form-validate is-alter" novalidate="novalidate" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <input type="hidden" name="image_cover" value="{{ product.image_cover.id }}">
                         <div class="form-group">
-                            <label class="form-label" for="name">نام</label>
+                            <label class="form-label" for="name">Name</label>
                             <div class="form-control-wrap">
                                 <input type="text" name="name" class="form-control" id="name"
                                        required=""
-                                       placeholder="نام" value="{{ backup.name }}">
+                                       placeholder="name" value="{{ backup.name }}">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="note">توضیحات</label>
+                            <label class="form-label" for="note">Note</label>
                             <div class="form-control-wrap">
                                     <textarea name="note" id="note"
                                               class="form-control">{{ backup.note|default:'' }}</textarea>
                             </div>
                         </div>
 
+
                         <div class="form-group">
-                            <label class="form-label" for="backup-time">زمان</label>
+                            <label class="form-label" for="backup-time">Timing</label>
                             <div class="form-control-wrap">
                                 <div class="form-text-hint">
+                                    <p class="overline-title d-inline-block">every</p>
+                                    <input type="number" class="form-control" id="interval-time"
+                                           placeholder="backup timing" required name="interval">
                                     <select name="unit" required class="js-select2 overline-title select-by-value"
                                             value="{{ backup.unit }}">
-                                        <option value="minutes">دقیقه</option>
-                                        <option value="hours">ساعت</option>
-                                        <option value="days">روز</option>
-                                        <option value="weeks">هفته</option>
+                                        <option value="minutes">minute</option>
+                                        <option value="hours">hour</option>
+                                        <option value="days">day</option>
+                                        <option value="weeks">week</option>
                                     </select>
-                                    <p class="overline-title" style="margin-right: 12px">یکبار</p>
                                 </div>
-                                <input type="number" class="form-control" id="interval-time"
-                                       placeholder="زمان بک اپ گیری" required value="{{ backup.interval }}"
-                                       name="interval">
                             </div>
-                            <div class="form-note">هر چه مدت یکبار بک اپ گرفته شود</div>
+                            {#                                    <div class="form-note">Interval for backups</div>#}
                         </div>
                         <div class="form-group">
-                            <label class="form-label" for="repeats">تعداد بک آپ گیری</label>
+                            <label class="form-label" for="repeats">Number of backups</label>
                             <div class="form-control-wrap">
                                 <input type="number" class="form-control" id="repeats"
                                        placeholder="-1" value="{{ backup.repeats }}" required name="repeats">
                             </div>
-                            <div class="form-note">برای بک آپ همیشگی مقدار "1-" را وارد نمایید</div>
+                            <div class="form-note">Enter '-1' for permanent backup</div>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">ذخیره در </label>
+                            <label class="form-label">Store in </label>
                             <div class="form-control-wrap">
                                 <select name="storages" class="form-select js-select2" multiple required>
                                     {% for storage in all_storages %}
@@ -660,29 +654,29 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="form-label">نگه داری فایل های موقت</label>
+                            <label class="form-label">Keep temporary files</label>
                             <div class="form-control-wrap">
                                 <select name="has_temp" class="form-select js-select2 select-by-value"
                                         value="{{ backup.has_temp }}"
                                         required>
                                     <option value="true">
-                                        بله
+                                        Yes
                                     </option>
                                     <option value="false">
-                                        خیر
+                                        No
                                     </option>
                                 </select>
                             </div>
-                            <div class="form-note">برای دسترسی سریع و راحت تر به فایل بک آپ این گزینه را
-                                فعال کنید. نکته:
-                                <b>توجه کنید فعال کردن نگه داری فایل ها باعث افزایش حجم بر روی
-                                    دیسک میشود.</b>
+                            <div class="form-note">
+                                To enable quick and easy access to backups, activate this option.
+                                Note:
+                                <b>Be aware that enabling file retention will increase disk space usage.</b>
                             </div>
                         </div>
 
                         <div class="form-group text-left mt-5">
                             <button type="submit" class="btn btn-lg btn-success p-1 px-2">
-                                ویرایش بک اپ
+                                Update backup
                                 <em class="icon icon-circle ni ni-pen bg-success"></em>
                             </button>
                         </div>
@@ -696,9 +690,9 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">
-                        حذف بک اپ
+                        Delete backup
                     </h5>
-                    <a href="#" class="close" data-bs-dismiss="modal" aria-label="بستن">
+                    <a href="#" class="close" data-bs-dismiss="modal" aria-label="close">
                         <em class="icon ni ni-cross"></em>
                     </a>
                 </div>
@@ -709,14 +703,13 @@
                         {% csrf_token %}
                         <div class="badge-dim bg-danger fs-17px p-2" style="border-radius: 10px">
                             <p>
-                                ایا از حذف بک اپ
-                                {{ backup.name }}
-                                اطمینان دارید ؟
-                                پس از حذف امکان بازگشت وجود نخواهد داشت.</p>
+                                Are you sure you want to delete the backup '{{ backup.name }}'?
+                            </p>
+                            <b>There will be no return after deletion</b>
                         </div>
                         <div class="form-group text-end mt-3">
                             <button type="submit" class="btn btn-lg btn-danger p-1 px-2">
-                                بله اطمینان دارم ! حذف
+                                Yes, I'm sure, delete.
                                 <em class="icon icon-circle ni ni-trash-empty bg-danger"></em>
                             </button>
                         </div>
@@ -726,21 +719,21 @@
         </div>
     </div>
 
-    {% endblock %}
+{% endblock %}
 
-    {% block Script %}
-        <script>
-            document.querySelectorAll('.file-dl-toast').forEach(function (el) {
-                el.addEventListener('click', function (e) {
-                    let href = this.getAttribute('href')
-                    let link = document.createElement('a')
-                    link.href = href
-                    link.download = true
-                    link.style.display = 'none'
-                    document.body.appendChild(link)
-                    link.click()
-                    link.remove()
-                })
+{% block Script %}
+    <script>
+        document.querySelectorAll('.file-dl-toast').forEach(function (el) {
+            el.addEventListener('click', function (e) {
+                let href = this.getAttribute('href')
+                let link = document.createElement('a')
+                link.href = href
+                link.download = true
+                link.style.display = 'none'
+                document.body.appendChild(link)
+                link.click()
+                link.remove()
             })
-        </script>
-    {% endblock %}
+        })
+    </script>
+{% endblock %}

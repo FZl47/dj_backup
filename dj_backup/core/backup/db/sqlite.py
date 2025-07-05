@@ -9,7 +9,7 @@ class SqliteDB(BaseDB):
     CONFIG = {
         'NAME': None,
     }
-    NAME = 'sqlite'
+    NAME = 'sqlite3'
     _DB = None
 
     @classmethod
