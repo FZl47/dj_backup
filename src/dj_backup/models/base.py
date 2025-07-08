@@ -10,6 +10,17 @@ from dj_backup.core import utils
 from dj_backup.core import storages, backup
 
 
+class DJBackupSecure(models.Model):
+    ENCRYPTION_TYPES = (
+        ('zipp', _('Zip Password')),
+        ('aes', _('Advanced Encryption Standard')),
+    )
+
+    t = models.CharField(max_length=6, choices=ENCRYPTION_TYPES)
+    key = models.CharField(max_length=256)
+    backup = models.OneToOneField('DJBackUpBase', on_delete=models.CASCADE)
+
+
 class DJBackUpBase(models.Model):
     UNITS = (
         ('minutes', _('Minutes')),
