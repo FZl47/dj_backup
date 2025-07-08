@@ -195,7 +195,7 @@ OR
 
 [x] * use pure schedule library or apscheduler or etc. instead django_q(has problems)
 
-[ ] add password for backups
+[ ] add password for backups(zipp)
 
 [x] add telegram storage
 
@@ -206,5 +206,13 @@ OR
 [ ] add section notification manage to dashboard
 
 [ ] update dropbox storage to stable state
+
+[ ] refactor/add type hints(update hard-doc)
+
+[ ] add encryption(aes)
+
+[ ] add decryption section(dashboard)
+
+[ ] add enc keys collector(unsafe mode)
 
  
