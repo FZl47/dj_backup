@@ -17,13 +17,13 @@ class AESEncryption(SecureBaseABC):
         A class for implementing secure backup by AES-256 encryption.
 
         Attributes:
-            _save_prefix:
-                it used when we want to make encrypted file: {_save_prefix}_backup.zip
             _file_extension:
-                {_save_prefix}_backup.{_file_extension}
+                backup.{_file_extension}
+            _prefix_out:
+                {_prefix_out}_backup_name.zip
     """
-    _save_prefix = 'enc'
     _file_extension = 'bin'
+    _prefix_out = 'aes_'
 
     temp_dir = settings.get_backup_temp_dir()
 
@@ -32,7 +32,7 @@ class AESEncryption(SecureBaseABC):
         """
             :return: A path of temp location to save encrypted data
         """
-        return self.temp_dir / utils.random_str(20) / 'bc.%s' % self._file_extension
+        return self.temp_dir / f'{utils.random_str(30)}__bc.{self._file_extension}'
 
     @classmethod
     def _make_key_sha256(cls, key: str) -> bytes:
@@ -74,14 +74,15 @@ class AESEncryption(SecureBaseABC):
             :param filename: The name of the file that needs to be encrypted.
             :param key: A string representing the encryption key or password.
 
-            :return: The encrypted content as file(replace new encrypted file with old file).
+            :return: The encrypted content as file.
         """
         encrypted_data = self.encrypt(filename, key)
         # create encrypted file
         enc_file = self._save_temp_encrypted_data(encrypted_data)
-
         # zip encrypted file
         try:
+            filename = self._get_out_filename(filename)
+            self.enc_file_out = filename
             utils.zip_file(enc_file, filename)
         except (IOError, TypeError):
             logging.log_event('error in zip encrypted file', 'warning', exc_info=True)
@@ -90,7 +91,7 @@ class AESEncryption(SecureBaseABC):
         # delete temp encrypted file
         self._delete_temp_encrypted_data(enc_file)
 
-        logging.log_event('encrypt file maked success', 'warning', exc_info=True)
+        logging.log_event('encrypt file maked success', 'debug', exc_info=True)
         return filename
 
     def encrypt(self, filename: Path, key: str) -> bytes:
@@ -107,7 +108,7 @@ class AESEncryption(SecureBaseABC):
         with open(filename, 'rb') as f:
             data = f.read()
 
-        skey = self._make_key_sha256(key).decode('utf-8')
+        skey = self._make_key_sha256(key)
 
         # encrypt the data
         cipher = AES.new(skey, AES.MODE_CBC)

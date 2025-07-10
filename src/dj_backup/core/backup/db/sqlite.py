@@ -38,6 +38,9 @@ class SqliteDB(BaseDB):
     def prepare_cmd(self):
         pass
 
+    def delete_dump_file(self):
+        pass
+
     def dump(self):
         """
             get a copy of db file

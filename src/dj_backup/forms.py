@@ -3,6 +3,12 @@ from django import forms
 from . import models
 
 
+class DJBackupSecureForm(forms.ModelForm):
+
+    class Meta:
+        model = models.DJBackupSecure
+        fields = '__all__'
+
 class DJFileBackUpForm(forms.ModelForm):
     class Meta:
         model = models.DJFileBackUp

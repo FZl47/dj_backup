@@ -16,7 +16,7 @@ class DJBackupSecure(models.Model):
         ('aes', _('Advanced Encryption Standard')),
     )
 
-    t = models.CharField(max_length=6, choices=ENCRYPTION_TYPES)
+    encryption_type = models.CharField(max_length=6, choices=ENCRYPTION_TYPES)
     key = models.CharField(max_length=256)
     backup = models.OneToOneField('DJBackUpBase', on_delete=models.CASCADE)
 
@@ -63,6 +63,16 @@ class DJBackUpBase(models.Model):
     @property
     def has_storage(self):
         return self.get_storages().exists()
+
+    @property
+    def has_secure(self):
+        return bool(self.get_secure())
+
+    def get_secure(self):
+        try:
+            return self.djbackupsecure
+        except AttributeError:
+            return None
 
     @abc.abstractmethod
     def get_backup_location(self, *args, **kwargs):

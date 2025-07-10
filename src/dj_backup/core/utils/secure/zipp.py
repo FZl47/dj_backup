@@ -4,7 +4,7 @@ import os
 from typing import Union
 from pathlib import Path
 
-from dj_backup.core.utils import log_event
+from dj_backup.core import utils
 
 from . import SecureBaseABC
 
@@ -12,20 +12,31 @@ from . import SecureBaseABC
 class ZipPassword(SecureBaseABC):
     """
          A class for implementing secure backup by zipping files with password encryption.
+
+        Attributes:
+            _prefix_out:
+                {_prefix_out}_backup_name.zip
+            enc_file_out:
+                encrypted new file path
     """
 
-    def save(self, directory_or_file: Path, zip_file: Path, key: str) -> Union[Path, None]:
+    _prefix_out = 'zipp_'
+
+    def save(self, directory_or_file: Path, key: str, zip_file: Union[Path, None] = None) -> Union[Path, None]:
         """
             Get encrypted content and save
             In this case, there is no need to save it again because it is saved during encryption.
 
             :param directory_or_file: The path of a file or directory.
-            :param zip_file: The name of the output zip file (should include .zip extension).
+            :param zip_file: The name of the output zip file (should include .zip extension), it can be none.
             :param key: A string representing the encryption key or password.
 
-            :return: Encrypted zip file(replace new encrypted file with old file).
+            :return: Encrypted zip file.
         """
         try:
+            zip_file = zip_file or directory_or_file
+            zip_file = self._get_out_filename(zip_file)
+            self.enc_file_out = zip_file
             return self.encrypt(directory_or_file, zip_file, key)
         except OSError:
             return None
@@ -40,14 +51,14 @@ class ZipPassword(SecureBaseABC):
 
             :return: Encrypted zip file.
         """
-        log_event('encryption zipp started.', 'debug')
+        utils.log_event('encryption zipp started.', 'debug')
 
         if os.path.isdir(directory_or_file):
             self._zp_directory(directory_or_file, zip_file, key)
         else:
             self._zp_file(directory_or_file, zip_file, key)
 
-        log_event('encryption zipp has done.', 'debug')
+        utils.log_event('encryption zipp has done.', 'debug')
 
         return zip_file
 
@@ -61,7 +72,7 @@ class ZipPassword(SecureBaseABC):
             :return: The decrypted file object, which may be in a different format than the original file.
         """
 
-        log_event('decryption zipp started.', 'debug')
+        utils.log_event('decryption zipp started.', 'debug')
 
         zip_file_without_extension = str(zip_file).split('.')[0]
         ex = '%s_extracted' % zip_file_without_extension
@@ -69,7 +80,7 @@ class ZipPassword(SecureBaseABC):
             zf.pwd = key
             zf.extractall(ex)
 
-        log_event('decryption zipp has done.', 'debug')
+        utils.log_event('decryption zipp has done.', 'debug')
 
         return Path(ex)
 
@@ -85,7 +96,7 @@ class ZipPassword(SecureBaseABC):
 
         with pyzipper.AESZipFile(zip_file, 'w', compression=pyzipper.ZIP_DEFLATED, encryption=pyzipper.WZ_AES) as zipf:
             # set password
-            zipf.setpassword(key)
+            zipf.setpassword(bytes(key, 'utf-8'))
             for root, _, files in os.walk(directory):
                 for file in files:
                     file_path = os.path.join(root, file)
@@ -103,5 +114,5 @@ class ZipPassword(SecureBaseABC):
         """
         with pyzipper.AESZipFile(zip_file, 'w', compression=pyzipper.ZIP_DEFLATED, encryption=pyzipper.WZ_AES) as zipf:
             # set password
-            zipf.setpassword(key)
+            zipf.setpassword(bytes(key, 'utf-8'))
             zipf.write(file_path, arcname=os.path.basename(file_path))

@@ -42,8 +42,17 @@ class FileBackup(BaseBackup):
         try:
             utils.delete_item(b)
             utils.log_event('Temp file `%s` deleted successfully!' % b, 'debug')
-        except OSError:
+        except (OSError, TypeError):
             utils.log_event('Some problem in delete temp file `%s`' % b, 'warning', exc_info=True)
+
+    def delete_zip_temp(self):
+        # delete zip file
+        b = self._get_base_dir_compress()
+        try:
+            utils.delete_item(b)
+            utils.log_event('Temp zip file `%s` deleted successfully!' % b, 'debug')
+        except (OSError, TypeError):
+            utils.log_event('Some problem in delete temp zip file `%s`' % b, 'warning', exc_info=True)
 
     def _get_backup(self):
         return self.save_temp()

@@ -1,7 +1,12 @@
 <div class="backup-item {% if backup.is_running %}is-running{% else %}is-paused{% endif %}">
     <div class="header">
         <p>
-            <a href="{{ backup.get_absolute_url }}">{{ backup.name|truncatechars:20 }}</a>
+            <a href="{{ backup.get_absolute_url }}">
+                {% if backup.has_secure %}
+                    <em class="ni ni-shield-check text-success fs-18px"></em>
+                {% endif %}
+                {{ backup.name|truncatechars:20 }}
+            </a>
         </p>
         <div class="backup-header-info">
             {% for storage in backup.get_storages %}

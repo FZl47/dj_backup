@@ -82,6 +82,17 @@ class BaseDB(BaseBackup):
             utils.log_event('Error in delete temp dump file `%s` from `%s` db' % (exp_loc, self.__class__.__name__),
                             'warning', exc_info=True)
 
+    def delete_temp_zip_file(self):
+        exp_loc = self.get_exp_compress_file_location()
+
+        try:
+            utils.delete_item(exp_loc)
+            utils.log_event(
+                'Temp zip file `%s` from `%s` db deleted successfully!' % (exp_loc, self.__class__.__name__), 'debug')
+        except OSError:
+            utils.log_event('Error in delete temp zip file `%s` from `%s` db' % (exp_loc, self.__class__.__name__),
+                            'warning', exc_info=True)
+
     @classmethod
     def check(cls, raise_exc=True):
         if cls._check_status:

@@ -1,8 +1,8 @@
 from abc import ABC
 from pathlib import Path
-from typing import Union, Any
+from typing import Any
 
-from dj_backup.models import DJDataBaseBackUp, DJFileBackUp
+from dj_backup.core import utils
 
 
 class SecureBaseABC(ABC):
@@ -14,14 +14,25 @@ class SecureBaseABC(ABC):
         ensuring that any backup object can be securely processed.
 
         Attributes:
-            backup_obj (DJDataBaseBackUp | DJFileBackUp):
-                The backup object that this class will operate on, which can be
-                either a database backup or a file backup.
-
+            _prefix_out: new path of encrypted backup:
+                {_prefix_out}_backup_name.zip
+            enc_file_out:
+                encrypted new file path
     """
+    _prefix_out = None
+    enc_file_out = None
 
-    def __init__(self, backup_obj: Union[DJDataBaseBackUp, DJFileBackUp]) -> None:
-        self.backup_obj = backup_obj
+    def delete_temp_files(self) -> None:
+        """
+            Delete temp files
+        """
+        # delete zip file
+        b = self.enc_file_out
+        try:
+            utils.delete_item(b)
+            utils.log_event('Encrypted temp zip file `%s` deleted successfully!' % b, 'debug')
+        except (OSError, TypeError):
+            utils.log_event('Some problem in delete encrypted temp zip file `%s`' % b, 'warning', exc_info=True)
 
     def save(self, *args, **kwargs) -> Path:
         """
@@ -42,3 +53,16 @@ class SecureBaseABC(ABC):
             Must be implemented in subclass.
         """
         raise NotImplementedError
+
+    def _get_out_filename(self, filename: Path) -> Path:
+        """
+            :param filename: The name of the file that needs to be encrypted.
+
+            :return: Path of new file(encrypted)
+        """
+
+        last_dir_name = filename.name
+        new_dir_name = self._prefix_out + last_dir_name
+        filename_new_path = filename.parent / new_dir_name
+        return filename_new_path
+

@@ -27,6 +27,7 @@
 {% endblock %}
 
 {% block Content %}
+
     <div class="nk-app-root">
     <!-- main @s -->
     <div class="nk-main">
@@ -212,6 +213,19 @@
                                                                             <span class="spread-num-el">{{ storage.count_backup }}</span>
                                                                         </span>
                                                                    {% endfor %}
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                        <!-- data-item -->
+                                                        <div class="data-item">
+                                                            <div class="data-col">
+                                                                <span class="data-label">Secure/Encryption</span>
+                                                                <span class="data-value">
+                                                                   {% if backup.has_secure %}
+                                                                       <span class="badge badge-sm badge-dim bg-info">{{ backup.get_secure.encryption_type }}</span>
+                                                                   {% else %}
+                                                                       <em class="icon ni ni-cross text-warning"></em>
+                                                                   {% endif %}
                                                                 </span>
                                                             </div>
                                                         </div>

@@ -1,7 +1,10 @@
 import abc
 
+from pathlib import Path
+
 from dj_backup.core.backup.file import FileBackup
 from dj_backup.core import utils, task, logging
+from dj_backup.core.utils import secure
 from dj_backup import models
 
 
@@ -56,12 +59,39 @@ class ScheduleFileBackupTask(ScheduleBackupBaseTask):
         def handler():
             """It can take a long time"""
             file_path = fb.get_backup()
+            file_path = Path(file_path)
+
+            _enc_manager = None
+
+            # check backup has encryption
+            backup_sec = backup_obj.get_secure()
+            if backup_sec:
+                _enc_manager = secure.get_enc_by_name(backup_sec.encryption_type)
+                _enc_manager = _enc_manager()
+                file_path_encrypted = _enc_manager.save(file_path, key=backup_sec.key)
+
+                if file_path_encrypted:
+                    # delete unsecure old file
+                    fb.delete_zip_temp()
+                    file_path = file_path_encrypted
+                else:
+                    _enc_manager = None
+
             storages = backup_obj.get_storages()
             for storage_obj in storages:
                 storage = storage_obj.storage_class(backup_obj, file_path)
                 # add time taken backup to storage
                 storage.time_taken += fb.time_taken
                 storage.save()
+
+            # delete raw temp file
+            fb.delete_raw_temp()
+            if not backup_obj.has_temp:
+                if _enc_manager:
+                    _enc_manager.delete_temp_files()
+                else:
+                    fb.delete_zip_temp()
+
             """End"""
 
         try:
@@ -73,11 +103,6 @@ class ScheduleFileBackupTask(ScheduleBackupBaseTask):
             backup_obj.count_run += 1
             backup_obj.has_running_task = False
             backup_obj.save()
-
-        # delete raw temp file
-        fb.delete_raw_temp()
-        if not backup_obj.has_temp:
-            backup_obj.delete_temp_files()
 
 
 class ScheduleDataBaseBackupTask(ScheduleBackupBaseTask):
@@ -108,12 +133,39 @@ class ScheduleDataBaseBackupTask(ScheduleBackupBaseTask):
             """It can take a long time"""
             # create export dump file
             file_path = db_instance.get_backup()
+            file_path = Path(file_path)
+
+            _enc_manager = None
+
+            # check backup has encryption
+            backup_sec = backup_obj.get_secure()
+            if backup_sec:
+                _enc_manager = secure.get_enc_by_name(backup_sec.encryption_type)
+                _enc_manager = _enc_manager()
+                file_path_encrypted = _enc_manager.save(file_path, key=backup_sec.key)
+
+                if file_path_encrypted:
+                    # delete unsecure old file
+                    db_instance.delete_zip_temp()
+                    file_path = file_path_encrypted
+                else:
+                    _enc_manager = None
+
             storages = backup_obj.get_storages()
             for storage_obj in storages:
                 storage = storage_obj.storage_class(backup_obj, file_path)
                 # add time taken backup to storage
                 storage.time_taken += db_instance.time_taken
                 storage.save()
+
+            # delete raw temp file
+            db_instance.delete_dump_file()
+            if not backup_obj.has_temp:
+                if _enc_manager:
+                    _enc_manager.delete_temp_files()
+                else:
+                    db_instance.delete_temp_zip_file()
+
             """End"""
 
         try:
@@ -125,8 +177,3 @@ class ScheduleDataBaseBackupTask(ScheduleBackupBaseTask):
             backup_obj.count_run += 1
             backup_obj.has_running_task = False
             backup_obj.save()
-
-        # delete raw temp file
-        db_instance.delete_dump_file()
-        if not backup_obj.has_temp:
-            backup_obj.delete_temp_files()

@@ -68,7 +68,8 @@ class FileList(mixins.DJViewMixin, TemplateView):
 
         context.update({
             'files_iter': files_iter,
-            'storages': models.DJStorage.objects.all()
+            'storages': models.DJStorage.objects.all(),
+            'enc_types': models.DJBackupSecure.ENCRYPTION_TYPES
         })
         return context
 
@@ -76,12 +77,13 @@ class FileList(mixins.DJViewMixin, TemplateView):
 class FileBackupAdd(mixins.DJViewMixin, View):
     form = forms.DJFileBackUpForm
     form_file = forms.DJFileForm
+    form_secure = forms.DJBackupSecureForm
 
     def get_referrer_url(self):
         return self.request.META.get('HTTP_REFERER')
 
     def post(self, request):
-        # TODO: refactor this shit
+        # TODO: MUST refactor this shit
         data = request.POST.copy()
         file_dirs = data.getlist('file_dirs', [])
         if not file_dirs:
@@ -105,6 +107,18 @@ class FileBackupAdd(mixins.DJViewMixin, View):
             messages.error(request, _('Please enter fields correctly'))
             return redirect(self.get_referrer_url())
         backup = f_backup.save()
+
+        # check and create encryption obj
+        has_enc = False if data.get('encryption_type', 'none') == 'none' else True
+        if has_enc:
+            data['backup'] = backup
+            f = self.form_secure(data)
+            if not f.is_valid():
+                backup.delete()
+                messages.error(request, _('Please enter fields correctly'))
+                return redirect(self.get_referrer_url())
+            f.save()
+
         tasks.ScheduleFileBackupTask(backup)
         messages.success(request, _('Backup file submited successfully'))
         return redirect(self.get_referrer_url())
@@ -117,13 +131,15 @@ class DataBaseList(mixins.DJViewMixin, TemplateView):
         context = super(DataBaseList, self).get_context_data(**kwargs)
         context.update({
             'databases': DATABASES_AVAILABLE,
-            'storages': models.DJStorage.objects.all()
+            'storages': models.DJStorage.objects.all(),
+            'enc_types': models.DJBackupSecure.ENCRYPTION_TYPES
         })
         return context
 
 
 class DataBaseBackupAdd(mixins.DJViewMixin, View):
     form = forms.DJDataBaseBackUpForm
+    form_secure = forms.DJBackupSecureForm
 
     def get_referrer_url(self):
         return self.request.META.get('HTTP_REFERER')
@@ -137,6 +153,18 @@ class DataBaseBackupAdd(mixins.DJViewMixin, View):
             messages.error(request, _('Please enter fields correctly'))
             return redirect(self.get_referrer_url())
         backup = f.save()
+
+        # check and create encryption obj
+        has_enc = False if data.get('encryption_type', 'none') == 'none' else True
+        if has_enc:
+            data['backup'] = backup
+            f = self.form_secure(data)
+            if not f.is_valid():
+                backup.delete()
+                messages.error(request, _('Please enter fields correctly'))
+                return redirect(self.get_referrer_url())
+            f.save()
+
         tasks.ScheduleDataBaseBackupTask(backup)
         messages.success(request, _('Backup database submited successfully'))
         return redirect(self.get_referrer_url())

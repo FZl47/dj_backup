@@ -210,6 +210,37 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
+                                        <label class="form-label">Secure/Encryption</label>
+                                        <div class="form-control-wrap">
+                                            <select name="encryption_type" class="form-select js-select2"
+                                                    required>
+                                                <option value="none" selected>
+                                                    None
+                                                </option>
+                                                {% for enc_type in enc_types %}
+                                                    <option value="{{ enc_type.0 }}">
+                                                        {{ enc_type.1 }}({{ enc_type.0 }})
+                                                    </option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        <div class="form-note">
+                                            <b>Using encryption increases the security of your backup.</b>
+                                        </div>
+                                    </div>
+                                    <div class="form-group d-none" id="enc_key_form">
+                                        <label class="form-label" for="enc_key">Encryption Key</label>
+                                        <div class="form-control-wrap">
+                                            <input type="text" maxlength="100" class="form-control" id="enc_key"
+                                                   placeholder="Encryption Key" name="key">
+                                        </div>
+                                        <div class="form-note">
+                                            <b class="text-danger">Do not share your encryption key with anyone, and
+                                                make
+                                                sure to store it in a secure location..</b>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
                                         <label class="form-label">Keep temporary files</label>
                                         <div class="form-control-wrap">
                                             <select name="has_temp" class="form-select js-select2"
@@ -261,4 +292,23 @@
         </div>
     {% endfor %}
 
+{% endblock %}
+
+
+{% block Script %}
+    <script>
+        // backup secure/encryption forms
+        let enc_key_form = document.getElementById('enc_key_form')
+
+        $('[name="encryption_type"]').on('select2:select', function (e) {
+            let t = this.value
+            if (t !== 'none') {
+                enc_key_form.classList.remove('d-none')
+                enc_key_form.querySelector('input').setAttribute('required', 'required')
+            } else {
+                enc_key_form.classList.add('d-none')
+                enc_key_form.querySelector('input').removeAttribute('required')
+            }
+        });
+    </script>
 {% endblock %}
