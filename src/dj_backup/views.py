@@ -338,6 +338,7 @@ class NotificationSeenAll(mixins.DJViewMixin, RedirectView):
 
 
 class SettingsManagement(mixins.DJViewMixin, TemplateView):
+    # TODO: refactor view's
     template_name = 'dj_backup/settings.html'
 
     def get_context_data(self, **kwargs):
