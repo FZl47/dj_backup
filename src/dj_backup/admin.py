@@ -12,4 +12,4 @@ admin.site.register(models.DJBackUpStorageResult)
 admin.site.register(models.TaskSchedule)
 
 admin.site.register(models.DJBackupLog)
-admin.site.register(models.DJBackupLogLevel)
+admin.site.register(models.DJBackupLogLevelNotif)

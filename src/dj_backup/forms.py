@@ -4,10 +4,10 @@ from . import models
 
 
 class DJBackupSecureForm(forms.ModelForm):
-
     class Meta:
         model = models.DJBackupSecure
         fields = '__all__'
+
 
 class DJFileBackUpForm(forms.ModelForm):
     class Meta:
@@ -38,3 +38,9 @@ class DJFileForm(forms.ModelForm):
     class Meta:
         model = models.DJFile
         fields = '__all__'
+
+
+class DJBackupLogLevelNotifForm(forms.ModelForm):
+    class Meta:
+        model = models.DJBackupLogLevelNotif
+        exclude = ('is_active',)

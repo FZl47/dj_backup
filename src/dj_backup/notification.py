@@ -2,7 +2,7 @@ from dj_backup.core.task import Task
 from dj_backup.core.triggers import TriggerLogBase
 from dj_backup import settings
 
-from .models.notification import DJBackupLog, DJBackupLogLevel
+from .models.notification import DJBackupLog, DJBackupLogLevelNotif
 
 
 class TriggerLogNotification(TriggerLogBase):
@@ -12,7 +12,7 @@ class TriggerLogNotification(TriggerLogBase):
 
     @staticmethod
     def handler_send_mail(log_obj, level_n):
-        log_level_emails = DJBackupLogLevel.objects.filter(level_n__lte=level_n, is_active=True)
+        log_level_emails = DJBackupLogLevelNotif.objects.filter(level_n__lte=level_n, is_active=True)
         for log_level_email in log_level_emails:
             log_level_email.send_mail(log_obj)
 

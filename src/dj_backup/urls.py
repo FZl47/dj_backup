@@ -3,6 +3,7 @@ from . import views
 
 app_name = 'dj_backup'
 urlpatterns = [
+
     path('logout', views.Logout.as_view(), name='logout'),
     path('login', views.Login.as_view(), name='login'),
 
@@ -27,5 +28,7 @@ urlpatterns = [
 
     path('backup/result/<int:backup_result_id>/download', views.DJBackupResultDownload.as_view(),
          name='backup__result_download'),
+
+    path('settings', views.SettingsManagement.as_view(), name='settings__management'),
 
 ]

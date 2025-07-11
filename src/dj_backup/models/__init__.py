@@ -10,7 +10,7 @@ def get_backup_object(backup_id):
 
 __all__ = [
     'DJBackUpBase', 'DJFileBackUp', 'DJDataBaseBackUp', 'DJBackupSecure',
+    'DJBackupLog', 'DJBackupLogLevelNotif', 'TaskSchedule',
     'DJBackUpStorageResult', 'DJStorage', 'DJFile',
-    'DJBackupLog', 'TaskSchedule',
     'get_backup_object',
 ]

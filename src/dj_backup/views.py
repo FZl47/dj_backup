@@ -335,3 +335,51 @@ class NotificationSeenAll(mixins.DJViewMixin, RedirectView):
     def get(self, request, *args, **kwargs):
         models.DJBackupLog.objects.filter(is_seen=False).update(is_seen=True)
         return super().get(request, *args, **kwargs)
+
+
+class SettingsManagement(mixins.DJViewMixin, TemplateView):
+    template_name = 'dj_backup/settings.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['notification_receivers'] = models.DJBackupLogLevelNotif.objects.filter(is_active=True)
+        return context
+
+    def post(self, request):
+        at = request.POST.get('action_type')
+
+        if at == 'add_notif_receiver':
+            return self.add_notif_receiver_view(request)
+        elif at == 'delete_notif_receiver':
+            return self.delete_notif_receiver_view(request)
+
+        raise PermissionDenied
+
+    def add_notif_receiver_view(self, request):
+        data = request.POST
+        f = forms.DJBackupLogLevelNotifForm(data)
+        if not f.is_valid():
+            messages.error(request, _('Please enter fields correctly'))
+            return redirect(self.get_referrer_url())
+        f.save()
+
+        messages.success(request, _('Notif receiver created successfully'))
+        return redirect(self.get_referrer_url())
+
+    def delete_notif_receiver_view(self, request):
+        data = request.POST
+        receiver_id = data.get('notif_receiver_id')
+        if not receiver_id:
+            messages.error(request, _('Please enter fields correctly'))
+            return redirect(self.get_referrer_url())
+
+        try:
+            models.DJBackupLogLevelNotif.objects.get(id=receiver_id).delete()
+        except (models.DJBackupLogLevelNotif.DoesNotExist,):
+            raise Http404
+
+        messages.error(request, _('Notif receiver deleted successfully'))
+        return redirect(self.get_referrer_url())
+
+    def get_referrer_url(self):
+        return self.request.META.get('HTTP_REFERER')

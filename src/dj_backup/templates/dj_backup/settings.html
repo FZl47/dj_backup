@@ -1,0 +1,360 @@
+{% extends 'dj_backup/base/base_template.html' %}
+
+{% block Title %}
+    Settings Management
+{% endblock %}
+
+{% block BodyClass %}
+    has-rtl nk-body npc-apps apps-only has-apps-sidebar npc-apps-files
+{% endblock %}
+
+{% block Content %}
+    <div class="nk-app-root">
+    <!-- main @s -->
+    <div class="nk-main">
+        <!-- wrap @s -->
+        <div class="nk-wrap">
+            <!-- main header @s -->
+            {% include 'dj_backup/base/header.html' %}
+            <!-- main header @e -->
+            <!-- content @s -->
+            <div class="nk-content p-0">
+                <div class="nk-content-inner">
+                    <div class="nk-content-body">
+                        <div class="nk-fmg">
+                            {% include 'dj_backup/base/menu-aside.html' %}
+                            <!-- .nk-fmg-aside -->
+                            <div class="nk-fmg-body">
+
+
+                                <div class="nk-fmg-body-content">
+                                    <div class="nk-block-head nk-block-head-sm">
+                                        <div class="nk-block-between position-relative">
+                                            <div class="nk-block-head-content">
+                                                <h3 class="nk-block-title page-title">Settings</h3>
+                                            </div>
+                                        </div>
+                                        <!-- .nk-block-head -->
+                                        <div class="nk-fmg-listing nk-block fs-3 mt-1">
+                                            <ul class="nav nav-tabs">
+                                                <li class="nav-item">
+                                                    <a class="nav-link active" data-bs-toggle="tab"
+                                                       href="#notification">Notification</a>
+                                                </li>
+                                            </ul>
+                                            <div class="nk-block-head-sub p-3">
+                                                <span>
+                                                    By adding log receiver, you can be notified instantly via email about logs and alerts that occur.
+                                                </span>
+                                            </div>
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="notification">
+                                                    <div class="card card-bordered card-preview">
+                                                        <div class="card-inner">
+                                                            <div class="preview-block">
+                                                                <span class="preview-title-lg overline-title">Add receiver notification</span>
+                                                            </div>
+                                                        </div>
+                                                        <form class="form-validate is-alter" method="post">
+                                                            {% csrf_token %}
+                                                            <input type="hidden" name="action_type"
+                                                                   value="add_notif_receiver">
+                                                            <div class="modal-body modal-body-md pt-0">
+                                                                <div class="nk-upload-form">
+                                                                    <div class="row">
+
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label class="form-label">Minimum level
+                                                                                    for
+                                                                                    sending notification</label>
+                                                                                <div class="form-control-wrap">
+                                                                                    <select name="level_n"
+                                                                                            class="form-select js-select2"
+                                                                                            required>
+                                                                                        <option value="10">Debug
+                                                                                        </option>
+                                                                                        <option value="20">Info</option>
+                                                                                        <option value="30">Warning
+                                                                                        </option>
+                                                                                        <option value="40" selected>
+                                                                                            Error
+                                                                                        </option>
+                                                                                        <option value="50">Critical
+                                                                                        </option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <label class="form-label" for="email">Email
+                                                                                    receiver</label>
+                                                                                <div class="form-control-wrap">
+                                                                                    <div class="form-icon form-icon-right">
+                                                                                        <em class="icon ni ni-mail"></em>
+                                                                                    </div>
+                                                                                    <input type="email" required
+                                                                                           name="email"
+                                                                                           class="form-control"
+                                                                                           id="email"
+                                                                                           placeholder="Email receiver">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="nk-modal-action justify-end">
+                                                                    <ul class="btn-toolbar g-4 align-center">
+                                                                        <li>
+                                                                            <button class="btn btn-primary">
+                                                                                Add receiver
+                                                                            </button>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="card card-bordered card-preview">
+                                                        <div class="card-inner">
+                                                            <div class="preview-block">
+                                                                <span class="preview-title-lg overline-title">Receivers</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="nk-content-wrap col-11 mx-auto col-sm-12">
+                                                            <!-- .nk-block-head -->
+                                                            <div class="nk-block">
+                                                                <div class="card card-bordered card-stretch">
+                                                                    <div class="card-inner-group">
+                                                                        <!-- .card-inner -->
+                                                                        <div class="card-inner p-0">
+                                                                            <table class="table table-tranx">
+                                                                                <thead>
+                                                                                <tr class="tb-tnx-head">
+                                                                                    <th class="tb-tnx-info"><span
+                                                                                            class="">level</span></th>
+                                                                                    <th class="tb-tnx-info">
+                                                                                        <span class="tb-tnx-desc">
+                                                                                            <span>email</span>
+                                                                                        </span>
+                                                                                    </th>
+                                                                                    <th>
+                                                                                        <span>action</span>
+                                                                                    </th>
+                                                                                </tr>
+                                                                                <!-- tb-tnx-item -->
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                {% for receiver in notification_receivers %}
+                                                                                    <tr class="tb-tnx-item">
+                                                                                        <td class="">
+                                                                                            <span class="badge badge-md badge-dot fw-bold notif-{{ receiver.level_label|upper }}">{{ receiver.level_label }}</span>
+                                                                                        </td>
+                                                                                        <td class="">
+                                                                                            <span class="text-success"
+                                                                                                  title="{{ receiver.email }}">{{ receiver.email|truncatechars:50 }}</span>
+                                                                                        </td>
+                                                                                        <td class="tb-tnx-action">
+                                                                                            <div class="dropdown">
+                                                                                                <a class="text-soft dropdown-toggle btn btn-icon btn-trigger"
+                                                                                                   data-bs-toggle="dropdown"><em
+                                                                                                        class="icon ni ni-more-h"></em></a>
+                                                                                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-xs">
+                                                                                                    <ul class="link-list-plain p-1">
+                                                                                                        <li>
+                                                                                                            <form method="post">
+                                                                                                                {% csrf_token %}
+                                                                                                                <input type="hidden"
+                                                                                                                       name="action_type"
+                                                                                                                       value="delete_notif_receiver">
+                                                                                                                <input type="hidden"
+                                                                                                                       name="notif_receiver_id"
+                                                                                                                       value="{{ receiver.id }}">
+                                                                                                                <button class="btn btn-danger w-100 text-center d-block p-0">
+                                                                                                                    <em class="ni ni-trash fs-20px d-block p-1"></em>
+                                                                                                                </button>
+                                                                                                            </form>
+                                                                                                        </li>
+                                                                                                    </ul>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                {% empty %}
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <span class="fs-18px">No results found</span>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                {% endfor %}
+                                                                                <!-- tb-tnx-item -->
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- .card-inner-group -->
+                                                                </div>
+                                                                <!-- .card -->
+                                                            </div>
+                                                            <!-- .nk-block -->
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- .nk-files -->
+                                        </div>
+                                        <!-- .nk-block -->
+                                    </div>
+                                    <!-- .nk-fmg-body-content -->
+                                </div>
+                                <!-- .nk-fmg-body -->
+                            </div>
+                            <!-- .nk-fmg -->
+                        </div>
+                    </div>
+                </div>
+                <!-- content @e -->
+            </div>
+            <!-- wrap @e -->
+        </div>
+        <!-- main @e -->
+    </div>
+    <!-- app-root @e -->
+
+    <div class="modal fade" tabindex="-1" role="dialog" id="file-backup">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <a href="#" class="close" data-bs-dismiss="modal"><em class="icon ni ni-cross-sm"></em></a>
+                <form action="{% url 'dj_backup:file_backup__add' %}" class="form-validate is-alter" method="post">
+                    {% csrf_token %}
+                    <div class="modal-body modal-body-md">
+                        <div class="nk-upload-form">
+                            <h4 class="title mb-4">File backup</h4>
+                            <div>
+                                <h6 class="title">Settings</h6>
+                                <div class="form-group">
+                                    <label class="form-label" for="name">Name</label>
+                                    <div class="form-control-wrap">
+                                        <input type="text" maxlength="100" class="form-control" id="name"
+                                               placeholder="name" required name="name">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="note">Note</label>
+                                    <div class="form-control-wrap">
+                                        <textarea type="text" class="form-control" id="note"
+                                                  placeholder="note" name="note"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="backup-time">Timing</label>
+                                    <div class="form-control-wrap">
+                                        <div class="form-text-hint">
+                                            <p class="overline-title d-inline-block">every</p>
+                                            <input type="number" class="form-control" id="interval-time"
+                                                   placeholder="backup timing" required name="interval">
+                                            <select name="unit" required class="js-select2 overline-title">
+                                                <option value="minutes">minute</option>
+                                                <option value="hours">hour</option>
+                                                <option value="days">day</option>
+                                                <option value="weeks">week</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    {#                                    <div class="form-note">Interval for backups</div>#}
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label" for="repeats">Number of backups</label>
+                                    <div class="form-control-wrap">
+                                        <input type="number" class="form-control" id="repeats"
+                                               placeholder="-1" value="-1" required name="repeats">
+                                    </div>
+                                    <div class="form-note">Enter '-1' for permanent backup</div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Store in </label>
+                                    <div class="form-control-wrap">
+                                        <select name="storages" class="form-select js-select2" multiple required>
+                                            {% for storage in storages %}
+                                                {% if storage.is_available %}
+                                                    <option value="{{ storage.id }}"
+                                                            selected>{{ storage.display_name }}</option>
+                                                {% endif %}
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Secure/Encryption</label>
+                                    <div class="form-control-wrap">
+                                        <select name="encryption_type" class="form-select js-select2"
+                                                required>
+                                            <option value="none" selected>
+                                                None
+                                            </option>
+                                            {% for enc_type in enc_types %}
+                                                <option value="{{ enc_type.0 }}">
+                                                    {{ enc_type.1 }}({{ enc_type.0 }})
+                                                </option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="form-note">
+                                        <b>Using encryption increases the security of your backup.</b>
+                                    </div>
+                                </div>
+                                <div class="form-group d-none" id="enc_key_form">
+                                    <label class="form-label" for="enc_key">Encryption Key</label>
+                                    <div class="form-control-wrap">
+                                        <input type="text" maxlength="100" class="form-control" id="enc_key"
+                                               placeholder="Encryption Key" name="key">
+                                    </div>
+                                    <div class="form-note">
+                                        <b class="text-danger">Do not share your encryption key with anyone, and make
+                                            sure to store it in a secure location..</b>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Keep temporary files</label>
+                                    <div class="form-control-wrap">
+                                        <select name="has_temp" class="form-select js-select2"
+                                                required>
+                                            <option value="true" selected>
+                                                Yes
+                                            </option>
+                                            <option value="false">
+                                                No
+                                            </option>
+                                        </select>
+                                    </div>
+                                    <div class="form-note">
+                                        To enable quick and easy access to backups, activate this option.
+                                        Note:
+                                        <b>Be aware that enabling file retention will increase disk space usage.</b>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="nk-upload-list">
+                            <h6 class="title">Selected files</h6>
+                            <div id="form-file-backup-files"></div>
+                        </div>
+                        <div class="nk-modal-action justify-end">
+                            <ul class="btn-toolbar g-4 align-center">
+                                <li><a href="#" data-bs-dismiss="modal" class="link link-primary">cancel</a></li>
+                                <li>
+                                    <button class="btn btn-primary">Create backup</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!-- .modal-content -->
+        </div>
+        <!-- .modla-dialog -->
+    </div>
+{% endblock %}
+

@@ -37,13 +37,25 @@ class DJBackupLog(models.Model):
         return reverse_lazy('dj_backup:notification__detail', args=(self.id,))
 
 
-class DJBackupLogLevel(models.Model):
+class DJBackupLogLevelNotif(models.Model):
     level_n = models.IntegerField(default=20)
     email = models.EmailField()
     is_active = models.BooleanField(default=True)
 
     def __str__(self):
         return f'{self.email} / {self.level_n}'
+
+    @property
+    def level_label(self):
+        levels = {
+            0: 'Notset',
+            10: 'Debug',
+            20: 'Info',
+            30: 'Warning',
+            40: 'Error',
+            50: 'Critical',
+        }
+        return levels[self.level_n]
 
     def send_mail(self, log: DJBackupLog):
         context = {
