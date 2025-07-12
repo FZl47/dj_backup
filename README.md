@@ -48,7 +48,7 @@
 
 [x] change dashboard lang to english
 
-[ ] add section notification manage to dashboard
+[x] add section notification manage to dashboard
 
 [ ] update dropbox storage to stable state
 
@@ -56,7 +56,7 @@
 
 [x] add encryption(aes)
 
-[ ] add decryption section(dashboard)
+[/] add decryption section(dashboard)
 
 [/] add enc keys collector(unsafe mode)
 
