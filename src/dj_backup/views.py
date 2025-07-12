@@ -211,6 +211,7 @@ class BackupDetail(mixins.DJViewMixin, TemplateView):
         paginator = paginator.get_page(self.request.GET.get('page', 1))
         context['page_obj'] = paginator
         context['results'] = paginator.object_list
+        context['enc_types'] = models.DJBackupSecure.ENCRYPTION_TYPES
         return context
 
 
@@ -226,6 +227,7 @@ class BackupDelete(mixins.DJViewMixin, View):
 
 
 class BackupUpdate(mixins.DJViewMixin, View):
+    form_secure = forms.DJBackupSecureForm
 
     def get_form(self, backup):
         data = self.request.POST
@@ -244,11 +246,28 @@ class BackupUpdate(mixins.DJViewMixin, View):
             messages.error(request, _('Please enter fields correctly'))
             return redirect(backup.get_absolute_url())
         backup = f.save()
+
+        # check secure/encryption
+        data = request.POST.copy()
+        data['backup'] = backup
+        encryption_type = data.get('encryption_type')
+        if encryption_type == 'none':
+            s = backup.get_secure()
+            if s:
+                s.delete()
+        else:
+            f = self.form_secure(data, instance=backup.get_secure())
+            if not f.is_valid():
+                messages.error(request, _('Please enter fields correctly'))
+                return redirect(backup.get_absolute_url())
+            f.save()
+
         # delete old schedule task
         if backup.schedule_task:
             backup.schedule_task.delete()
             # create new task
             tasks.ScheduleFileBackupTask(backup)
+
         messages.success(request, _('Backup updated successfully'))
         return redirect(backup.get_absolute_url())
 

@@ -634,7 +634,7 @@
                                 <div class="form-text-hint">
                                     <p class="overline-title d-inline-block">every</p>
                                     <input type="number" class="form-control" id="interval-time"
-                                           placeholder="backup timing" required name="interval">
+                                           placeholder="backup timing" value="{{ backup.interval }}" required name="interval">
                                     <select name="unit" required class="js-select2 overline-title select-by-value"
                                             value="{{ backup.unit }}">
                                         <option value="minutes">minute</option>
@@ -653,6 +653,36 @@
                                        placeholder="-1" value="{{ backup.repeats }}" required name="repeats">
                             </div>
                             <div class="form-note">Enter '-1' for permanent backup</div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Secure/Encryption</label>
+                            <div class="form-control-wrap">
+                                <select name="encryption_type" class="form-select js-select2 select-by-value" value="{{ backup.get_secure.encryption_type|lower|default:'none' }}"
+                                        required>
+                                    <option value="none">
+                                        None
+                                    </option>
+                                    {% for enc_type in enc_types %}
+                                        <option value="{{ enc_type.0 }}">
+                                            {{ enc_type.1 }}({{ enc_type.0 }})
+                                        </option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div class="form-note">
+                                <b>Using encryption increases the security of your backup.</b>
+                            </div>
+                        </div>
+                        <div class="form-group {% if not backup.get_secure %}d-none{% endif %}" id="enc_key_form">
+                            <label class="form-label" for="enc_key">Encryption Key</label>
+                            <div class="form-control-wrap">
+                                <input type="text" maxlength="100" class="form-control" id="enc_key"
+                                       placeholder="Encryption Key" name="key" value="{{ backup.get_secure.key|default:'' }}">
+                            </div>
+                            <div class="form-note">
+                                <b class="text-danger">Do not share your encryption key with anyone, and make
+                                    sure to store it in a secure location..</b>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label class="form-label">Store in </label>
@@ -736,6 +766,22 @@
 {% endblock %}
 
 {% block Script %}
+    <script>
+        // backup secure/encryption forms
+        let enc_key_form = document.getElementById('enc_key_form')
+
+        $('[name="encryption_type"]').on('select2:select', function (e) {
+            let t = this.value
+            if (t !== 'none') {
+                enc_key_form.classList.remove('d-none')
+                enc_key_form.querySelector('input').setAttribute('required', 'required')
+            } else {
+                enc_key_form.classList.add('d-none')
+                enc_key_form.querySelector('input').removeAttribute('required')
+                enc_key_form.querySelector('input').value = ''
+            }
+        });
+    </script>
     <script>
         document.querySelectorAll('.file-dl-toast').forEach(function (el) {
             el.addEventListener('click', function (e) {
