@@ -63,6 +63,10 @@ class BaseStorageConnector(abc.ABC):
             raise
 
     @classmethod
+    def setup(cls):
+        pass
+
+    @classmethod
     def check(cls, raise_exc=True):
         if cls._check_status:
             return cls._check_status
@@ -111,7 +115,7 @@ class BaseStorageConnector(abc.ABC):
             return cls._close()
         except Exception as e:
             utils.log_event('There is a problem with %s storage close connections. more info [%s]' % (cls.__name__, e),
-                            'critical',
+                            'error',
                             exc_info=True)
             if raise_exc:
                 raise
