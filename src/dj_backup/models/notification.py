@@ -24,7 +24,7 @@ class DJBackupLog(models.Model):
     def name(self):
         if not self.msg:
             return '-'
-        return self.msg[:30]
+        return self.msg[:50]
 
     @property
     def subject(self):
