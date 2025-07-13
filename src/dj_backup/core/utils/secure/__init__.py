@@ -1,4 +1,4 @@
-from typing import Union
+from typing import Type
 
 from .base import SecureBaseABC
 from .aes import AESEncryption
@@ -9,8 +9,11 @@ _ENCRYPTION_TYPES = {
     'aes': AESEncryption
 }
 
-EncTypeUnion = Union[tuple(_ENCRYPTION_TYPES.values())]
+EncTypeUnion = Type[SecureBaseABC]
 
 
 def get_enc_by_name(name: str) -> EncTypeUnion:
-    return _ENCRYPTION_TYPES[name]
+    try:
+        return _ENCRYPTION_TYPES[name]
+    except KeyError:
+        raise ValueError(f"Encryption type '{name}' is not supported.")
