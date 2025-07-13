@@ -164,7 +164,7 @@ class ScheduleDataBaseBackupTask(ScheduleBackupBaseTask):
                 if _enc_manager:
                     _enc_manager.delete_temp_files()
                 else:
-                    db_instance.delete_temp_zip_file()
+                    db_instance.delete_zip_temp()
 
             """End"""
 
