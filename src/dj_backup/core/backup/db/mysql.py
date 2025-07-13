@@ -1,6 +1,10 @@
 import subprocess
 import warnings
 
+from typing import Optional, Dict, Any
+
+from pathlib import Path
+
 try:
     import MySQLdb as _MySQLdb
 
@@ -20,20 +24,39 @@ from .base import BaseDB
 
 
 class MysqlDB(BaseDB):
+    """
+        A class to represent a MySQL database connection and perform backup operations.
+
+        This class provides methods to connect to a MySQL database, execute
+        database dumps, and handle various configurations related to the MySQL
+        database backup process.
+
+        Attributes:
+            IMPORT_STATUS (bool): Indicates whether the MySQLdb package is imported successfully.
+            CONFIG (dict): Configuration settings for connecting to the MySQL database.
+            ADDITIONAL_ARGS_NAME (dict): Descriptive names for additional arguments used in dump operations.
+            ADDITIONAL_ARGS (dict): Command-line arguments for mysqldump operations.
+            NAME (str): Name of the database type.
+            DUMP_PREFIX (str): Command prefix for mysqldump in Unix-like systems.
+            DUMP_PREFIX_WIN (str): Command prefix for mysqldump in Windows.
+            _BASE_DIR (str): Base directory of the MySQL installation.
+            _DB (MySQLdb.Connection): Connection object for the MySQL database.
+    """
+
     IMPORT_STATUS = package_imported
-    CONFIG = {
+    CONFIG: Dict[str, Optional[Any]] = {
         'NAME': None,
         'USER': None,
         'PASSWORD': None,
         'HOST': None,
         'PORT': 3306,
     }
-    ADDITIONAL_ARGS_NAME = {
+    ADDITIONAL_ARGS_NAME: Dict[str, Optional[Any]] = {
         'only_data': _('Only data'),
         'only_structure': _('Only structure'),
         'no_db': _('No database creation'),
     }
-    ADDITIONAL_ARGS = {
+    ADDITIONAL_ARGS: Dict[str, Optional[Any]] = {
         'only_data': '--no-create-info',
         'only_structure': '--no-data',
         'no_db': '--no-create-db',
@@ -45,7 +68,13 @@ class MysqlDB(BaseDB):
     _DB = None
 
     @classmethod
-    def connect(cls):
+    def connect(cls) -> _MySQLdb.Connection:
+        """
+            Connect to the MySQL database and return the connection object.
+
+            Raises:
+                _MySQLdb.Error: If there is an error connecting to the database.
+        """
         if cls._DB:
             return cls._DB
         c = cls.CONFIG
@@ -60,17 +89,35 @@ class MysqlDB(BaseDB):
         return cls._DB
 
     @classmethod
-    def close(cls):
+    def close(cls) -> None:
+        """
+            Close the MySQL database connection.
+        """
         if cls._DB:
             cls._DB.close()
             cls._DB = None
 
-    def get_mysqldump_win(self):
+    def get_mysqldump_win(self) -> str:
         """
-            get mysqldump location in windows
+            Get the mysqldump location in Windows.
+
+            Returns:
+                str: The path to mysqldump.
+
+            Raises:
+                FileNotFoundError: If the mysqldump file is not found.
         """
 
-        def get_mysql_base_dir():
+        def get_mysql_base_dir() -> str:
+            """
+                Retrieve the MySQL base directory.
+
+                Returns:
+                    str: The base directory of MySQL.
+
+                Raises:
+                    Exception: If the basedir variable is not found.
+            """
             if self._BASE_DIR:
                 return self._BASE_DIR
             cmd = """
@@ -98,17 +145,25 @@ class MysqlDB(BaseDB):
             raise FileNotFoundError(msg)
         return dump_path
 
-    def get_dump_prefix(self):
-        dump_path = settings.get_config().get('MYSQL_DUMP_PATH', None)
-        if dump_path:
-            return self.normalize_location(dump_path)
-        if utils.get_os_name() == 'Windows':
-            return self.normalize_location(self.get_mysqldump_win())
-        return self.normalize_location(self.DUMP_PREFIX)
-
-    def prepare_cmd(self):
+    def get_dump_prefix(self) -> Path:
         """
-            note: space in cmd string is important
+            Get the dump prefix based on the configuration or OS.
+
+            Returns:
+                Path: The dump prefix path.
+        """
+        dump_path = settings.get_config().get('MYSQL_DUMP_PATH', None)
+        if not dump_path:
+            if utils.get_os_name() == 'Windows':
+                dump_path = self.get_mysqldump_win()
+            else:
+                dump_path = self.DUMP_PREFIX
+        return self.normalize_location(dump_path)
+
+    def prepare_cmd(self) -> None:
+        """
+            Prepare the command for dumping the database.
+            Note: Space in cmd string is important.
         """
         c = self.CONFIG
 
@@ -126,7 +181,16 @@ class MysqlDB(BaseDB):
         args = self.backup_obj.get_additional_args()
         self.add_additional_args(args)
 
-    def dump(self):
+    def dump(self) -> Path:
+        """
+            Execute the dump command and compress the dump file.
+
+            Returns:
+                Path: The location of the compressed dump file.
+
+            Raises:
+                subprocess.SubprocessError: If there is an error executing the dump command.
+        """
         self.prepare_cmd()
         try:
             # execute command
