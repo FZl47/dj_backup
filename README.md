@@ -50,7 +50,7 @@
 
 [x] add section notification manage to dashboard
 
-[ ] update dropbox storage to stable state
+[x] update dropbox storage to stable state(long-test needed)
 
 [ ] refactor/add type hints(update hard-doc)
 
@@ -61,6 +61,8 @@
 [/] add enc keys collector(unsafe mode)
 
 [ ] add dockerfile/ dockerization
+
+[ ] add backup chunks for storage | split large file(telegram-bot,...)
 
 
 
