@@ -44,6 +44,13 @@ def _check_storages_config():
         storage_connector = import_storage_connector(st_name)
         ALL_STORAGES_DICT[st_name] = storage_connector
         storage_connector.set_config(st_config)
+        try:
+            storage_connector.setup()
+        except Exception as e:
+            msg = "There is some problem in setup storage `%s` more detail [%s]" % (storage_connector.STORAGE_NAME, e)
+            log_event(msg, 'error',
+                      exc_info=True)
+            raise Exception(msg)
         if storage_connector.check():
             STORAGES_CLASSES_CHECKED.append(storage_connector)
             STORAGES_AVAILABLE_DICT[st_name] = storage_connector
