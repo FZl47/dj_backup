@@ -82,7 +82,7 @@ class BaseDB(BaseBackup):
             utils.log_event('Error in delete temp dump file `%s` from `%s` db' % (exp_loc, self.__class__.__name__),
                             'warning', exc_info=True)
 
-    def delete_temp_zip_file(self):
+    def delete_zip_temp(self):
         exp_loc = self.get_exp_compress_file_location()
 
         try:
