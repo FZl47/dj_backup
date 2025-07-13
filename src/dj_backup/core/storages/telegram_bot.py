@@ -1,4 +1,7 @@
 import warnings
+import inspect
+
+from asgiref.sync import async_to_sync
 
 try:
     from telegram import Bot
@@ -40,7 +43,10 @@ class TelegramBOTConnector(BaseStorageConnector):
     def _upload(self):
         c = self.CONFIG
         with open(self.file_path, 'rb') as f:
-            self._BOT.send_document(chat_id=c['CHAT_ID'], document=f)
+            if inspect.iscoroutinefunction(self._BOT.send_document):
+                async_to_sync(self._BOT.send_document)(chat_id=c['CHAT_ID'], document=f)
+            else:
+                self._BOT.send_document(chat_id=c['CHAT_ID'], document=f)
 
     def _save(self):
         self.check_before_save()
