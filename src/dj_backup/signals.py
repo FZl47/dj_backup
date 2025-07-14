@@ -28,4 +28,4 @@ def delete_dj_file_backup_handler(sender, instance, **kwargs):
 
 @receiver(pre_delete, sender=models.TaskSchedule)
 def delete_task_job_handler(sender, instance, **kwargs):
-    StorageTask.remote_task_by_id(instance.task_id)
+    StorageTask.remove_task_by_id(instance.task_id)

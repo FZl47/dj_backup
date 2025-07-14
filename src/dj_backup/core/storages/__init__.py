@@ -16,7 +16,7 @@ _STORAGES_MODULE: Dict[str, tuple] = {
     'TELEGRAM_BOT': ('dj_backup.core.storages.telegram_bot', 'TelegramBOTConnector'),
 }
 
-ALL_STORAGES_DICT: Optional[Dict[str, Any]] = None
+ALL_STORAGES_DICT: Optional[Dict[str, Any]] = {}
 STORAGES_AVAILABLE: list = []
 STORAGES_AVAILABLE_DICT: Dict[str, Any] = {}
 STORAGES_CLASSES_CHECKED: list = []

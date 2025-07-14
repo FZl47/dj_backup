@@ -12,9 +12,8 @@ from django.contrib import messages
 from django.db.models import Q
 
 from dj_backup.core.backup.db import DATABASES_AVAILABLE
-from dj_backup.core import tasks, utils
+from dj_backup.core import tasks, utils, mixins
 from dj_backup import models, forms
-from dj_backup.core import mixins
 from dj_backup import settings
 
 

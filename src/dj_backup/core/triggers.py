@@ -7,7 +7,7 @@ class TriggerLogBase(ABC):
     """
 
     @staticmethod
-    def call_trigger(level, level_n, msg, exc, *args, **kwargs):
+    def call_trigger(level: str, level_n: int, msg: str, exc: Exception, *args: list, **kwargs: dict):
         """
             Call by logging function
         """
@@ -16,7 +16,7 @@ class TriggerLogBase(ABC):
             trigger.log(trigger, level, level_n, msg, exc, *args, **kwargs)
 
     @abstractmethod
-    def log(self, level, level_n, msg, exc, *args, **kwargs):
+    def log(self, level: str, level_n: int, msg: str, exc: Exception, *args: list, **kwargs: dict):
         """
             When a new log is created, this function is called
         """
