@@ -10,7 +10,7 @@ def parse_requirements(filename):
 
 setup(
     name='djbackup',
-    version='2.3.0',
+    version='2.3.1',
     description='djbackup(django backup) is an installable module for Django that is used for backup purposes, specifically for backing up the database and media files.',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
