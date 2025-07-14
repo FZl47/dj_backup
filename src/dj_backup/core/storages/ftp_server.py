@@ -1,4 +1,7 @@
 import warnings
+
+from typing import Optional, Dict, Any
+
 try:
     import ftplib
 
@@ -10,13 +13,25 @@ except ImportError:
         You can install the required package using the following command:
         'pip install djbackup[ftpserver]'""")
 
-
 from .base import BaseStorageConnector
 
 
 class FTPServerConnector(BaseStorageConnector):
-    IMPORT_STATUS = package_imported
-    CONFIG = {
+    """
+        A connector class for interacting with an FTP server.
+
+        This class provides methods to connect to an FTP server, upload files,
+        and manage configurations for FTP access.
+
+        Attributes:
+            IMPORT_STATUS (bool): Indicates whether the FTP package was imported successfully.
+            CONFIG (dict): Configuration settings for FTP integration.
+            STORAGE_NAME (str): Name of the storage provider.
+            FTP (Optional[ftplib.FTP]): The FTP connection object.
+    """
+
+    IMPORT_STATUS: bool = package_imported
+    CONFIG: Dict[str, Optional[Any]] = {
         'HOST': None,
         'PORT': 21,
         'USERNAME': None,
@@ -24,20 +39,25 @@ class FTPServerConnector(BaseStorageConnector):
         'OUT': None,
     }
     STORAGE_NAME = 'FTP_SERVER'
-    TRANSPORT = None
-    FTP = None
-
+    FTP: Optional[ftplib.FTP] = None
 
     @classmethod
-    def set_config(cls, config):
+    def set_config(cls, config: Dict[str, Any]) -> None:
+        """
+            Set the configuration for the FTP connection.
+
+            :param config: A dictionary containing configuration parameters.
+        """
         super().set_config(config)
-        # set ftp port
+        # Set FTP port
         ftplib.FTP.port = cls.CONFIG['PORT']
 
     @classmethod
-    def _connect(cls):
+    def _connect(cls) -> ftplib.FTP:
         """
-            create connection to host server
+        Create a connection to the FTP server.
+
+        :return: An instance of the FTP connection.
         """
         c = cls.CONFIG
         ftp = ftplib.FTP(c['HOST'], c['USERNAME'], c['PASSWORD'])
@@ -45,25 +65,39 @@ class FTPServerConnector(BaseStorageConnector):
         return ftp
 
     @classmethod
-    def _close(cls):
+    def _close(cls) -> None:
         """
-            close connections
-        """
-        if cls.FTP: cls.FTP.close()
+            Close the FTP connection.
 
-    def _upload(self, ftp, base_output, file_name):
+            This method ensures that any open connections to the FTP server are properly closed.
+        """
+        if cls.FTP:
+            cls.FTP.close()
+
+    def _upload(self, ftp: ftplib.FTP, base_output: str, file_name: str) -> None:
+        """
+            Upload a file to the FTP server.
+
+            :param ftp: The FTP connection object.
+            :param base_output: The destination path on the FTP server where the file will be uploaded.
+            :param file_name: The name of the file to be uploaded.
+        """
         with open(self.file_path, 'rb') as file:
-            # move to out path
+            # Move to output path
             ftp.cwd(base_output)
-            # upload
+            # Upload the file
             ftp.storbinary(f'STOR {file_name}', file)
 
-    def _save(self):
+    def _save(self) -> None:
+        """
+            Save the file to the FTP server after performing necessary checks.
+
+            This method checks conditions before saving, establishes a connection,
+            uploads the file, and then closes the connection.
+        """
         self.check_before_save()
         ftp = self.connect()
         file_name = self.get_file_name()
         base_output = self.CONFIG['OUT']
         self.upload(ftp, base_output, file_name)
         self.close()
-
-

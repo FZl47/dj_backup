@@ -1,6 +1,10 @@
 import warnings
 import getpass
 
+from typing import Optional, Union
+
+from pathlib import Path
+
 try:
     import dropbox
 
@@ -13,25 +17,39 @@ except ImportError:
         'pip install djbackup[dropbox]'""")
 
 from dj_backup.core import utils
-
 from .base import BaseStorageConnector
 
-_oauth_refresh_token = None
+_oauth_refresh_token: Optional[str] = None
 
 
 class DropBoxConnector(BaseStorageConnector):
-    IMPORT_STATUS = package_imported
-    CONFIG = {
+    """
+    A connector class for interacting with Dropbox storage.
+
+    This class provides methods to connect to Dropbox, upload files, and manage
+    the OAuth2 authentication process.
+
+    Attributes:
+        IMPORT_STATUS (bool): Indicates whether the Dropbox package was imported successfully.
+        CONFIG (dict): Configuration settings for Dropbox integration.
+        STORAGE_NAME (str): Name of the storage provider.
+        DBX (dropbox.Dropbox): The Dropbox connection object.
+    """
+
+    IMPORT_STATUS: bool = package_imported
+    CONFIG: dict = {
         'APP_KEY': None,
         'OUT': '/dj_backup/'
     }
     STORAGE_NAME = 'DROPBOX'
-    DBX = None
+    DBX: Optional[dropbox.Dropbox] = None
 
     @classmethod
-    def _connect(cls):
+    def _connect(cls) -> dropbox.Dropbox:
         """
-            create connection to host server
+            Create a connection to the Dropbox server.
+
+            :return: An instance of the Dropbox connection.
         """
         c = cls.CONFIG
         dbx = dropbox.Dropbox(oauth2_refresh_token=_oauth_refresh_token, app_key=c['APP_KEY'])
@@ -39,17 +57,32 @@ class DropBoxConnector(BaseStorageConnector):
         return dbx
 
     @classmethod
-    def _close(cls):
+    def _close(cls) -> None:
         """
-            close connections
-        """
-        if cls.DBX: cls.DBX.close()
+            Close the Dropbox connection.
 
-    def _upload(self, dbx, output):
+            This method ensures that any open connections to Dropbox are properly closed.
+        """
+        if cls.DBX:
+            cls.DBX.close()
+
+    def _upload(self, dbx: dropbox.Dropbox, output: Union[str, Path]) -> None:
+        """
+            Upload a file to Dropbox.
+
+            :param dbx: The Dropbox connection object.
+            :param output: The destination path in Dropbox where the file will be uploaded.
+        """
         with open(self.file_path, 'rb') as file:
             dbx.files_upload(file.read(), output)
 
-    def _save(self):
+    def _save(self) -> None:
+        """
+            Save the file to Dropbox after performing necessary checks.
+
+            This method checks conditions before saving, establishes a connection,
+            uploads the file, and then closes the connection.
+        """
         self.check_before_save()
         dbx = self.connect()
         file_name = self.get_file_name()
@@ -58,13 +91,22 @@ class DropBoxConnector(BaseStorageConnector):
         self.close()
 
     @classmethod
-    def check_before_setup(cls):
-        if cls.IMPORT_STATUS is False:
-            return False
-        return True
+    def check_before_setup(cls) -> bool:
+        """
+            Check prerequisites before setting up Dropbox access.
+
+            :return: True if setup can proceed, False otherwise.
+        """
+        return cls.IMPORT_STATUS
 
     @classmethod
-    def setup(cls):
+    def setup(cls) -> None:
+        """
+            Set up Dropbox access using OAuth2.
+
+            This method initiates the OAuth2 flow to obtain an authorization code
+            and refresh token for accessing Dropbox.
+        """
         if not cls.check_before_setup():
             return
 
