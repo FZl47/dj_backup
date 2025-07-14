@@ -361,7 +361,7 @@ class SettingsManagement(mixins.DJViewMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['notification_receivers'] = models.DJBackupLogLevelNotif.objects.filter(is_active=True)
+        context['notification_receivers'] = models.DJBackupLogLevelNotif.objects.filter(is_active=True).order_by('-level_n')
         return context
 
     def post(self, request):
