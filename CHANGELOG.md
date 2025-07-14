@@ -1,5 +1,9 @@
 # Change logs
 
+## [2.3.1] - 2025-7-15
+
+- fix requirement missing libs
+
 ## [2.3.0] - 2025-7-15
 
 - add encryptions into backups
