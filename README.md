@@ -60,7 +60,7 @@
 
 [/] add enc keys collector(unsafe mode)
 
-[ ] add dockerfile/ dockerization
+[x] add dockerfile/ dockerization
 
 [ ] add backup chunks for storage | split large file(telegram-bot,...)
 
