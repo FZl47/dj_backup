@@ -5,9 +5,9 @@
     DJ Backup is a Django app that provides the capability to back up your files and databases.
 
 ### Available at:
+
 - #### <a href="https://pypi.org/project/djbackup/">pypi</a>
 - #### <a href="https://github.com/FZl47/dj_backup">github</a>
-
 
 ##### supported databases
 
@@ -25,13 +25,16 @@
 
 ## How to use ?
 
-####  1. First you need to install dj_backup
+#### 1. First you need to install dj_backup
 
 ```sh
     pip install djbackup
 ```
+
 OR
+
 - #### for using all features
+
 ```sh
     pip install djbackup[all]
 ```
@@ -101,7 +104,8 @@ DJ_BACKUP_CONFIG = {
     python manage.py run-backup
 ```
 
-### 8. run django
+#### 8. run django
+
 
 ```python
     python manage.py runserver
@@ -191,14 +195,12 @@ OR
 | FTP_SERVER   | ```pip install djbackup[ftpserver]```  |
 | DROPBOX      | ```pip install djbackup[dropbox]```    |
 
-
 ### - databases:
 
 | database   | install command                        |
 |------------|----------------------------------------| 
 | mysql      | ```pip install djbackup[mysql]```      |
 | postgresql | ```pip install djbackup[postgresql]``` |
-
 
 ## NOTE:
 
