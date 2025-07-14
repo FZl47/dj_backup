@@ -32,7 +32,7 @@ class AESEncryption(SecureBaseABC):
         """
             :return: A path of temp location to save encrypted data
         """
-        return self.temp_dir / f'{utils.random_str(30)}__bc.{self._file_extension}'
+        return self.temp_dir / f'backup_{utils.random_str(10)}.{self._file_extension}'
 
     @classmethod
     def _make_key_sha256(cls, key: str) -> bytes:
