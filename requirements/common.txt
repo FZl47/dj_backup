@@ -4,3 +4,5 @@ django-model-utils==5.0.0
 sqlparse
 tzdata
 tzlocal
+pycryptodome
+pyzipper
