@@ -5,7 +5,7 @@
 ## What is this ?
 #### DJ Backup is a Django app that provides the capability to back up your files and databases.
 
-[![PyPI version](https://img.shields.io/pypi/v/djbackup.svg)](https://pypi.org/project/djbackup/)[![Python](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/) [![Django](https://img.shields.io/badge/django-3.2%2B-green)](https://www.djangoproject.com/) [![Documentation](https://img.shields.io/badge/docs-readthedocs-blue)](https://djbackup.readthedocs.io/) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/FZl47/dj_backup/blob/main/LICENSE) [![Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black) [![Coverage](https://img.shields.io/badge/coverage-90%25-green)](https://github.com/FZl47/dj_backup) 
+[![PyPI version](https://img.shields.io/pypi/v/djbackup.svg)](https://pypi.org/project/djbackup/) [![Python](https://img.shields.io/badge/python-3.8%2B-blue)](https://www.python.org/) [![Django](https://img.shields.io/badge/django-3.2%2B-green)](https://www.djangoproject.com/) [![Documentation](https://img.shields.io/badge/docs-readthedocs-blue)](https://djbackup.readthedocs.io/) [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/FZl47/dj_backup/blob/main/LICENSE) [![Code Style](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black) [![Coverage](https://img.shields.io/badge/coverage-90%25-green)](https://github.com/FZl47/dj_backup) 
 
 
 

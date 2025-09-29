@@ -1,5 +1,10 @@
 # Change logs
 
+## [2.3.2] - 2025-9-29
+
+- update docs/readme file
+
+
 ## [2.3.1] - 2025-7-15
 
 - fix requirement missing libs
